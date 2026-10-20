@@ -24,14 +24,14 @@
     {
       "id": "L10N_SETTINGS_STATUS_AE_LANGUAGE",
       "token": "StatusAeLanguage",
-      "zh": "AE 语言",
+      "zh": "After Effects 语言",
       "en": "After Effects language",
       "ja": "After Effects の言語"
     },
     {
       "id": "L10N_SETTINGS_STATUS_AE_VERSION",
       "token": "StatusAeVersion",
-      "zh": "AE 版本",
+      "zh": "After Effects 版本",
       "en": "After Effects version",
       "ja": "After Effects のバージョン"
     },

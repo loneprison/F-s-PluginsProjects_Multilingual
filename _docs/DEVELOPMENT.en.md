@@ -101,7 +101,7 @@ If you do not need multilingual settings, build a fixed-language version without
 Replace `<language>` with:
 
 - `en`: English
-- `ja`: original Japanese
+- `source`: original Japanese
 - `zh`: Simplified Chinese
 - `ja-for-zh`: original Japanese for a Simplified Chinese encoding environment
 

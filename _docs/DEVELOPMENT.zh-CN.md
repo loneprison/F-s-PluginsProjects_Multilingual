@@ -99,7 +99,7 @@ _build\publication\Fs_Plugins
 将 `<language>` 替换为：
 
 - `en`：英文
-- `ja`：日文原文
+- `source`：日文原文
 - `zh`：简体中文
 - `ja-for-zh`：适用于简体中文编码环境的日文原文
 

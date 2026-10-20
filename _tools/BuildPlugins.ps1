@@ -5,7 +5,7 @@ function Write-Usage {
     [Console]::WriteLine(@'
 Usage:
   BuildPlugins.bat publication
-  BuildPlugins.bat custom --default-language <en|ja|zh|ja-for-zh> [--single-language]
+  BuildPlugins.bat custom --default-language <en|source|zh|ja-for-zh> [--single-language]
 
 Modes:
   publication  Rebuild the Release x64 multilingual projects outside parenthesized solution folders
@@ -72,7 +72,7 @@ try {
 
     $languageMap = @{
         'en' = 'en'
-        'ja' = 'source'
+        'source' = 'source'
         'zh' = 'zh'
         'ja-for-zh' = 'source-cp936-compatible'
     }

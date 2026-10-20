@@ -26,14 +26,14 @@
       "L10N_SETTINGS_STATUS_AE_LANGUAGE": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:93b3b57c502b98b5c67fc3a4aa99b3470c7e7ef5c8bfc1a369f992f586d513f4",
+          "source": "sha256-v1:a996acded3fe7ddc35088e1b186c8d1e4ea262996eecffe9111608e888dd90fc",
           "translation": "sha256-v1:9ca2ba1439d22818a24b3176415ffa66677a5e1531097234a6f53b9da37a23a9"
         }
       },
       "L10N_SETTINGS_STATUS_AE_VERSION": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:65fe29803eccbb9aea7211c0ac5dd6bac50ef4b9f268b58dc8a02e994510b511",
+          "source": "sha256-v1:5beaf97c2e18df44407c15c022601cb5167be8bb0bdcfc9358fd3a0bdfe1bd38",
           "translation": "sha256-v1:0c7d1d9da12d8efade0a4097501ebbeed27d3d8e6f7d35ab54e88df147b92588"
         }
       },
@@ -280,14 +280,14 @@
       "L10N_SETTINGS_STATUS_AE_LANGUAGE": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:93b3b57c502b98b5c67fc3a4aa99b3470c7e7ef5c8bfc1a369f992f586d513f4",
+          "source": "sha256-v1:a996acded3fe7ddc35088e1b186c8d1e4ea262996eecffe9111608e888dd90fc",
           "translation": "sha256-v1:1dcad891b0c8545910257f699558da1099f0c38ec458d0fd235233fa543e0c22"
         }
       },
       "L10N_SETTINGS_STATUS_AE_VERSION": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:65fe29803eccbb9aea7211c0ac5dd6bac50ef4b9f268b58dc8a02e994510b511",
+          "source": "sha256-v1:5beaf97c2e18df44407c15c022601cb5167be8bb0bdcfc9358fd3a0bdfe1bd38",
           "translation": "sha256-v1:93f94a5e9c0df45f0c0f5488b6083a586b577c5dda6d96cbea41a398ceda0581"
         }
       },

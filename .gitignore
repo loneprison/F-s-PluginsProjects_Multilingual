@@ -61,6 +61,7 @@ dlldata.c
 project.lock.json
 project.fragment.lock.json
 _build/
+artifacts/
 
 *_i.c
 *_p.c
@@ -277,6 +278,7 @@ paket-files/
 __pycache__/
 *.pyc
 .venv/
+*.egg-info/
 
 # Regenerable cache files
 .pytest_cache/

@@ -2,6 +2,10 @@
 
 # F's Plugins Multilingual Edition
 
+このリポジトリでは、既定の `master` ブランチで F's Plugins を、
+[`nf` ブランチ](https://github.com/loneprison/F-s-PluginsProjects_Multilingual/tree/nf)で NF Plugins を保守しています。
+この README は F's Plugins の説明です。
+
 [開発ガイド](DEVELOPMENT.ja.md) · [翻訳レビュー](../_localization/README.ja.md) · [原作者の README](README.original.md)
 
 Adobe After Effects 用 F's Plugins の Windows x64 多言語保守版です。日本語原文、簡体中国語、
@@ -59,6 +63,10 @@ CP932 では日本語、その他または不明な場合は英語を選択し�
 - Filter の About 表示を統一し、必要な不完全なテンプレート説明を置換。
 
 ## ソースと開発
+
+本保守版では元のリポジトリのディレクトリとファイルを整理し、過去のバックアップ、生成ファイル、
+旧バイナリパッケージの一部を削除するとともに、原作者の資料の一部をアーカイブとして保存しています。
+削除した内容は Git の履歴から参照できます。
 
 ソースビルドと開発については[開発ガイド](DEVELOPMENT.ja.md)を参照してください。
 

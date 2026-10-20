@@ -2,6 +2,10 @@
 
 # F's Plugins Multilingual Edition
 
+This repository maintains F's Plugins on the default `master` branch and NF Plugins on the
+[`nf` branch](https://github.com/loneprison/F-s-PluginsProjects_Multilingual/tree/nf).
+This README covers F's Plugins.
+
 [Development](_docs/DEVELOPMENT.en.md) · [Translation review](_localization/README.md) · [Original README](_docs/README.original.md)
 
 A maintained Windows x64 edition of F's Plugins for Adobe After Effects, with original Japanese,
@@ -62,6 +66,10 @@ duplicates or broken:
 - Aligned Filter About windows and replaced incomplete template descriptions where needed.
 
 ## Source and development
+
+This edition reorganizes the original repository's directories and files, removes some historical
+backups, generated files, and old binary packages, and preserves selected original-author materials
+in archives. Removed content remains available in Git history.
 
 For source builds and development, see the [developer guide](_docs/DEVELOPMENT.en.md).
 

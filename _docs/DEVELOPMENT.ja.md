@@ -101,7 +101,7 @@ _build\publication\Fs_Plugins
 `<language>` は次のいずれかに置き換えます。
 
 - `en`：英語
-- `ja`：日本語原文
+- `source`：日本語原文
 - `zh`：簡体中国語
 - `ja-for-zh`：簡体中国語の文字コード環境向け日本語原文
 

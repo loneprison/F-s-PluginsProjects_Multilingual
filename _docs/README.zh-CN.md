@@ -2,6 +2,9 @@
 
 # F's Plugins Multilingual Edition
 
+本仓库的默认分支 `master` 维护 F's Plugins，[`nf` 分支](https://github.com/loneprison/F-s-PluginsProjects_Multilingual/tree/nf)
+维护 NF Plugins。本页介绍 F's Plugins。
+
 [开发文档](DEVELOPMENT.zh-CN.md) · [翻译审校](../_localization/README.zh-CN.md) · [原作者 README](README.original.md)
 
 F's Plugins 的 Windows x64 多语言维护版，面向 Adobe After Effects，提供日文原文、简体中文和英文
@@ -55,6 +58,9 @@ AE 22 及以下按 Windows ANSI 代码页选择：CP936 使用中文，CP932 使
 - 统一 Filter 的 About 窗口，并替换必要的不完整模板说明。
 
 ## 源码与开发
+
+本维护版整理了原仓库的目录与文件，移除了部分历史备份、生成文件和旧二进制包，并归档保留部分
+原作者资料；被移除的内容仍可从 Git 历史查阅。
 
 源码构建与开发见[开发文档](DEVELOPMENT.zh-CN.md)。
 

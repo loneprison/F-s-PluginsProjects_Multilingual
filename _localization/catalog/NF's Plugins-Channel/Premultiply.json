@@ -19,7 +19,7 @@
         "L10N_PARAM_MAT_COLOR": "预乘遮罩颜色"
       },
       "Popup": {
-        "L10N_PARAM_MODE_ITEMS": "直接转预乘|预乘转直接"
+        "L10N_PARAM_MODE_ITEMS": "预乘转直接|直接转预乘"
       },
       "About": {
         "L10N_PLUGIN_DESC": "切换素材的Alpha遮罩方式为直接或预乘"

@@ -17,11 +17,7 @@
         }
       },
       "L10N_PARAM_MODE_ITEMS": {
-        "stage": "reviewed",
-        "reviewedAgainst": {
-          "source": "sha256-v1:d00917a867363a02ed0733a4af89c12111b8f14174ecf277acf4d3355a1741e3",
-          "translation": "sha256-v1:0ad7436167066631204f90c684c484199f49a259808ba5562bfa4d8ccd133138"
-        }
+        "stage": "needs-review"
       },
       "L10N_PLUGIN_DESC": {
         "stage": "reviewed",
