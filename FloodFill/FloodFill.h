@@ -127,17 +127,17 @@ enum {
 
 
 //UIの表示文字列
-#define	STR_PAINT_COUNT		"paintCount"
-#define	STR_PAINT_ITEMS		"1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16"
+#define	L10N_PAINT_COUNT		"paintCount"
+#define	L10N_PAINT_ITEMS		"1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16"
 
-#define	STR_PAINT_TOPIC		"paintItems"
-#define	STR_ENABLE			"enable"
-#define	STR_ENABLE_BAR		"----"
-#define	STR_POS				"pos"
-#define	STR_COLOR			"color"
-#define	STR_GUIDE			"guide"
-#define	STR_GUIDE_ALL_CLEAR			"All Guide Clear"
-#define	STR_GUIDE_COLOR		"guideColor"
+#define	L10N_PAINT_TOPIC		"paintItems"
+#define	L10N_ENABLE			"enable"
+#define	L10N_ENABLE_BAR		"----"
+#define	L10N_POS				"pos"
+#define	L10N_COLOR			"color"
+#define	L10N_GUIDE			"guide"
+#define	L10N_GUIDE_ALL_CLEAR			"All Guide Clear"
+#define	L10N_GUIDE_COLOR		"guideColor"
 
 
 

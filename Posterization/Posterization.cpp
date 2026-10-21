@@ -6,6 +6,11 @@
 
 
 #include "Posterization.h"
+#define L10N_LABEL_ON "on"
+#define L10N_COLOR_START " : start"
+#define L10N_COLOR_END " : end"
+#define L10N_COLOR_MID " : mid"
+#include "PosterizationText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,6 +21,7 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const PosterizationText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 	PF_Pixel 	def_colors[] = {
 		{ 0xFF, 0x00, 0x00, 0x00 },
@@ -36,27 +42,27 @@ static PF_Err ParamsSetup (
 	};
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
-	cs.AddPopup(STR_LEVEL,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_LEVEL),
 		STR_LEVEL_COUNT,
 		STR_LEVEL_DFLT,
-		STR_LEVEL_ITEMS,
+		AETEXT_POPUP(strings, L10N_LEVEL_ITEMS),
 		ID_LEVEL,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
-	cs.AddPopup(STR_MODE,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_MODE),
 		STR_MODE_COUNT,
 		STR_MODE_DFLT,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_MODE_ITEMS),
 		ID_MODE,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_IS_COLOR,
-		"on",
+		AETEXT_PARAM(strings, L10N_IS_COLOR),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_IS_COLOR,
 		PF_ParamFlag_SUPERVISE |
@@ -64,16 +70,16 @@ static PF_Err ParamsSetup (
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	 // ******************************************************
-	cs.AddTopic(STR_COLOR_TOPIC, ID_COLOR_TOPIC,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_COLOR_TOPIC), ID_COLOR_TOPIC,
 		PF_ParamFlag_NONE,
 		PF_PUI_INVISIBLE);
 	for (int i = 0; i < COLOR_TABLE_MAX; i++) {
-		std::string name = std::string(STR_COLOR) + std::to_string(i+1);
-		if (i == 0) { name += " : start"; }
-		else if (i == 7 - 1) { name += " : end"; }
+		std::string name = std::string(AETEXT_PARAM(strings, L10N_COLOR)) + std::to_string(i+1);
+		if (i == 0) { name += AETEXT_PARAM(strings, L10N_COLOR_START); }
+		else if (i == 7 - 1) { name += AETEXT_PARAM(strings, L10N_COLOR_END); }
 		else if (i == 3)
 		{
-			{ name += " : mid"; }
+			{ name += AETEXT_PARAM(strings, L10N_COLOR_MID); }
 		}
 		PF_ParamUIFlags ui_flags = PF_PUI_INVISIBLE;
 		if (i >=7) { // 最初の2色は常に表示、残りはオプションで表示
@@ -88,30 +94,30 @@ static PF_Err ParamsSetup (
 		);
 	}
 	cs.AddButton(	// button
-		STR_BTN_TWEEN2,
-		STR_BTN_TWEEN2B,
+		AETEXT_PARAM(strings, L10N_BTN_TWEEN2),
+		AETEXT_LABEL(strings, L10N_BTN_TWEEN2B),
 		ID_BTN_TWEEN2,
 		PF_ParamFlag_SUPERVISE,
 		PF_PUI_INVISIBLE
 	);
 	cs.AddButton(	// button
-		STR_BTN_TWEEN3,
-		STR_BTN_TWEEN3B,
+		AETEXT_PARAM(strings, L10N_BTN_TWEEN3),
+		AETEXT_LABEL(strings, L10N_BTN_TWEEN3B),
 		ID_BTN_TWEEN3,
 		PF_ParamFlag_SUPERVISE,
 		PF_PUI_INVISIBLE
 	);
 	cs.EndTopic(ID_COLOR_TOPIC_END);
 	// ******************************************************
-	cs.AddTopic(STR_PRE_TOPIC, ID_PRE_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_PRE_TOPIC), ID_PRE_TOPIC);
 	cs.AddCheckBox(
-		STR_BILATERAL_CB,
-		"on",
+		AETEXT_PARAM(strings, L10N_BILATERAL_CB),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		TRUE,
 		ID_BILATERAL_CB
 	);
 	cs.AddSlider(	// 
-		STR_B_RADIUS,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_B_RADIUS),	//パラメータの名前
 		1, 		//数値入力する場合の最小値
 		10,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -120,7 +126,7 @@ static PF_Err ParamsSetup (
 		ID_B_RADIUS
 	);
 	cs.AddFloatSlider(	// R
-		STR_B_SIGMA_S,			//Name
+		AETEXT_PARAM(strings, L10N_B_SIGMA_S),			//Name
 		0.01f,			//VALID_MIN
 		20,				//VALID_MAX
 		0.0f,				//SLIDER_MIN
@@ -132,7 +138,7 @@ static PF_Err ParamsSetup (
 		ID_B_SIGMA_S
 	);
 	cs.AddFloatSlider(	// R
-		STR_B_SIGMA_R,			//Name
+		AETEXT_PARAM(strings, L10N_B_SIGMA_R),			//Name
 		0.1f,				//VALID_MIN
 		100,			//VALID_MAX
 		1,				//SLIDER_MIN
@@ -145,14 +151,14 @@ static PF_Err ParamsSetup (
 	);
 	cs.EndTopic(ID_PRE_TOPIC_END);
 	cs.AddTopic(
-		STR_BORDER_TOPIC, 
+		AETEXT_TOPIC(strings, L10N_BORDER_TOPIC),
 		ID_BORDER_TOPIC,
 		PF_ParamFlag_NONE,
 		PF_PUI_INVISIBLE
 	);
 
 	cs.AddSlider(	// 
-		STR_BORDER_INNER,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BORDER_INNER),	//パラメータの名前
 		0, 			//数値入力する場合の最小値
 		12,			//数値入力する場合の最大値
 		0,			//スライダーの最小値 
@@ -163,7 +169,7 @@ static PF_Err ParamsSetup (
 		PF_PUI_INVISIBLE
 	);
 	cs.AddSlider(	// 
-		STR_BORDER_OUTER,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BORDER_OUTER),	//パラメータの名前
 		0, 			//数値入力する場合の最小値
 		12,			//数値入力する場合の最大値
 		0,			//スライダーの最小値 
@@ -174,7 +180,7 @@ static PF_Err ParamsSetup (
 		PF_PUI_INVISIBLE
 	);
 	cs.AddColor(	// color
-		STR_BORDER_COLOR,
+		AETEXT_PARAM(strings, L10N_BORDER_COLOR),
 		{ 0xFF, 0xFF, 0xFF, 0xFF },
 		ID_BORDER_COLOR,
 		PF_ParamFlag_NONE,
@@ -193,6 +199,7 @@ HandleChangedParam(
 	PF_LayerDef					*outputP,
 	PF_UserChangedParamExtra	*extraP)
 {
+	const PosterizationText::Strings strings(in_data);
 	PF_Err				err = PF_Err_NONE,
 		err2 = PF_Err_NONE;
 
@@ -285,12 +292,12 @@ HandleChangedParam(
 				if (mode == 1 || mode == 2) {
 					for (int i = 0; i < level; i++)
 					{
-						std::string name = std::string(STR_COLOR) + std::to_string(i + 1);
-						if (i == 0) { name += " : start"; }
-						else if (i == level - 1) { name += " : end"; }
+						std::string name = std::string(AETEXT_PARAM(strings, L10N_COLOR)) + std::to_string(i + 1);
+						if (i == 0) { name += AETEXT_PARAM(strings, L10N_COLOR_START); }
+						else if (i == level - 1) { name += AETEXT_PARAM(strings, L10N_COLOR_END); }
 						else if( i== (level/2))
 						{ 
-							{ name += " : mid"; }
+							{ name += AETEXT_PARAM(strings, L10N_COLOR_MID); }
 						}
 						ae.SetUIName(i + ID_COLOR_1, (char*)name.c_str());
 					}
@@ -471,8 +478,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const PosterizationText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -536,7 +546,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			PosterizationText::OpenSettings(in_data, L"NF-Posterization");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "zh": {
+      "L10N_PARAM_MODE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:0d6c6cfbd556e89f95b86f4dc259ad3fcce9d08fc451a1677a57ae6d3a5bf5c9",
+          "translation": "sha256-v1:a37cabc2b5eb2ff3c929a278996339f3bb5160d09fe25717203460cac91b20d6"
+        }
+      },
+      "L10N_PARAM_COLOR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:72305843fcfce4bcdc3ab1d37ee110b669d86f631e8c5d3bce87f56a6d9443ee",
+          "translation": "sha256-v1:a5b6c75b76596402e9cb27554c5e5800e64efaf44af02f05c3669d60fbcafa22"
+        }
+      },
+      "L10N_PARAM_THRESH": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:d09ea37e644ca2ce552d4d894ca862fde54912a3a9848090184ff4f595712e69",
+          "translation": "sha256-v1:e34817dbedaadc4941f97515495e869df844ae41a4f3d69f3371536b7268d4fc"
+        }
+      },
+      "L10N_PARAM_SOFT": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:984ba67f28ef94a7b0fa949c4387d32025a2f066c9aeef9c49c58aecf0e78640",
+          "translation": "sha256-v1:c4321544fac69c851d34fa779886c93db295bfdf51312c89dcb0f796b25efdf0"
+        }
+      },
+      "L10N_PARAM_SPILL": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:f27b4bc2abc075bc79a3d92a2ee27489aa22d222b9ae7f78cedc3f2e3ed87c22",
+          "translation": "sha256-v1:183ad10426c965084c2a0d341b8340fb276d37b1785b6c4fe747a0565bd1db44"
+        }
+      },
+      "L10N_POPUP_MODE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:e363cbfe0e0bc94acfbc541d48c94bcec7e9b29a159aac54bfaa6ac9b632934b",
+          "translation": "sha256-v1:8fe0958b518662dccb42d94df3ae619fda15f37745f1546d6008dd9a09f9319a"
+        }
+      },
+      "L10N_PLUGIN_DESC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:3ceedf23c89ccacb04d23afdd7c9753162cb9411020305a07f926512e031bd91",
+          "translation": "sha256-v1:646fbb1758b895e5278ecb25114be8a7ddff1f178e7ede944fa06d301197f506"
+        }
+      }
+    }
+  }
+}

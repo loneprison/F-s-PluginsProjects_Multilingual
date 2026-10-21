@@ -50,13 +50,13 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_AUTO_SEED		"Auto Seed"
-#define	STR_SEED			"Seed"
-#define	STR_NOISE_AMAOUNT	"Noise Amount"
-#define	STR_NOISE_INDENSITY	"Noise Intensity"
-#define	STR_ACCENT_COUNT		"Accent Amount"
-#define	STR_ACCENT_INTENSITY	"Accent Intensity"
-#define	STR_COLOR			"Color"
+#define	L10N_AUTO_SEED		"Auto Seed"
+#define	L10N_SEED			"Seed"
+#define	L10N_NOISE_AMAOUNT	"Noise Amount"
+#define	L10N_NOISE_INDENSITY	"Noise Intensity"
+#define	L10N_ACCENT_COUNT		"Accent Amount"
+#define	L10N_ACCENT_INTENSITY	"Accent Intensity"
+#define	L10N_COLOR			"Color"
 
 
 //UIのパラメータ

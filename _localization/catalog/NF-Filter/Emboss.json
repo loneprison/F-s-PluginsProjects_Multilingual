@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_DIRECTION": "方向",
+        "L10N_DISTANCE": "距离"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "浮雕"
+      }
+    }
+  }
+}

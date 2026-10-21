@@ -6,6 +6,8 @@
 
 
 #include "WhiteKeying.h"
+#define L10N_LABEL_ON "on"
+#include "WhiteKeyingText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,17 +18,18 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const WhiteKeyingText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddColor(	// color
-		STR_COLOR,
+		AETEXT_PARAM(strings, L10N_COLOR),
 		{ 0xFF, 0xFF, 0xFF, 0xFF },
 		ID_COLOR
 	);
 	cs.AddFloatSlider(	// R
-		STR_LEVEL,			//Name
+		AETEXT_PARAM(strings, L10N_LEVEL),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -38,8 +41,8 @@ static PF_Err ParamsSetup (
 		ID_LEVEL
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_REVERSE,
-		"on",
+		AETEXT_PARAM(strings, L10N_REVERSE),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_REVERSE
 	);
@@ -148,8 +151,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const WhiteKeyingText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -213,7 +219,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			WhiteKeyingText::OpenSettings(in_data, L"NF-WhiteKeying");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

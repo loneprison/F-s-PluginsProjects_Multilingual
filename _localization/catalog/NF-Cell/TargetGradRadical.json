@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_TARGET": "模式",
+        "L10N_TARGET_CB": "目标颜色",
+        "L10N_GRADCOLOR": "渐变颜色",
+        "L10N_INVERT": "反转",
+        "L10N_CENTER": "中心点",
+        "L10N_BLUR": "半径",
+        "L10N_FEATHER": "羽化",
+        "L10N_HYPERBOLIC": "偏差",
+        "L10N_ASPECT": "宽高比",
+        "L10N_ANGLE": "角度",
+        "L10N_LAOD_CAP": "颜色表",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_TARGET_CB2": "开",
+        "L10N_INVERT2": "开",
+        "L10N_LOAD_BTN": "加载",
+        "L10N_SAVE_BTN": "保存",
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_TARGET_ITEMS": "指定目标颜色|仅Alpha|全部"
+      },
+      "Topic": {
+        "L10N_TOPIC_COLOR": "目标颜色"
+      },
+      "About": {
+        "L10N_FILE_SAVE": "保存 TGR JSON",
+        "L10N_FILE_FILTER": "TSJ JSON 文件 (*.tsj)",
+        "L10N_OVERWRITE_TITLE": "确认覆盖",
+        "L10N_OVERWRITE_MESSAGE": "文件已存在，是否覆盖？",
+        "L10N_FILE_LOAD": "加载 TSJ JSON",
+        "L10N_PLUGIN_DESC": "目标颜色径向渐变"
+      }
+    }
+  }
+}

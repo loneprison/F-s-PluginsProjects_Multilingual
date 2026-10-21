@@ -1,4 +1,4 @@
-#include "TargetWorld.h"
+ï»¿#include "TargetWorld.h"
 
 struct TCInfo {
 	A_long		target_count;
@@ -19,7 +19,7 @@ struct BorderInfo {
 
 };
 
-// --- ƒrƒbƒg[“x‚²‚Æ‚ÌŒ^•ÏŠ·‚ğ‹zû‚·‚éƒwƒ‹ƒp[ ---
+// --- ãƒ“ãƒƒãƒˆæ·±åº¦ã”ã¨ã®å‹å¤‰æ›ã‚’å¸åã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼ ---
 inline PF_Pixel NF_To8(PF_Pixel c) { return c; }
 inline PF_Pixel NF_To8(PF_Pixel16 c) { return NF_Pixel16To8(c); }
 inline PF_Pixel NF_To8(PF_PixelFloat c) { return NF_Pixel32To8(c); }
@@ -35,7 +35,7 @@ template <> struct ECTraits<PF_Pixel8> {
 
 template <> struct ECTraits<PF_Pixel16> {
 	typedef A_u_short comp;
-	static inline comp half() { return 16384; } // AE 16bit‚Í32768‚ªãŒÀ
+	static inline comp half() { return 16384; } // AE 16bitã¯32768ãŒä¸Šé™
 	static inline comp max_C() { return 32768; }
 	//static inline comp clamp(float v) { return (comp)AE_CLAMP(v + 0.5f, 0, 32768); }
 };
@@ -44,11 +44,11 @@ template <> struct ECTraits<PF_PixelFloat> {
 	typedef PF_FpShort comp;
 	static inline comp half() { return 0.5f; }
 	static inline comp max_C() { return 1.0f; }
-	//static inline comp clamp(float v) { return (comp)v; } // Float‚ÍŠî–{ƒNƒ‰ƒ“ƒv•s—v
+	//static inline comp clamp(float v) { return (comp)v; } // Floatã¯åŸºæœ¬ã‚¯ãƒ©ãƒ³ãƒ—ä¸è¦
 };
 
 //-------------------------------------------------------------------------------------------------
-// ƒeƒ“ƒvƒŒ[ƒg‰»‚µ‚½ƒsƒNƒZƒ‹ƒTƒ“ƒvƒŠƒ“ƒOŠÖ”
+// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆåŒ–ã—ãŸãƒ”ã‚¯ã‚»ãƒ«ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°é–¢æ•°
 //-------------------------------------------------------------------------------------------------
 template <typename T>
 static PF_Err
@@ -74,10 +74,10 @@ TargetWorld_Template(
 		return err;
 	}
 
-	// ƒI[ƒo[ƒ[ƒh‚³‚ê‚½ NF_To8 ‚É‚æ‚èAT ‚ÌŒ^‚É‰‚¶‚½ŠÖ”‚ªŒÄ‚Î‚ê‚Ü‚·
+	// ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸ NF_To8 ã«ã‚ˆã‚Šã€T ã®å‹ã«å¿œã˜ãŸé–¢æ•°ãŒå‘¼ã°ã‚Œã¾ã™
 	PF_Pixel src = NF_To8(*inP);
 	int idx = -1;
-	// ’uŠ·‘ÎÛ‚ÌF‚ª–³‚¢ê‡‚Íˆ—‚µ‚È‚¢
+	// ç½®æ›å¯¾è±¡ã®è‰²ãŒç„¡ã„å ´åˆã¯å‡¦ç†ã—ãªã„
 	for (A_long i = 0; i < infoP->target_count; i++) {
 		if (
 			src.red == infoP->target_colors[i].red &&
@@ -174,7 +174,7 @@ PF_Err TargetWorldExec(
 	return err;
 }
 //-------------------------------------------------------------------------------------------------
-// ƒeƒ“ƒvƒŒ[ƒg‰»‚µ‚½ƒsƒNƒZƒ‹ƒTƒ“ƒvƒŠƒ“ƒOŠÖ”
+// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆåŒ–ã—ãŸãƒ”ã‚¯ã‚»ãƒ«ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°é–¢æ•°
 //-------------------------------------------------------------------------------------------------
 template <typename T>
 static PF_Err
@@ -307,7 +307,7 @@ static PF_Err BorderFunc(
 		}
 		return PF_Err_NONE;
 	}
-	//‚Æ‚è‚ ‚¦‚¸‘S‚Ä‹«ŠE‚É
+	//ã¨ã‚Šã‚ãˆãšå…¨ã¦å¢ƒç•Œã«
 	for (A_long x = 1; x < infoP->width-1; x++) {
 		A_long index = y * infoP->width + x;
 		if (*(infoP->src->data() + index) == TARGET_AREA) {
@@ -358,15 +358,15 @@ PF_Err BorderExec(
 	info.height = height;
 	info.is_border_direction = is_border_direction;
 	info.direction_angle = direction_angle;
-	float length = 1.5f; // ‹«ŠE‚Ì•iƒsƒNƒZƒ‹’PˆÊj
+	float length = 1.5f; // å¢ƒç•Œã®å¹…ï¼ˆãƒ”ã‚¯ã‚»ãƒ«å˜ä½ï¼‰
 	float rad = (float)((direction_angle) * PF_PI / 180);
 	info.delta_x = (float)sin(rad) * length;
 	info.delta_y = (float)(-cos(rad) * length);
 
 	ERR(suitesP->Iterate8Suite2()->iterate_generic(
-		info.height,     // iterationsL: Às‰ñ”is”j
-		&info,                  // refconPV: ƒ†[ƒU[’è‹`ƒf[ƒ^
-		BorderFunc              // fn_func: ƒR[ƒ‹ƒoƒbƒNŠÖ”
+		info.height,     // iterationsL: å®Ÿè¡Œå›æ•°ï¼ˆï¼è¡Œæ•°ï¼‰
+		&info,                  // refconPV: ãƒ¦ãƒ¼ã‚¶ãƒ¼å®šç¾©ãƒ‡ãƒ¼ã‚¿
+		BorderFunc              // fn_func: ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°
 	));
 	
 	return err;

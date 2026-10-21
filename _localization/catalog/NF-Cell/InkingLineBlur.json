@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_INKING_COUNT": "描边数量",
+        "L10N_INKING_COLOR": "描边颜色",
+        "L10N_INKING_COLOR_MODE": "描边颜色模式",
+        "L10N_CUSTAM_COLOR": "自定义颜色",
+        "L10N_MINMAX": "扩展",
+        "L10N_BLUR": "羽化",
+        "L10N_HYPERBOLIC": "偏差",
+        "L10N_TARGET_MODE": "目标颜色数量",
+        "L10N_TARGET_COLOR": "目标颜色",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_INKING_ITEMS": "1|2|3|4",
+        "L10N_INKING_COLOR_ITEMS": "原始颜色|自定义颜色",
+        "L10N_TARGET_ITEMS": "1|2|3|4|5|6|7|8|全部"
+      },
+      "Topic": {
+        "L10N_INKING_TOPIC": "描边颜色",
+        "L10N_TARGET_TOPIC": "目标颜色"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "描线模糊"
+      }
+    }
+  }
+}

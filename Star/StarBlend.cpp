@@ -1,4 +1,4 @@
-#include "Star.h"
+ï»¿#include "Star.h"
 
 //typedef 
 struct SBInfo {
@@ -8,15 +8,15 @@ struct SBInfo {
 };
 
 // *******************************************************************************
-// ƒrƒbƒg[“x‚²‚Æ‚ÌÅ‘å’l‚ğæ“¾‚·‚éƒwƒ‹ƒp[
+// ãƒ“ãƒƒãƒˆæ·±åº¦ã”ã¨ã®æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼
 template <typename T>
 inline PF_FpLong GetMaxChannel() {
 	if (std::is_same<T, PF_Pixel8>::value) return 255.0;
 	if (std::is_same<T, PF_Pixel16>::value) return 32768.0;
-	return 1.0; // PF_PixelFloat—p
+	return 1.0; // PF_PixelFloatç”¨
 }
 
-// --- 5. ‹¤’ÊƒtƒBƒ‹ƒ^ƒeƒ“ƒvƒŒ[ƒg ---
+// --- 5. å…±é€šãƒ•ã‚£ãƒ«ã‚¿ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ ---
 template <typename T,typename CT>
 static PF_Err StarBlendT(
 	refconType refcon,
@@ -66,14 +66,14 @@ static PF_Err StarBlendT(
 	if (a > 1.0f) a = 1.0f;
 
 	if (std::is_same<T, PF_PixelFloat>::value) {
-		// 32bit float ‚Ìê‡‚ÍƒNƒ‰ƒ“ƒv•s—v
+		// 32bit float ã®å ´åˆã¯ã‚¯ãƒ©ãƒ³ãƒ—ä¸è¦
 		outP->red = static_cast<CT>(r);
 		outP->green = static_cast<CT>(g);
 		outP->blue = static_cast<CT>(b);
 		outP->alpha = static_cast<CT>(a);
 	}
 	else {
-		// ®”Œ^‚Ìê‡‚ÍƒNƒ‰ƒ“ƒv‚µ‚Ä‚©‚ç“KØ‚ÈŒ^‚ÉƒLƒƒƒXƒg
+		// æ•´æ•°å‹ã®å ´åˆã¯ã‚¯ãƒ©ãƒ³ãƒ—ã—ã¦ã‹ã‚‰é©åˆ‡ãªå‹ã«ã‚­ãƒ£ã‚¹ãƒˆ
 		outP->red = static_cast<CT>(AE_CLAMP(r* max_val, 0, max_val));
 		outP->green = static_cast<CT>(AE_CLAMP(g * max_val, 0, max_val));
 		outP->blue = static_cast<CT>(AE_CLAMP(b * max_val, 0, max_val));
@@ -84,17 +84,17 @@ static PF_Err StarBlendT(
 	return PF_Err_NONE;
 }
 
-// 8-bit—p
+// 8-bitç”¨
 static PF_Err StarBlend8(refconType refcon, A_long xL, A_long yL, PF_Pixel* inP, PF_Pixel* outP) {
 	return StarBlendT<PF_Pixel8, A_u_char>(refcon, xL, yL, reinterpret_cast<PF_Pixel8*>(inP), reinterpret_cast<PF_Pixel8*>(outP));
 }
 
-// 16-bit—p
+// 16-bitç”¨
 static PF_Err StarBlend16(refconType refcon, A_long xL, A_long yL, PF_Pixel16* inP, PF_Pixel16* outP)
 {
 	return StarBlendT<PF_Pixel16,A_u_short>(refcon, xL, yL, reinterpret_cast<PF_Pixel16*>(inP), reinterpret_cast<PF_Pixel16*>(outP));
 }
-// 32-bit—p (Float)
+// 32-bitç”¨ (Float)
 static PF_Err StarBlendFloat(refconType refcon, A_long xL, A_long yL, PF_PixelFloat* inP, PF_PixelFloat* outP)
 {
 	return StarBlendT<PF_PixelFloat,PF_FpShort>(refcon, xL, yL, reinterpret_cast<PF_PixelFloat*>(inP), reinterpret_cast<PF_PixelFloat*>(outP));
@@ -113,7 +113,7 @@ PF_Err StarBlend(
 	sbInfo.color_mode = infoP->color_mode;
 	sbInfo.color32 = infoP->cross_color;
 
-	// ƒsƒNƒZƒ‹ƒtƒH[ƒ}ƒbƒg‚É‰‚¶‚Äƒeƒ“ƒvƒŒ[ƒgŠÖ”‚ğŒÄ‚Ño‚·
+	// ãƒ”ã‚¯ã‚»ãƒ«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¿œã˜ã¦ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆé–¢æ•°ã‚’å‘¼ã³å‡ºã™
 	switch (ae->pixelFormat()) {
 	case PF_PixelFormat_ARGB128:
 		err = ae->suitesP->IterateFloatSuite2()->iterate(

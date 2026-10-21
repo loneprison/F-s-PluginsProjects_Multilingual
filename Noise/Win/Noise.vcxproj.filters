@@ -50,9 +50,6 @@
     <ClInclude Include="..\..\..\Headers\AE_EffectSuites.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Util\AE_EffectSuitesHelper.h">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Headers\AE_EffectUI.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -74,12 +71,6 @@
     <ClInclude Include="..\..\..\Util\AEGP_SuiteHandler.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\..\devstudio\Include\BASETSD.H">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\VC98\Include\BASETSD.H">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Util\entry.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -98,9 +89,6 @@
     <ClInclude Include="..\..\..\Headers\PrSDKAESupport.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Headers\PrSDKAEUI.h">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Headers\PrSDKPixelFormat.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -109,9 +97,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Util\String_Utils.h">
       <Filter>Header Files\AE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\NFsLibrary\resource.h">
-      <Filter>Header Files\AE\N</Filter>
     </ClInclude>
     <ClInclude Include="..\NF_Target.h" />
     <ClInclude Include="..\..\_NFLib\AE_SDK.h">
@@ -145,7 +130,6 @@
     <ClInclude Include="..\..\_NFLib\NF_Json.h">
       <Filter>Header Files\_NFLib</Filter>
     </ClInclude>
-    <ClInclude Include="..\NoiseFilter.h" />
     <ClInclude Include="..\..\_NFLib\fx\NF_Spat_Data.h">
       <Filter>fx</Filter>
     </ClInclude>
@@ -185,7 +169,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="NoisePiPL.rc">
+    <ResourceCompile Include="$(IntDir)NoisePiPL.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
     <ResourceCompile Include="Resource.rc">
@@ -196,5 +180,11 @@
     <None Include="..\..\_NFLib\dialog.jsx">
       <Filter>Header Files\_NFLib</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Localization"><UniqueIdentifier>{1861061D-2E70-4881-83CD-2A7DBD5E2BC6}</UniqueIdentifier></Filter>
+    <ClInclude Include="..\..\_localization\AeText.h"><Filter>Localization</Filter></ClInclude>
+    <ClCompile Include="..\..\_localization\core\AeTextClient.cpp"><Filter>Localization</Filter></ClCompile>
+    <None Include="..\..\_localization\catalog\NF-Noise\Noise.json"><Filter>Localization</Filter></None>
   </ItemGroup>
 </Project>

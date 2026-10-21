@@ -6,6 +6,8 @@
 
 
 #include "Sputtering.h"
+#define L10N_LABEL_ON "on"
+#include "SputteringText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,6 +18,7 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const SputteringText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	PF_Pixel default_colors[TARGET_COLOR_COUNT] = {
@@ -31,18 +34,18 @@ static PF_Err ParamsSetup (
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
-	cs.AddTopic(STR_TARGET_TOPIC, ID_TARGET_TOPIC);
-	cs.AddPopup(STR_TARGET,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_TARGET_TOPIC), ID_TARGET_TOPIC);
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_TARGET),
 		STR_TARGET_COUNT,
 		STR_TARGET_DFLT,
-		STR_TARGET_ITEMS,
+		AETEXT_POPUP(strings, L10N_TARGET_ITEMS),
 		ID_TARGET,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	for (A_long i=0; i < TARGET_COLOR_COUNT; i++) {
-		std::string str = STR_TARGET_COLOR + std::to_string(i + 1);
+		std::string str = AETEXT_PARAM(strings, L10N_TARGET_COLOR) + std::to_string(i + 1);
 		cs.AddColor(	// color
 			str.c_str(),
 			default_colors[i],
@@ -53,8 +56,8 @@ static PF_Err ParamsSetup (
 	}
 
 	cs.AddCheckBox(	
-		STR_BORDER_DIRECTION,
-		"on",
+		AETEXT_PARAM(strings, L10N_BORDER_DIRECTION),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BORDER_DIRECTION,
 		PF_ParamFlag_SUPERVISE |
@@ -62,7 +65,7 @@ static PF_Err ParamsSetup (
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddAngle(
-		STR_DIRECTION_ANGLE,
+		AETEXT_PARAM(strings, L10N_DIRECTION_ANGLE),
 		45,
 		ID_DIRECTION_ANGLE,
 		PF_ParamFlag_NONE,
@@ -70,14 +73,14 @@ static PF_Err ParamsSetup (
 	);
 	cs.EndTopic(ID_TARGET_TOPIC_END);
 	// ----------------------------------------------------------------
-	cs.AddTopic(STR_PARAMS_TOPIC, ID_PARAMS_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_PARAMS_TOPIC), ID_PARAMS_TOPIC);
 	cs.AddLayer(	// layer
-		STR_SPUT_LAYER,
+		AETEXT_PARAM(strings, L10N_SPUT_LAYER),
 		PF_LayerDefault_NONE,
 		ID_SPUT_LAYER
 	);
 	cs.AddFloatSlider(	// R
-		STR_SIZE,			//Name
+		AETEXT_PARAM(strings, L10N_SIZE),			//Name
 		0,				//VALID_MIN
 		300,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -89,7 +92,7 @@ static PF_Err ParamsSetup (
 		ID_SIZE
 	);
 	cs.AddFloatSlider(	// R
-		STR_SIZE_RAND,			//Name
+		AETEXT_PARAM(strings, L10N_SIZE_RAND),			//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -100,17 +103,17 @@ static PF_Err ParamsSetup (
 		FALSE,			//WANT_PHASE
 		ID_SIZE_RAND
 	);
-	cs.AddPopup(STR_SPUT_LOOP,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_SPUT_LOOP),
 		STR_SPUT_LOOP_COUNT,
 		STR_SPUT_LOOP_DFLT,
-		STR_SPUT_LOOP_ITEMS,
+		AETEXT_POPUP(strings, L10N_SPUT_LOOP_ITEMS),
 		ID_SPUT_LOOP,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddSlider(	// noise offset
-		STR_SPUT_LOOP_KOMA,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SPUT_LOOP_KOMA),	//パラメータの名前
 		1, 		//数値入力する場合の最小値
 		24,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -120,10 +123,10 @@ static PF_Err ParamsSetup (
 	);
 	cs.EndTopic(ID_PARAMS_TOPIC_END);
 	// ----------------------------------------------------------------
-	cs.AddTopic(STR_PARAMS2_TOPIC, ID_PARAMS2_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_PARAMS2_TOPIC), ID_PARAMS2_TOPIC);
 
 	cs.AddFloatSlider(	// R
-		STR_AREA_RATE,			//Name
+		AETEXT_PARAM(strings, L10N_AREA_RATE),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -135,7 +138,7 @@ static PF_Err ParamsSetup (
 		ID_AREA_RATE
 	);
 	cs.AddFloatSlider(	// R
-		STR_BODER_RATE,			//Name
+		AETEXT_PARAM(strings, L10N_BODER_RATE),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -147,7 +150,7 @@ static PF_Err ParamsSetup (
 		ID_BORDER_RATE
 	);
 	cs.AddSlider(	// noise offset
-		STR_SPAWN_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SPAWN_COUNT),	//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		200,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -156,7 +159,7 @@ static PF_Err ParamsSetup (
 		ID_SPAWN_COUNT
 	);
 	cs.AddFloatSlider(	// R
-		STR_SPAWN_OFFSET,			//Name
+		AETEXT_PARAM(strings, L10N_SPAWN_OFFSET),			//Name
 		5,				//VALID_MIN
 		1000,			//VALID_MAX
 		5,				//SLIDER_MIN
@@ -168,7 +171,7 @@ static PF_Err ParamsSetup (
 		ID_SPAWN_OFFSET
 	);
 	cs.AddFloatSlider(	// R
-		STR_OPACITY,	//Name
+		AETEXT_PARAM(strings, L10N_OPACITY),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -180,7 +183,7 @@ static PF_Err ParamsSetup (
 		ID_OPACITY
 	);
 	cs.AddFloatSlider(	// R
-		STR_OPACITY_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_OPACITY_RAND),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -192,13 +195,13 @@ static PF_Err ParamsSetup (
 		ID_OPACITY_RAND
 	);
 	cs.AddCheckBox(
-		STR_AUTO_SEED,
-		"on",
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_AUTO_SEED
 	);
 	cs.AddSlider(	// noise offset
-		STR_SEED,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SEED),	//パラメータの名前
 		-30000, 		//数値入力する場合の最小値
 		30000,			//数値入力する場合の最大値
 		-1000,				//スライダーの最小値 
@@ -208,18 +211,18 @@ static PF_Err ParamsSetup (
 	);
 	cs.EndTopic(ID_PARAMS2_TOPIC_END);
 	// ----------------------------------------------------------------
-	cs.AddTopic(STR_COLORS_TOPIC, ID_COLOR_TOPIC);
-	cs.AddPopup(STR_COLORS_NUM,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_COLORS_TOPIC), ID_COLOR_TOPIC);
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_COLORS_NUM),
 		STR_COLORS_COUNT,
 		STR_COLORS_DFLT,
-		STR_COLORS_ITEMS,
+		AETEXT_POPUP(strings, L10N_COLORS_ITEMS),
 		ID_COLOR_NUM,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	for(A_long i=0; i < TARGET_COLOR_COUNT; i++) {
-		std::string str = STR_COLORS + std::to_string(i + 1);
+		std::string str = AETEXT_PARAM(strings, L10N_COLORS) + std::to_string(i + 1);
 		cs.AddColor(	// color
 			str.c_str(),
 			default_colors[i],
@@ -231,8 +234,8 @@ static PF_Err ParamsSetup (
 
 	cs.EndTopic(ID_COLOR_TOPIC_END);
 	cs.AddCheckBox(
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLEND
 	);
@@ -514,8 +517,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const SputteringText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -598,7 +604,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			SputteringText::OpenSettings(in_data, L"NF-Sputtering");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

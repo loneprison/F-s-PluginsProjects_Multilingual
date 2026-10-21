@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_BILATERAL_CB": "双边滤波",
+        "L10N_B_RADIUS": "采样半径",
+        "L10N_B_SIGMA_S": "空间平滑",
+        "L10N_B_SIGMA_R": "亮度容差",
+        "L10N_OUTER_WIDTH": "外侧宽度",
+        "L10N_INNER_WIDTH": "内侧宽度",
+        "L10N_COLOR": "颜色",
+        "L10N_POST_LEVEL_CB": "启用阈值",
+        "L10N_POST_LEVEL_LO": "输入黑场",
+        "L10N_POST_LEVEL_HI": "输入白场",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Topic": {
+        "L10N_PRE_TOPIC": "预处理"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "线条提取"
+      }
+    }
+  }
+}

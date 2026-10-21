@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MODE_POP": "模式"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "反预乘|预乘|预乘转直接|直接转预乘"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "通道预乘与反预乘"
+      }
+    }
+  }
+}

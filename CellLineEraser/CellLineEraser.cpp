@@ -6,6 +6,8 @@
 
 
 #include "CellLineEraser.h"
+#define L10N_LABEL_ON "on"
+#include "CellLineEraserText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,11 +18,12 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const CellLineEraserText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 	PF_ParamDef		def;
 	// ----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_SLIDER(STR_COLOR_COUNT,	//パラメータの名前
+	PF_ADD_SLIDER(AETEXT_PARAM(strings, L10N_COLOR_COUNT),	//パラメータの名前
 		0, 		//数値入力する場合の最小値
 		10,		//数値入力する場合の最大値
 		0,		//スライダーの最小値 
@@ -31,70 +34,70 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//色の指定
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color1,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR1),
 		0x00,
 		0x00,
 		0x00,
 		ID_Color1
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color2,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR2),
 		0xFF,
 		0x00,
 		0x00,
 		ID_Color2
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color3,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR3),
 		0x00,
 		0xFF,
 		0x00,
 		ID_Color3
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color4,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR4),
 		0x00,
 		0x00,
 		0xFF,
 		ID_Color4
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color5,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR5),
 		0x80,
 		0x00,
 		0x00,
 		ID_Color5
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color6,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR6),
 		0x00,
 		0x80,
 		0x00,
 		ID_Color6
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color7,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR7),
 		0x00,
 		0x00,
 		0x80,
 		ID_Color7
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color8,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR8),
 		0x40,
 		0x00,
 		0x00,
 		ID_Color1
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color9,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR9),
 		0x00,
 		0x40,
 		0x00,
 		ID_Color9
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_Color10,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR10),
 		0x00,
 		0x00,
 		0x40,
@@ -103,29 +106,29 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_KEEP_PIXELS,
-		"on",
+	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_KEEP_PIXELS),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		0,
 		ID_KEEP_PIXELS
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_FillUnknownColors,
-		"on",
+	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_FILLUNKNOWNCOLORS),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		0,
 		ID_Fill_Color
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_FillColor,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_FILLCOLOR),
 		0xFF,
 		0x00,
 		0xFF,
 		ID_Fill_Color
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_MakeWhiteTransparent,
-		"on",
+	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_MAKEWHITETRANSPARENT),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		0,
 		ID_MakeWhiteTransparent
@@ -243,8 +246,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const CellLineEraserText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -308,7 +314,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			CellLineEraserText::OpenSettings(in_data, L"NF-CellLineEraser");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

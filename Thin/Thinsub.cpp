@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Thin.h"
 #include <thread>
 #include <vector>
@@ -87,7 +87,7 @@ typedef struct thinBak32 {
 } thinBak32;
 
 
-// ƒsƒNƒZƒ‹ƒ^ƒCƒvƒgƒŒƒCƒg
+// ãƒ”ã‚¯ã‚»ãƒ«ã‚¿ã‚¤ãƒ—ãƒˆãƒ¬ã‚¤ãƒˆ
 template<typename PixelType>
 struct PixelTraits;
 
@@ -213,7 +213,7 @@ inline void scanlineCopy(typename PixelTraits<PixelType>::InfoType* ti, A_long y
 }
 
 //*****************************************************************************
-// ƒ}ƒ‹ƒ`ƒXƒŒƒbƒh‘Î‰: ƒXƒŒƒbƒhƒ[ƒJƒ‹‚ÈscanlineCopy
+// ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰å¯¾å¿œ: ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«ãªscanlineCopy
 //*****************************************************************************
 template<typename PixelType>
 inline void scanlineCopyLocal(typename PixelTraits<PixelType>::InfoType* ti,
@@ -264,7 +264,7 @@ inline PixelType getScanLine(typename PixelTraits<PixelType>::InfoType* ti,
 }
 
 //*****************************************************************************
-// ƒ}ƒ‹ƒ`ƒXƒŒƒbƒh‘Î‰: ƒXƒŒƒbƒhƒ[ƒJƒ‹‚ÈgetScanLineinowX, nowY‚ğƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Äó‚¯æ‚éj
+// ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰å¯¾å¿œ: ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«ãªgetScanLineï¼ˆnowX, nowYã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦å—ã‘å–ã‚‹ï¼‰
 //*****************************************************************************
 template<typename PixelType>
 inline PixelType getScanLineLocal(typename PixelTraits<PixelType>::InfoType* ti,
@@ -311,7 +311,7 @@ inline PF_Boolean getData(typename PixelTraits<PixelType>::InfoType* ti,
 }
 
 //*****************************************************************************
-// ƒ}ƒ‹ƒ`ƒXƒŒƒbƒh‘Î‰: getDataLocalinowX, nowY‚ğƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Äó‚¯æ‚éj
+// ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰å¯¾å¿œ: getDataLocalï¼ˆnowX, nowYã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦å—ã‘å–ã‚‹ï¼‰
 //*****************************************************************************
 template<typename PixelType>
 inline PF_Boolean getDataLocal(typename PixelTraits<PixelType>::InfoType* ti,
@@ -354,7 +354,7 @@ inline PixelType minColor(PixelType s, PixelType d)
 }
 
 //*****************************************************************************
-// ƒsƒNƒZƒ‹ƒXƒLƒbƒv”»’èi‚‘¬‰»—pj
+// ãƒ”ã‚¯ã‚»ãƒ«ã‚¹ã‚­ãƒƒãƒ—åˆ¤å®šï¼ˆé«˜é€ŸåŒ–ç”¨ï¼‰
 //*****************************************************************************
 template<typename PixelType>
 inline PF_Boolean shouldSkipPixel(typename PixelTraits<PixelType>::InfoType* ti, const PixelType& color)
@@ -490,7 +490,7 @@ inline typename PixelTraits<PixelType>::BakType getPatEdge(typename PixelTraits<
 }
 
 //*****************************************************************************
-// ƒ}ƒ‹ƒ`ƒXƒŒƒbƒh‘Î‰: getPatEdgeLocal
+// ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰å¯¾å¿œ: getPatEdgeLocal
 //*****************************************************************************
 template<typename PixelType>
 inline typename PixelTraits<PixelType>::BakType getPatEdgeLocal(
@@ -645,7 +645,7 @@ inline typename PixelTraits<PixelType>::BakType getPatDot(typename PixelTraits<P
 }
 
 //*****************************************************************************
-// ƒ}ƒ‹ƒ`ƒXƒŒƒbƒh‘Î‰: getPatDotLocal
+// ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰å¯¾å¿œ: getPatDotLocal
 //*****************************************************************************
 template<typename PixelType>
 inline typename PixelTraits<PixelType>::BakType getPatDotLocal(
@@ -1139,13 +1139,13 @@ PF_Err thinExec(NF_AE* ae, ParamInfo* infoP)
     ti.alphaZero = infoP->alphaZero;
     ti.edge = infoP->edge;
 
-    // ƒ}ƒ‹ƒ`ƒXƒŒƒbƒhˆ——p‚Ìƒpƒ‰ƒ[ƒ^
+    // ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰å‡¦ç†ç”¨ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
     const unsigned int numThreads = MAX(1u, MIN(std::thread::hardware_concurrency(), 
                                                            static_cast<unsigned int>(ti.h / 8)));
     const bool useMultiThread = (ti.h >= 64 && numThreads > 1);
 
     for (A_long vv = 0; vv < infoP->thin_value; vv++) {
-        // ƒGƒbƒWƒpƒX
+        // ã‚¨ãƒƒã‚¸ãƒ‘ã‚¹
         if (ti.edge == TRUE) {
             if (useMultiThread) {
                 std::vector<std::thread> threads;
@@ -1200,7 +1200,7 @@ PF_Err thinExec(NF_AE* ae, ParamInfo* infoP)
             }
         }
 
-        // ƒƒCƒ“ƒpƒXigetPat‚ÍgetData‚ğg—p‚·‚é‚½‚ßAƒVƒ“ƒOƒ‹ƒXƒŒƒbƒh‚ÅÀsj
+        // ãƒ¡ã‚¤ãƒ³ãƒ‘ã‚¹ï¼ˆgetPatã¯getDataã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã€ã‚·ãƒ³ã‚°ãƒ«ã‚¹ãƒ¬ãƒƒãƒ‰ã§å®Ÿè¡Œï¼‰
         A_long now = 0;
         for (A_long j = 0; j < ti.h; j++) {
             ti.nowY = j;
@@ -1219,7 +1219,7 @@ PF_Err thinExec(NF_AE* ae, ParamInfo* infoP)
             now += ti.offset;
         }
 
-        // ƒhƒbƒgƒpƒXigetPatDot‚àƒVƒ“ƒOƒ‹ƒXƒŒƒbƒh‚ÅÀsj
+        // ãƒ‰ãƒƒãƒˆãƒ‘ã‚¹ï¼ˆgetPatDotã‚‚ã‚·ãƒ³ã‚°ãƒ«ã‚¹ãƒ¬ãƒƒãƒ‰ã§å®Ÿè¡Œï¼‰
         now = 0;
         for (A_long j = 0; j < ti.h; j++) {
             ti.nowY = j;
@@ -1238,7 +1238,7 @@ PF_Err thinExec(NF_AE* ae, ParamInfo* infoP)
             now += ti.offset;
         }
 
-        // ƒhƒbƒg‘æ2ƒpƒXiƒVƒ“ƒOƒ‹ƒXƒŒƒbƒh‚Ì‚İ - ƒf[ƒ^ˆË‘¶«‚ª‚ ‚é‚½‚ßj
+        // ãƒ‰ãƒƒãƒˆç¬¬2ãƒ‘ã‚¹ï¼ˆã‚·ãƒ³ã‚°ãƒ«ã‚¹ãƒ¬ãƒƒãƒ‰ã®ã¿ - ãƒ‡ãƒ¼ã‚¿ä¾å­˜æ€§ãŒã‚ã‚‹ãŸã‚ï¼‰
        now = 0;
         for (A_long j = 0; j < ti.h; j++) {
             ti.nowY = j;

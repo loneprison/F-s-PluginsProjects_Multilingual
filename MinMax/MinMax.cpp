@@ -6,6 +6,7 @@
 
 
 #include "MinMax.h"
+#include "MinMaxText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,13 +17,14 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const MinMaxText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	PF_ParamDef		def;
 
 
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_SLIDER(STR_MAX,	//Name
+	PF_ADD_SLIDER(AETEXT_PARAM(strings, L10N_MAX),	//Name
 		-2000,				//VALID_MIN
 		2000,				//VALID_MAX
 		-200,				//SLIDER_MIN
@@ -127,8 +129,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const MinMaxText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -192,7 +197,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			MinMaxText::OpenSettings(in_data, L"NF-MinMax");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

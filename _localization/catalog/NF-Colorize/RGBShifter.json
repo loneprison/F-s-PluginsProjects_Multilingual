@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MODE_POP": "模式",
+        "L10N_R": "红色偏移",
+        "L10N_G": "绿色偏移",
+        "L10N_B": "蓝色偏移",
+        "L10N_UV_AUTO": "UV 跟随 Y",
+        "L10N_Y": "Y 亮度",
+        "L10N_U": "U 色度",
+        "L10N_V": "V 色度",
+        "L10N_TARGETCOLOR": "目标颜色",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "RGB 通道|YUV 通道|保持亮度着色"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "RGB 偏移"
+      }
+    }
+  }
+}

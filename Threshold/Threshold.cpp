@@ -6,6 +6,8 @@
 
 
 #include "Threshold.h"
+#define L10N_LABEL_ON "on"
+#include "ThresholdText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,17 +18,18 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const ThresholdText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
-	std::vector<std::string> names = { STR_LUMA_LEVEL,STR_RED,STR_GREEN,STR_BLUE,STR_ALPHA };
-	std::vector<std::string> names2 = { STR_LUMA_LEVEL,STR_RED_LEVEL,STR_GREEN_LEVEL,STR_BLUE_LEVEL,STR_ALPHA_LEVEL };
+	std::vector<std::string> names = { AETEXT_PARAM(strings, L10N_LUMA_LEVEL),AETEXT_PARAM(strings, L10N_RED),AETEXT_PARAM(strings, L10N_GREEN),AETEXT_PARAM(strings, L10N_BLUE),AETEXT_PARAM(strings, L10N_ALPHA) };
+	std::vector<std::string> names2 = { AETEXT_PARAM(strings, L10N_LUMA_LEVEL),AETEXT_PARAM(strings, L10N_RED_LEVEL),AETEXT_PARAM(strings, L10N_GREEN_LEVEL),AETEXT_PARAM(strings, L10N_BLUE_LEVEL),AETEXT_PARAM(strings, L10N_ALPHA_LEVEL) };
 
-	cs.AddPopup(STR_MODE,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_MODE),
 		2,
 		1,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_MODE_ITEMS),
 		ID_MODE,
 		PF_ParamFlag_SUPERVISE
 	);
@@ -37,7 +40,7 @@ static PF_Err ParamsSetup (
 		if (i == 0 || i == 4)ui_flags = PF_PUI_NONE;
 		cs.AddCheckBox(	// noise frame
 			names[i].c_str(),
-			"on",
+			AETEXT_LABEL(strings, L10N_LABEL_ON),
 			cd,
 			ID_LUMA_CB + i,
 			PF_ParamFlag_SUPERVISE,
@@ -218,8 +221,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const ThresholdText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -283,7 +289,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			ThresholdText::OpenSettings(in_data, L"NF-Threshold");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

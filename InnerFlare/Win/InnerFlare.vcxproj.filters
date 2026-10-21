@@ -63,9 +63,6 @@
     <ClInclude Include="..\..\..\Headers\AE_EffectSuites.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Util\AE_EffectSuitesHelper.h">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Headers\AE_EffectUI.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -87,12 +84,6 @@
     <ClInclude Include="..\..\..\Util\AEGP_SuiteHandler.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\..\devstudio\Include\BASETSD.H">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\VC98\Include\BASETSD.H">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Util\entry.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -111,9 +102,6 @@
     <ClInclude Include="..\..\..\Headers\PrSDKAESupport.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Headers\PrSDKAEUI.h">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Headers\PrSDKPixelFormat.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -122,9 +110,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Util\String_Utils.h">
       <Filter>Header Files\AE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\NFsLibrary\resource.h">
-      <Filter>Header Files\AE\N</Filter>
     </ClInclude>
     <ClInclude Include="..\..\_NFLib\AE_SDK.h">
       <Filter>Header Files\_NFLib</Filter>
@@ -219,7 +204,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="InnerFlarePiPL.rc">
+    <ResourceCompile Include="$(IntDir)InnerFlarePiPL.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
     <ResourceCompile Include="Resource.rc">
@@ -230,5 +215,11 @@
     <None Include="..\..\_NFLib\dialog.jsx">
       <Filter>Header Files\_NFLib</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Localization"><UniqueIdentifier>{9C691303-46F7-4072-88B2-A7CB26498EB7}</UniqueIdentifier></Filter>
+    <ClInclude Include="..\..\_localization\AeText.h"><Filter>Localization</Filter></ClInclude>
+    <ClCompile Include="..\..\_localization\core\AeTextClient.cpp"><Filter>Localization</Filter></ClCompile>
+    <None Include="..\..\_localization\catalog\NF-Cell\InnerFlare.json"><Filter>Localization</Filter></None>
   </ItemGroup>
 </Project>

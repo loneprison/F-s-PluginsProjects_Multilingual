@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "zh": {
+      "L10N_COLOR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:c439bbfcc635f467d9493069d627bb2714513884b924a5861a2dfbf018aad60f",
+          "translation": "sha256-v1:9c52c6d37f63df6b3b9dff49ec9716e751fbd88b8a9c50ceddffe686224893c8"
+        }
+      },
+      "L10N_LEVEL": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:3ea7041879b643f5617f0820f70c6b09e195d34fbad1adf6174d025608ce9cf2",
+          "translation": "sha256-v1:638488333c6d5a2597c95e7798fc2062cbef537e42ac8e2a599d87a5c9a1fb7d"
+        }
+      },
+      "L10N_REVERSE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:1a9002c5fc6865fbd1e38c3f3c1d5f282e308c458ea33e2d15f505310453bad5",
+          "translation": "sha256-v1:07c3be3fa6ab9efb997bf30ccd329b81b65813ab435c502e412098cf629e84bf"
+        }
+      },
+      "L10N_LABEL_ON": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:81a5d6bdfadc8a14fc29b27edce2b9bee4e3c8e90b099079625e94bf0e80a53e",
+          "translation": "sha256-v1:77a7c7e34baeb909fde17c595adb618229b8cffef2a33c6245f89c048f09ba5d"
+        }
+      },
+      "L10N_PLUGIN_DESC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:8088fd9e6b80c7a2e65e2668162207b9905e580c6904f54554441add2ed648d0",
+          "translation": "sha256-v1:9f1cbf6da8749efbb79a7cf8e1b1e8193cc8c436f4ede025356136da0dff6709"
+        }
+      }
+    }
+  }
+}

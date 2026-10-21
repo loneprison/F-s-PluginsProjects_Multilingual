@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_LEVEL": "色阶数量",
+        "L10N_MODE": "输出模式",
+        "L10N_IS_COLOR": "自定义着色",
+        "L10N_COLOR": "颜色",
+        "L10N_COLOR_START": " : 高光",
+        "L10N_COLOR_END": " : 阴影",
+        "L10N_COLOR_MID": " : 中间调",
+        "L10N_BTN_TWEEN2": "双色渐变",
+        "L10N_BTN_TWEEN3": "三色渐变",
+        "L10N_BILATERAL_CB": "双边滤波",
+        "L10N_B_RADIUS": "采样半径",
+        "L10N_B_SIGMA_S": "空间平滑",
+        "L10N_B_SIGMA_R": "亮度容差",
+        "L10N_BORDER_INNER": "内侧宽度",
+        "L10N_BORDER_OUTER": "外侧宽度",
+        "L10N_BORDER_COLOR": "描边颜色"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开",
+        "L10N_BTN_TWEEN2B": "生成",
+        "L10N_BTN_TWEEN3B": "生成"
+      },
+      "Popup": {
+        "L10N_LEVEL_ITEMS": "3|5|7|9|11|13|15",
+        "L10N_MODE_ITEMS": "色调分离|色调分离与描边|仅描边"
+      },
+      "Topic": {
+        "L10N_COLOR_TOPIC": "颜色",
+        "L10N_PRE_TOPIC": "预处理",
+        "L10N_BORDER_TOPIC": "描边"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "色调分离"
+      }
+    }
+  }
+}

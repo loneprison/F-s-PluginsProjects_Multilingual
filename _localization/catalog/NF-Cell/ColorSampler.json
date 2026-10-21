@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_COLOR": "颜色",
+        "L10N_PARAM_COLORCOUNT": "颜色数量",
+        "L10N_GET_BTN": "从蒙版获取颜色",
+        "L10N_NAME_EDIT_BTN": "编辑颜色名称",
+        "L10N_COLOR_DEFAULT": "颜色%d"
+      },
+      "Label": {
+        "L10N_LABEL_GET": "获取",
+        "L10N_LABEL_EDIT": "编辑"
+      },
+      "About": {
+        "L10N_DIALOG_TITLE": "编辑颜色名称",
+        "L10N_DIALOG_ACTIVE": "活动颜色数量：",
+        "L10N_DIALOG_OK": "确定",
+        "L10N_DIALOG_CANCEL": "取消",
+        "L10N_DIALOG_COLOR": "颜色",
+        "L10N_PLUGIN_DESC": "本插件借鉴了 Silverlink 的“MaskDropper.aex”。抱歉，K。"
+      }
+    }
+  }
+}

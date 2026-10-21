@@ -51,11 +51,11 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_LAYER			"layer"
-#define	STR_POS				"pos"
-#define	STR_RADIUS			"radius"
-#define	STR_COUNT			"count"
-#define	STR_SCALE			"scale"
+#define	L10N_LAYER			"layer"
+#define	L10N_POS				"pos"
+#define	L10N_RADIUS			"radius"
+#define	L10N_COUNT			"count"
+#define	L10N_SCALE			"scale"
 //UIのパラメータ
 typedef struct ParamInfo {
 	PF_LayerDef	layer;

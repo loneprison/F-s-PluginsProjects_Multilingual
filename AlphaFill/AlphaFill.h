@@ -33,16 +33,16 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_MODE		"Mode"
+#define	L10N_PARAM_MODE		"Mode"
 
-#define	STR_MODE_ITEMS	"AlphaFill|ColorKey"
+#define	L10N_POPUP_MODE	"AlphaFill|ColorKey"
 #define	STR_MODE_COUNT	2
 #define	STR_MODE_DFLT	1
 
-#define	STR_COLOR		"Color"
-#define	STR_THRESH		"Thresh"
-#define	STR_SOFT		"Soft"
-#define	STR_SPILL		"Spill amt"
+#define	L10N_PARAM_COLOR		"Color"
+#define	L10N_PARAM_THRESH		"Thresh"
+#define	L10N_PARAM_SOFT		"Soft"
+#define	L10N_PARAM_SPILL		"Spill amt"
 
 
 //UIのパラメータ

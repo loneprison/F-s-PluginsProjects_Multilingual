@@ -1,4 +1,4 @@
-#include "NF_SpatUtils.h"
+ï»¿#include "NF_SpatUtils.h"
 
 inline std::vector<A_u_char> GetSpatPattern(int index) {
     if (index < 0 || index >= SPT_COUNT) {
@@ -26,7 +26,7 @@ std::vector<std::vector<A_u_char>> GetDefSpatData(float scale) {
     return result;
 }
 
-// ƒsƒNƒZƒ‹ƒ^ƒCƒv‚²‚Æ‚Ì•ÏŠ·Traits
+// ãƒ”ã‚¯ã‚»ãƒ«ã‚¿ã‚¤ãƒ—ã”ã¨ã®å¤‰æ›Traits
 template<typename PixelType>
 struct PixelTraits;
 
@@ -59,7 +59,7 @@ struct PixelTraits<PF_Pixel16> {
     
     static inline void BlendPixel(PF_Pixel16& dst, float srcR, float srcG, float srcB, float srcA, float alpha) {
         float invAlpha = 1.0f - alpha;
-        // “ü—ÍF‚Í0-255‚È‚Ì‚Å32768ƒXƒP[ƒ‹‚É•ÏŠ·
+        // å…¥åŠ›è‰²ã¯0-255ãªã®ã§32768ã‚¹ã‚±ãƒ¼ãƒ«ã«å¤‰æ›
         float srcR16 = srcR * ColorScale;
         float srcG16 = srcG * ColorScale;
         float srcB16 = srcB * ColorScale;
@@ -83,7 +83,7 @@ struct PixelTraits<PF_PixelFloat> {
     
     static inline void BlendPixel(PF_PixelFloat& dst, float srcR, float srcG, float srcB, float srcA, float alpha) {
         float invAlpha = 1.0f - alpha;
-        // “ü—ÍF‚Í0-255‚È‚Ì‚Å0-1ƒXƒP[ƒ‹‚É•ÏŠ·
+        // å…¥åŠ›è‰²ã¯0-255ãªã®ã§0-1ã‚¹ã‚±ãƒ¼ãƒ«ã«å¤‰æ›
         float srcRf = srcR / 255.0f;
         float srcGf = srcG / 255.0f;
         float srcBf = srcB / 255.0f;
@@ -96,7 +96,7 @@ struct PixelTraits<PF_PixelFloat> {
     }
 };
 
-// ƒeƒ“ƒvƒŒ[ƒgŠÖ”‚É‚æ‚é“ˆêÀ‘•
+// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆé–¢æ•°ã«ã‚ˆã‚‹çµ±ä¸€å®Ÿè£…
 template<typename PixelType>
 static std::vector<std::vector<A_u_char>> GetSpatDataFromWorldT
 (
@@ -137,7 +137,7 @@ static std::vector<std::vector<A_u_char>> GetSpatDataFromWorldT
 }
 
 /**
- * ŠO•”ŒöŠJ—pŠÖ”
+ * å¤–éƒ¨å…¬é–‹ç”¨é–¢æ•°
  */
 std::vector<std::vector<A_u_char>> GetSpatDataFromWorld(
     PF_EffectWorld* world,
@@ -160,15 +160,15 @@ std::vector<std::vector<A_u_char>> GetSpatDataFromWorld(
 }
 
 /**
- * Spatƒf[ƒ^‚ğg—p‚µ‚ÄWorld‚ÉƒuƒŒƒ“ƒh‡¬‚·‚éiƒeƒ“ƒvƒŒ[ƒg”Åj
+ * Spatãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ç”¨ã—ã¦Worldã«ãƒ–ãƒ¬ãƒ³ãƒ‰åˆæˆã™ã‚‹ï¼ˆãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç‰ˆï¼‰
  *
- * @param world ‡¬æ‚Ìƒ[ƒ‹ƒh
- * @param widthTrue ƒ[ƒ‹ƒh‚ÌÀÛ‚Ì•irowbytes / sizeof(PixelType)j
- * @param x ‡¬’†SXÀ•W
- * @param y ‡¬’†SYÀ•W
- * @param spat Spatƒf[ƒ^i1ŸŒ³”z—ñAŠe—v‘f0-255‚ªƒAƒ‹ƒtƒ@’l‚Æ‚µ‚Ä‹@”\j
- * @param col ‡¬‚·‚éFiRGB’l‚Í0-255j
- * @param opacity ‘S‘Ì‚Ì•s“§–¾“xi0.0 = Š®‘S“§–¾, 1.0 = Š®‘S•s“§–¾j
+ * @param world åˆæˆå…ˆã®ãƒ¯ãƒ¼ãƒ«ãƒ‰
+ * @param widthTrue ãƒ¯ãƒ¼ãƒ«ãƒ‰ã®å®Ÿéš›ã®å¹…ï¼ˆrowbytes / sizeof(PixelType)ï¼‰
+ * @param x åˆæˆä¸­å¿ƒXåº§æ¨™
+ * @param y åˆæˆä¸­å¿ƒYåº§æ¨™
+ * @param spat Spatãƒ‡ãƒ¼ã‚¿ï¼ˆ1æ¬¡å…ƒé…åˆ—ã€å„è¦ç´ 0-255ãŒã‚¢ãƒ«ãƒ•ã‚¡å€¤ã¨ã—ã¦æ©Ÿèƒ½ï¼‰
+ * @param col åˆæˆã™ã‚‹è‰²ï¼ˆRGBå€¤ã¯0-255ï¼‰
+ * @param opacity å…¨ä½“ã®ä¸é€æ˜åº¦ï¼ˆ0.0 = å®Œå…¨é€æ˜, 1.0 = å®Œå…¨ä¸é€æ˜ï¼‰
  */
 template<typename PixelType>
 static void BlendSpatToWorldT(
@@ -193,7 +193,7 @@ static void BlendSpatToWorldT(
     PixelType* data = (PixelType*)world->data;
     using Traits = PixelTraits<PixelType>;
     
-    // ’†SÀ•W‚ğ¶ãÀ•W‚É•ÏŠ·
+    // ä¸­å¿ƒåº§æ¨™ã‚’å·¦ä¸Šåº§æ¨™ã«å¤‰æ›
     A_long startX = x - sz / 2;
     A_long startY = y - sz / 2;
     
@@ -217,7 +217,7 @@ static void BlendSpatToWorldT(
 }
 
 /**
- * Spatƒf[ƒ^‚ğg—p‚µ‚ÄWorld‚ÉƒuƒŒƒ“ƒh‡¬‚·‚éi8bitê—pEŒİŠ·«‚Ì‚½‚ßc‚·j
+ * Spatãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ç”¨ã—ã¦Worldã«ãƒ–ãƒ¬ãƒ³ãƒ‰åˆæˆã™ã‚‹ï¼ˆ8bitå°‚ç”¨ãƒ»äº’æ›æ€§ã®ãŸã‚æ®‹ã™ï¼‰
  */
 void BlendSpatToWorld8(
     PF_EffectWorld* world,
@@ -268,7 +268,7 @@ void BlendSpatToWorldFloat(
     );
 }
 /**
- * Spatƒf[ƒ^‚ğg—p‚µ‚ÄWorld‚ÉƒuƒŒƒ“ƒh‡¬‚·‚éi‘Sƒrƒbƒg[“x‘Î‰j
+ * Spatãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ç”¨ã—ã¦Worldã«ãƒ–ãƒ¬ãƒ³ãƒ‰åˆæˆã™ã‚‹ï¼ˆå…¨ãƒ“ãƒƒãƒˆæ·±åº¦å¯¾å¿œï¼‰
  */
 void BlendSpatToWorld(
     PF_EffectWorld* world,

@@ -77,32 +77,32 @@ enum {
 
 //UIの表示文字列
 const A_u_char LEVEL_TBL[] = {0,3,5,7,9,11,13,15};
-#define	STR_LEVEL		"level"
-#define	STR_LEVEL_ITEMS	"3|5|7|9|11|13|15"
+#define	L10N_LEVEL		"level"
+#define	L10N_LEVEL_ITEMS	"3|5|7|9|11|13|15"
 #define	STR_LEVEL_COUNT	7
 #define	STR_LEVEL_DFLT	3
-#define	STR_MODE		"Mode"
-#define	STR_MODE_ITEMS	"Posterization|With Border|Border Only"
+#define	L10N_MODE		"Mode"
+#define	L10N_MODE_ITEMS	"Posterization|With Border|Border Only"
 #define	STR_MODE_COUNT	3
 #define	STR_MODE_DFLT	1
 
-#define	STR_IS_COLOR	"Colorise"
-#define	STR_COLOR_TOPIC	"Colors"
-#define	STR_COLOR		"Color"
-#define	STR_BTN_TWEEN2	"Tween 2"
-#define	STR_BTN_TWEEN2B	"Start to End"
-#define	STR_BTN_TWEEN3	"Tween 3"
-#define	STR_BTN_TWEEN3B	"Start, Mid, End"
-#define	STR_BORDER_TOPIC	"Border"
-#define	STR_BORDER_INNER	"InnerSize"
-#define	STR_BORDER_OUTER	"OuterSize"
-#define	STR_BORDER_COLOR	"BorderColor"
+#define	L10N_IS_COLOR	"Colorise"
+#define	L10N_COLOR_TOPIC	"Colors"
+#define	L10N_COLOR		"Color"
+#define	L10N_BTN_TWEEN2	"Tween 2"
+#define	L10N_BTN_TWEEN2B	"Start to End"
+#define	L10N_BTN_TWEEN3	"Tween 3"
+#define	L10N_BTN_TWEEN3B	"Start, Mid, End"
+#define	L10N_BORDER_TOPIC	"Border"
+#define	L10N_BORDER_INNER	"InnerSize"
+#define	L10N_BORDER_OUTER	"OuterSize"
+#define	L10N_BORDER_COLOR	"BorderColor"
 
-#define	STR_PRE_TOPIC		"Pre-processing"
-#define STR_BILATERAL_CB	"Bilateral"
-#define STR_B_RADIUS		"Radius"
-#define STR_B_SIGMA_S		"Sigma_Spatial"
-#define STR_B_SIGMA_R		"Sigma_Range"
+#define	L10N_PRE_TOPIC		"Pre-processing"
+#define L10N_BILATERAL_CB	"Bilateral"
+#define L10N_B_RADIUS		"Radius"
+#define L10N_B_SIGMA_S		"Sigma_Spatial"
+#define L10N_B_SIGMA_R		"Sigma_Range"
 
 
 

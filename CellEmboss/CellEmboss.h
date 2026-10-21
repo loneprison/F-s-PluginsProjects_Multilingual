@@ -66,24 +66,24 @@ enum {
 };
 #define ID_COLOR(IDX)		(ID_COLOR0 + (IDX))
 //UIの表示文字列
-#define	STR_COUNT			"colorCount"
-#define	STR_COUNT_ITEMS		"A-On|A-OnWithoutWhite|1|2|3|4|5|6|7|8"
-#define STR_COLOR_TOPIC		"TargetColors"
-#define	STR_DIRECTION		"direction"
-#define	STR_MODE			"mode"
-#define	STR_MODE_ITEMS		"Hi|Lo|Hi-Reverce|Hi+Lo"
+#define	L10N_COUNT			"colorCount"
+#define	L10N_COUNT_ITEMS		"A-On|A-OnWithoutWhite|1|2|3|4|5|6|7|8"
+#define L10N_COLOR_TOPIC		"TargetColors"
+#define	L10N_DIRECTION		"direction"
+#define	L10N_MODE			"mode"
+#define	L10N_MODE_ITEMS		"Hi|Lo|Hi-Reverce|Hi+Lo"
 //#define	STR_WHITE			"Treat White as Transparent"
 
-#define	STR_HI_TOPIC		"Hi"
-#define	STR_DISTANCE_HI		"distance_Hi"
-#define	STR_BLUR_HI			"blue_Hi"
-#define	STR_COLOR_HI		"color_Hi"
+#define	L10N_HI_TOPIC		"Hi"
+#define	L10N_DISTANCE_HI		"distance_Hi"
+#define	L10N_BLUR_HI			"blue_Hi"
+#define	L10N_COLOR_HI		"color_Hi"
 
-#define	STR_LO_TOPIC		"Lo"
-#define	STR_DISTANCE_LO		"distance_Lo"
-#define	STR_BLUR_LO			"blue_Lo"
-#define	STR_COLOR_LO		"color_Lo"
-#define	STR_BLEND			"Blend with original"
+#define	L10N_LO_TOPIC		"Lo"
+#define	L10N_DISTANCE_LO		"distance_Lo"
+#define	L10N_BLUR_LO			"blue_Lo"
+#define	L10N_COLOR_LO		"color_Lo"
+#define	L10N_BLEND			"Blend with original"
 
 
 //UIのパラメータ

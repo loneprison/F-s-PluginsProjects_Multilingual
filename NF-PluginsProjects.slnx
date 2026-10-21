@@ -1,0 +1,80 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/(_SDK)/">
+    <Project Path="_checkout/Win/_checkout.vcxproj" Id="1ab7c6e4-9ca2-427b-a13c-74dd0af1b30a">
+      <Build Solution="*|x64" Project="false" />
+    </Project>
+    <Project Path="_Skeleton/Win/_Skeleton.vcxproj" Id="44650ee4-5b04-43c2-9d1c-b96240d4ae80">
+      <Build Solution="*|x64" Project="false" />
+    </Project>
+    <Project Path="_Test/Win/_Test.vcxproj" Id="21a3f859-e0c4-4e42-89d2-40bcdbc30ff6">
+      <Build Solution="*|x64" Project="false" />
+    </Project>
+  </Folder>
+  <Folder Name="/NF Plugins/">
+    <Project Path="SimplexNoise/Win/SimplexNoise.vcxproj" Id="838b461c-349b-4a0c-9550-730c3b2dfd61" />
+  </Folder>
+  <Folder Name="/NF-Cell/">
+    <Project Path="CellLineEraser/Win/CellLineEraser.vcxproj" Id="6ed76fcf-e733-4f2a-a92f-62fe0ebd1d36" />
+    <Project Path="ColorSampler/Win/ColorSampler.vcxproj" Id="67a97dc2-17ab-47bb-b9af-f3f4fa94c36d" />
+    <Project Path="ColorSwitch/Win/ColorSwitch.vcxproj" Id="32af35f5-51a4-4eed-b479-76d1c68e8336" />
+    <Project Path="FloodFill/Win/FloodFill.vcxproj" Id="af711fff-937e-445b-871f-b27490dea758" />
+    <Project Path="InkingLineBlur/Win/InkingLineBlur.vcxproj" Id="fa2dd928-9943-4f2e-950f-e693b1d728ce" />
+    <Project Path="InnerFlare/Win/InnerFlare.vcxproj" Id="50606b8f-83ad-4cab-be63-30aa36553857" />
+    <Project Path="InnerFlareRot/Win/InnerFlareRot.vcxproj" Id="78a87bd6-726a-4c8a-99cb-ce89b09d9be2" />
+    <Project Path="RimFill/Win/RimFill.vcxproj" Id="5dab4234-e9fe-4b40-9c40-c28e1df98f68" />
+    <Project Path="SelectiveColorBlur/Win/SelectiveColorBlur.vcxproj" Id="0aca4c2e-35ac-42f3-8e23-7e7a978e4120" />
+    <Project Path="TargetGrad/Win/TargetGrad.vcxproj" Id="34bdd983-1fd2-4f36-a563-87d99e983b61" />
+    <Project Path="TargetGradRadical/Win/TargetGradRadical.vcxproj" Id="5ded4cba-8aa6-4129-8ca2-c27719c8381e" />
+    <Project Path="Thin/Win/Thin.vcxproj" Id="8d59af8d-3ec5-4241-b972-014b92ae5ffa" />
+    <Project Path="WhiteKeying/Win/WhiteKeying.vcxproj" Id="8497d959-9acb-48b1-9517-9b1b834179e5" />
+  </Folder>
+  <Folder Name="/NF-Channel/">
+    <Project Path="AlphaFill/Win/AlphaFill.vcxproj" Id="db91b399-9a48-4d21-88fe-f47bc06f543c" />
+    <Project Path="Mult/Win/Mult.vcxproj" Id="0e51b777-fc10-4b8c-997c-01ba8b41384f" />
+    <Project Path="PremultiplyColor/Win/PremultiplyColor.vcxproj" Id="93c6b6a8-048d-435b-8027-22ee0731e82b" />
+    <Project Path="Threshold/Win/Threshold.vcxproj" Id="a747e624-c26d-4869-b30f-b6aae9bced96" />
+  </Folder>
+  <Folder Name="/NF-Colorize/">
+    <Project Path="LogicGray/Win/LogicGray.vcxproj" Id="59e1b063-68ba-4489-bfe0-be728cb9c822" />
+    <Project Path="RGBShifter/Win/RGBShifter.vcxproj" Id="ff59a926-f65c-4a05-b60a-8b05db62be04" />
+  </Folder>
+  <Folder Name="/NF-Draw/">
+    <Project Path="BurstLines/Win/BurstLines.vcxproj" Id="1a178b6c-929d-4863-b111-d4add6f4da52" />
+    <Project Path="Gradient/Win/Gradient.vcxproj" Id="44f00cc9-d7dc-4630-8375-8659c3e21839" />
+    <Project Path="Ligtning/Win/Ligtning.vcxproj" Id="012c14a1-4793-4e9a-bfbc-e24f03c7a42c" />
+    <Project Path="MuzzleFlash/Win/MuzzleFlash.vcxproj" Id="910f64d5-7431-4707-998e-1a85ce50332e" />
+    <Project Path="RadialLines/Win/RadialLines.vcxproj" Id="33b15821-1c67-488e-b48f-aa4c2cc62b82" />
+    <Project Path="SpeedLines/Win/SpeedLines.vcxproj" Id="6c0f3d06-da66-40e5-b2eb-85f036d76370" />
+    <Project Path="Sputtering/Win/Sputtering.vcxproj" Id="f80cb076-d0d7-470d-a496-70022e2ad86c" />
+    <Project Path="SputteringPosition/Win/SputteringPosition.vcxproj" Id="bfeb819c-15ea-44d4-b275-64ae1af63ee5" />
+    <Project Path="Star/Win/Star.vcxproj" Id="32c410dd-ae80-48ef-8dd8-fb06559b8235" />
+    <Project Path="TouchLines/Win/TouchLine.vcxproj" Id="d6bc68af-bfe5-4a98-a8f8-0d482ae2433b" />
+  </Folder>
+  <Folder Name="/NF-Filter/">
+    <Project Path="CellEmboss/Win/CellEmboss.vcxproj" Id="1cff95f1-dbf4-4ada-ba95-82809e166b93" />
+    <Project Path="Chroma/Win/Chroma.vcxproj" Id="ef5fb758-c866-46b4-b479-488097377caf" />
+    <Project Path="ColorSpaceInvert/Win/ColorSpaceInvert.vcxproj" Id="0f534c8f-464b-4f36-aeb3-99a39cb17a30" />
+    <Project Path="Emboss/Win/Emboss.vcxproj" Id="2c35792a-41f0-4ed7-83be-2bce8a14f565" />
+    <Project Path="Hyperbolic/Win/Hyperbolic.vcxproj" Id="8b548727-374b-479a-a482-99fd9e49dfdf" />
+    <Project Path="LineExtraction/Win/LineExtraction.vcxproj" Id="b8a2716c-06ca-4966-9292-f2fc69b151d6" />
+    <Project Path="MaxBlur/Win/MaxBlur.vcxproj" Id="62ae563a-0fa3-4bcf-8329-f0c623cc2217" />
+    <Project Path="MinMax/Win/MinMax.vcxproj" Id="3484f962-8b9c-4fdb-855d-2590cb933909" />
+    <Project Path="Mosaic/Win/Mosaic.vcxproj" Id="48078bba-786f-49df-a3f6-c2070f5ef23e" />
+    <Project Path="Outline/Win/Outline.vcxproj" Id="26176282-dca1-4a82-9f26-9a525b3af2ec" />
+    <Project Path="Posterization/Win/Posterization.vcxproj" Id="159a5665-dc21-47c1-8afa-d20417411bb2" />
+  </Folder>
+  <Folder Name="/NF-Noise/">
+    <Project Path="Grain/Win/Grain.vcxproj" Id="011c43aa-cf8e-4e98-a675-e732ecb4151f" />
+    <Project Path="Noise/Win/Noise.vcxproj" Id="e3f6821a-0fc6-411d-a83e-bd2447d1b6f2" />
+    <Project Path="RandomMosaic/Win/RandomMosaic.vcxproj" Id="70606bd4-de34-4269-8462-818b12f5a871" />
+  </Folder>
+  <Folder Name="/NF-Transform/">
+    <Project Path="CameraShake/Win/CameraShake.vcxproj" Id="f82e20e2-a51c-43af-871b-2f7c32a44e0c" />
+  </Folder>
+  <Folder Name="/_Support/">
+    <Project Path="LanguageSettings/Win/NfLanguageSettings.vcxproj" Id="84672e4a-d421-47c0-b7d5-8e31bd8b7210" />
+  </Folder>
+</Solution>

@@ -6,6 +6,8 @@
 
 
 #include "Noise.h"
+#define L10N_LABEL_ON "on"
+#include "NoiseText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,18 +18,19 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const NoiseText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddCheckBox(	// noise frame
-		STR_AUTO_SEED,
-		"on",
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		TRUE,
 		ID_AUTO_SEED
 	);
 	cs.AddSlider(	// 
-		STR_SEED,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SEED),	//パラメータの名前
 		-30000, 		//数値入力する場合の最小値
 		30000,			//数値入力する場合の最大値
 		-1000,				//スライダーの最小値 
@@ -36,7 +39,7 @@ static PF_Err ParamsSetup (
 		ID_SEED
 	);
 	cs.AddFloatSlider(	// R
-		STR_NOISE_AMAOUNT,			//Name
+		AETEXT_PARAM(strings, L10N_NOISE_AMAOUNT),			//Name
 		0,			//VALID_MIN
 		100,		//VALID_MAX
 		0,			//SLIDER_MIN
@@ -48,7 +51,7 @@ static PF_Err ParamsSetup (
 		ID_NOISE_AMAOUNT
 	);
 	cs.AddFloatSlider(	// R
-		STR_NOISE_INDENSITY,			//Name
+		AETEXT_PARAM(strings, L10N_NOISE_INDENSITY),			//Name
 		0,			//VALID_MIN
 		300,		//VALID_MAX
 		0,			//SLIDER_MIN
@@ -60,7 +63,7 @@ static PF_Err ParamsSetup (
 		ID_NOISE_INDENSITY
 	);
 	cs.AddSlider(	// 
-		STR_ACCENT_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_ACCENT_COUNT),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		3000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -69,7 +72,7 @@ static PF_Err ParamsSetup (
 		ID_ACCENT_COUNT
 	);
 	cs.AddFloatSlider(	// R
-		STR_ACCENT_INTENSITY,			//Name
+		AETEXT_PARAM(strings, L10N_ACCENT_INTENSITY),			//Name
 		0,			//VALID_MIN
 		100,		//VALID_MAX
 		0,			//SLIDER_MIN
@@ -81,8 +84,8 @@ static PF_Err ParamsSetup (
 		ID_ACCENT_INTENSITY
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_COLOR,
-		"on",
+		AETEXT_PARAM(strings, L10N_COLOR),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_IS_COLOR
 	);
@@ -215,8 +218,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const NoiseText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -280,7 +286,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			NoiseText::OpenSettings(in_data, L"NF-Noise");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

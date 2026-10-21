@@ -50,23 +50,23 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_MASTER			"masterPercent"
-#define	STR_AMOUNT			"amount"
-#define	STR_SIZE			"size"
-#define	STR_SUB_AMOUNT		"subAmountPercent"
-#define	STR_SUB_SIZE		"subSizePercent"
+#define	L10N_MASTER			"masterPercent"
+#define	L10N_AMOUNT			"amount"
+#define	L10N_SIZE			"size"
+#define	L10N_SUB_AMOUNT		"subAmountPercent"
+#define	L10N_SUB_SIZE		"subSizePercent"
 
-#define	STR_MONOCHROME		"monochrome"
-#define	STR_MONOCHROME2		"on"
+#define	L10N_MONOCHROME		"monochrome"
+#define	L10N_MONOCHROME2		"on"
 
-#define	STR_ACCENT_COUNT	"accntCout"
-#define	STR_ACCENT_LOLIMIT	"accntLoLimitPercent"
-#define	STR_ACCENT_INTENSITY	"accntintensity"
+#define	L10N_ACCENT_COUNT	"accntCout"
+#define	L10N_ACCENT_LOLIMIT	"accntLoLimitPercent"
+#define	L10N_ACCENT_INTENSITY	"accntintensity"
 
 
-#define	STR_AUTO_SEED		"autoSeed"
-#define	STR_AUTO_SEED2		"on"
-#define	STR_SEED			"seed"
+#define	L10N_AUTO_SEED		"autoSeed"
+#define	L10N_AUTO_SEED2		"on"
+#define	L10N_SEED			"seed"
 
 
 //UIのパラメータ

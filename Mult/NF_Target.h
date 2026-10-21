@@ -1,4 +1,4 @@
-
+﻿
 #pragma once
 #ifndef NF_TARGET_H
 #define NF_TARGET_H
@@ -8,17 +8,18 @@
 
 
 //-----------------------------------------------------------------------------------
-//�v���O�C���̎��ʂɎg���閼�O
+//プラグインの識別に使われる名前
 #define NF_NAME			"NF-Mult"
 #define NF_MATCHNAME	"NF-Mult"
 
 
 //-----------------------------------------------------------------------------------
-//�v���O�C���̐����Ɏg���镶��
-#define NF_DESCRIPTION	"NF-Plugins Channel-Mult-work"
+//プラグインの説明に使われる文字
+#define L10N_PLUGIN_DESC	"NF-Plugins Channel-Mult-work"
+#define NF_DESCRIPTION L10N_PLUGIN_DESC
 
 //-----------------------------------------------------------------------------------
-//�v���O�C�����\������郁�j���[��
+//プラグインが表示されるメニュー名
 #define NF_CATEGORY NF_CATEGORY_CHANNEL
 //#define NF_CATEGORY NF_CATEGORY_DRAW
 //#define NF_CATEGORY NF_CATEGORY_FILTER
@@ -44,9 +45,9 @@ out_data->out_flags
 	PF_OutFlag_I_DO_DIALOG				32
 */
 
-#define NF_OUT_FLAGS	33556032	//�ʏ�͂�����
-//#define NF_OUT_FLAGS	33556068	//��������L���ɂ���Ɩ��t���[�����Ƃɕ`�悷��BNON_PARAM_VARY�𓮍쒆�ɐ؂�ւ���Ƃ����������
-//#define NF_OUT_FLAGS	1600		//8bit�̂�
+#define NF_OUT_FLAGS	33556064	//通常はこちら
+//#define NF_OUT_FLAGS	33556068	//こっちを有効にすると毎フレームごとに描画する。NON_PARAM_VARYを動作中に切り替えるときもこちらに
+//#define NF_OUT_FLAGS	1600		//8bitのみ
 
 //-----------------------------------------------------------------------------------
 //out_flags2

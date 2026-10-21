@@ -30,9 +30,9 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_COLOR			"keyColor"
-#define	STR_LEVEL			"keyLevel"
-#define	STR_REVERSE			"reverse"
+#define	L10N_COLOR			"keyColor"
+#define	L10N_LEVEL			"keyLevel"
+#define	L10N_REVERSE			"reverse"
 
 
 //UIのパラメータ

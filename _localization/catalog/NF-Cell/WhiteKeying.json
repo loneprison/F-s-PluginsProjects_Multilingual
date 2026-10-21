@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_COLOR": "主色",
+        "L10N_LEVEL": "容差",
+        "L10N_REVERSE": "反转"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "白色键控"
+      }
+    }
+  }
+}

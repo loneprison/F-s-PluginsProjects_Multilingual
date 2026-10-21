@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef SPATUTILS_H
 #define SPATUTILS_H
 
@@ -58,11 +58,11 @@ void BlendSpatToWorld(
 	float opacity
 );
 /**
- * Spatƒf[ƒ^‚ğƒXƒP[ƒŠƒ“ƒO‚·‚éiƒoƒCƒŠƒjƒA•âŠÔj
+ * Spatãƒ‡ãƒ¼ã‚¿ã‚’ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°ã™ã‚‹ï¼ˆãƒã‚¤ãƒªãƒ‹ã‚¢è£œé–“ï¼‰
  *
- * @param spat Œ³‚ÌSpatƒf[ƒ^i³•ûŒ`j
- * @param scale ƒXƒP[ƒ‹ŒW”i0.0 = Å¬, 2.0 = “™”{j
- * @return ƒXƒP[ƒŠƒ“ƒOŒã‚ÌSpatƒf[ƒ^i³•ûŒ`j
+ * @param spat å…ƒã®Spatãƒ‡ãƒ¼ã‚¿ï¼ˆæ­£æ–¹å½¢ï¼‰
+ * @param scale ã‚¹ã‚±ãƒ¼ãƒ«ä¿‚æ•°ï¼ˆ0.0 = æœ€å°, 2.0 = ç­‰å€ï¼‰
+ * @return ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å¾Œã®Spatãƒ‡ãƒ¼ã‚¿ï¼ˆæ­£æ–¹å½¢ï¼‰
  */
 inline std::vector<A_u_char> ScaleSpatBilinear(
 	const std::vector<A_u_char>& spat,
@@ -73,15 +73,15 @@ inline std::vector<A_u_char> ScaleSpatBilinear(
 		return std::vector<A_u_char>();
 	}
 	if(scale==1.0f){
-		return spat; // ƒXƒP[ƒ‹1.0‚Í‚»‚Ì‚Ü‚Ü•Ô‚·
+		return spat; // ã‚¹ã‚±ãƒ¼ãƒ«1.0ã¯ãã®ã¾ã¾è¿”ã™
 	}
-	// Œ³‚ÌƒTƒCƒY‚ğŒvZ
+	// å…ƒã®ã‚µã‚¤ã‚ºã‚’è¨ˆç®—
 	A_long oldSize = (A_long)sqrt((double)spat.size());
 	if (oldSize * oldSize > spat.size()) {
-		return std::vector<A_u_char>(); // ³•ûŒ`‚Å‚È‚¢ê‡‚ÍƒGƒ‰[
+		return std::vector<A_u_char>(); // æ­£æ–¹å½¢ã§ãªã„å ´åˆã¯ã‚¨ãƒ©ãƒ¼
 	}
 
-	// V‚µ‚¢ƒTƒCƒY‚ğŒvZ
+	// æ–°ã—ã„ã‚µã‚¤ã‚ºã‚’è¨ˆç®—
 	scale = AE_CLAMP(scale, 0.1f, 4.0f);
 	A_long newSize = (A_long)(oldSize * scale);
 	if (newSize < 1) newSize = 1;
@@ -89,7 +89,7 @@ inline std::vector<A_u_char> ScaleSpatBilinear(
 
 	std::vector<A_u_char> result(newSize * newSize, 0);
 
-	// ƒoƒCƒŠƒjƒA•âŠÔ‚ÅƒŠƒTƒCƒY
+	// ãƒã‚¤ãƒªãƒ‹ã‚¢è£œé–“ã§ãƒªã‚µã‚¤ã‚º
 	float ratio = (float)(oldSize - 1) / (float)(newSize - 1);
 
 	for (A_long y = 0; y < newSize; ++y) {
@@ -102,23 +102,23 @@ inline std::vector<A_u_char> ScaleSpatBilinear(
 			A_long x1 = x0 + 1;
 			A_long y1 = y0 + 1;
 
-			// ‹«ŠEƒ`ƒFƒbƒN
+			// å¢ƒç•Œãƒã‚§ãƒƒã‚¯
 			x0 = AE_CLAMP(x0, 0, oldSize - 1);
 			x1 = AE_CLAMP(x1, 0, oldSize - 1);
 			y0 = AE_CLAMP(y0, 0, oldSize - 1);
 			y1 = AE_CLAMP(y1, 0, oldSize - 1);
 
-			// •âŠÔŒW”
+			// è£œé–“ä¿‚æ•°
 			float fx = srcX - x0;
 			float fy = srcY - y0;
 
-			// 4“_‚ÌƒsƒNƒZƒ‹’l‚ğæ“¾
+			// 4ç‚¹ã®ãƒ”ã‚¯ã‚»ãƒ«å€¤ã‚’å–å¾—
 			float p00 = spat[y0 * oldSize + x0];
 			float p10 = spat[y0 * oldSize + x1];
 			float p01 = spat[y1 * oldSize + x0];
 			float p11 = spat[y1 * oldSize + x1];
 
-			// ƒoƒCƒŠƒjƒA•âŠÔ
+			// ãƒã‚¤ãƒªãƒ‹ã‚¢è£œé–“
 			float p0 = p00 * (1.0f - fx) + p10 * fx;
 			float p1 = p01 * (1.0f - fx) + p11 * fx;
 			float value = p0 * (1.0f - fy) + p1 * fy;

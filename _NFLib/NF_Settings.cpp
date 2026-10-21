@@ -253,7 +253,9 @@ std::string SaveFileDialogWithCheck(
     std::string title,
     std::string defp,
     std::vector<std::string> fltp,
-    std::string des
+    std::string des,
+    const char* overwriteTitle,
+    const char* overwriteMessage
 )
 {
     std::vector<const char*> filterPatterns;
@@ -284,8 +286,8 @@ std::string SaveFileDialogWithCheck(
         f.close();
         // 既に存在する場合の追加処理
         int result = tinyfd_messageBox(
-            "上書き確認",
-            "ファイルは既に存在します。上書きしますか？",
+            overwriteTitle ? overwriteTitle : "上書き確認",
+            overwriteMessage ? overwriteMessage : "ファイルは既に存在します。上書きしますか？",
             "yesno",
             "warning",
             1  // デフォルトボタン: yes

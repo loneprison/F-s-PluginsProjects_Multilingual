@@ -1,9 +1,9 @@
-#include "AlphaFill.h"
+ï»¿#include "AlphaFill.h"
 struct PixelFloat {
     float r, g, b, a;
 };
 
-// ƒ`ƒƒƒ“ƒlƒ‹Œ^‚ğæ“¾‚·‚éƒwƒ‹ƒp[
+// ãƒãƒ£ãƒ³ãƒãƒ«å‹ã‚’å–å¾—ã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼
 template <typename T>
 struct ChannelTypeHelper {
 	using type = A_u_char;
@@ -20,18 +20,18 @@ struct ChannelTypeHelper<PF_PixelFloat> {
 };
 
 /**
- * @brief ƒXƒsƒ‹—}§•t‚«YCbCrƒL[ƒCƒ“ƒO
- * @param pixel      “ü—ÍƒsƒNƒZƒ‹
- * @param key        ƒL[ƒJƒ‰[iRGBj
- * @param thresh     ‹–—e’l (0.0 - 1.0)
- * @param soft       ƒ\ƒtƒgƒGƒbƒW (0.0 - 1.0)
- * @param spill_amt  ƒXƒsƒ‹—}§‚Ì‹­“x (0.0 - 1.0)
+ * @brief ã‚¹ãƒ”ãƒ«æŠ‘åˆ¶ä»˜ãYCbCrã‚­ãƒ¼ã‚¤ãƒ³ã‚°
+ * @param pixel      å…¥åŠ›ãƒ”ã‚¯ã‚»ãƒ«
+ * @param key        ã‚­ãƒ¼ã‚«ãƒ©ãƒ¼ï¼ˆRGBï¼‰
+ * @param thresh     è¨±å®¹å€¤ (0.0 - 1.0)
+ * @param soft       ã‚½ãƒ•ãƒˆã‚¨ãƒƒã‚¸ (0.0 - 1.0)
+ * @param spill_amt  ã‚¹ãƒ”ãƒ«æŠ‘åˆ¶ã®å¼·åº¦ (0.0 - 1.0)
  */
 inline PixelFloat ProcessChromaKey(const PixelFloat& pixel, const PixelFloat& key, float thresh, float soft, float spill_amt)
 {
     PixelFloat out = pixel;
 
-    // --- 1. ƒAƒ‹ƒtƒ@i“§‰ßj‚ÌŒvZ ---
+    // --- 1. ã‚¢ãƒ«ãƒ•ã‚¡ï¼ˆé€éï¼‰ã®è¨ˆç®— ---
     auto get_cb = [](float r, float g, float b) { return -0.1687f * r - 0.3313f * g + 0.5000f * b; };
     auto get_cr = [](float r, float g, float b) { return  0.5000f * r - 0.4187f * g - 0.0813f * b; };
 
@@ -42,41 +42,41 @@ inline PixelFloat ProcessChromaKey(const PixelFloat& pixel, const PixelFloat& ke
 
     float dist = (float)(std::sqrt(std::pow(p_cb - k_cb, 2) + std::pow(p_cr - k_cr, 2)));
     
-    // ƒXƒ€[ƒY‚Èƒ}ƒXƒNì¬
+    // ã‚¹ãƒ ãƒ¼ã‚ºãªãƒã‚¹ã‚¯ä½œæˆ
     float mask = std::clamp((dist - thresh) / (soft + 0.00001f), 0.0f, 1.0f);
     mask = mask * mask * (3.0f - 2.0f * mask); // Smoothstep
     out.a = mask * pixel.a;
 
-    // --- 2. ƒXƒsƒ‹—}§ (Spill Suppression) ---
-    // ‚±‚±‚Å‚ÍƒOƒŠ[ƒ“ƒoƒbƒN(G)‚ğ‘z’è‚µ‚½ƒƒWƒbƒN‚Ì—á‚Å‚·
-    // ƒL[ƒJƒ‰[‚Ì’†‚ÅÅ‚à‹­‚¢¬•ª‚ğ“Á’è‚µ‚Ä“®“I‚ÉØ‚è‘Ö‚¦‚é‚Ì‚ª—‘z“I‚Å‚·
+    // --- 2. ã‚¹ãƒ”ãƒ«æŠ‘åˆ¶ (Spill Suppression) ---
+    // ã“ã“ã§ã¯ã‚°ãƒªãƒ¼ãƒ³ãƒãƒƒã‚¯(G)ã‚’æƒ³å®šã—ãŸãƒ­ã‚¸ãƒƒã‚¯ã®ä¾‹ã§ã™
+    // ã‚­ãƒ¼ã‚«ãƒ©ãƒ¼ã®ä¸­ã§æœ€ã‚‚å¼·ã„æˆåˆ†ã‚’ç‰¹å®šã—ã¦å‹•çš„ã«åˆ‡ã‚Šæ›¿ãˆã‚‹ã®ãŒç†æƒ³çš„ã§ã™
     
-    // ƒ^[ƒQƒbƒg¬•ª(G)‚ª‘¼‚Ì¬•ª(R, B)‚Ì•½‹Ï‚æ‚è‘å‚«‚¢ê‡A‚»‚Ì·‚ğí‚é
+    // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆæˆåˆ†(G)ãŒä»–ã®æˆåˆ†(R, B)ã®å¹³å‡ã‚ˆã‚Šå¤§ãã„å ´åˆã€ãã®å·®ã‚’å‰Šã‚‹
     float other_avg = (pixel.r + pixel.b) * 0.5f;
     
     if (pixel.g > other_avg) {
-        // ƒXƒsƒ‹i‚Í‚İo‚µj¬•ª‚ÌŒvZ
+        // ã‚¹ãƒ”ãƒ«ï¼ˆã¯ã¿å‡ºã—ï¼‰æˆåˆ†ã®è¨ˆç®—
         float spill = pixel.g - other_avg;
-        // w’è‚µ‚½‹­“x‚Å—}§
+        // æŒ‡å®šã—ãŸå¼·åº¦ã§æŠ‘åˆ¶
         out.g -= spill * spill_amt;
     }
 
-    // ’ˆÓFƒXƒsƒ‹—}§‚ğ‚©‚¯‚é‚Æ‹P“x‚ª—‚¿‚é‚½‚ßA
-    // í‚Á‚½•ª‚ğ­‚µ‚¾‚¯‘¼‚Ìƒ`ƒƒƒ“ƒlƒ‹‚É‘«‚µ‚Ä‹P“x‚ğˆÛ‚·‚éè–@‚à‚ ‚è‚Ü‚·iƒIƒvƒVƒ‡ƒ“j
+    // æ³¨æ„ï¼šã‚¹ãƒ”ãƒ«æŠ‘åˆ¶ã‚’ã‹ã‘ã‚‹ã¨è¼åº¦ãŒè½ã¡ã‚‹ãŸã‚ã€
+    // å‰Šã£ãŸåˆ†ã‚’å°‘ã—ã ã‘ä»–ã®ãƒãƒ£ãƒ³ãƒãƒ«ã«è¶³ã—ã¦è¼åº¦ã‚’ç¶­æŒã™ã‚‹æ‰‹æ³•ã‚‚ã‚ã‚Šã¾ã™ï¼ˆã‚ªãƒ—ã‚·ãƒ§ãƒ³ï¼‰
 
     return out;
 }
 
 // *******************************************************************************
-// ƒrƒbƒg[“x‚²‚Æ‚ÌÅ‘å’l‚ğæ“¾‚·‚éƒwƒ‹ƒp[
+// ãƒ“ãƒƒãƒˆæ·±åº¦ã”ã¨ã®æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼
 template <typename T>
 inline PF_FpLong GetMaxChannel() {
 	if (std::is_same<T, PF_Pixel8>::value) return 255.0;
 	if (std::is_same<T, PF_Pixel16>::value) return 32768.0;
-	return 1.0; // PF_PixelFloat—p
+	return 1.0; // PF_PixelFloatç”¨
 }
 
-// --- 5. ‹¤’ÊƒtƒBƒ‹ƒ^ƒeƒ“ƒvƒŒ[ƒg ---
+// --- 5. å…±é€šãƒ•ã‚£ãƒ«ã‚¿ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ ---
 template <typename T>
 static PF_Err ChromaKeyT(
 	refconType refcon,
@@ -94,14 +94,14 @@ static PF_Err ChromaKeyT(
 		if (outP->red == infoP->colorFloat.red &&
 			outP->green == infoP->colorFloat.green &&
 			outP->blue == infoP->colorFloat.blue) {
-			*outP = { 0,0,0,0 }; // Š®‘S‚É“§–¾
+			*outP = { 0,0,0,0 }; // å®Œå…¨ã«é€æ˜
 			return PF_Err_NONE;
 		}
 	} else if (std::is_same<T, PF_Pixel16>::value) {
 		if (outP->red == infoP->color16.red &&
 			outP->green == infoP->color16.green &&
 			outP->blue == infoP->color16.blue) {
-			*outP = { 0,0,0,0 }; // Š®‘S‚É“§–¾
+			*outP = { 0,0,0,0 }; // å®Œå…¨ã«é€æ˜
 			return PF_Err_NONE;
 		}
 	}
@@ -109,7 +109,7 @@ static PF_Err ChromaKeyT(
 		if (outP->red == infoP->color.red &&
 			outP->green == infoP->color.green &&
 			outP->blue == infoP->color.blue) {
-			*outP = { 0,0,0,0 }; // Š®‘S‚É“§–¾
+			*outP = { 0,0,0,0 }; // å®Œå…¨ã«é€æ˜
 			return PF_Err_NONE;
 		}
 	}
@@ -121,7 +121,7 @@ static PF_Err ChromaKeyT(
 		static_cast<float>(outP->alpha / max_val)
 	};
 	
-	// PF_PixelFloat‚ğPixelFloat‚É•ÏŠ·
+	// PF_PixelFloatã‚’PixelFloatã«å¤‰æ›
 	PixelFloat key = {
 		infoP->colorFloat.red,
 		infoP->colorFloat.green,
@@ -152,17 +152,17 @@ static PF_Err ChromaKeyT(
 	return PF_Err_NONE;
 }
 
-// 8-bit—p
+// 8-bitç”¨
 static PF_Err ChromaKey8(refconType refcon, A_long xL, A_long yL, PF_Pixel* inP, PF_Pixel* outP) {
 	return ChromaKeyT<PF_Pixel8>(refcon, xL, yL, reinterpret_cast<PF_Pixel8*>(inP), reinterpret_cast<PF_Pixel8*>(outP));
 }
 
-// 16-bit—p
+// 16-bitç”¨
 static PF_Err ChromaKey16(refconType refcon, A_long xL, A_long yL, PF_Pixel16* inP, PF_Pixel16* outP)
 {
 	return ChromaKeyT<PF_Pixel16>(refcon, xL, yL, reinterpret_cast<PF_Pixel16*>(inP), reinterpret_cast<PF_Pixel16*>(outP));
 }
-// 32-bit—p (Float)
+// 32-bitç”¨ (Float)
 static PF_Err ChromaKeyFloat(refconType refcon, A_long xL, A_long yL, PF_PixelFloat* inP, PF_PixelFloat* outP)
 {
 	return ChromaKeyT<PF_PixelFloat>(refcon, xL, yL, reinterpret_cast<PF_PixelFloat*>(inP), reinterpret_cast<PF_PixelFloat*>(outP));
@@ -175,7 +175,7 @@ PF_Err ChromaKeyExec(
 {
 	PF_Err err = PF_Err_NONE;
 
-	// ƒsƒNƒZƒ‹ƒtƒH[ƒ}ƒbƒg‚É‰‚¶‚Äƒeƒ“ƒvƒŒ[ƒgŠÖ”‚ğŒÄ‚Ño‚·
+	// ãƒ”ã‚¯ã‚»ãƒ«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¿œã˜ã¦ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆé–¢æ•°ã‚’å‘¼ã³å‡ºã™
 	switch (ae->pixelFormat()) {
 	case PF_PixelFormat_ARGB128:
 		ERR(ae->suitesP->IterateFloatSuite2()->iterate(

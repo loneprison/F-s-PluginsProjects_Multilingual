@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_WIDTH": "宽度",
+        "L10N_MODE": "填充模式",
+        "L10N_CUSTOMCOLOR": "自定义颜色",
+        "L10N_WHITE": "忽略白色"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "自定义颜色|相邻颜色"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "边缘填充"
+      }
+    }
+  }
+}

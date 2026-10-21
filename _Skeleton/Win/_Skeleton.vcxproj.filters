@@ -116,7 +116,7 @@
     <ClInclude Include="..\..\..\Headers\AE_EffectSuites.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Util\AE_EffectSuitesHelper.h">
+    <ClInclude Include="..\..\..\Headers\AE_EffectSuitesHelper.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Headers\AE_EffectUI.h">
@@ -140,12 +140,6 @@
     <ClInclude Include="..\..\..\Util\AEGP_SuiteHandler.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\..\devstudio\Include\BASETSD.H">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\VC98\Include\BASETSD.H">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Util\entry.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -164,9 +158,6 @@
     <ClInclude Include="..\..\..\Headers\PrSDKAESupport.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Headers\PrSDKAEUI.h">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Headers\PrSDKPixelFormat.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -175,9 +166,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Util\String_Utils.h">
       <Filter>Header Files\AE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\NFsLibrary\resource.h">
-      <Filter>Header Files\AE\N</Filter>
     </ClInclude>
     <ClInclude Include="..\NF_Target.h" />
     <ClInclude Include="..\_Skeleton.h" />
@@ -326,7 +314,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="_SkeletonPiPL.rc">
+    <ResourceCompile Include="$(IntDir)_SkeletonPiPL.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
     <ResourceCompile Include="Resource.rc">
@@ -334,11 +322,17 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\_NFLib\fx\NF_DrawAALineScolor.zip">
+    <None Include="..\..\_NFLib\fx\archive\NF_DrawAALineScolor.zip">
       <Filter>Header Files\fx</Filter>
     </None>
     <None Include="..\..\_NFLib\dialog.jsx">
       <Filter>Header Files\_NFLib</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Localization"><UniqueIdentifier>{AB6EE03C-3C28-496B-B9DD-23CA80432690}</UniqueIdentifier></Filter>
+    <ClInclude Include="..\..\_localization\AeText.h"><Filter>Localization</Filter></ClInclude>
+    <ClCompile Include="..\..\_localization\core\AeTextClient.cpp"><Filter>Localization</Filter></ClCompile>
+    <None Include="..\..\_localization\catalog\(_SDK)\_Skeleton.json"><Filter>Localization</Filter></None>
   </ItemGroup>
 </Project>

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_RGB": "RGB 曲线",
+        "L10N_ALPHA": "Alpha 曲线"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "双曲线调整"
+      }
+    }
+  }
+}

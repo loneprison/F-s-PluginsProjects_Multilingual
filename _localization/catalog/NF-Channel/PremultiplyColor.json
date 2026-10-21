@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_COLOR": "颜色",
+        "L10N_FORWORD": "模式"
+      },
+      "Popup": {
+        "L10N_FORWORD_ITEMS": "直接转预乘|预乘转直接"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "预乘颜色"
+      }
+    }
+  }
+}

@@ -65,9 +65,9 @@ enum {
 //UIの表示文字列
 
 //-------
-#define	STR_EVOLUTION	"evolution"
-#define	STR_OCTAVES		"octaves"
-#define	STR_SCALE		"scale"
+#define	L10N_EVOLUTION	"evolution"
+#define	L10N_OCTAVES		"octaves"
+#define	L10N_SCALE		"scale"
 
 
 

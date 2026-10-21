@@ -52,15 +52,15 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_MOSAIC_UNLINK	"Unlink M_Width and M_Height"
-#define	STR_MOSAIC_W		"M_Width"
-#define	STR_MOSAIC_H		"M_Height"
-#define	STR_MOSAIC_CENTER	"center"
-#define	STR_NOISE_TOPIC		"noise params"
-#define	STR_NOISE			"noise"
-#define	STR_IS_COLOR		"colorise"
-#define	STR_AUTO_SEED		"autoSeed"
-#define	STR_SEED			"seed"
+#define	L10N_MOSAIC_UNLINK	"Unlink M_Width and M_Height"
+#define	L10N_MOSAIC_W		"M_Width"
+#define	L10N_MOSAIC_H		"M_Height"
+#define	L10N_MOSAIC_CENTER	"center"
+#define	L10N_NOISE_TOPIC		"noise params"
+#define	L10N_NOISE			"noise"
+#define	L10N_IS_COLOR		"colorise"
+#define	L10N_AUTO_SEED		"autoSeed"
+#define	L10N_SEED			"seed"
 
 //UIのパラメータ
 typedef struct ParamInfo {

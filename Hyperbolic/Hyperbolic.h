@@ -29,8 +29,8 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_RGB		"rgbHyperbolic"
-#define	STR_ALPHA	"alphaHyperbolic"
+#define	L10N_RGB		"rgbHyperbolic"
+#define	L10N_ALPHA	"alphaHyperbolic"
 
 //UIのパラメータ
 typedef struct ParamInfo {

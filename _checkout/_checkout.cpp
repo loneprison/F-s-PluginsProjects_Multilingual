@@ -6,6 +6,7 @@
 
 
 #include "_checkout.h"
+#include "_checkoutText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,25 +17,26 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const _checkoutText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddLayer(	// layer
-		STR_LAYER,
+		AETEXT_PARAM(strings, L10N_LAYER),
 		PF_LayerDefault_NONE,
 		ID_LAYER
 	);
 	
 	cs.AddPoint(
-		STR_POS,
+		AETEXT_PARAM(strings, L10N_POS),
 		50,
 		50,
 		FALSE,
 		ID_POS
 	);
 	cs.AddSlider(
-		STR_COUNT,
+		AETEXT_PARAM(strings, L10N_COUNT),
 		0,
 		30000,
 		0,
@@ -43,7 +45,7 @@ static PF_Err ParamsSetup (
 		ID_COUNT
 	);
 	cs.AddSlider(
-		STR_RADIUS,
+		AETEXT_PARAM(strings, L10N_RADIUS),
 		0,
 		1000,
 		0,
@@ -52,7 +54,7 @@ static PF_Err ParamsSetup (
 		ID_RADIUS
 	);
 	cs.AddFloatSlider(	// R
-		STR_SCALE,			//Name
+		AETEXT_PARAM(strings, L10N_SCALE),			//Name
 		10,				//VALID_MIN
 		200,			//VALID_MAX
 		50,				//SLIDER_MIN
@@ -241,8 +243,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const _checkoutText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;

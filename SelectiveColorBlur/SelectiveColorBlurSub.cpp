@@ -1,7 +1,7 @@
-#include "SelectiveColorBlur.h"
+ï»¿#include "SelectiveColorBlur.h"
 
 // ----------------------------------------------------------------------------
-// ƒsƒNƒZƒ‹Œ^‚²‚Æ‚Ì“Á«‚ğ’è‹`‚·‚éƒeƒ“ƒvƒŒ[ƒgƒgƒŒƒCƒg
+// ãƒ”ã‚¯ã‚»ãƒ«å‹ã”ã¨ã®ç‰¹æ€§ã‚’å®šç¾©ã™ã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒˆãƒ¬ã‚¤ãƒˆ
 template<typename T> struct PixelTraits;
 
 template<> struct PixelTraits<PF_Pixel8> {
@@ -44,7 +44,7 @@ struct BlurContext {
 };
 
 // ----------------------------------------------------------------------------
-// …•½ƒuƒ‰[F‹«ŠE”»’è‚ğuMAX_VALˆÈŠO‚È‚ç‘Å‚¿Ø‚èv‚ÉC³
+// æ°´å¹³ãƒ–ãƒ©ãƒ¼ï¼šå¢ƒç•Œåˆ¤å®šã‚’ã€ŒMAX_VALä»¥å¤–ãªã‚‰æ‰“ã¡åˆ‡ã‚Šã€ã«ä¿®æ­£
 template<typename T>
 static PF_Err HorizBlur_Kernel(void* refconPV, A_long thread_indexL, A_long i, A_long iterationsL)
 {
@@ -58,7 +58,7 @@ static PF_Err HorizBlur_Kernel(void* refconPV, A_long thread_indexL, A_long i, A
 	memcpy(scanline.data(), row_ptr, ctx->width * sizeof(T));
 
 	for (A_long x = 0; x < ctx->width; ++x) {
-		// w’èFˆÈŠO‚ÍƒXƒ‹[
+		// æŒ‡å®šè‰²ä»¥å¤–ã¯ã‚¹ãƒ«ãƒ¼
 		if (scanline[x].alpha != PixelTraits<T>::MAX_VAL) continue;
 
 		double sr = 0.0, sg = 0.0, sb = 0.0, count = 0.0;
@@ -69,11 +69,11 @@ static PF_Err HorizBlur_Kernel(void* refconPV, A_long thread_indexL, A_long i, A
 		sb += (double)scanline[x].blue * weight;
 		count += weight;
 
-		// ¶•ûŒü
+		// å·¦æ–¹å‘
 		for (A_long k = 1; k <= ctx->blur_value; ++k) {
 			A_long ix = x - k;
 			if (ix < 0) break;
-			// ƒ^[ƒQƒbƒgŠO‚ÌƒsƒNƒZƒ‹‚É“–‚½‚Á‚½‚çƒTƒ“ƒvƒŠƒ“ƒO‚ğ‘Å‚¿Ø‚é
+			// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆå¤–ã®ãƒ”ã‚¯ã‚»ãƒ«ã«å½“ãŸã£ãŸã‚‰ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ã‚’æ‰“ã¡åˆ‡ã‚‹
 			if (scanline[ix].alpha != PixelTraits<T>::MAX_VAL) break;
 
 			weight = ctx->tbl[k];
@@ -82,11 +82,11 @@ static PF_Err HorizBlur_Kernel(void* refconPV, A_long thread_indexL, A_long i, A
 			sb += (double)scanline[ix].blue * weight;
 			count += weight;
 		}
-		// ‰E•ûŒü
+		// å³æ–¹å‘
 		for (A_long k = 1; k <= ctx->blur_value; ++k) {
 			A_long ix = x + k;
 			if (ix >= ctx->width) break;
-			// ƒ^[ƒQƒbƒgŠO‚ÌƒsƒNƒZƒ‹‚É“–‚½‚Á‚½‚çƒTƒ“ƒvƒŠƒ“ƒO‚ğ‘Å‚¿Ø‚é
+			// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆå¤–ã®ãƒ”ã‚¯ã‚»ãƒ«ã«å½“ãŸã£ãŸã‚‰ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ã‚’æ‰“ã¡åˆ‡ã‚‹
 			if (scanline[ix].alpha != PixelTraits<T>::MAX_VAL) break;
 
 			weight = ctx->tbl[k];
@@ -105,7 +105,7 @@ static PF_Err HorizBlur_Kernel(void* refconPV, A_long thread_indexL, A_long i, A
 }
 
 // ----------------------------------------------------------------------------
-// ‚’¼ƒuƒ‰[F‹«ŠE”»’è‚ğuMAX_VALˆÈŠO‚È‚ç‘Å‚¿Ø‚èv‚ÉC³
+// å‚ç›´ãƒ–ãƒ©ãƒ¼ï¼šå¢ƒç•Œåˆ¤å®šã‚’ã€ŒMAX_VALä»¥å¤–ãªã‚‰æ‰“ã¡åˆ‡ã‚Šã€ã«ä¿®æ­£
 template<typename T>
 static PF_Err VerticalBlur_Kernel(void* refconPV, A_long thread_indexL, A_long i, A_long iterationsL)
 {
@@ -119,7 +119,7 @@ static PF_Err VerticalBlur_Kernel(void* refconPV, A_long thread_indexL, A_long i
 	}
 
 	for (A_long y = 0; y < ctx->height; ++y) {
-		// w’èFˆÈŠO‚ÍƒXƒ‹[
+		// æŒ‡å®šè‰²ä»¥å¤–ã¯ã‚¹ãƒ«ãƒ¼
 		if (scanline[y].alpha != PixelTraits<T>::MAX_VAL) continue;
 
 		double sr = 0.0, sg = 0.0, sb = 0.0, count = 0.0;
@@ -130,11 +130,11 @@ static PF_Err VerticalBlur_Kernel(void* refconPV, A_long thread_indexL, A_long i
 		sb += (double)scanline[y].blue * weight;
 		count += weight;
 
-		// ã•ûŒü
+		// ä¸Šæ–¹å‘
 		for (A_long k = 1; k <= ctx->blur_value; ++k) {
 			A_long iy = y - k;
 			if (iy < 0) break;
-			// ƒ^[ƒQƒbƒgŠO‚ÌƒsƒNƒZƒ‹‚É“–‚½‚Á‚½‚çƒTƒ“ƒvƒŠƒ“ƒO‚ğ‘Å‚¿Ø‚é
+			// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆå¤–ã®ãƒ”ã‚¯ã‚»ãƒ«ã«å½“ãŸã£ãŸã‚‰ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ã‚’æ‰“ã¡åˆ‡ã‚‹
 			if (scanline[iy].alpha != PixelTraits<T>::MAX_VAL) break;
 
 			weight = ctx->tbl[k];
@@ -143,11 +143,11 @@ static PF_Err VerticalBlur_Kernel(void* refconPV, A_long thread_indexL, A_long i
 			sb += (double)scanline[iy].blue * weight;
 			count += weight;
 		}
-		// ‰º•ûŒü
+		// ä¸‹æ–¹å‘
 		for (A_long k = 1; k <= ctx->blur_value; ++k) {
 			A_long iy = y + k;
 			if (iy >= ctx->height) break;
-			// ƒ^[ƒQƒbƒgŠO‚ÌƒsƒNƒZƒ‹‚É“–‚½‚Á‚½‚çƒTƒ“ƒvƒŠƒ“ƒO‚ğ‘Å‚¿Ø‚é
+			// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆå¤–ã®ãƒ”ã‚¯ã‚»ãƒ«ã«å½“ãŸã£ãŸã‚‰ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ã‚’æ‰“ã¡åˆ‡ã‚‹
 			if (scanline[iy].alpha != PixelTraits<T>::MAX_VAL) break;
 
 			weight = ctx->tbl[k];

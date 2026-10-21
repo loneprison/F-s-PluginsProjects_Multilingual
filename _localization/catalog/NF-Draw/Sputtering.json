@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_TARGET": "目标模式",
+        "L10N_TARGET_COLOR": "目标颜色_",
+        "L10N_BORDER_DIRECTION": "边界方向",
+        "L10N_DIRECTION_ANGLE": "方向",
+        "L10N_SPUT_LAYER": "纹理图层",
+        "L10N_SIZE": "大小",
+        "L10N_SIZE_RAND": "随机大小",
+        "L10N_SPUT_LOOP": "时间采样",
+        "L10N_SPUT_LOOP_KOMA": "帧间隔",
+        "L10N_AREA_RATE": "内部数量",
+        "L10N_BODER_RATE": "边缘数量",
+        "L10N_SPAWN_COUNT": "点数量",
+        "L10N_SPAWN_OFFSET": "点间距",
+        "L10N_OPACITY": "不透明度",
+        "L10N_OPACITY_RAND": "随机不透明度",
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子",
+        "L10N_COLORS_NUM": "颜色数量",
+        "L10N_COLORS": "颜色_",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_TARGET_ITEMS": "Alpha|颜色1|颜色2|颜色3|颜色4|颜色5|颜色6|颜色7|颜色8",
+        "L10N_SPUT_LOOP_ITEMS": "随机|循环",
+        "L10N_COLORS_ITEMS": "1|2|3|4|5|6|7|8"
+      },
+      "Topic": {
+        "L10N_TARGET_TOPIC": "目标",
+        "L10N_PARAMS_TOPIC": "纹理",
+        "L10N_PARAMS2_TOPIC": "参数",
+        "L10N_COLORS_TOPIC": "颜色"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "喷溅"
+      }
+    }
+  }
+}

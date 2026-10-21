@@ -6,6 +6,8 @@
 
 
 #include "LineExtraction.h"
+#define L10N_LABEL_ON "on"
+#include "LineExtractionText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,19 +18,20 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const LineExtractionText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 	NF_ParamsSetup cs(in_data, out_data, ID_NUM_PARAMS);
 
 	// ****************************
-	cs.AddTopic(STR_PRE_TOPIC, ID_PRE_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_PRE_TOPIC), ID_PRE_TOPIC);
 	cs.AddCheckBox(
-		STR_BILATERAL_CB,
-		"on",
+		AETEXT_PARAM(strings, L10N_BILATERAL_CB),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		TRUE,
 		ID_BILATERAL_CB
 	);
 	cs.AddSlider(	// 
-		STR_B_RADIUS,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_B_RADIUS),	//パラメータの名前
 		1, 		//数値入力する場合の最小値
 		10,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -37,7 +40,7 @@ static PF_Err ParamsSetup (
 		ID_B_RADIUS
 	);
 	cs.AddFloatSlider(	// R
-		STR_B_SIGMA_S,			//Name
+		AETEXT_PARAM(strings, L10N_B_SIGMA_S),			//Name
 		0.01f,			//VALID_MIN
 		20,				//VALID_MAX
 		0.0f,				//SLIDER_MIN
@@ -49,7 +52,7 @@ static PF_Err ParamsSetup (
 		ID_B_SIGMA_S
 	);
 	cs.AddFloatSlider(	// R
-		STR_B_SIGMA_R,			//Name
+		AETEXT_PARAM(strings, L10N_B_SIGMA_R),			//Name
 		0.1f,				//VALID_MIN
 		100,			//VALID_MAX
 		1,				//SLIDER_MIN
@@ -65,7 +68,7 @@ static PF_Err ParamsSetup (
 	cs.EndTopic(ID_PRE_TOPIC_END);
 	// ****************************
 	cs.AddSlider(	// 
-		STR_OUTER_WIDTH,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_OUTER_WIDTH),	//パラメータの名前
 		0, 					//数値入力する場合の最小値
 		100,				//数値入力する場合の最大値
 		0,					//スライダーの最小値 
@@ -73,7 +76,7 @@ static PF_Err ParamsSetup (
 		1,					//デフォルトの値
 		ID_OUTER_WIDTH
 	); cs.AddSlider(	// 
-		STR_INNER_WIDTH,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_INNER_WIDTH),	//パラメータの名前
 		0, 		//数値入力する場合の最小値
 		100,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -83,18 +86,18 @@ static PF_Err ParamsSetup (
 	);
 	
 	cs.AddColor(	// color
-		STR_COLOR,
+		AETEXT_PARAM(strings, L10N_COLOR),
 		{ 0xFF, 0xFF, 0xFF, 0xFF },
 		ID_COLOR
 	);
 	cs.AddCheckBox(
-		STR_POST_LEVEL_CB,
-		"on",
+		AETEXT_PARAM(strings, L10N_POST_LEVEL_CB),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		TRUE,
 		ID_POST_LEVEL_CB
 	);
 	cs.AddFloatSlider(	// R
-		STR_POST_LEVEL_LO,			//Name
+		AETEXT_PARAM(strings, L10N_POST_LEVEL_LO),			//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -106,7 +109,7 @@ static PF_Err ParamsSetup (
 		ID_POST_LEVEL_LO
 	);
 	cs.AddFloatSlider(	// R
-		STR_POST_LEVEL_HI,			//Name
+		AETEXT_PARAM(strings, L10N_POST_LEVEL_HI),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		40,				//SLIDER_MIN
@@ -118,8 +121,8 @@ static PF_Err ParamsSetup (
 		ID_POST_LEVEL_HI
 	);
 	cs.AddCheckBox(
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLEND
 	);
@@ -312,8 +315,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const LineExtractionText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -377,7 +383,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			LineExtractionText::OpenSettings(in_data, L"NF-LineExtraction");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

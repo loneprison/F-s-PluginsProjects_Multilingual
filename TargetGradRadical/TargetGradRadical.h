@@ -81,37 +81,37 @@ enum {
 #define ID_COLOR_ENABLED(IDX) (ID_TCOLOR1_ENABLED + (IDX) * 2)
 
 //UIの表示文字列
-#define	STR_TARGET			"target"
-#define	STR_TARGET_ITEMS	"targetColors|alphaOn|all"
+#define	L10N_TARGET			"target"
+#define	L10N_TARGET_ITEMS	"targetColors|alphaOn|all"
 #define	STR_TARGET_COUNT	3
 #define	STR_TARGET_DFLT		3
 
-#define	STR_TOPIC_COLOR		"targetColors"
+#define	L10N_TOPIC_COLOR		"targetColors"
 #define	STR_TARGET			"target"
-#define	STR_TARGET_CB		"targetEnabled"
-#define	STR_TARGET_CB2		"on"
+#define	L10N_TARGET_CB		"targetEnabled"
+#define	L10N_TARGET_CB2		"on"
 
-#define	STR_GRADCOLOR		"gradColor"
-#define	STR_INVERT			"invert"
-#define	STR_INVERT2			"on"
-
-
-#define	STR_CENTER			"center"
-
-#define	STR_BLUR			"radius"
-#define	STR_HYPERBOLIC		"hyperbolic"
-
-#define	STR_ASPECT			"aspect"
-
-#define	STR_ANGLE			"angle"
-
-#define	STR_FEATHER			"feather"
+#define	L10N_GRADCOLOR		"gradColor"
+#define	L10N_INVERT			"invert"
+#define	L10N_INVERT2			"on"
 
 
-#define	STR_LAOD_CAP		"colorTable"
-#define	STR_LOAD_BTN		"load"
-#define	STR_SAVE_BTN		"save"
-#define	STR_BLEND			"Blend with original"
+#define	L10N_CENTER			"center"
+
+#define	L10N_BLUR			"radius"
+#define	L10N_HYPERBOLIC		"hyperbolic"
+
+#define	L10N_ASPECT			"aspect"
+
+#define	L10N_ANGLE			"angle"
+
+#define	L10N_FEATHER			"feather"
+
+
+#define	L10N_LAOD_CAP		"colorTable"
+#define	L10N_LOAD_BTN		"load"
+#define	L10N_SAVE_BTN		"save"
+#define	L10N_BLEND			"Blend with original"
 
 #define COLOR_TABLE_COUNT	8
 

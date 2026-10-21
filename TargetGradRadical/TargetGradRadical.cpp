@@ -6,6 +6,13 @@
 
 
 #include "TargetGradRadical.h"
+#define L10N_LABEL_ON "on"
+#define L10N_FILE_SAVE "tgr Json save"
+#define L10N_FILE_LOAD "tsj Json load"
+#define L10N_FILE_FILTER "tsj Json File (*.tsj)"
+#define L10N_OVERWRITE_TITLE "上書き確認"
+#define L10N_OVERWRITE_MESSAGE "ファイルは既に存在します。上書きしますか？"
+#include "TargetGradRadicalText.generated.h"
 
 #define DIALOG_PATH_FILE "TargetGradRadical.dir"
 #define SETTINGS_FILE "TargetGradRadical.pref"
@@ -206,6 +213,7 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const TargetGradRadicalText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 	PF_ParamDef		def;
 
@@ -237,32 +245,32 @@ static PF_Err ParamsSetup (
 
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_POPUP(STR_TARGET,
+	PF_ADD_POPUP(AETEXT_PARAM(strings, L10N_TARGET),
 		STR_TARGET_COUNT,	//メニューの数
 		table.targetColorMode,	//デフォルト
-		STR_TARGET_ITEMS,
+		AETEXT_POPUP(strings, L10N_TARGET_ITEMS),
 		ID_TARGET
 	);
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
 	def.flags = PF_ParamFlag_START_COLLAPSED;	//これをつけると表示時に開いた状態になる
-	PF_ADD_TOPIC(STR_TOPIC_COLOR, ID_TOPIC_COLOR);
+	PF_ADD_TOPIC(AETEXT_TOPIC(strings, L10N_TOPIC_COLOR), ID_TOPIC_COLOR);
 	//----------------------------------------------------------------
 
 	std::string str;
 	for (A_long i = 0; i < COLOR_TABLE_COUNT; i++) {
 		AEFX_CLR_STRUCT(def);
 		//def.flags = PF_ParamFlag_CANNOT_TIME_VARY;//これをつけるとキーフレームが撃てなくなる
-		str = STR_TARGET_CB + std::to_string(i + 1);
+		str = AETEXT_PARAM(strings, L10N_TARGET_CB) + std::to_string(i + 1);
 		PF_ADD_CHECKBOX(str.c_str(),
-			STR_TARGET_CB2,
+			AETEXT_LABEL(strings, L10N_TARGET_CB2),
 			(PF_Boolean)table.targetEnabled[i],
 			0,
 			ID_COLOR_ENABLED(i)
 		);
 		AEFX_CLR_STRUCT(def);
 		//def.flags = PF_ParamFlag_CANNOT_TIME_VARY;//これをつけるとキーフレームが撃てなくなる
-		str = STR_TARGET + std::to_string(i + 1);
+		str = AETEXT_PARAM(strings, L10N_TARGET) + std::to_string(i + 1);
 		PF_ADD_COLOR(
 			str.c_str(),
 			table.target[i].red,
@@ -279,7 +287,7 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
 	PF_ADD_COLOR(
-		STR_GRADCOLOR,
+		AETEXT_PARAM(strings, L10N_GRADCOLOR),
 		table.gradColor.red,
 		table.gradColor.green,
 		table.gradColor.blue,
@@ -288,15 +296,15 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
 	//def.flags = PF_ParamFlag_CANNOT_TIME_VARY;//これをつけるとキーフレームが撃てなくなる
-	PF_ADD_CHECKBOX(STR_INVERT,
-		STR_INVERT2,
+	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_INVERT),
+		AETEXT_LABEL(strings, L10N_INVERT2),
 		table.invert,
 		0,
 		ID_INVERT
 	);
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_POINT(STR_CENTER,
+	PF_ADD_POINT(AETEXT_PARAM(strings, L10N_CENTER),
 		50,	// X
 		50,	// Y
 		0,	// Flag
@@ -304,7 +312,7 @@ static PF_Err ParamsSetup (
 	);
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_FLOAT_SLIDER(STR_BLUR,	//Name
+	PF_ADD_FLOAT_SLIDER(AETEXT_PARAM(strings, L10N_BLUR),	//Name
 		0,						//VALID_MIN
 		4000,						//VALID_MAX
 		0,						//SLIDER_MIN
@@ -319,7 +327,7 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_FLOAT_SLIDER(STR_FEATHER,	//Name
+	PF_ADD_FLOAT_SLIDER(AETEXT_PARAM(strings, L10N_FEATHER),	//Name
 		0.02f,						//VALID_MIN
 		100,					//VALID_MAX
 		0.02f,						//SLIDER_MIN
@@ -334,7 +342,7 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_FLOAT_SLIDER(STR_HYPERBOLIC,	//Name
+	PF_ADD_FLOAT_SLIDER(AETEXT_PARAM(strings, L10N_HYPERBOLIC),	//Name
 		0,						//VALID_MIN
 		50,					//VALID_MAX
 		0,					//SLIDER_MIN
@@ -348,7 +356,7 @@ static PF_Err ParamsSetup (
 	);
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_FLOAT_SLIDER(STR_ASPECT,	//Name
+	PF_ADD_FLOAT_SLIDER(AETEXT_PARAM(strings, L10N_ASPECT),	//Name
 		0,						//VALID_MIN
 		2000,						//VALID_MAX
 		0,						//SLIDER_MIN
@@ -362,28 +370,28 @@ static PF_Err ParamsSetup (
 	);
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_ANGLE(STR_ANGLE, 0, ID_ANGLE);
+	PF_ADD_ANGLE(AETEXT_PARAM(strings, L10N_ANGLE), 0, ID_ANGLE);
 
 
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_BUTTON(STR_LAOD_CAP,
-		STR_LOAD_BTN,
+	PF_ADD_BUTTON(AETEXT_PARAM(strings, L10N_LAOD_CAP),
+		AETEXT_LABEL(strings, L10N_LOAD_BTN),
 		0,
 		PF_ParamFlag_SUPERVISE,
 		ID_LOAD_BTN);
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
 	PF_ADD_BUTTON("",
-		STR_SAVE_BTN,
+		AETEXT_LABEL(strings, L10N_SAVE_BTN),
 		0,
 		PF_ParamFlag_SUPERVISE,
 		ID_SAVE_BTN);
 
 	//----------------------------------------------------------------
 	//----------------------------------------------------------------
-	PF_ADD_CHECKBOX(STR_BLEND,
-		"on",
+	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		0,
 		ID_BLEND
@@ -401,6 +409,7 @@ HandleChangedParam(
 	PF_LayerDef					*outputP,
 	PF_UserChangedParamExtra	*extraP)
 {
+	const TargetGradRadicalText::Strings strings(in_data);
 	PF_Err				err					= PF_Err_NONE,
 						err2				= PF_Err_NONE;
 
@@ -414,10 +423,12 @@ HandleChangedParam(
 		}
 		ppath = ChangeFileExtension(ppath, "tsj");
 		std::string p = SaveFileDialogWithCheck(
-			std::string("tgr Json save"),
+			std::string(AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_FILE_SAVE))),
 			ppath,
 			{".tsj", "*.*"},
-			std::string("tsj Json File (*.tsj)"));
+			std::string(AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_FILE_FILTER))),
+			AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_OVERWRITE_TITLE)),
+			AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_OVERWRITE_MESSAGE)));
 		if (p.empty() == FALSE)
 		{
 			saveDialogPath(p);
@@ -442,10 +453,10 @@ HandleChangedParam(
 			ppath = ChangeFileExtension(ppath, "tsj");
 		}
 		std::string p = OpenFileDialog(
-			std::string("tsj Json load"),
+			std::string(AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_FILE_LOAD))),
 			ppath,
 			{".tsj", "*.*"},
-			std::string("tsj Json File (*.tsj)"));
+			std::string(AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_FILE_FILTER))));
 		if (p.empty() == FALSE)
 		{
 			std::ifstream ifs(p);
@@ -620,8 +631,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const TargetGradRadicalText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -685,7 +699,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			TargetGradRadicalText::OpenSettings(in_data, L"NF-TargetGradRadical");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

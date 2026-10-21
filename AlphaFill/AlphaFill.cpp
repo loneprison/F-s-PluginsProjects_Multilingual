@@ -6,6 +6,7 @@
 
 
 #include "AlphaFill.h"
+#include "AlphaFillText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -18,24 +19,25 @@ static PF_Err ParamsSetup (
 {
 	PF_Err			err = PF_Err_NONE;
 
+	const AlphaFillText::Strings strings(in_data);
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
-	cs.AddPopup(STR_MODE,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_PARAM_MODE),
 		STR_MODE_COUNT,
 		STR_MODE_DFLT,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_POPUP_MODE),
 		ID_MODE,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddColor(	// color
-		STR_COLOR,
+		AETEXT_PARAM(strings, L10N_PARAM_COLOR),
 		{ 0xFF, 0x00, 0x00, 0x00 },
 		ID_COLOR
 	);
 	cs.AddFloatSlider(	// R
-		STR_THRESH,		//Name
+		AETEXT_PARAM(strings, L10N_PARAM_THRESH),		//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -49,7 +51,7 @@ static PF_Err ParamsSetup (
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(	// R
-		STR_SOFT,		//Name
+		AETEXT_PARAM(strings, L10N_PARAM_SOFT),		//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -63,7 +65,7 @@ static PF_Err ParamsSetup (
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(	// R
-		STR_SPILL,		//Name
+		AETEXT_PARAM(strings, L10N_PARAM_SPILL),		//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -207,8 +209,12 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+		{
+			const AlphaFillText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output,
+				AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -272,7 +278,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			AlphaFillText::OpenSettings(in_data, L"NF-AlphaFill");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

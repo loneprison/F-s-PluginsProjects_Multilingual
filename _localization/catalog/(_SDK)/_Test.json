@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_POS1": "位置1",
+        "L10N_POS2": "位置2",
+        "L10N_POS3": "位置3",
+        "L10N_POSA1": "位置A1",
+        "L10N_WA1": "权重A1",
+        "L10N_WA2": "权重A2",
+        "L10N_WA3": "权重A3",
+        "L10N_PATH": "路径"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "测试"
+      }
+    }
+  }
+}

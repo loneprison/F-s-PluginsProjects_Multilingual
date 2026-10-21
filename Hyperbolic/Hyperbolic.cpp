@@ -6,6 +6,7 @@
 
 
 #include "Hyperbolic.h"
+#include "HyperbolicText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,13 +17,14 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const HyperbolicText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	
 	// ----------------------------------------------------------------
 	cs.AddFloatSlider(	// R
-		STR_RGB,		//Name
+		AETEXT_PARAM(strings, L10N_RGB),		//Name
 		-10,			//VALID_MIN
 		10,				//VALID_MAX
 		-10,			//SLIDER_MIN
@@ -34,7 +36,7 @@ static PF_Err ParamsSetup (
 		ID_RGB
 	);
 	cs.AddFloatSlider(	// R
-		STR_ALPHA,		//Name
+		AETEXT_PARAM(strings, L10N_ALPHA),		//Name
 		-10,			//VALID_MIN
 		10,				//VALID_MAX
 		-10,			//SLIDER_MIN
@@ -147,8 +149,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const HyperbolicText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -212,7 +217,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			HyperbolicText::OpenSettings(in_data, L"NF-Hyperbolic");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

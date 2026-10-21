@@ -1,4 +1,4 @@
-
+﻿
 #include "AEConfig.h"
 #include "AE_EffectVers.h"
 
@@ -16,12 +16,12 @@ resource 'PiPL' (16000) {
 		},
 		/* [2] */
 		Name {
-			/*AE�̃��j���[�Ɏg���� */
+			/*AEのメニューに使われる */
 			NF_NAME
 		},
 		/* [3] */
 		Category {
-			/*AE�̃��j���[�Ɏg���� */
+			/*AEのメニューに使われる */
 			NF_CATEGORY
 		},
 		
@@ -63,7 +63,7 @@ resource 'PiPL' (16000) {
 
 		/* [11] */
 		AE_Effect_Match_Name {
-			/*�v���O�C���̎��ʂɎg���� */
+			/*プラグインの識別に使われる */
 			NF_MATCHNAME
 		},
 		/* [12] */

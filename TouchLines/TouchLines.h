@@ -85,47 +85,47 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_TARGET_TOPIC		"target"
-#define	STR_VALUE			"value"
-#define	STR_THRESHOLD		"threshold"
-#define	STR_THRESHOLD_ITEMS	"luminance|alpha|color"
+#define	L10N_TARGET_TOPIC		"target"
+#define	L10N_VALUE			"value"
+#define	L10N_THRESHOLD		"threshold"
+#define	L10N_THRESHOLD_ITEMS	"luminance|alpha|color"
 #define	STR_THRESHOLD_COUNT	3
 #define	STR_THRESHOLD_DFLT	1
-#define	STR_LUM_LEVEL		"lumLevel"
-#define	STR_ALPHA_LEVEL		"alphaLevel"
-#define	STR_TARGET_COLOR	"targetColor"
-#define	STR_TARGET_COLOR_LEVEL	"colorLevel"
-#define	STR_DRAW_TARGET		"Show target mask"
+#define	L10N_LUM_LEVEL		"lumLevel"
+#define	L10N_ALPHA_LEVEL		"alphaLevel"
+#define	L10N_TARGET_COLOR	"targetColor"
+#define	L10N_TARGET_COLOR_LEVEL	"colorLevel"
+#define	L10N_DRAW_TARGET		"Show target mask"
 
-#define	STR_MODE_TOPIC		"params"
-#define	STR_MODE			"mode"
-#define	STR_MODE_ITEMS		"straight|radial"
+#define	L10N_MODE_TOPIC		"params"
+#define	L10N_MODE			"mode"
+#define	L10N_MODE_ITEMS		"straight|radial"
 #define	STR_MODE_COUNT		2
 #define	STR_MODE_DFLT		1
 
-#define	STR_ANGLE			"angle"
-#define	STR_CENTER			"center"
+#define	L10N_ANGLE			"angle"
+#define	L10N_CENTER			"center"
 
-#define	STR_INNER_LENGTH	"innerLength"
-#define	STR_OUTER_LENGTH	"outerLength"
-#define	STR_LENGTH_RAND		"lengthRand"
-#define	STR_SIZE			"size"
-#define	STR_SIZE_RAND		"sizeRand"
-#define	STR_OPACITY			"opacity"
-#define	STR_OPACITY_RAND	"opacityRand"
-#define	STR_BLUR			"blur"
-#define	STR_NOISE			"noise"
+#define	L10N_INNER_LENGTH	"innerLength"
+#define	L10N_OUTER_LENGTH	"outerLength"
+#define	L10N_LENGTH_RAND		"lengthRand"
+#define	L10N_SIZE			"size"
+#define	L10N_SIZE_RAND		"sizeRand"
+#define	L10N_OPACITY			"opacity"
+#define	L10N_OPACITY_RAND	"opacityRand"
+#define	L10N_BLUR			"blur"
+#define	L10N_NOISE			"noise"
 
-#define	STR_AUTO_SEED		"autoSeed"
-#define	STR_SEED			"seed"
+#define	L10N_AUTO_SEED		"autoSeed"
+#define	L10N_SEED			"seed"
 
-#define	STR_COLOR_TOPIC		"colors"
-#define	STR_COLOR_COUNT		"colorCount"
-#define	STR_COLOR_ITEMS		"1|2|3|4|5|6|7|8"
-#define	STR_COLOR			"color_"
+#define	L10N_COLOR_TOPIC		"colors"
+#define	L10N_COLOR_COUNT		"colorCount"
+#define	L10N_COLOR_ITEMS		"1|2|3|4|5|6|7|8"
+#define	L10N_COLOR			"color_"
 
 
-#define	STR_BLEND			"Blend with original"
+#define	L10N_BLEND			"Blend with original"
 
 
 //UIのパラメータ

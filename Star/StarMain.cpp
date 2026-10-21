@@ -1,12 +1,12 @@
-#include "Star.h"
+ï»¿#include "Star.h"
 
 
-// ƒsƒNƒZƒ‹Œ^‚²‚Æ‚ÌÅ‘åƒ`ƒƒƒ“ƒlƒ‹’l
+// ãƒ”ã‚¯ã‚»ãƒ«å‹ã”ã¨ã®æœ€å¤§ãƒãƒ£ãƒ³ãƒãƒ«å€¤
 template <typename T> inline float GetMaxChan()                  { return 255.0f;   }
 template <>           inline float GetMaxChan<PF_Pixel16>()      { return 32768.0f; }
 template <>           inline float GetMaxChan<PF_PixelFloat>()   { return 1.0f;     }
 
-// À•WƒNƒ‰ƒ“ƒv•t‚«ƒsƒNƒZƒ‹QÆ
+// åº§æ¨™ã‚¯ãƒ©ãƒ³ãƒ—ä»˜ããƒ”ã‚¯ã‚»ãƒ«å‚ç…§
 template <typename T>
 inline T* SubPixT(
 	T* data,
@@ -19,7 +19,7 @@ inline T* SubPixT(
 	return (data + y2 * widthtrue + x2);
 }
 
-// ƒoƒCƒŠƒjƒA‘‚«‚İ (ƒXƒNƒŠ[ƒ“‡¬Ar/g/b/a ‚Í 0-1 ³‹K‰»)
+// ãƒã‚¤ãƒªãƒ‹ã‚¢æ›¸ãè¾¼ã¿ (ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åˆæˆã€r/g/b/a ã¯ 0-1 æ­£è¦åŒ–)
 template <typename T>
 inline void SetPixT(
 	T* data,
@@ -34,7 +34,7 @@ inline void SetPixT(
 	float dx1 = x - (float)x0,  dx0 = 1.0f - dx1;
 	float dy1 = y - (float)y0,  dy0 = 1.0f - dy1;
 
-	// ƒXƒNƒŠ[ƒ“‡¬: D + S - D*S  (³‹K‰»‹óŠÔ‚ÅŒvZ)
+	// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åˆæˆ: D + S - D*S  (æ­£è¦åŒ–ç©ºé–“ã§è¨ˆç®—)
 	auto screenBlend = [&](T* p, float sr, float sg, float sb, float sa) {
 		float dr = (float)p->red   / mc;
 		float dg = (float)p->green / mc;
@@ -56,7 +56,7 @@ inline void SetPixT(
 		screenBlend(data + y1 * widthtrue + x1, r*dx1*dy1, g*dx1*dy1, b*dx1*dy1, a*dx1*dy1);
 }
 
-// ƒsƒNƒZƒ‹Œ^ T ‚É‘Î‚·‚éƒŒƒ“ƒ_ƒŠƒ“ƒO–{‘Ì
+// ãƒ”ã‚¯ã‚»ãƒ«å‹ T ã«å¯¾ã™ã‚‹ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°æœ¬ä½“
 template <typename T>
 static PF_Err StarMainT(
 	NF_AE* ae,
@@ -114,7 +114,7 @@ static PF_Err StarMainT(
 						aa2 = 1.0f - ((1.0f + k) * (1.0f - aa2)) / (1.0f + k * (1.0f - aa2));
 						SetPixT<T>(
 							(T*)ae->output->data,
-							ar2, ag2, ab2, aa2,   // 0-1 ³‹K‰»‚Ì‚Ü‚Ü“n‚·
+							ar2, ag2, ab2, aa2,   // 0-1 æ­£è¦åŒ–ã®ã¾ã¾æ¸¡ã™
 							curX, curY,
 							ae->outputInfo.width, ae->outputInfo.height, ae->outputInfo.widthTrue);
 					}

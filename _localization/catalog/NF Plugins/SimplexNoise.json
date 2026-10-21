@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_EVOLUTION": "演化",
+        "L10N_OCTAVES": "复杂度",
+        "L10N_SCALE": "缩放"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "单纯形噪声"
+      }
+    }
+  }
+}

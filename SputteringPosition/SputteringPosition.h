@@ -94,54 +94,54 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_MODE_TOPIC			"Mode"
-#define	STR_MODE				"Style"
-#define	STR_MODE_ITEMS			"Sphere|Rectangle"
+#define	L10N_MODE_TOPIC			"Mode"
+#define	L10N_MODE				"Style"
+#define	L10N_MODE_ITEMS			"Sphere|Rectangle"
 #define	STR_MODE_COUNT			2
 #define	STR_MODE_DFLT			1
-#define	STR_CENTER				"Center"
-#define	STR_RADIUS				"Radius"
-#define	STR_START_POINT			"StartPoint"
-#define	STR_END_POINT			"EndPoint"
-#define	STR_SCALE				"Scale"
-#define	STR_COUNT				"Count"
+#define	L10N_CENTER				"Center"
+#define	L10N_RADIUS				"Radius"
+#define	L10N_START_POINT			"StartPoint"
+#define	L10N_END_POINT			"EndPoint"
+#define	L10N_SCALE				"Scale"
+#define	L10N_COUNT				"Count"
 #define	STR_MODE_TOPIC			"Mode"
-#define	STR_SCALABLE			"Scaleable"
+#define	L10N_SCALABLE			"Scaleable"
 #define	STR_SCALABLE_ITEMS		"None|Scale|Scale_Anchor"
 #define	STR_SCALABLE_COUNT		3
 #define	STR_SCALABLE_DFLT		1
 
-#define	STR_ANCHOR_POINT_ENABLED	"AnchorPointEnabled"
-#define	STR_ANCHOR_POINT		"AnchorPoint"
+#define	L10N_ANCHOR_POINT_ENABLED	"AnchorPointEnabled"
+#define	L10N_ANCHOR_POINT		"AnchorPoint"
 
-#define	STR_PARAMS_TOPIC	"Texture"
-#define	STR_PARAMS2_TOPIC	"Parameters"
-#define	STR_SPUT_LAYER		"SputteringPosition_Texcure_Layer"
-#define	STR_SPUT_LOOP		"TimeSampling"
-#define	STR_SPUT_LOOP_ITEMS	"Random|Loop"
+#define	L10N_PARAMS_TOPIC	"Texture"
+#define	L10N_PARAMS2_TOPIC	"Parameters"
+#define	L10N_SPUT_LAYER		"SputteringPosition_Texcure_Layer"
+#define	L10N_SPUT_LOOP		"TimeSampling"
+#define	L10N_SPUT_LOOP_ITEMS	"Random|Loop"
 #define	STR_SPUT_LOOP_COUNT	2
 #define	STR_SPUT_LOOP_DFLT	1
-#define	STR_SPUT_LOOP_KOMA	"koma"
+#define	L10N_SPUT_LOOP_KOMA	"koma"
 
-#define	STR_SIZE			"Size"
-#define	STR_SIZE_RAND		"Size_Random"
+#define	L10N_SIZE			"Size"
+#define	L10N_SIZE_RAND		"Size_Random"
 #define	STR_AREA_RATE		"Area_Rate"
 #define	STR_BODER_RATE		"Border_Rate"
-#define	STR_SPAWN_COUNT		"Spawn_Count"
-#define	STR_SPAWN_OFFSET	"Spawn_Offset"
-#define	STR_OPACITY			"Opacity"
-#define	STR_OPACITY_RAND	"Opacity_random"
+#define	L10N_SPAWN_COUNT		"Spawn_Count"
+#define	L10N_SPAWN_OFFSET	"Spawn_Offset"
+#define	L10N_OPACITY			"Opacity"
+#define	L10N_OPACITY_RAND	"Opacity_random"
 
-#define	STR_AUTO_SEED		"Auto_Seed"
-#define	STR_SEED			"Seed"
+#define	L10N_AUTO_SEED		"Auto_Seed"
+#define	L10N_SEED			"Seed"
 
-#define	STR_COLORS_TOPIC	"Colors"
-#define	STR_COLORS			"Color_"
-#define	STR_COLORS_NUM		"Colors_Count"
-#define	STR_COLORS_ITEMS	"1|2|3|4|5|6|7|8"
+#define	L10N_COLORS_TOPIC	"Colors"
+#define	L10N_COLORS			"Color_"
+#define	L10N_COLORS_NUM		"Colors_Count"
+#define	L10N_COLORS_ITEMS	"1|2|3|4|5|6|7|8"
 #define	STR_COLORS_COUNT	8
 #define	STR_COLORS_DFLT		1
-#define	STR_BLEND		"Blend with original"
+#define	L10N_BLEND		"Blend with original"
 
 
 //UIのパラメータ

@@ -6,6 +6,10 @@
 
 
 #include "BurstLines.h"
+#define L10N_PARAM_AUTOSEED "autoSeed"
+#define L10N_LABEL_ON "on"
+#define L10N_PARAM_SEED "seed"
+#include "BurstLinesText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,19 +20,20 @@ static PF_Err ParamsSetup(
 	PF_ParamDef* params[],
 	PF_LayerDef* output)
 {
+	const BurstLinesText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddPoint(
 		// center
-		STR_LINE_CENTER,	//Name
+		AETEXT_PARAM(strings, L10N_LINE_CENTER),	//Name
 		50,50,
 		FALSE,
 		ID_LINE_CENTER
 	);
 	cs.AddSlider(	// 
-		STR_LINE_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_LINE_COUNT),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		10000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -38,7 +43,7 @@ static PF_Err ParamsSetup(
 	);
 	
 	cs.AddFloatSlider(	// R
-		STR_DISTANCE,	//Name
+		AETEXT_PARAM(strings, L10N_DISTANCE),	//Name
 		0,				//VALID_MIN
 		9000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -50,7 +55,7 @@ static PF_Err ParamsSetup(
 		ID_DISTANCE
 	);
 	cs.AddFloatSlider(	// R
-		STR_LENGTH,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH),	//Name
 		0,				//VALID_MIN
 		5000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -61,12 +66,12 @@ static PF_Err ParamsSetup(
 		FALSE,			//WANT_PHASE
 		ID_LENGTH
 	);
-	cs.AddTopic(STR_PARAMS_TOIPC, ID_PARAMS_TOIPC//,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_PARAMS_TOIPC), ID_PARAMS_TOIPC//,
 		//PF_ParamFlag_START_COLLAPSED,
 		//PF_PUI_DISABLED
 	);
 	cs.AddSlider(	// 
-		STR_LINE_SUB_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_LINE_SUB_COUNT),	//パラメータの名前
 		1, 			//数値入力する場合の最小値
 		100,		//数値入力する場合の最大値
 		1,			//スライダーの最小値 
@@ -75,7 +80,7 @@ static PF_Err ParamsSetup(
 		ID_LINE_SUB_COUNT
 	);
 	cs.AddFloatSlider(	// R
-		STR_LINE_SUB_ANGLE,	//Name
+		AETEXT_PARAM(strings, L10N_LINE_SUB_ANGLE),	//Name
 		0,				//VALID_MIN
 		45,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -87,7 +92,7 @@ static PF_Err ParamsSetup(
 		ID_LINE_SUB_ANGLE
 	);
 	cs.AddFloatSlider(	// R
-		STR_DISTANCE_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_DISTANCE_RAND),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -99,7 +104,7 @@ static PF_Err ParamsSetup(
 		ID_DISTANCE_RAND
 	);
 	cs.AddFloatSlider(	// R
-		STR_LENGTH_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH_RAND),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -111,7 +116,7 @@ static PF_Err ParamsSetup(
 		ID_LENGTH_RAND
 	);
 	cs.AddFloatSlider(	// R
-		STR_THICKNESS,	//Name
+		AETEXT_PARAM(strings, L10N_THICKNESS),	//Name
 		0.5,			//VALID_MIN
 		50,				//VALID_MAX
 		0.5,			//SLIDER_MIN
@@ -123,7 +128,7 @@ static PF_Err ParamsSetup(
 		ID_THICKNESS
 	);
 	cs.AddFloatSlider(	// R
-		STR_THICKNESS_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_THICKNESS_RAND),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -135,7 +140,7 @@ static PF_Err ParamsSetup(
 		ID_THICKNESS_RAND
 	);
 	cs.AddFloatSlider(	// R
-		STR_THICKNESS_START,	//Name
+		AETEXT_PARAM(strings, L10N_THICKNESS_START),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -147,7 +152,7 @@ static PF_Err ParamsSetup(
 		ID_THICKNESS_START
 	);
 	cs.AddFloatSlider(	// R
-		STR_THICKNESS_END,	//Name
+		AETEXT_PARAM(strings, L10N_THICKNESS_END),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -159,7 +164,7 @@ static PF_Err ParamsSetup(
 		ID_THICKNESS_END
 	);
 	cs.AddFloatSlider(	// R
-		STR_OPACITY_START,	//Name
+		AETEXT_PARAM(strings, L10N_OPACITY_START),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -171,7 +176,7 @@ static PF_Err ParamsSetup(
 		ID_OPACITY_START
 	);
 	cs.AddFloatSlider(	// R
-		STR_OPACITY_END,	//Name
+		AETEXT_PARAM(strings, L10N_OPACITY_END),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -183,12 +188,12 @@ static PF_Err ParamsSetup(
 		ID_OPACITY_END
 	);
 	cs.AddAngle(	// angle
-		STR_DIRECTION,
+		AETEXT_PARAM(strings, L10N_DIRECTION),
 		0,
 		ID_DIRECTION
 	);
 	cs.AddFloatSlider(	// R
-		STR_ANGLE_RANGE,	//Name
+		AETEXT_PARAM(strings, L10N_ANGLE_RANGE),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -201,12 +206,12 @@ static PF_Err ParamsSetup(
 	);
 	cs.EndTopic(ID_PARAMS_TOIPC_END);
 	// ***********************
-	cs.AddTopic(STR_COLOR_TOIPC, ID_COLOR_TOIPC
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_COLOR_TOIPC), ID_COLOR_TOIPC
 	);
-	cs.AddPopup(STR_COLOR_CNT,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_COLOR_CNT),
 		STR_COLOR_CNT_NUM,
 		STR_COLOR_CNT_DFT,
-		STR_COLOR_CNT_ITEMS,
+		AETEXT_POPUP(strings, L10N_COLOR_CNT_ITEMS),
 		ID_COLOR_COUNT,
 		PF_ParamFlag_SUPERVISE
 	);
@@ -224,7 +229,7 @@ static PF_Err ParamsSetup(
 		PF_ParamUIFlags ui_flags = PF_PUI_INVISIBLE;
 		if (i == 0) ui_flags = PF_PUI_NONE;
 		cs.AddColor(	// color
-			(STR_COLOR + std::to_string(i + 1)).c_str(),
+			(AETEXT_PARAM(strings, L10N_COLOR) + std::to_string(i + 1)).c_str(),
 			def_color[i],
 			ID_COLOR_1 + i,
 			PF_ParamFlag_NONE,
@@ -234,14 +239,14 @@ static PF_Err ParamsSetup(
 	cs.EndTopic(ID_COLOR_TOIPC_END);
 	// ***********************
 	cs.AddCheckBox(	// noise frame
-		"autoSeed",
-		"on",
+		AETEXT_PARAM(strings, L10N_PARAM_AUTOSEED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_AUTO_SEED,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddSlider(	// 
-		"seed",	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_PARAM_SEED),	//パラメータの名前
 		-30000, 				//数値入力する場合の最小値
 		30000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -449,8 +454,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const BurstLinesText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -517,7 +525,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			BurstLinesText::OpenSettings(in_data, L"NF-BurstLines");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

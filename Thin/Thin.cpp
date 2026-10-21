@@ -6,6 +6,8 @@
 
 
 #include "Thin.h"
+#define L10N_LABEL_ON "on"
+#include "ThinText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,16 +18,17 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const ThinText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
-	cs.AddTopic(STR_TARGET_COLOR_TOPIC, ID_TARGET_COLOR_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_TARGET_COLOR_TOPIC), ID_TARGET_COLOR_TOPIC);
 	//	PF_ParamFlag_START_COLLAPSED,
 	//	PF_PUI_DISABLED);
-	cs.AddPopup(STR_TARGET_COLOR_MODE,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_TARGET_COLOR_MODE),
 		STR_TARGET_COLOR_COUNT,
 		STR_TARGET_COLOR_DFLT,
-		STR_TARGET_COLOR_ITEMS,
+		AETEXT_POPUP(strings, L10N_TARGET_COLOR_ITEMS),
 		ID_TARGET_COLOR_MODE,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
@@ -33,7 +36,7 @@ static PF_Err ParamsSetup (
 
 	);
 	cs.AddFloatSlider(	// R
-		STR_TARGET_LEVEL,			//Name
+		AETEXT_PARAM(strings, L10N_TARGET_LEVEL),			//Name
 		0,				//VALID_MIN
 		10,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -50,7 +53,7 @@ static PF_Err ParamsSetup (
 		if (i > 0) {
 			ui_flags = PF_PUI_INVISIBLE;
 		}
-		std::string str = STR_TARGET_COLOR + std::to_string(i + 1);
+		std::string str = AETEXT_PARAM(strings, L10N_TARGET_COLOR) + std::to_string(i + 1);
 		cs.AddColor(	// color
 			str.c_str(),
 			{ 0xFF, (A_u_char)( i * 30), (A_u_char)(i * 30), (A_u_char)(i * 30) },
@@ -61,7 +64,7 @@ static PF_Err ParamsSetup (
 	}
 	cs.EndTopic(ID_TARGET_COLOR_TOPIC_END);
 	cs.AddSlider(	// 
-		STR_THIN_VALUE,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_THIN_VALUE),	//パラメータの名前
 		0, 		//数値入力する場合の最小値
 		20,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -69,22 +72,22 @@ static PF_Err ParamsSetup (
 		0,				//デフォルトの値
 		ID_THIN_VALUE
 	);
-	cs.AddTopic(ID_PARAMS_TOPIC, ID_TARGET_COLOR_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_PARAMS_TOPIC), ID_TARGET_COLOR_TOPIC);
 	cs.AddCheckBox(	// noise frame
-		STR_WHITE,
-		"on",
+		AETEXT_PARAM(strings, L10N_WHITE),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_WHITE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_ALPHAZERO,
-		"on",
+		AETEXT_PARAM(strings, L10N_ALPHAZERO),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_ALPHAZERO
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_EDGE,
-		"on",
+		AETEXT_PARAM(strings, L10N_EDGE),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_EDGE
 	);
@@ -231,8 +234,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const ThinText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -296,7 +302,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			ThinText::OpenSettings(in_data, L"NF-Thin");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

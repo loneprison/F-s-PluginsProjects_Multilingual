@@ -33,21 +33,21 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_COLOR_COUNT					"TargetColorCount"
-#define	STR_Color1				"color1"
-#define	STR_Color2				"color2"
-#define	STR_Color3				"color3"
-#define	STR_Color4				"color4"
-#define	STR_Color5				"color5"
-#define	STR_Color6				"color6"
-#define	STR_Color7				"color7"
-#define	STR_Color8				"color8"
-#define	STR_Color9				"color9"
-#define	STR_Color10				"color10"
-#define	STR_KEEP_PIXELS			"KeepPixels"
-#define	STR_FillUnknownColors	"Fill unremoved pixels"
-#define	STR_FillColor			"FillColor"
-#define	STR_MakeWhiteTransparent	"Make White Transparent"
+#define	L10N_COLOR_COUNT					"TargetColorCount"
+#define	L10N_COLOR1				"color1"
+#define	L10N_COLOR2				"color2"
+#define	L10N_COLOR3				"color3"
+#define	L10N_COLOR4				"color4"
+#define	L10N_COLOR5				"color5"
+#define	L10N_COLOR6				"color6"
+#define	L10N_COLOR7				"color7"
+#define	L10N_COLOR8				"color8"
+#define	L10N_COLOR9				"color9"
+#define	L10N_COLOR10				"color10"
+#define	L10N_KEEP_PIXELS			"KeepPixels"
+#define	L10N_FILLUNKNOWNCOLORS	"Fill unremoved pixels"
+#define	L10N_FILLCOLOR			"FillColor"
+#define	L10N_MAKEWHITETRANSPARENT	"Make White Transparent"
 
 //UIのパラメータ
 typedef struct ParamInfo {

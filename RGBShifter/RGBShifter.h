@@ -50,22 +50,22 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_MODE_POP		"ShiftMode"
-#define	STR_MODE_ITEMS		"RGB Channel|YUV Channel|Luma Identity"
+#define	L10N_MODE_POP		"ShiftMode"
+#define	L10N_MODE_ITEMS		"RGB Channel|YUV Channel|Luma Identity"
 #define	STR_MODE_COUNT		3
 #define	STR_MODE_DFLT		1
 
-#define	STR_R				"RedShift"
-#define	STR_G				"GreenShift"
-#define	STR_B				"BlueShift"
+#define	L10N_R				"RedShift"
+#define	L10N_G				"GreenShift"
+#define	L10N_B				"BlueShift"
 
-#define	STR_UV_AUTO			"UV linked Y"
-#define	STR_Y				"Y_Luminance"
-#define	STR_U				"U_Chroma"
-#define	STR_V				"V_Chroma"
+#define	L10N_UV_AUTO			"UV linked Y"
+#define	L10N_Y				"Y_Luminance"
+#define	L10N_U				"U_Chroma"
+#define	L10N_V				"V_Chroma"
 
-#define	STR_TARGETCOLOR		"TargetColor"
-#define	STR_BLEND			"Blend with Original"
+#define	L10N_TARGETCOLOR		"TargetColor"
+#define	L10N_BLEND			"Blend with Original"
 //UIのパラメータ
 typedef struct ParamInfo {
 	A_long		mode;

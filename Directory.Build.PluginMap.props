@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- NF output categories match catalog and solution folders; categories do not declare release approval. -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='_checkout' or '$(MSBuildProjectName)'=='_Skeleton' or '$(MSBuildProjectName)'=='_Test'">
+    <NfOutputCategory>(_SDK)</NfOutputCategory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='SimplexNoise'">
+    <NfOutputCategory>NF Plugins</NfOutputCategory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='CellLineEraser' or '$(MSBuildProjectName)'=='ColorSampler' or '$(MSBuildProjectName)'=='ColorSwitch' or '$(MSBuildProjectName)'=='FloodFill' or '$(MSBuildProjectName)'=='InkingLineBlur' or '$(MSBuildProjectName)'=='InnerFlare' or '$(MSBuildProjectName)'=='InnerFlareRot' or '$(MSBuildProjectName)'=='RimFill' or '$(MSBuildProjectName)'=='SelectiveColorBlur' or '$(MSBuildProjectName)'=='TargetGrad' or '$(MSBuildProjectName)'=='TargetGradRadical' or '$(MSBuildProjectName)'=='Thin' or '$(MSBuildProjectName)'=='WhiteKeying'">
+    <NfOutputCategory>NF-Cell</NfOutputCategory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='AlphaFill' or '$(MSBuildProjectName)'=='Mult' or '$(MSBuildProjectName)'=='PremultiplyColor' or '$(MSBuildProjectName)'=='Threshold'">
+    <NfOutputCategory>NF-Channel</NfOutputCategory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='LogicGray' or '$(MSBuildProjectName)'=='RGBShifter'">
+    <NfOutputCategory>NF-Colorize</NfOutputCategory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='BurstLines' or '$(MSBuildProjectName)'=='Gradient' or '$(MSBuildProjectName)'=='Ligtning' or '$(MSBuildProjectName)'=='MuzzleFlash' or '$(MSBuildProjectName)'=='RadialLines' or '$(MSBuildProjectName)'=='SpeedLines' or '$(MSBuildProjectName)'=='Sputtering' or '$(MSBuildProjectName)'=='SputteringPosition' or '$(MSBuildProjectName)'=='Star' or '$(MSBuildProjectName)'=='TouchLine'">
+    <NfOutputCategory>NF-Draw</NfOutputCategory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='CellEmboss' or '$(MSBuildProjectName)'=='Chroma' or '$(MSBuildProjectName)'=='ColorSpaceInvert' or '$(MSBuildProjectName)'=='Emboss' or '$(MSBuildProjectName)'=='Hyperbolic' or '$(MSBuildProjectName)'=='LineExtraction' or '$(MSBuildProjectName)'=='MaxBlur' or '$(MSBuildProjectName)'=='MinMax' or '$(MSBuildProjectName)'=='Mosaic' or '$(MSBuildProjectName)'=='Outline' or '$(MSBuildProjectName)'=='Posterization'">
+    <NfOutputCategory>NF-Filter</NfOutputCategory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='Grain' or '$(MSBuildProjectName)'=='Noise' or '$(MSBuildProjectName)'=='RandomMosaic'">
+    <NfOutputCategory>NF-Noise</NfOutputCategory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='CameraShake'">
+    <NfOutputCategory>NF-Transform</NfOutputCategory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)'=='NfLanguageSettings'">
+    <NfOutputCategory>_Support</NfOutputCategory>
+  </PropertyGroup>
+</Project>

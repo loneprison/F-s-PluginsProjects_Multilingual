@@ -71,30 +71,30 @@ enum {
 #define ID_TARGET_COLOR(IDX) (ID_TARGET_COLOR1+IDX)
 
 //UIの表示文字列
-#define	STR_INKING_TOPIC		"Inking Colors"
-#define	STR_INKING_COUNT		"Inking Color Count"
-#define	STR_INKING_ITEMS		"1|2|3|4"
+#define	L10N_INKING_TOPIC		"Inking Colors"
+#define	L10N_INKING_COUNT		"Inking Color Count"
+#define	L10N_INKING_ITEMS		"1|2|3|4"
 #define	STR_INKING_DFLT			1
 #define	STR_INKING_NUMS			4
-#define	STR_INKING_COLOR		"Inking"
+#define	L10N_INKING_COLOR		"Inking"
 
 
-#define	STR_MINMAX			"MinMax"
-#define	STR_BLUR			"Blur"
-#define STR_HYPERBOLIC		"Hyperbolic"
-#define	STR_INKING_COLOR_MODE	"Inking Color"
-#define	STR_INKING_COLOR_ITEMS	"Original|CustumColor"
-#define	STR_CUSTAM_COLOR			"CustumColor"
+#define	L10N_MINMAX			"MinMax"
+#define	L10N_BLUR			"Blur"
+#define L10N_HYPERBOLIC		"Hyperbolic"
+#define	L10N_INKING_COLOR_MODE	"Inking Color"
+#define	L10N_INKING_COLOR_ITEMS	"Original|CustumColor"
+#define	L10N_CUSTAM_COLOR			"CustumColor"
 
-#define	STR_TARGET_TOPIC		"Target Colors"
+#define	L10N_TARGET_TOPIC		"Target Colors"
 #
 //#define STR_INKING_COLOR_MODE	"Inking Color Mode"
 
 
-#define	STR_TARGET_MODE			"TargetMode"
-#define	STR_TARGET_ITEMS		"1|2|3|4|5|6|7|8|All"
-#define	STR_TARGET_COLOR		"Target"
-#define	STR_BLEND				"Blend with original"
+#define	L10N_TARGET_MODE			"TargetMode"
+#define	L10N_TARGET_ITEMS		"1|2|3|4|5|6|7|8|All"
+#define	L10N_TARGET_COLOR		"Target"
+#define	L10N_BLEND				"Blend with original"
 
 //UIのパラメータ
 typedef struct ParamInfo {

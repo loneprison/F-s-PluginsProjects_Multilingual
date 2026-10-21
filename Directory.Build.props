@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildThisFileDirectory)Directory.Build.PluginMap.props"
+          Condition="'$(MSBuildProjectExtension)'=='.vcxproj'" />
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
+    <NfRawOutDir>$(AE_PLUGIN_BUILD_DIR)\NF-Plugins\$(NfOutputCategory)\</NfRawOutDir>
+    <OutDir>$([MSBuild]::Escape($(NfRawOutDir)))</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)'=='.vcxproj' and '$(Configuration)'=='Debug' and '$(AE_DEBUG_HOST_EXE)'!=''">
+    <LocalDebuggerCommand>$(AE_DEBUG_HOST_EXE)</LocalDebuggerCommand>
+  </PropertyGroup>
+</Project>

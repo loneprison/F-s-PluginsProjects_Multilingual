@@ -48,20 +48,20 @@ enum {
 };
 #define ID_TARGET_COLOR(n)	(ID_TARGET_COLOR1 + (n))
 //UIの表示文字列
-#define	STR_TARGET_COLOR_TOPIC		"Inking Lines"
+#define	L10N_TARGET_COLOR_TOPIC		"Inking Lines"
 
-#define	STR_TARGET_COLOR_MODE		"Inking Color Count"
-#define	STR_TARGET_COLOR_ITEMS		"1|2|3|4|5|6|7|8"
+#define	L10N_TARGET_COLOR_MODE		"Inking Color Count"
+#define	L10N_TARGET_COLOR_ITEMS		"1|2|3|4|5|6|7|8"
 #define	STR_TARGET_COLOR_COUNT		8
 #define	STR_TARGET_COLOR_DFLT		1
-#define	STR_TARGET_COLOR			"Target"
-#define	STR_TARGET_LEVEL			"Range"
+#define	L10N_TARGET_COLOR			"Target"
+#define	L10N_TARGET_LEVEL			"Range"
 
-#define	STR_THIN_VALUE				"ThinValue"
-#define	STR_WHITE					"Ignore White"
-#define	STR_ALPHAZERO				"Ignore Transparent"
-#define	STR_EDGE					"Refine Edges"
-#define	ID_PARAMS_TOPIC				"Refine Edges"
+#define	L10N_THIN_VALUE				"ThinValue"
+#define	L10N_WHITE					"Ignore White"
+#define	L10N_ALPHAZERO				"Ignore Transparent"
+#define	L10N_EDGE					"Refine Edges"
+#define	L10N_PARAMS_TOPIC				"Refine Edges"
 
 
 //UIのパラメータ

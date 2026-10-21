@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MOSAIC_UNLINK": "解除宽高链接",
+        "L10N_MOSAIC_W": "马赛克宽度",
+        "L10N_MOSAIC_H": "马赛克高度",
+        "L10N_MOSAIC_CENTER": "中心点",
+        "L10N_NOISE": "杂色数量",
+        "L10N_IS_COLOR": "彩色化",
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Topic": {
+        "L10N_NOISE_TOPIC": "杂色参数"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "马赛克"
+      }
+    }
+  }
+}

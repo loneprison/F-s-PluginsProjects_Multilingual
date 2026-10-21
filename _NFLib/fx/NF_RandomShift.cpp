@@ -1,4 +1,4 @@
-#include "NF_RandomShift.h"
+ï»¿#include "NF_RandomShift.h"
 
 template <typename T>
 static void CopyDataT(
@@ -15,9 +15,9 @@ static void CopyDataT(
 	A_long h = world->height;
 	T* dataP = reinterpret_cast<T*>(world->data);
 	A_long x0 = AE_CLAMP(x, 0, w - 1);
-	A_long x1 = AE_CLAMP(x + width - 1, 0, w - 1);  // -1 ‚ð’Ç‰Á
+	A_long x1 = AE_CLAMP(x + width - 1, 0, w - 1);  // -1 ã‚’è¿½åŠ 
 	A_long y0 = AE_CLAMP(y, 0, h - 1);
-	A_long y1 = AE_CLAMP(y + height - 1, 0, h - 1); // -1 ‚ð’Ç‰Á
+	A_long y1 = AE_CLAMP(y + height - 1, 0, h - 1); // -1 ã‚’è¿½åŠ 
 	if (x1 <= x0 || y1 <= y0) return;
 	for (A_long j = y0; j <= y1; j++) {
 		for (A_long i = x0; i <= x1; i++) {
@@ -42,7 +42,7 @@ void PeasteDataT(
 	T* dataP = reinterpret_cast<T*>(world->data);
 	if (x + dWidth < 0 || x >= world->width || y + dHeight < 0 || y >= world->height) return;
 
-	for (A_long j = 0; j < dHeight; j++) {  // <= ‚ð < ‚ÉC³
+	for (A_long j = 0; j < dHeight; j++) {  // <= ã‚’ < ã«ä¿®æ­£
 		A_long yt = y + j;
 		if (yt < 0 || yt >= world->height) continue;
 		for (A_long i = 0; i < dWidth; i++) {
@@ -73,8 +73,8 @@ PF_Err RandomShiftMainT(
 		A_long rh = AE_CLAMP((A_long)((float)rHeight / 2 + hash_float(cnt * 10, 50, seed) * (float)rHeight / 2), 1, rHeight);
 		A_long tx = (A_long)((float)(worldP->width - rw - 1) * hash_float(cnt * 10, 100, seed));
 		A_long ty = (A_long)((float)(worldP->height - rh - 1) * hash_float(cnt * 10, 200, seed));
-		A_long px = AE_CLAMP(tx + (A_long)(offsetX * (0.5f - hash_float(cnt * 10, 300, seed))), 0, worldP->width - 1);  // -1 ‚ð’Ç‰Á
-		A_long py = AE_CLAMP(ty + (A_long)(offsetY * (0.5f - hash_float(cnt * 10, 400, seed))), 0, worldP->height - 1); // -1 ‚ð’Ç‰Á
+		A_long px = AE_CLAMP(tx + (A_long)(offsetX * (0.5f - hash_float(cnt * 10, 300, seed))), 0, worldP->width - 1);  // -1 ã‚’è¿½åŠ 
+		A_long py = AE_CLAMP(ty + (A_long)(offsetY * (0.5f - hash_float(cnt * 10, 400, seed))), 0, worldP->height - 1); // -1 ã‚’è¿½åŠ 
 		CopyDataT<T>(&data, worldP, widthTrue, tx, ty, rw, rh);
 		PeasteDataT<T>(&data, rw, rh, worldP, widthTrue, px, py);
 	}

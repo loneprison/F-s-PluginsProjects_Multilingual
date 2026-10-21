@@ -49,24 +49,24 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_MODE_POP		"draw"
-#define	STR_MODE_ITEMS		"Linear|Radial"
+#define	L10N_MODE_POP		"draw"
+#define	L10N_MODE_ITEMS		"Linear|Radial"
 #define	STR_MODE_COUNT		2
 #define	STR_MODE_DFLT		1
 
 
-#define	STR_START_COLOR		"startColor"
-#define	STR_START_POS		"startPoint"
-#define	STR_START_OPACITY	"startOpacity"
-#define	STR_END_POS			"endPoint"
-#define	STR_END_COLOR		"endColor"
-#define	STR_END_OPACITY		"endOpacity"
-#define	STR_SWAP_COLOR_BTN	"swapColor"
-#define	STR_SWAP_COLOR_BTN2	"swap"
+#define	L10N_START_COLOR		"startColor"
+#define	L10N_START_POS		"startPoint"
+#define	L10N_START_OPACITY	"startOpacity"
+#define	L10N_END_POS			"endPoint"
+#define	L10N_END_COLOR		"endColor"
+#define	L10N_END_OPACITY		"endOpacity"
+#define	L10N_SWAP_COLOR_BTN	"swapColor"
+#define	L10N_SWAP_COLOR_BTN2	"swap"
 
-#define	STR_alpha_hyperbolic	"alphaHyperbolic"
-#define	STR_rgb_hyperbolic		"rgbHyperbolic"
-#define	STR_BLEND			"Blend with original"
+#define	L10N_ALPHA_HYPERBOLIC	"alphaHyperbolic"
+#define	L10N_RGB_HYPERBOLIC		"rgbHyperbolic"
+#define	L10N_BLEND			"Blend with original"
 
 //UIのパラメータ
 typedef struct ParamInfo {

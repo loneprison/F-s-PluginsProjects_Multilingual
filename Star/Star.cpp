@@ -6,6 +6,7 @@
 
 
 #include "Star.h"
+#include "StarText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,19 +17,20 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const StarText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup setup(in_data, out_data);
 
-	setup.AddTopic(STR_MODE_TOPIC, ID_MODE_TOPIC);
+	setup.AddTopic(AETEXT_TOPIC(strings, L10N_MODE_TOPIC), ID_MODE_TOPIC);
 	// 全体設定
 	setup.AddAngle(	// angle
-		STR_ANGLE,
+		AETEXT_PARAM(strings, L10N_ANGLE),
 		0,
 		ID_ANGLE
 	);
 	setup.AddFloatSlider(
-		STR_LENGTH,	// R
+		AETEXT_PARAM(strings, L10N_LENGTH),	// R
 		0,				//VALID_MIN
 		1000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -40,7 +42,7 @@ static PF_Err ParamsSetup (
 		ID_LENGTH
 	);
 	setup.AddFloatSlider(
-		STR_INTENSITY,	// R
+		AETEXT_PARAM(strings, L10N_INTENSITY),	// R
 		0,//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -52,7 +54,7 @@ static PF_Err ParamsSetup (
 		ID_INTENSITY
 	);
 	setup.AddFloatSlider(
-		STR_HYPERBOLIC,	// R
+		AETEXT_PARAM(strings, L10N_HYPERBOLIC),	// R
 		0,			//VALID_MIN
 		50,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -63,20 +65,20 @@ static PF_Err ParamsSetup (
 		FALSE,			//WANT_PHASE
 		ID_HYPERBOLIC
 	);
-	setup.AddPopup(STR_COLOR_MODE,
+	setup.AddPopup(AETEXT_PARAM(strings, L10N_COLOR_MODE),
 		2,
 		1,
-		STR_COLOR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_COLOR_MODE_ITEMS),
 		ID_COLOR_MODE
 	);
 	setup.AddColor(	// color
-		STR_COLOR,
+		AETEXT_PARAM(strings, L10N_COLOR),
 		{ 0xFF, 0x80, 0x80, 0xFF },
 		ID_COLOR
 	);
 	setup.EndTopic(ID_MODE_TOPIC_END);
 	// 各ラインの設定 (トピックを使って整理)
-	const char* line_names[] = { STR_LINE1_TOPIC, STR_LINE2_TOPIC, STR_LINE3_TOPIC, STR_LINE4_TOPIC};
+	const char* line_names[] = { AETEXT_TOPIC(strings, L10N_LINE1_TOPIC), AETEXT_TOPIC(strings, L10N_LINE2_TOPIC), AETEXT_TOPIC(strings, L10N_LINE3_TOPIC), AETEXT_TOPIC(strings, L10N_LINE4_TOPIC)};
 	float default_angles[] = { 0.0, 45.0, 90.0, 135.0 };
 	float default_length[] = { 100.0, 60.0, 100.0, 60.0 };
 	float default_int[] = { 100.0, 100.0, 100.0, 100.0 };
@@ -85,7 +87,7 @@ static PF_Err ParamsSetup (
 	for (int i = 0; i < 4; i++) {
 		setup.AddTopic(line_names[i], ID_LINE1_TOPIC + i* ofs);
 		setup.AddFloatSlider(
-			std::string(std::string(STR_LINE_LEN) + std::to_string(i + 1) + " (%)").c_str(),	// R
+			std::string(std::string(AETEXT_PARAM(strings, L10N_LINE_LEN)) + std::to_string(i + 1) + " (%)").c_str(),	// R
 			0,				//VALID_MIN
 			100,			//VALID_MAX
 			0,				//SLIDER_MIN
@@ -97,7 +99,7 @@ static PF_Err ParamsSetup (
 			ID_LINE1_LEN + i * ofs
 		);
 		setup.AddFloatSlider(
-			std::string(std::string(STR_LINE_INT) + std::to_string(i + 1) +" (%)").c_str(),	// R
+			std::string(std::string(AETEXT_PARAM(strings, L10N_LINE_INT)) + std::to_string(i + 1) +" (%)").c_str(),	// R
 			0,				//VALID_MIN
 			100,			//VALID_MAX
 			0,				//SLIDER_MIN
@@ -109,7 +111,7 @@ static PF_Err ParamsSetup (
 			ID_LINE1_INT + i * ofs
 		);
 		setup.AddAngle(	// angle
-			std::string(std::string(STR_LINE_ANGLE) + std::to_string(i + 1)).c_str(),
+			std::string(std::string(AETEXT_PARAM(strings, L10N_LINE_ANGLE)) + std::to_string(i + 1)).c_str(),
 			default_angles[i],
 			ID_LINE1_ANGLE + i * ofs
 		);
@@ -267,8 +269,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const StarText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -332,7 +337,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			StarText::OpenSettings(in_data, L"NF-Star");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

@@ -6,6 +6,8 @@
 
 
 #include "TouchLines.h"
+#define L10N_LABEL_ON "on"
+#include "TouchLineText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,13 +18,14 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const TouchLineText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// *****************************************************************
-	cs.AddTopic(STR_TARGET_TOPIC, ID_TARGET_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_TARGET_TOPIC), ID_TARGET_TOPIC);
 	cs.AddFloatSlider(	// R
-		STR_VALUE,	//Name
+		AETEXT_PARAM(strings, L10N_VALUE),	//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -33,17 +36,17 @@ static PF_Err ParamsSetup (
 		FALSE,			//WANT_PHASE
 		ID_VALUE
 	);
-	cs.AddPopup(STR_THRESHOLD,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_THRESHOLD),
 		STR_THRESHOLD_COUNT,
 		STR_THRESHOLD_DFLT,
-		STR_THRESHOLD_ITEMS,
+		AETEXT_POPUP(strings, L10N_THRESHOLD_ITEMS),
 		ID_THRESHOLD,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddFloatSlider(	// R
-		STR_LUM_LEVEL,	//Name
+		AETEXT_PARAM(strings, L10N_LUM_LEVEL),	//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -55,7 +58,7 @@ static PF_Err ParamsSetup (
 		ID_LUM_LEVEL
 	);
 	cs.AddFloatSlider(	// R
-		STR_ALPHA_LEVEL,	//Name
+		AETEXT_PARAM(strings, L10N_ALPHA_LEVEL),	//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -69,14 +72,14 @@ static PF_Err ParamsSetup (
 		PF_PUI_INVISIBLE
 	);
 	cs.AddColor(	// color
-		STR_TARGET_COLOR,
+		AETEXT_PARAM(strings, L10N_TARGET_COLOR),
 		{ 0xFF, 0x00, 0x00, 0x00 },
 		ID_TARGET_COLOR,
 		PF_ParamFlag_NONE,
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(	// R
-		STR_TARGET_COLOR_LEVEL,	//Name
+		AETEXT_PARAM(strings, L10N_TARGET_COLOR_LEVEL),	//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -90,32 +93,32 @@ static PF_Err ParamsSetup (
 		PF_PUI_INVISIBLE
 	);
 	cs.AddCheckBox(
-		STR_DRAW_TARGET,
-		"on",
+		AETEXT_PARAM(strings, L10N_DRAW_TARGET),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_DRAW_TARGET
 	);
 	cs.EndTopic(ID_TARGET_TOPIC_END);
 	// *****************************************************************
-	cs.AddTopic(STR_MODE_TOPIC, ID_MODE_TOPIC);
-	cs.AddPopup(STR_MODE,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_MODE_TOPIC), ID_MODE_TOPIC);
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_MODE),
 		STR_MODE_COUNT,
 		STR_MODE_DFLT,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_MODE_ITEMS),
 		ID_MODE,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddAngle(	// angle
-		STR_ANGLE,
+		AETEXT_PARAM(strings, L10N_ANGLE),
 		0,
 		ID_ANGLE,
 		PF_ParamFlag_NONE,
 		PF_PUI_NONE
 	);
 	cs.AddPoint(
-		STR_CENTER,
+		AETEXT_PARAM(strings, L10N_CENTER),
 		50,
 		50,
 		FALSE,
@@ -124,7 +127,7 @@ static PF_Err ParamsSetup (
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(
-		STR_INNER_LENGTH,	//Name
+		AETEXT_PARAM(strings, L10N_INNER_LENGTH),	//Name
 		0,				//VALID_MIN
 		300,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -136,7 +139,7 @@ static PF_Err ParamsSetup (
 		ID_INNER_LENGTH
 	);
 	cs.AddFloatSlider(
-		STR_OUTER_LENGTH,	//Name
+		AETEXT_PARAM(strings, L10N_OUTER_LENGTH),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -148,7 +151,7 @@ static PF_Err ParamsSetup (
 		ID_OUTER_LENGTH
 	);
 	cs.AddFloatSlider(
-		STR_LENGTH_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH_RAND),	//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -160,7 +163,7 @@ static PF_Err ParamsSetup (
 		ID_LENGTH_RAND
 	);
 	cs.AddFloatSlider(
-		STR_SIZE,	//Name
+		AETEXT_PARAM(strings, L10N_SIZE),	//Name
 		0,				//VALID_MIN
 		50,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -172,7 +175,7 @@ static PF_Err ParamsSetup (
 		ID_SIZE
 	);
 	cs.AddFloatSlider(
-		STR_SIZE_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_SIZE_RAND),	//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -184,7 +187,7 @@ static PF_Err ParamsSetup (
 		ID_SIZE_RAND
 	);
 	cs.AddFloatSlider(
-		STR_OPACITY,	//Name
+		AETEXT_PARAM(strings, L10N_OPACITY),	//Name
 		0,				//VALID_MIN
 		300,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -196,7 +199,7 @@ static PF_Err ParamsSetup (
 		ID_OPACITY
 	);
 	cs.AddFloatSlider(
-		STR_OPACITY_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_OPACITY_RAND),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -208,7 +211,7 @@ static PF_Err ParamsSetup (
 		ID_OPACITY_RAND
 	);
 	cs.AddSlider(
-		STR_BLUR,	//Name
+		AETEXT_PARAM(strings, L10N_BLUR),	//Name
 		0,			//VALID_MIN
 		50,			//VALID_MAX
 		0,			//SLIDER_MIN
@@ -217,7 +220,7 @@ static PF_Err ParamsSetup (
 		ID_BLUR
 	);
 	cs.AddFloatSlider(
-		STR_NOISE,	//Name
+		AETEXT_PARAM(strings, L10N_NOISE),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -229,13 +232,13 @@ static PF_Err ParamsSetup (
 		ID_NOISE
 	);
 	cs.AddCheckBox(
-		STR_AUTO_SEED,	//Name
-		"on",
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),	//Name
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_AUTO_SEED
 	);
 	cs.AddSlider(
-		STR_SEED,	//Name
+		AETEXT_PARAM(strings, L10N_SEED),	//Name
 		-30000,			//VALID_MIN
 		30000,			//VALID_MAX
 		-10000,			//SLIDER_MIN
@@ -246,11 +249,11 @@ static PF_Err ParamsSetup (
 
 	cs.EndTopic(ID_MODE_TOPIC_END);
 	// *****************************************************************
-	cs.AddTopic(STR_COLOR_TOPIC, ID_COLOR_TOPIC);
-	cs.AddPopup(STR_COLOR_COUNT,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_COLOR_TOPIC), ID_COLOR_TOPIC);
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_COLOR_COUNT),
 		8,
 		1,
-		STR_COLOR_ITEMS,
+		AETEXT_POPUP(strings, L10N_COLOR_ITEMS),
 		ID_COLOR_COUNT,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
@@ -267,7 +270,7 @@ static PF_Err ParamsSetup (
 		{ 0xFF, 0x7F, 0x7F, 0x7F }
 	};
 	for(A_long i=0; i<8;i++) {
-		std::string name = STR_COLOR + std::to_string(i + 1);
+		std::string name = AETEXT_PARAM(strings, L10N_COLOR) + std::to_string(i + 1);
 		PF_ParamUIFlags ui_flags = PF_PUI_INVISIBLE;
 		if (i==0) {
 			ui_flags = PF_PUI_NONE;
@@ -283,8 +286,8 @@ static PF_Err ParamsSetup (
 	cs.EndTopic(ID_COLOR_TOPIC_ND);
 	// *****************************************************************
 	cs.AddCheckBox(
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLEND
 	);
@@ -598,8 +601,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const TouchLineText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -663,7 +669,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			TouchLineText::OpenSettings(in_data, L"NF-TouchLine");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

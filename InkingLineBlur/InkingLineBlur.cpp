@@ -6,6 +6,8 @@
 
 
 #include "InkingLineBlur.h"
+#define L10N_LABEL_ON "on"
+#include "InkingLineBlurText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,15 +18,16 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const InkingLineBlurText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
-	cs.AddTopic(STR_INKING_TOPIC, ID_INKING_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_INKING_TOPIC), ID_INKING_TOPIC);
 	cs.AddPopup(
-		STR_INKING_COUNT,
+		AETEXT_PARAM(strings, L10N_INKING_COUNT),
 		STR_INKING_NUMS,
 		STR_INKING_DFLT,
-		STR_INKING_ITEMS,
+		AETEXT_POPUP(strings, L10N_INKING_ITEMS),
 		ID_INKING_COUNT,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
@@ -33,7 +36,7 @@ static PF_Err ParamsSetup (
 	PF_ParamFlags pf = PF_ParamFlag_NONE;
 	PF_ParamUIFlags uif = PF_PUI_NONE;
 	for(int i=0; i< COLOR_INKING_COUNT;i++) {
-		std::string str = std::string(STR_INKING_COLOR) +std::to_string(i+1);
+		std::string str = std::string(AETEXT_PARAM(strings, L10N_INKING_COLOR)) +std::to_string(i+1);
 		if (i >0)
 		{
 			uif = PF_PUI_INVISIBLE;
@@ -48,17 +51,17 @@ static PF_Err ParamsSetup (
 	}
 	// ----------------------------------------------------------------
 	cs.AddPopup(
-		STR_INKING_COLOR_MODE,
+		AETEXT_PARAM(strings, L10N_INKING_COLOR_MODE),
 		2,
 		1,
-		STR_INKING_COLOR_ITEMS,
+		AETEXT_POPUP(strings, L10N_INKING_COLOR_ITEMS),
 		ID_INKING_COLOR_MODE,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddColor(	// color
-		STR_CUSTAM_COLOR,
+		AETEXT_PARAM(strings, L10N_CUSTAM_COLOR),
 		{ 0xFF, 0x35, 0x35, 0x35 },
 		ID_CUSTUM_COLOR,
 		PF_ParamFlag_NONE,
@@ -67,7 +70,7 @@ static PF_Err ParamsSetup (
 	cs.EndTopic(ID_INKING_TOPIC_END);
 	
 	cs.AddSlider(	// 
-		STR_MINMAX,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_MINMAX),	//パラメータの名前
 		0, 		//数値入力する場合の最小値
 		1000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -76,7 +79,7 @@ static PF_Err ParamsSetup (
 		ID_MINMAX
 	);
 	cs.AddSlider(	// noise offset
-		STR_BLUR,		//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BLUR),		//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		1000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -85,7 +88,7 @@ static PF_Err ParamsSetup (
 		ID_BLUR
 	);
 	cs.AddFloatSlider(		// 
-		STR_HYPERBOLIC,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_HYPERBOLIC),	//パラメータの名前
 		-10,			//VALID_MIN
 		10,				//VALID_MAX
 		-10,			//SLIDER_MIN
@@ -97,12 +100,12 @@ static PF_Err ParamsSetup (
 		ID_HYPERBOLIC
 	);
 	
-	cs.AddTopic(STR_TARGET_TOPIC, ID_TARGET_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_TARGET_TOPIC), ID_TARGET_TOPIC);
 	cs.AddPopup(
-		STR_TARGET_MODE,
+		AETEXT_PARAM(strings, L10N_TARGET_MODE),
 		9,
 		9,
-		STR_TARGET_ITEMS,
+		AETEXT_POPUP(strings, L10N_TARGET_ITEMS),
 		ID_TARGET_MODE,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
@@ -110,7 +113,7 @@ static PF_Err ParamsSetup (
 	);
 	for (int i = 0; i < 8; i++) {
 		uif = PF_PUI_INVISIBLE;
-		std::string str = std::string(STR_TARGET_COLOR) + std::to_string(i + 1);
+		std::string str = std::string(AETEXT_PARAM(strings, L10N_TARGET_COLOR)) + std::to_string(i + 1);
 		cs.AddColor(	// color
 			str.c_str(),
 			{ 0xFF, (A_u_char)(0xFF - i * 10), (A_u_char)(0xFF - i * 10), 0xFF },
@@ -121,8 +124,8 @@ static PF_Err ParamsSetup (
 	}
 	cs.EndTopic(ID_TARGET_TOPIC_END);
 	cs.AddCheckBox(
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLEND
 	);
@@ -330,8 +333,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const InkingLineBlurText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -395,7 +401,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			InkingLineBlurText::OpenSettings(in_data, L"NF-InkingLineBlur");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

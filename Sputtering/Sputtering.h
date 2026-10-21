@@ -97,43 +97,43 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_TARGET_TOPIC	"Target"
-#define	STR_TARGET			"Target_Mode"
-#define	STR_TARGET_ITEMS	"Alpha|Color1|Color2|Color3|Color4|Color5|Color6|Color7|Color8"
+#define	L10N_TARGET_TOPIC	"Target"
+#define	L10N_TARGET			"Target_Mode"
+#define	L10N_TARGET_ITEMS	"Alpha|Color1|Color2|Color3|Color4|Color5|Color6|Color7|Color8"
 #define	STR_TARGET_COUNT	9
 #define	STR_TARGET_DFLT		1
-#define	STR_TARGET_COLOR	"Target_Color_"
-#define	STR_BORDER_DIRECTION	"Border_Direction"
-#define	STR_DIRECTION_ANGLE		"Direction_Angle"
+#define	L10N_TARGET_COLOR	"Target_Color_"
+#define	L10N_BORDER_DIRECTION	"Border_Direction"
+#define	L10N_DIRECTION_ANGLE		"Direction_Angle"
 
-#define	STR_PARAMS_TOPIC	"Texture"
-#define	STR_PARAMS2_TOPIC	"Parameters"
-#define	STR_SPUT_LAYER		"Sputtering_Texcure_Layer"
-#define	STR_SPUT_LOOP		"TimeSampling"
-#define	STR_SPUT_LOOP_ITEMS	"Random|Loop"
+#define	L10N_PARAMS_TOPIC	"Texture"
+#define	L10N_PARAMS2_TOPIC	"Parameters"
+#define	L10N_SPUT_LAYER		"Sputtering_Texcure_Layer"
+#define	L10N_SPUT_LOOP		"TimeSampling"
+#define	L10N_SPUT_LOOP_ITEMS	"Random|Loop"
 #define	STR_SPUT_LOOP_COUNT	2
 #define	STR_SPUT_LOOP_DFLT	1
-#define	STR_SPUT_LOOP_KOMA	"koma"
+#define	L10N_SPUT_LOOP_KOMA	"koma"
 
-#define	STR_SIZE			"Size"
-#define	STR_SIZE_RAND		"Size_Random"
-#define	STR_AREA_RATE		"Area_Rate"
-#define	STR_BODER_RATE		"Border_Rate"
-#define	STR_SPAWN_COUNT		"Spawn_Count"
-#define	STR_SPAWN_OFFSET	"Spawn_Offset"
-#define	STR_OPACITY			"Opacity"
-#define	STR_OPACITY_RAND	"Opacity_random"
+#define	L10N_SIZE			"Size"
+#define	L10N_SIZE_RAND		"Size_Random"
+#define	L10N_AREA_RATE		"Area_Rate"
+#define	L10N_BODER_RATE		"Border_Rate"
+#define	L10N_SPAWN_COUNT		"Spawn_Count"
+#define	L10N_SPAWN_OFFSET	"Spawn_Offset"
+#define	L10N_OPACITY			"Opacity"
+#define	L10N_OPACITY_RAND	"Opacity_random"
 
-#define	STR_AUTO_SEED		"Auto_Seed"
-#define	STR_SEED			"Seed"
+#define	L10N_AUTO_SEED		"Auto_Seed"
+#define	L10N_SEED			"Seed"
 
-#define	STR_COLORS_TOPIC	"Colors"
-#define	STR_COLORS			"Color_"
-#define	STR_COLORS_NUM		"Colors_Count"
-#define	STR_COLORS_ITEMS	"1|2|3|4|5|6|7|8"
+#define	L10N_COLORS_TOPIC	"Colors"
+#define	L10N_COLORS			"Color_"
+#define	L10N_COLORS_NUM		"Colors_Count"
+#define	L10N_COLORS_ITEMS	"1|2|3|4|5|6|7|8"
 #define	STR_COLORS_COUNT	8
 #define	STR_COLORS_DFLT		1
-#define	STR_BLEND		"Blend with original"
+#define	L10N_BLEND		"Blend with original"
 
 
 //UIのパラメータ

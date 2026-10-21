@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MODE": "模式",
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子",
+        "L10N_START_POS": "起点",
+        "L10N_END_POS": "终点",
+        "L10N_PATH": "路径",
+        "L10N_START1_POS": "起点1",
+        "L10N_START2_POS": "起点2",
+        "L10N_END1_POS": "终点1",
+        "L10N_END2_POS": "终点2",
+        "L10N_2_2POINT_COUNT": "绘制数量",
+        "L10N_START_RAND": "起点随机",
+        "L10N_END_RAND": "终点随机",
+        "L10N_SRC_POS": "发射起点",
+        "L10N_IMPACT1_POS": "终点端点1",
+        "L10N_IMPACT2_POS": "终点端点2",
+        "L10N_IMPACT_RAND": "落点随机",
+        "L10N_BRANCH_CNT": "绘制数量",
+        "L10N_RADICAL_COUNT": "径向数量",
+        "L10N_RADICAL_ANGLE": "放射角度",
+        "L10N_CENTER_POS": "放射中心",
+        "L10N_RADIUS": "放射半径",
+        "L10N_RADIUS_RAND": "随机放射半径",
+        "L10N_WIPE": "擦除",
+        "L10N_START_WEIGHT": "起点大小",
+        "L10N_END_WEIGHT": "终点大小",
+        "L10N_WEIGHT": "线条大小",
+        "L10N_COMPLEXTTY": "湍流复杂度",
+        "L10N_JAGGEDNESS": "湍流强度",
+        "L10N_COMPL_ANGLE": "偏移",
+        "L10N_FORK": "分叉支数",
+        "L10N_COLOR": "颜色"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "两点|路径|两点到两点|一点到两点|放射"
+      },
+      "Topic": {
+        "L10N_PARAMS_TOPIC": "参数"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "闪电"
+      }
+    }
+  }
+}

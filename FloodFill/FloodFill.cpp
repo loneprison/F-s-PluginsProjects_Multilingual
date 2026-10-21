@@ -6,6 +6,9 @@
 
 
 #include "FloodFill.h"
+#define L10N_LABEL_ON "on"
+#define L10N_LABEL_CLEAR "clear"
+#include "FloodFillText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,6 +19,7 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const FloodFillText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 	PF_Pixel 	def_color[] = {
 		{ 0xFF, 0xFF, 0x00, 0x00 },
@@ -31,45 +35,45 @@ static PF_Err ParamsSetup (
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddPopup(	// 
-		STR_PAINT_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_PAINT_COUNT),	//パラメータの名前
 		PAINT_COLOR_NUM,
 		1,			
-		STR_PAINT_ITEMS,				//スライダーの最小値 
+		AETEXT_POPUP(strings, L10N_PAINT_ITEMS),				//スライダーの最小値
 		ID_PAINT_COUNT,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
-	cs.AddTopic(STR_PAINT_TOPIC, ID_PAINT_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_PAINT_TOPIC), ID_PAINT_TOPIC);
 	std::string str;
 	PF_ParamUIFlags uif = PF_PUI_NONE;
 	PF_ParamFlags pf = PF_ParamFlag_NONE;
 
 	for (int i=0; i < PAINT_COLOR_NUM; i++) {
-		 str = std::string(STR_ENABLE_BAR) +std::string(STR_ENABLE) + std::to_string(i+1);
+		 str = std::string(AETEXT_PARAM(strings, L10N_ENABLE_BAR)) +std::string(AETEXT_PARAM(strings, L10N_ENABLE)) + std::to_string(i+1);
 		 if (i > 0) {
 			 uif = PF_PUI_INVISIBLE;
 		 }
 		cs.AddCheckBox(	
 			str.c_str(),
-			"on",
+			AETEXT_LABEL(strings, L10N_LABEL_ON),
 			FALSE,
 			ID_ENABLE(i),
 			pf,
 			uif
 		);
 		// Guide
-		str = std::string(STR_GUIDE) + std::to_string(i+1);
+		str = std::string(AETEXT_PARAM(strings, L10N_GUIDE)) + std::to_string(i+1);
 		cs.AddCheckBox(
 			str.c_str(),
-			"on",
+			AETEXT_LABEL(strings, L10N_LABEL_ON),
 			FALSE,
 			ID_GUIDE(i),
 			PF_ParamFlag_CANNOT_TIME_VARY | PF_ParamFlag_CANNOT_INTERP,
 			uif
 		);
 		// Pos
-		str = std::string(STR_POS) + std::to_string(i+1);
+		str = std::string(AETEXT_PARAM(strings, L10N_POS)) + std::to_string(i+1);
 		cs.AddPoint(
 			str.c_str(),
 			10 + i * 10,
@@ -80,7 +84,7 @@ static PF_Err ParamsSetup (
 			uif
 		);
 		// Color
-		str = std::string(STR_COLOR) + std::to_string(i+1);
+		str = std::string(AETEXT_PARAM(strings, L10N_COLOR)) + std::to_string(i+1);
 		cs.AddColor(	
 			str.c_str(),
 			def_color[i% PAINT_COLOR_NUM],
@@ -92,13 +96,13 @@ static PF_Err ParamsSetup (
 	
 	cs.EndTopic(ID_PAINT_TOPIC_END);
 	cs.AddColor(
-		STR_GUIDE_COLOR,
+		AETEXT_PARAM(strings, L10N_GUIDE_COLOR),
 		{0xFF,0xFF,0,0},
 		ID_GUIDE_COLOR
 	);
 	cs.AddButton(	// button
-		STR_GUIDE_ALL_CLEAR,
-		"clear",
+		AETEXT_PARAM(strings, L10N_GUIDE_ALL_CLEAR),
+		AETEXT_LABEL(strings, L10N_LABEL_CLEAR),
 		ID_GUIDE_ALL_CLEAR,
 		PF_ParamFlag_SUPERVISE
 	);
@@ -281,8 +285,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const FloodFillText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -346,7 +353,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			FloodFillText::OpenSettings(in_data, L"NF-FloodFill");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

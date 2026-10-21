@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "zh": {
+      "L10N_MAX": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:62cbb93ddecd6d7076d4f7edac7decb245d8d9f89eca60f8bd5b6dd2a3eb01fc",
+          "translation": "sha256-v1:18a780258d4c802e6ef7e4c2fd8a3690cbae08d8dc3d7ae5f9522243771bad1d"
+        }
+      },
+      "L10N_PLUGIN_DESC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:713fa9878fb4e2d7eb989741e0c94344910f13bf9cfc242b6c53c479bfa0f17c",
+          "translation": "sha256-v1:b55127d255538925d0c7ac15f352b4c96ac5517c26d5d82a8257e812567a89a5"
+        }
+      }
+    }
+  }
+}

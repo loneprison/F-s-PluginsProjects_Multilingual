@@ -50,18 +50,18 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_PRE_TOPIC		"Pre-processing"
-#define STR_BILATERAL_CB	"Bilateral"
-#define STR_B_RADIUS		"Radius"
-#define STR_B_SIGMA_S		"Sigma_Spatial"
-#define STR_B_SIGMA_R		"Sigma_Range"
-#define	STR_POST_LEVEL_CB	"Post Level"
-#define	STR_POST_LEVEL_LO	"Level_lo"
-#define	STR_POST_LEVEL_HI	"Level_hi"
-#define	STR_OUTER_WIDTH		"Outer Sampling"
-#define	STR_INNER_WIDTH		"Inner Sampling"
-#define	STR_COLOR			"Color"
-#define	STR_BLEND			"Blend with original"
+#define	L10N_PRE_TOPIC		"Pre-processing"
+#define L10N_BILATERAL_CB	"Bilateral"
+#define L10N_B_RADIUS		"Radius"
+#define L10N_B_SIGMA_S		"Sigma_Spatial"
+#define L10N_B_SIGMA_R		"Sigma_Range"
+#define	L10N_POST_LEVEL_CB	"Post Level"
+#define	L10N_POST_LEVEL_LO	"Level_lo"
+#define	L10N_POST_LEVEL_HI	"Level_hi"
+#define	L10N_OUTER_WIDTH		"Outer Sampling"
+#define	L10N_INNER_WIDTH		"Inner Sampling"
+#define	L10N_COLOR			"Color"
+#define	L10N_BLEND			"Blend with original"
 
 //UIのパラメータ
 //-------------------------------------------------------

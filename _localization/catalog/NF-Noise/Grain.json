@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MASTER": "总强度",
+        "L10N_AMOUNT": "强度",
+        "L10N_SIZE": "大小",
+        "L10N_SUB_AMOUNT": "子强度(%)",
+        "L10N_SUB_SIZE": "子大小(%)",
+        "L10N_ACCENT_COUNT": "斑点数量",
+        "L10N_ACCENT_LOLIMIT": "最小斑点数量(%)",
+        "L10N_ACCENT_INTENSITY": "斑点强度",
+        "L10N_MONOCHROME": "单色",
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子"
+      },
+      "Label": {
+        "L10N_MONOCHROME2": "开",
+        "L10N_AUTO_SEED2": "开"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "胶片颗粒"
+      }
+    }
+  }
+}

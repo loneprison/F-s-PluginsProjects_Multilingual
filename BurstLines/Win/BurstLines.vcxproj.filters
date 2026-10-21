@@ -68,9 +68,6 @@
     <ClInclude Include="..\..\..\Headers\AE_EffectSuites.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Util\AE_EffectSuitesHelper.h">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Headers\AE_EffectUI.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -92,12 +89,6 @@
     <ClInclude Include="..\..\..\Util\AEGP_SuiteHandler.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\..\devstudio\Include\BASETSD.H">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\VC98\Include\BASETSD.H">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Util\entry.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -116,9 +107,6 @@
     <ClInclude Include="..\..\..\Headers\PrSDKAESupport.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Headers\PrSDKAEUI.h">
-      <Filter>Header Files\AE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Headers\PrSDKPixelFormat.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>
@@ -127,9 +115,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Util\String_Utils.h">
       <Filter>Header Files\AE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\NFsLibrary\resource.h">
-      <Filter>Header Files\AE\N</Filter>
     </ClInclude>
     <ClInclude Include="..\NF_Target.h" />
     <ClInclude Include="..\BurstLines.h" />
@@ -211,11 +196,17 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="BurstLinesPiPL.rc">
+    <ResourceCompile Include="$(IntDir)BurstLinesPiPL.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
     <ResourceCompile Include="Resource.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Localization"><UniqueIdentifier>{94B8609B-4800-4A79-B1C6-51C359C87CBE}</UniqueIdentifier></Filter>
+    <ClInclude Include="..\..\_localization\AeText.h"><Filter>Localization</Filter></ClInclude>
+    <ClCompile Include="..\..\_localization\core\AeTextClient.cpp"><Filter>Localization</Filter></ClCompile>
+    <None Include="..\..\_localization\catalog\NF-Draw\BurstLines.json"><Filter>Localization</Filter></None>
   </ItemGroup>
 </Project>

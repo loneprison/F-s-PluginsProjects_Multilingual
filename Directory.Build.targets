@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="_localization\families\nf\NfAeText.targets" />
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
+    <OutDir>$([MSBuild]::Escape($(NfRawOutDir)))</OutDir>
+    <NfConfigurationSuffix Condition="'$(Configuration)'=='Debug'">_d</NfConfigurationSuffix>
+    <NfRawCounterpartTargetName Condition="'$(Configuration)'=='Debug'">NF-$(ProjectName)</NfRawCounterpartTargetName>
+    <NfRawCounterpartTargetName Condition="'$(Configuration)'=='Release'">NF-$(ProjectName)_d</NfRawCounterpartTargetName>
+    <NfRawCounterpartPath Condition="'$(NfRawCounterpartTargetName)'!=''">$(NfRawOutDir)$(NfRawCounterpartTargetName).aex</NfRawCounterpartPath>
+    <NfEscapedCounterpartPath>$([MSBuild]::Escape($(NfRawCounterpartPath)))</NfEscapedCounterpartPath>
+    <TargetName>NF-$(ProjectName)$(NfConfigurationSuffix)</TargetName>
+    <TargetExt>.aex</TargetExt>
+    <TargetPath>$(OutDir)$(TargetName)$(TargetExt)</TargetPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
+    <ClCompile>
+      <AdditionalOptions Condition="!Exists('$(AeTextCatalogPath)')">/source-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(TargetPath)</OutputFile>
+      <ShowProgress>NotSet</ShowProgress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
+    <CustomBuild Update="..\*PiPL.r">
+      <Command>cl /nologo /source-charset:utf-8 /I "$(ProjectDir)..\..\..\Headers" /EP "%(FullPath)" &gt; "$(IntDir)%(Filename).rr"
+if errorlevel 1 exit /b 1
+"$(ProjectDir)..\..\..\Resources\PiPLTool.exe" "$(IntDir)%(Filename).rr" "$(IntDir)%(Filename).rrc"
+if errorlevel 1 exit /b 1
+cl /nologo /D MSWindows /EP "$(IntDir)%(Filename).rrc" &gt; "$(IntDir)%(Filename).rc"
+if errorlevel 1 exit /b 1</Command>
+      <Outputs>$(IntDir)%(Filename).rc</Outputs>
+      <AdditionalInputs Condition="Exists('$(ProjectDir)..\NF_Target.h')">$(ProjectDir)..\NF_Target.h;$(ProjectDir)..\..\_NFLib\NF_CATEGORY.h;$(ProjectDir)..\..\_NFLib\NF_Version.h;%(AdditionalInputs)</AdditionalInputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Target Name="ValidateNfPlatform" BeforeTargets="PrepareForBuild"
+          Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
+    <Error Condition="'$(AE_PLUGIN_BUILD_DIR)'==''"
+           Text="AE_PLUGIN_BUILD_DIR must be set to an existing absolute base output directory; this repository appends NF-Plugins." />
+    <Error Condition="'$(AE_PLUGIN_BUILD_DIR)'!='' and !$([System.IO.Path]::IsPathRooted($(AE_PLUGIN_BUILD_DIR)))"
+           Text="AE_PLUGIN_BUILD_DIR must be an absolute path: $(AE_PLUGIN_BUILD_DIR)" />
+    <Error Condition="'$(AE_PLUGIN_BUILD_DIR)'!='' and !Exists('$(AE_PLUGIN_BUILD_DIR)')"
+           Text="AE_PLUGIN_BUILD_DIR does not exist: $(AE_PLUGIN_BUILD_DIR)" />
+    <Error Condition="'$(NfOutputCategory)'==''"
+           Text="Directory.Build.PluginMap.props has no output category for $(MSBuildProjectName)." />
+    <Error Condition="'$(Platform)'!='x64'" Text="NF development builds support Windows x64 only." />
+    <Exec Condition="'$(DesignTimeBuild)'!='true'"
+          Command="uv.exe run --locked --no-dev --project &quot;$(MSBuildThisFileDirectory)_localization\tools&quot; aetext check-classification --repository &quot;$(MSBuildThisFileDirectory).&quot; --project &quot;$(MSBuildProjectFullPath)&quot;" />
+  </Target>
+  <Target Name="RemoveNfPluginCounterpart"
+          AfterTargets="Link"
+          Condition="'$(MSBuildProjectExtension)'=='.vcxproj' and '$(NfEscapedCounterpartPath)'!='' and Exists('$(TargetPath)') and Exists('$(NfEscapedCounterpartPath)')">
+    <Delete Files="$(NfEscapedCounterpartPath)" />
+  </Target>
+  <Import Project="_localization\AeText.Build.targets" />
+</Project>

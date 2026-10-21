@@ -6,6 +6,13 @@
 
 
 #include "ColorSwitch.h"
+#define L10N_LABEL_ON "on"
+#define L10N_FILE_SAVE "csj Json save"
+#define L10N_FILE_LOAD "csj Json load"
+#define L10N_FILE_FILTER "csj Json File (*.csj)"
+#define L10N_OVERWRITE_TITLE "上書き確認"
+#define L10N_OVERWRITE_MESSAGE "ファイルは既に存在します。上書きしますか？"
+#include "ColorSwitchText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,6 +23,7 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const ColorSwitchText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
@@ -32,14 +40,14 @@ static PF_Err ParamsSetup (
 	;
 	// ----------------------------------------------------------------
 	cs.AddCheckBox(	// noise frame
-		STR_ENABLEALL,
-		"on",
+		AETEXT_PARAM(strings, L10N_ENABLEALL),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_ENABLEALL
 	);
 	// ----------------------------------------------------------------
 	cs.AddSlider(	// 
-		STR_ACTIVE_PARAM_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_ACTIVE_PARAM_COUNT),	//パラメータの名前
 		1, 						//数値入力する場合の最小値
 		COLOR_TABLE_MAX,		//数値入力する場合の最大値
 		1,						//スライダーの最小値 
@@ -52,10 +60,10 @@ static PF_Err ParamsSetup (
 	);
 	// ----------------------------------------------------------------
 	cs.AddPopup(
-		STR_MODE_POP,
+		AETEXT_PARAM(strings, L10N_MODE_POP),
 		STR_MODE_COUNT,
 		SwitchMode::SWITCH_MODE_REPLACE,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_MODE_ITEMS),
 		ID_MODE,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
@@ -63,7 +71,7 @@ static PF_Err ParamsSetup (
 	);
 	// ----------------------------------------------------------------
 	cs.AddTopic(
-		STR_TOPIC, 
+		AETEXT_TOPIC(strings, L10N_TOPIC),
 		ID_TOPIC_COLORS
 	);
 
@@ -77,16 +85,16 @@ static PF_Err ParamsSetup (
 		{
 			uif = PF_PUI_INVISIBLE;
 		}
-		buf = std::string(STR_TURNON) + std::to_string(i);
+		buf = std::string(AETEXT_PARAM(strings, L10N_TURNON)) + std::to_string(i);
 		cs.AddCheckBox(	// check box
 			buf.c_str(),
-			"on",
+			AETEXT_LABEL(strings, L10N_LABEL_ON),
 			FALSE,
 			ID_TURNON(i),
 			pf,
 			uif
 		);
-		buf = std::string(STR_OLD) + std::to_string(i);
+		buf = std::string(AETEXT_PARAM(strings, L10N_OLD)) + std::to_string(i);
 		PF_Pixel pc = def_color[i % 8];
 		cs.AddColor(	// old color
 			buf.c_str(),
@@ -95,7 +103,7 @@ static PF_Err ParamsSetup (
 			pf,
 			uif
 		);
-		buf = std::string(STR_NEW) + std::to_string(i);
+		buf = std::string(AETEXT_PARAM(strings, L10N_NEW)) + std::to_string(i);
 		pc.blue /= 2;
 		pc.green /= 2;
 		pc.red /= 2;
@@ -111,20 +119,20 @@ static PF_Err ParamsSetup (
 	cs.EndTopic(ID_TOPIC_END);
 	// ************************************************
 	cs.AddButton(	// button
-		STR_ALL_TURNOFF1,
-		STR_ALL_TURNOFF2,
+		AETEXT_PARAM(strings, L10N_ALL_TURNOFF1),
+		AETEXT_LABEL(strings, L10N_ALL_TURNOFF2),
 		ID_ALL_TURNOFF,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddButton(	// button
-		STR_SAVE_PARAMS1,
-		STR_SAVE_PARAMS2,
+		AETEXT_PARAM(strings, L10N_SAVE_PARAMS1),
+		AETEXT_LABEL(strings, L10N_SAVE_PARAMS2),
 		ID_SAVE_PARAMS,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddButton(	// button
-		STR_LOAD_PARAMS1,
-		STR_LOAD_PARAMS2,
+		AETEXT_PARAM(strings, L10N_LOAD_PARAMS1),
+		AETEXT_LABEL(strings, L10N_LOAD_PARAMS2),
 		ID_LOAD_PARAMS,
 		PF_ParamFlag_SUPERVISE
 	);
@@ -177,6 +185,7 @@ HandleChangedParam(
 	PF_LayerDef					*outputP,
 	PF_UserChangedParamExtra	*extraP)
 {
+	const ColorSwitchText::Strings strings(in_data);
 	PF_Err				err					= PF_Err_NONE,
 						err2				= PF_Err_NONE;
 	if (!extraP) return err;
@@ -198,10 +207,12 @@ HandleChangedParam(
 				}
 				ppath = ChangeFileExtension(ppath, "csj");
 				std::string p = SaveFileDialogWithCheck(
-					std::string("csj Json save"), 
+					std::string(AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_FILE_SAVE))),
 					ppath,
 					{"*.csj"},//std::vector<std::string>
-					std::string("csj Json File (*.csj)")
+					std::string(AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_FILE_FILTER))),
+			AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_OVERWRITE_TITLE)),
+			AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_OVERWRITE_MESSAGE))
 				);
 				if (p.empty() == FALSE)
 				{
@@ -227,10 +238,10 @@ HandleChangedParam(
 					ppath = ChangeFileExtension(ppath, "csj");
 				}
 				std::string p = OpenFileDialog(
-					std::string("csj Json load"),
+					std::string(AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_FILE_LOAD))),
 					ppath,
 					{"*.csj"},//std::vector<std::string>
-					std::string("csj Json File (*.csj)"));
+					std::string(AeText::detail::AboutTextAccess::ScriptUtf8(AETEXT_ABOUT(strings, L10N_FILE_FILTER))));
 
 				if (p.empty() == FALSE)
 				{
@@ -356,8 +367,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const ColorSwitchText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -421,7 +435,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			ColorSwitchText::OpenSettings(in_data, L"NF-ColorSwitch");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

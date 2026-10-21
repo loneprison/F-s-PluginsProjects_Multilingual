@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MAX": "半径"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "最大/最小值"
+      }
+    }
+  }
+}

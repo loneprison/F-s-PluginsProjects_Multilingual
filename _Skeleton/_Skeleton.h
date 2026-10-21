@@ -103,28 +103,28 @@ enum {
 //UIの表示文字列
 
 //-------
-#define	STR_MODE			"mode"
-#define	STR_MODE_ITEMS		"noise|rect|line"
+#define	L10N_MODE			"mode"
+#define	L10N_MODE_ITEMS		"noise|rect|line"
 #define	STR_MODE_COUNT		3
 #define	STR_MODE_DFLT		MODE_NOISE
 
-#define	STR_AUTO_SEED		"autoSeed"
-#define	STR_SEED			"seed"
+#define	L10N_AUTO_SEED		"autoSeed"
+#define	L10N_SEED			"seed"
 
 
 //-------
-#define	STR_NOISE_TOPIC		"noise"
-#define	STR_NOISE_VALUE		"noiseValue"
-#define	STR_NOISE_ISCOlOR	"noiseColor"
+#define	L10N_NOISE_TOPIC		"noise"
+#define	L10N_NOISE_VALUE		"noiseValue"
+#define	L10N_NOISE_ISCOLOR	"noiseColor"
 //-------
-#define	STR_RECT_TOPIC		"rect"
-#define	STR_RECT			"point_"
-#define	STR_RECT_COLOR		"rect_clor"
+#define	L10N_RECT_TOPIC		"rect"
+#define	L10N_RECT			"point_"
+#define	L10N_RECT_COLOR		"rect_clor"
 //-------
-#define	STR_LINE_TOPIC		"line"
-#define	STR_LINE			"point_"
-#define	STR_LINE_W			"weight_"
-#define	STR_LINE_COLOR		"rect_clor"
+#define	L10N_LINE_TOPIC		"line"
+#define	L10N_LINE			"point_"
+#define	L10N_LINE_W			"weight_"
+#define	L10N_LINE_COLOR		"rect_clor"
 
 
 

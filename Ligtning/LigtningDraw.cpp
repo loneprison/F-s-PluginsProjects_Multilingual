@@ -1,4 +1,4 @@
-#include "Ligtning.h"
+ï»¿#include "Ligtning.h"
 
 // *****************************************************************************
 inline A_FloatPoint Lerp(A_FloatPoint a, A_FloatPoint b, float t)
@@ -20,7 +20,7 @@ inline std::vector<a_linePrm> shiftPerPoints(const std::vector<a_linePrm>& point
 	if (per <= 0.0f || per >= 2.0f) return result;
 	if (per == 1.0f || points.size() < 2) return points;
 
-	// ƒ[ƒJƒ‹ƒRƒs[‚ðì¬‚·‚é‚±‚Æ‚Å const §–ñ‚ð‰ñ”ð
+	// ãƒ­ãƒ¼ã‚«ãƒ«ã‚³ãƒ”ãƒ¼ã‚’ä½œæˆã™ã‚‹ã“ã¨ã§ const åˆ¶ç´„ã‚’å›žé¿
 	std::vector<a_linePrm> workPoints = points;
 
 	if (per > 1.0f) {

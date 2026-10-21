@@ -1,4 +1,4 @@
-#include "SelectiveColorBlur.h"
+ï»¿#include "SelectiveColorBlur.h"
 #include <type_traits>
 
 // ----------------------------------------------------------------------------
@@ -8,7 +8,7 @@ template<> struct PixelTraits<PF_Pixel16> { static constexpr A_u_short MAX_VAL =
 template<> struct PixelTraits<PF_PixelFloat> { static constexpr PF_FpShort MAX_VAL = 1.0f; };
 
 // ----------------------------------------------------------------------------
-// F”»’èƒƒWƒbƒN (NF_Utils‚Ìƒ}ƒNƒ‚ğg—p‚µ‚ÄŒµ–§‚É”äŠr)
+// è‰²åˆ¤å®šãƒ­ã‚¸ãƒƒã‚¯ (NF_Utilsã®ãƒã‚¯ãƒ­ã‚’ä½¿ç”¨ã—ã¦å³å¯†ã«æ¯”è¼ƒ)
 template<typename T>
 static inline bool IsTarget(const T& pix, const PF_Pixel* targets, A_long count) {
 	for (A_long i = 0; i < count; ++i) {
@@ -23,7 +23,7 @@ static inline bool IsTarget(const T& pix, const PF_Pixel* targets, A_long count)
 			r = NF_CONVERT32TO8(pix.red); g = NF_CONVERT32TO8(pix.green); b = NF_CONVERT32TO8(pix.blue);
 		}
 
-		// Œë·‚ğ‹–—e‚¹‚¸Œµ–§‚Éˆê’v‚·‚é‚©”»’è
+		// èª¤å·®ã‚’è¨±å®¹ã›ãšå³å¯†ã«ä¸€è‡´ã™ã‚‹ã‹åˆ¤å®š
 		if (r == (A_long)targets[i].red &&
 			g == (A_long)targets[i].green &&
 			b == (A_long)targets[i].blue) {
@@ -44,14 +44,14 @@ struct SelectCopyContext {
 	const PF_Pixel* targets;
 };
 
-// Iterate8Suite2 €‹’‚ÌƒJ[ƒlƒ‹ (ˆø”4‚ÂFrefcon, thread, idx, total)
+// Iterate8Suite2 æº–æ‹ ã®ã‚«ãƒ¼ãƒãƒ« (å¼•æ•°4ã¤ï¼šrefcon, thread, idx, total)
 template<typename T>
 static PF_Err SelectCopy_Kernel(void* refconPV, A_long thread_indexL, A_long i, A_long iterationsL)
 {
 	SelectCopyContext<T>* ctx = reinterpret_cast<SelectCopyContext<T>*>(refconPV);
 	if (!ctx) return PF_Err_INTERNAL_STRUCT_DAMAGED;
 
-	A_long y = i; // ‘æ3ˆø”‚ªŒ»İ‚ÌƒCƒ“ƒfƒbƒNƒX(s)
+	A_long y = i; // ç¬¬3å¼•æ•°ãŒç¾åœ¨ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹(è¡Œ)
 	T* in_ptr = ctx->in_data + (y * ctx->rowbytes);
 	T* out_ptr = ctx->out_data + (y * ctx->rowbytes);
 
@@ -80,7 +80,7 @@ static PF_Err ExecSelectCopy(NF_AE* ae, ParamInfo* infoP) {
 	ctx.target_count = infoP->target_count;
 	ctx.targets = infoP->target_col;
 
-	// Iterate8Suite2 ‚Ì iterate_generic ‚Íˆø”3‚Â
+	// Iterate8Suite2 ã® iterate_generic ã¯å¼•æ•°3ã¤
 	return ae->suitesP->Iterate8Suite2()->iterate_generic(
 		ae->output->height,
 		&ctx,

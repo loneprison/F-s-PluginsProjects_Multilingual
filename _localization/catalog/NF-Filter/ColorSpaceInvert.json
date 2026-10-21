@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MODE": "模式",
+        "L10N_VALUE": "强度"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "RGB 通道|亮度反转(Y)|色相反转(H)"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "色彩空间反相"
+      }
+    }
+  }
+}

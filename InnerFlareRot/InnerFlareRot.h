@@ -46,17 +46,17 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_BLUR			"blur"
-#define	STR_MINMAX			"minMax"
-#define	STR_REVERSE			"reverse"
-#define	STR_REVERSE2		"on"
-#define	STR_HYPERBOLIC		"hyperbolic"
-#define	STR_ROT				"rot"
-#define	STR_LENGTH			"length"
+#define	L10N_BLUR			"blur"
+#define	L10N_MINMAX			"minMax"
+#define	L10N_REVERSE			"reverse"
+#define	L10N_REVERSE2		"on"
+#define	L10N_HYPERBOLIC		"hyperbolic"
+#define	L10N_ROT				"rot"
+#define	L10N_LENGTH			"length"
 #define	STR_OFFSET			"offset"
-#define	STR_COLOR			"color"
-#define	STR_WHITE			"Treat White as Transparent"
-#define	STR_BLEND			"Blend with original"
+#define	L10N_COLOR			"color"
+#define	L10N_WHITE			"Treat White as Transparent"
+#define	L10N_BLEND			"Blend with original"
 
 
 

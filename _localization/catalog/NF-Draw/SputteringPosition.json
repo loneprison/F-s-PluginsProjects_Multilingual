@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_COUNT": "数量",
+        "L10N_MODE": "样式",
+        "L10N_CENTER": "中心点",
+        "L10N_RADIUS": "半径",
+        "L10N_START_POINT": "起点",
+        "L10N_END_POINT": "终点",
+        "L10N_SCALABLE": "启用缩放",
+        "L10N_SCALE": "缩放",
+        "L10N_ANCHOR_POINT_ENABLED": "启用锚点",
+        "L10N_ANCHOR_POINT": "锚点",
+        "L10N_SPUT_LAYER": "纹理图层",
+        "L10N_SIZE": "大小",
+        "L10N_SIZE_RAND": "随机大小",
+        "L10N_SPUT_LOOP": "时间采样",
+        "L10N_SPUT_LOOP_KOMA": "帧间隔",
+        "L10N_SPAWN_COUNT": "点数量",
+        "L10N_SPAWN_OFFSET": "点间距",
+        "L10N_OPACITY": "不透明度",
+        "L10N_OPACITY_RAND": "随机不透明度",
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子",
+        "L10N_COLORS_NUM": "颜色数量",
+        "L10N_COLORS": "颜色_",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "圆形|矩形",
+        "L10N_SPUT_LOOP_ITEMS": "随机|循环",
+        "L10N_COLORS_ITEMS": "1|2|3|4|5|6|7|8"
+      },
+      "Topic": {
+        "L10N_MODE_TOPIC": "模式",
+        "L10N_PARAMS_TOPIC": "纹理",
+        "L10N_PARAMS2_TOPIC": "参数",
+        "L10N_COLORS_TOPIC": "颜色"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "定位喷溅"
+      }
+    }
+  }
+}

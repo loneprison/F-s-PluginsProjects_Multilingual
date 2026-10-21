@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_TARGET_COLOR_MODE": "描线颜色数量",
+        "L10N_TARGET_LEVEL": "阈值",
+        "L10N_TARGET_COLOR": "颜色",
+        "L10N_THIN_VALUE": "收缩值",
+        "L10N_WHITE": "忽略白色",
+        "L10N_ALPHAZERO": "忽略透明像素",
+        "L10N_EDGE": "优化边缘"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_TARGET_COLOR_ITEMS": {"useSource": true}
+      },
+      "Topic": {
+        "L10N_TARGET_COLOR_TOPIC": "目标颜色组",
+        "L10N_PARAMS_TOPIC": "边缘细化"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "细化像素"
+      }
+    }
+  }
+}

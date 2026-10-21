@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_COUNT": "颜色数量",
+        "L10N_COLOR_PREFIX": "颜色",
+        "L10N_DIRECTION": "方向",
+        "L10N_MODE": "模式",
+        "L10N_DISTANCE_HI": "高光距离",
+        "L10N_BLUR_HI": "高光模糊",
+        "L10N_COLOR_HI": "高光颜色",
+        "L10N_DISTANCE_LO": "阴影距离",
+        "L10N_BLUR_LO": "阴影模糊",
+        "L10N_COLOR_LO": "阴影颜色",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_COUNT_ITEMS": "全部|全部 (忽略白色)|1|2|3|4|5|6|7|8",
+        "L10N_MODE_ITEMS": "高光|阴影|高光反转|高光+阴影"
+      },
+      "Topic": {
+        "L10N_COLOR_TOPIC": "目标颜色",
+        "L10N_HI_TOPIC": "高光",
+        "L10N_LO_TOPIC": "阴影"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "赛璐珞浮雕"
+      }
+    }
+  }
+}

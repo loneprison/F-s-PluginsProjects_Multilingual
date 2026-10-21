@@ -6,6 +6,7 @@
 
 
 #include "SelectiveColorBlur.h"
+#include "SelectiveColorBlurText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,6 +17,7 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const SelectiveColorBlurText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 	PF_Pixel defColors[] = {
 		{0xFF,0xFF,0x00,0x00}, // red
@@ -31,7 +33,7 @@ static PF_Err ParamsSetup (
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddSlider(	// noise offset
-		STR_BLUR_VALUE,		//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BLUR_VALUE),		//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		1000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -40,16 +42,16 @@ static PF_Err ParamsSetup (
 		ID_BLUR_VALUE
 	);
 	// ----------------------------------------------------------------
-	cs.AddTopic(STR_TOPIC_COLOR, ID_TOPIC_COLOR);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_TOPIC_COLOR), ID_TOPIC_COLOR);
 	// ----------------------------------------------------------------
 	for (int i = 0; i < COLOR_COUNT; i++) {
-		std::string name_enable = STR_TARGET_ENABLE;
+		std::string name_enable = AETEXT_PARAM(strings, L10N_TARGET_ENABLE);
 		name_enable += std::to_string(i);
-		std::string name_color = STR_TARGET_COL;
+		std::string name_color = AETEXT_PARAM(strings, L10N_TARGET_COL);
 		name_color += std::to_string(i);
 		cs.AddCheckBox(	// noise frame
 			name_enable.c_str(),
-			STR_TARGET_ENABLE1,
+			AETEXT_LABEL(strings, L10N_TARGET_ENABLE1),
 			FALSE,
 			ID_TARGET_ENABLED(i)
 		);
@@ -187,8 +189,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const SelectiveColorBlurText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -252,7 +257,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			SelectiveColorBlurText::OpenSettings(in_data, L"NF-SelectiveColorBlur");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

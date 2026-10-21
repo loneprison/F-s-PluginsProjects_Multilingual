@@ -6,6 +6,8 @@
 
 
 #include "RGBShifter.h"
+#define L10N_LABEL_ON "on"
+#include "RGBShifterText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,21 +18,22 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const RGBShifterText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
-	cs.AddPopup(STR_MODE_POP,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_MODE_POP),
 		STR_MODE_COUNT,
 		STR_MODE_DFLT,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_MODE_ITEMS),
 		ID_MODE,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddFloatSlider(	// R
-		STR_R,			//Name
+		AETEXT_PARAM(strings, L10N_R),			//Name
 		-100,				//VALID_MIN
 		100,				//VALID_MAX
 		-100,				//SLIDER_MIN
@@ -42,7 +45,7 @@ static PF_Err ParamsSetup (
 		ID_R
 	);
 	cs.AddFloatSlider(	// R
-		STR_G,			//Name
+		AETEXT_PARAM(strings, L10N_G),			//Name
 		-100,				//VALID_MIN
 		100,				//VALID_MAX
 		-100,				//SLIDER_MIN
@@ -54,7 +57,7 @@ static PF_Err ParamsSetup (
 		ID_G
 	);
 	cs.AddFloatSlider(	// R
-		STR_B,			//Name
+		AETEXT_PARAM(strings, L10N_B),			//Name
 		-100,				//VALID_MIN
 		100,				//VALID_MAX
 		-100,				//SLIDER_MIN
@@ -66,14 +69,14 @@ static PF_Err ParamsSetup (
 		ID_B
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_UV_AUTO,
-		"on",
+		AETEXT_PARAM(strings, L10N_UV_AUTO),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		TRUE,
 		ID_UV_AUTO,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddFloatSlider(	// R
-		STR_Y,			//Name
+		AETEXT_PARAM(strings, L10N_Y),			//Name
 		-100,				//VALID_MIN
 		100,				//VALID_MAX
 		-100,				//SLIDER_MIN
@@ -87,7 +90,7 @@ static PF_Err ParamsSetup (
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(	// R
-		STR_U,			//Name
+		AETEXT_PARAM(strings, L10N_U),			//Name
 		-100,				//VALID_MIN
 		100,				//VALID_MAX
 		-100,				//SLIDER_MIN
@@ -104,7 +107,7 @@ static PF_Err ParamsSetup (
 	// *****************
 
 	cs.AddFloatSlider(	// R
-		STR_V,			//Name
+		AETEXT_PARAM(strings, L10N_V),			//Name
 		-100,				//VALID_MIN
 		100,				//VALID_MAX
 		-100,				//SLIDER_MIN
@@ -119,7 +122,7 @@ static PF_Err ParamsSetup (
 
 	);
 	cs.AddColor(	// color
-		STR_TARGETCOLOR,
+		AETEXT_PARAM(strings, L10N_TARGETCOLOR),
 		{ 0xFF, 0xFF, 0x00, 0x00 },
 		ID_TARGETCOLOR,
 		PF_PUI_NONE,
@@ -127,7 +130,7 @@ static PF_Err ParamsSetup (
 
 	);
 	cs.AddFloatSlider(	// R
-		STR_BLEND,			//Name
+		AETEXT_PARAM(strings, L10N_BLEND),			//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -323,8 +326,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const RGBShifterText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -388,7 +394,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			RGBShifterText::OpenSettings(in_data, L"NF-RGBShifter");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

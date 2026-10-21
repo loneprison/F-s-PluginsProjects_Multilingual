@@ -6,6 +6,7 @@
 
 
 #include "CameraShake.h"
+#include "CameraShakeText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,12 +17,13 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const CameraShakeText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddFloatSlider(	// R
-		STR_SHAKE_VALUE,			//Name
+		AETEXT_PARAM(strings, L10N_SHAKE_VALUE),			//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -32,9 +34,9 @@ static PF_Err ParamsSetup (
 		FALSE,			//WANT_PHASE
 		ID_SHAKE_VALUE
 	);
-	cs.AddTopic(STE_CAMERA_SHAKE_TOPIC, ID_CAMERA_SHAKE_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_CAMERA_SHAKE_TOPIC), ID_CAMERA_SHAKE_TOPIC);
 	cs.AddFloatSlider(	// R
-		STR_SHAKE_VALUE_RAND,			//Name
+		AETEXT_PARAM(strings, L10N_SHAKE_VALUE_RAND),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -46,7 +48,7 @@ static PF_Err ParamsSetup (
 		ID_SHAKE_VALUE_RAND
 	);
 	cs.AddFloatSlider(	// R
-		STR_SUB_SHAKE,			//Name
+		AETEXT_PARAM(strings, L10N_SUB_SHAKE),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -58,12 +60,12 @@ static PF_Err ParamsSetup (
 		ID_SUB_SHAKE
 	);
 	cs.AddAngle(	// angle
-		STR_ANGLE,
+		AETEXT_PARAM(strings, L10N_ANGLE),
 		5,
 		ID_ANGLE
 	);
 	cs.AddFloatSlider(	// R
-		STR_ANGLE_RAND,			//Name
+		AETEXT_PARAM(strings, L10N_ANGLE_RAND),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -77,7 +79,7 @@ static PF_Err ParamsSetup (
 	cs.EndTopic(ID_CAMERA_SHAKE_TOPIC_END);
 	// *************************************************
 	cs.AddFloatSlider(	// R
-		STR_HAND_SHAKE_VALUE,			//Name
+		AETEXT_PARAM(strings, L10N_HAND_SHAKE_VALUE),			//Name
 		0,				//VALID_MIN
 		300,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -89,7 +91,7 @@ static PF_Err ParamsSetup (
 		ID_HAND_SHAKE_VALUE
 	);
 	cs.AddFloatSlider(	// R
-		STR_HAND_SHAKE_SPEED,			//Name
+		AETEXT_PARAM(strings, L10N_HAND_SHAKE_SPEED),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -103,7 +105,7 @@ static PF_Err ParamsSetup (
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddFloatSlider(	// R
-		STR_HAND_SHAKE_SEED,			//Name
+		AETEXT_PARAM(strings, L10N_HAND_SHAKE_SEED),			//Name
 		-10000,			//VALID_MIN
 		10000,			//VALID_MAX
 		-100,			//SLIDER_MIN
@@ -116,9 +118,9 @@ static PF_Err ParamsSetup (
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
-	cs.AddTopic(STR_HAND_SHAKE_TOPIC, ID_HAND_SHAKE_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_HAND_SHAKE_TOPIC), ID_HAND_SHAKE_TOPIC);
 	cs.AddFloatSlider(	// R
-		STR_AMPLITUDE,			//Name
+		AETEXT_PARAM(strings, L10N_AMPLITUDE),			//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -133,7 +135,7 @@ static PF_Err ParamsSetup (
 	);
 	// *******
 	cs.AddFloatSlider(	// R
-		STR_X_VALUE,			//Name
+		AETEXT_PARAM(strings, L10N_X_VALUE),			//Name
 		0,				//VALID_MIN
 		300,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -145,7 +147,7 @@ static PF_Err ParamsSetup (
 		ID_X_VALUE
 	);
 	cs.AddFloatSlider(	// R
-		STR_X_SPEED1,			//Name
+		AETEXT_PARAM(strings, L10N_X_SPEED1),			//Name
 		0,				//VALID_MIN
 		1000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -159,7 +161,7 @@ static PF_Err ParamsSetup (
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddFloatSlider(	// R
-		STR_X_SPEED2,			//Name
+		AETEXT_PARAM(strings, L10N_X_SPEED2),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -173,7 +175,7 @@ static PF_Err ParamsSetup (
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddFloatSlider(	// R
-		STR_X_SEED,		//Name
+		AETEXT_PARAM(strings, L10N_X_SEED),		//Name
 		-3000,			//VALID_MIN
 		3000,			//VALID_MAX
 		-1000,			//SLIDER_MIN
@@ -188,7 +190,7 @@ static PF_Err ParamsSetup (
 	);
 	// *******
 	cs.AddFloatSlider(	// R
-		STR_Y_VALUE,			//Name
+		AETEXT_PARAM(strings, L10N_Y_VALUE),			//Name
 		0,				//VALID_MIN
 		300,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -200,7 +202,7 @@ static PF_Err ParamsSetup (
 		ID_Y_VALUE
 	);
 	cs.AddFloatSlider(	// R
-		STR_Y_SPEED1,			//Name
+		AETEXT_PARAM(strings, L10N_Y_SPEED1),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -214,7 +216,7 @@ static PF_Err ParamsSetup (
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddFloatSlider(	// R
-		STR_Y_SPEED2,			//Name
+		AETEXT_PARAM(strings, L10N_Y_SPEED2),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -228,7 +230,7 @@ static PF_Err ParamsSetup (
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddFloatSlider(	// R
-		STR_Y_SEED,		//Name
+		AETEXT_PARAM(strings, L10N_Y_SEED),		//Name
 		-3000,			//VALID_MIN
 		3000,			//VALID_MAX
 		-1000,			//SLIDER_MIN
@@ -243,10 +245,10 @@ static PF_Err ParamsSetup (
 	);
 	cs.EndTopic(ID_HANDSHAKE_TOPIC_END);
 	// *************************************************
-	cs.AddPopup(STR_REP_MODE,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_REP_MODE),
 		3,
 		1,
-		STR_REP_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_REP_MODE_ITEMS),
 		ID_EDGE_MODE
 	);
 	
@@ -383,8 +385,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const CameraShakeText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -448,7 +453,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			CameraShakeText::OpenSettings(in_data, L"NF-CameraShake");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

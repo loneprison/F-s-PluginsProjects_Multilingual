@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_LAYER": "图层",
+        "L10N_POS": "位置",
+        "L10N_COUNT": "数量",
+        "L10N_RADIUS": "半径",
+        "L10N_SCALE": "缩放"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "签出测试"
+      }
+    }
+  }
+}

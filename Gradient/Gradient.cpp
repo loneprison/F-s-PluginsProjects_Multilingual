@@ -6,6 +6,8 @@
 
 
 #include "Gradient.h"
+#define L10N_LABEL_ON "on"
+#include "GradientText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,29 +18,30 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const GradientText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
-	cs.AddPopup(STR_MODE_POP,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_MODE_POP),
 		STR_MODE_COUNT,
 		STR_MODE_DFLT,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_MODE_ITEMS),
 		ID_MODE_POP
 	);
 	cs.AddPoint(
-		STR_START_POS,
+		AETEXT_PARAM(strings, L10N_START_POS),
 		25,
 		25,
 		FALSE,
 		ID_START_POS
 	);
 	cs.AddColor(	// color
-		STR_START_COLOR,
+		AETEXT_PARAM(strings, L10N_START_COLOR),
 		{ 0xFF, 0xFF, 0xFF, 0xFF },
 		ID_START_COLOR
 	);
 	cs.AddFloatSlider(	// R
-		STR_START_OPACITY,			//Name
+		AETEXT_PARAM(strings, L10N_START_OPACITY),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -50,19 +53,19 @@ static PF_Err ParamsSetup (
 		ID_START_OPA
 	);
 	cs.AddPoint(
-		STR_END_POS,
+		AETEXT_PARAM(strings, L10N_END_POS),
 		75,
 		75,
 		FALSE,
 		ID_END_POS
 	);
 	cs.AddColor(	// color
-		STR_END_COLOR,
+		AETEXT_PARAM(strings, L10N_END_COLOR),
 		{ 0xFF, 0x00, 0x00, 0x00 },
 		ID_END_COLOR
 	);
 	cs.AddFloatSlider(	// R
-		STR_END_OPACITY,			//Name
+		AETEXT_PARAM(strings, L10N_END_OPACITY),			//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -74,7 +77,7 @@ static PF_Err ParamsSetup (
 		ID_END_OPA
 	);
 	cs.AddFloatSlider(	// R
-		STR_alpha_hyperbolic,			//Name
+		AETEXT_PARAM(strings, L10N_ALPHA_HYPERBOLIC),			//Name
 		-10,			//VALID_MIN
 		50,				//VALID_MAX
 		-2,				//SLIDER_MIN
@@ -86,7 +89,7 @@ static PF_Err ParamsSetup (
 		ID_ID_ALPHA_HYPERBOLIC
 	);
 	cs.AddFloatSlider(	// R
-		STR_rgb_hyperbolic,			//Name
+		AETEXT_PARAM(strings, L10N_RGB_HYPERBOLIC),			//Name
 		-10,			//VALID_MIN
 		50,				//VALID_MAX
 		-2,				//SLIDER_MIN
@@ -100,14 +103,14 @@ static PF_Err ParamsSetup (
 	
 
 	cs.AddButton(	// button
-		STR_SWAP_COLOR_BTN,
-		STR_SWAP_COLOR_BTN2,
+		AETEXT_PARAM(strings, L10N_SWAP_COLOR_BTN),
+		AETEXT_LABEL(strings, L10N_SWAP_COLOR_BTN2),
 		ID_SWAP_COLOR_BTN,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddCheckBox(
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLEND
 	);
@@ -261,8 +264,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const GradientText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -326,7 +332,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			GradientText::OpenSettings(in_data, L"NF-Gradient");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

@@ -103,12 +103,13 @@ static PF_Err NoiseFloat(refconType refcon, A_long xL, A_long yL, PF_PixelFloat*
 	return NoiseT<PF_PixelFloat>(refcon, xL, yL, reinterpret_cast<PF_PixelFloat*>(inP), reinterpret_cast<PF_PixelFloat*>(outP));
 }
 
-PF_Err NoiseExec(
+PF_Err MazzleFlashExec(
 	PF_InData* in_dataP,
+	PF_EffectWorld* input,
 	PF_EffectWorld* output,
 	PF_PixelFormat pixelFormat,
 	AEGP_SuiteHandler* suitesP,
-	float noise,
+	PF_FpLong noise,
 	PF_Boolean isColor,
 	A_long seed
 )

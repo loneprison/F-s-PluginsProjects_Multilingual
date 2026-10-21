@@ -49,13 +49,13 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_BLUR			"blur"
-#define	STR_MINMAX			"max"
-#define	STR_HYPERBOLIC		"hyperbolic"
-#define	STR_REVERCE			"reverce"
-#define	STR_COLOR			"color"
-#define	STR_WHITE			"Treat White as Transparent"
-#define	STR_BLEND			"Blend with original"
+#define	L10N_BLUR			"blur"
+#define	L10N_MINMAX			"max"
+#define	L10N_HYPERBOLIC		"hyperbolic"
+#define	L10N_REVERCE			"reverce"
+#define	L10N_COLOR			"color"
+#define	L10N_WHITE			"Treat White as Transparent"
+#define	L10N_BLEND			"Blend with original"
 
 
 //UIのパラメータ

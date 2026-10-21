@@ -1,12 +1,12 @@
-#include "NF_VectorLine.h"
+ï»¿#include "NF_VectorLine.h"
 
 
-// ƒwƒ‹ƒp[ŠÖ”: ƒxƒNƒgƒ‹‚ÌŠOÏi2Dj
+// ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°: ãƒ™ã‚¯ãƒˆãƒ«ã®å¤–ç©ï¼ˆ2Dï¼‰
 float cross_product(float ax, float ay, float bx, float by) {
     return ax * by - ay * bx;
 }
 
-// ƒwƒ‹ƒp[ŠÖ”: “_P‚©‚çü•ªAB‚Ö‚ÌÅ’Z‹——£i•„†‚È‚µj
+// ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°: ç‚¹Pã‹ã‚‰ç·šåˆ†ABã¸ã®æœ€çŸ­è·é›¢ï¼ˆç¬¦å·ãªã—ï¼‰
 float dist_to_line(float px, float py, float x0, float y0, float x1, float y1) {
     float dx = x1 - x0;
     float dy = y1 - y0;
@@ -33,19 +33,19 @@ void draw_a_rect(std::vector<std::vector<float>>& data,
     float px[] = { x0, x1, x2, x3 };
     float py[] = { y0, y1, y2, y3 };
 
-    // 1. ƒoƒEƒ“ƒfƒBƒ“ƒOƒ{ƒbƒNƒX‚ÌŒvZiÅ“K‰»‚Ì‚½‚ßj
+    // 1. ãƒã‚¦ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒœãƒƒã‚¯ã‚¹ã®è¨ˆç®—ï¼ˆæœ€é©åŒ–ã®ãŸã‚ï¼‰
     int min_x = max(0, (int)std::floor(*std::min_element(px, px + 4) - 1));
     int max_x = min(width - 1, (int)std::ceil(*std::max_element(px, px + 4) + 1));
     int min_y = max(0, (int)std::floor(*std::min_element(py, py + 4) - 1));
     int max_y = min(height - 1, (int)std::ceil(*std::max_element(py, py + 4) + 1));
 
-    // 2. ŠeƒsƒNƒZƒ‹‚É‘Î‚µ‚ÄƒJƒoƒŒƒbƒW‚ğŒvZ
+    // 2. å„ãƒ”ã‚¯ã‚»ãƒ«ã«å¯¾ã—ã¦ã‚«ãƒãƒ¬ãƒƒã‚¸ã‚’è¨ˆç®—
     for (int y = min_y; y <= max_y; ++y) {
         for (int x = min_x; x <= max_x; ++x) {
             float fx = (float)x;
             float fy = (float)y;
 
-            // Še•Ó‚É‘Î‚·‚éŠOÏ‚ğŠm”Fi‘S‚Ä“¯•„†‚È‚ç“à•”j
+            // å„è¾ºã«å¯¾ã™ã‚‹å¤–ç©ã‚’ç¢ºèªï¼ˆå…¨ã¦åŒç¬¦å·ãªã‚‰å†…éƒ¨ï¼‰
             bool inside = true;
             float min_dist = 1e10f;
 
@@ -53,15 +53,15 @@ void draw_a_rect(std::vector<std::vector<float>>& data,
                 int next = (i + 1) % 4;
                 float cp = cross_product(px[next] - px[i], py[next] - py[i], fx - px[i], fy - py[i]);
 
-                // ’¸“_‚Ì‡˜‚ªŒv‰ñ‚è‚©”½Œv‰ñ‚è‚©‚Å•„†‚ª•Ï‚í‚é‚½‚ßAŠÈˆÕ“I‚É”»’è
-                // ‚±‚±‚Å‚Í“ÊlŠpŒ`‚Å‚ ‚é‚±‚Æ‚ğ‘O’ñ‚ÉA•Ó‚©‚ç‚Ì‹——£‚ğ•Û
-                if (cp < 0) inside = false; // Œµ–§‚É‚Í’¸“_‡‚ÉˆË‘¶
+                // é ‚ç‚¹ã®é †åºãŒæ™‚è¨ˆå›ã‚Šã‹åæ™‚è¨ˆå›ã‚Šã‹ã§ç¬¦å·ãŒå¤‰ã‚ã‚‹ãŸã‚ã€ç°¡æ˜“çš„ã«åˆ¤å®š
+                // ã“ã“ã§ã¯å‡¸å››è§’å½¢ã§ã‚ã‚‹ã“ã¨ã‚’å‰æã«ã€è¾ºã‹ã‚‰ã®è·é›¢ã‚’ä¿æŒ
+                if (cp < 0) inside = false; // å³å¯†ã«ã¯é ‚ç‚¹é †ã«ä¾å­˜
 
                 min_dist = min(min_dist, dist_to_line(fx, fy, px[i], py[i], px[next], py[next]));
             }
 
-            // 3. ƒAƒ“ƒ`ƒGƒCƒŠƒAƒXŒW”icoveragej‚ÌŒˆ’è
-            // ‹«ŠE•t‹ßi‹——£1ƒsƒNƒZƒ‹ˆÈ“àj‚ÅŠŠ‚ç‚©‚É•Ï‰»‚³‚¹‚é
+            // 3. ã‚¢ãƒ³ãƒã‚¨ã‚¤ãƒªã‚¢ã‚¹ä¿‚æ•°ï¼ˆcoverageï¼‰ã®æ±ºå®š
+            // å¢ƒç•Œä»˜è¿‘ï¼ˆè·é›¢1ãƒ”ã‚¯ã‚»ãƒ«ä»¥å†…ï¼‰ã§æ»‘ã‚‰ã‹ã«å¤‰åŒ–ã•ã›ã‚‹
             float coverage = 0.0f;
             if (inside) {
                 coverage = min(1.0f, min_dist + 0.5f);
@@ -70,7 +70,7 @@ void draw_a_rect(std::vector<std::vector<float>>& data,
                 coverage = max(0.0f, 0.5f - min_dist);
             }
 
-            // 4. ƒf[ƒ^‚ÌXViƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒfƒBƒ“ƒO•—j
+            // 4. ãƒ‡ãƒ¼ã‚¿ã®æ›´æ–°ï¼ˆã‚¢ãƒ«ãƒ•ã‚¡ãƒ–ãƒ¬ãƒ³ãƒ‡ã‚£ãƒ³ã‚°é¢¨ï¼‰
             data[y][x] = data[y][x] * (1.0f - coverage) + value * coverage;
         }
     }
@@ -106,13 +106,13 @@ void draw_aa_line(std::vector<std::vector<float>>& data,
     float r0 = b0 * 0.5f;
     float r1 = b1 * 0.5f;
 
-    // 1. ƒxƒNƒgƒ‹ŒvZ
+    // 1. ãƒ™ã‚¯ãƒˆãƒ«è¨ˆç®—
     float dx = x1 - x0;
     float dy = y1 - y0;
     float l2 = dx * dx + dy * dy;
-    if (l2 < 1e-6f) return; // ’·‚³‚ª‚Ù‚Ú0‚È‚ç•`‰æ‚µ‚È‚¢
+    if (l2 < 1e-6f) return; // é•·ã•ãŒã»ã¼0ãªã‚‰æç”»ã—ãªã„
 
-    // 2. ƒoƒEƒ“ƒfƒBƒ“ƒOƒ{ƒbƒNƒXi­‚µ—]—T‚ğ‚Âj
+    // 2. ãƒã‚¦ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒœãƒƒã‚¯ã‚¹ï¼ˆå°‘ã—ä½™è£•ã‚’æŒã¤ï¼‰
     float max_r = max(r0, r1) + 1.0f;
     int min_x = AE_CLAMP((int)std::floor(min(x0, x1) - max_r), 0, width - 1);
     int max_x = AE_CLAMP((int)std::ceil(max(x0, x1) + max_r), 0, width - 1);
@@ -124,34 +124,34 @@ void draw_aa_line(std::vector<std::vector<float>>& data,
             float fx = (float)x;
             float fy = (float)y;
 
-            // 3. ü•ªã‚ÌË‰eˆÊ’u t ‚ğŒvZ
+            // 3. ç·šåˆ†ä¸Šã®å°„å½±ä½ç½® t ã‚’è¨ˆç®—
             float t = ((fx - x0) * dx + (fy - y0) * dy) / l2;
 
-            // --- ‰sŠpi•½‚ç‚È’[j‚É‚·‚é‚½‚ß‚Ì”»’è ---
-            // t < 0 ‚Ín“_‚æ‚èè‘OAt > 1 ‚ÍI“_‚æ‚èŒã‚ë
-            // ‚±‚±‚Å‚àƒAƒ“ƒ`ƒGƒCƒŠƒAƒX‚ğŒø‚©‚¹‚é‚½‚ßA‹«ŠE•t‹ß‚Å coverage ‚ği‚é
+            // --- é‹­è§’ï¼ˆå¹³ã‚‰ãªç«¯ï¼‰ã«ã™ã‚‹ãŸã‚ã®åˆ¤å®š ---
+            // t < 0 ã¯å§‹ç‚¹ã‚ˆã‚Šæ‰‹å‰ã€t > 1 ã¯çµ‚ç‚¹ã‚ˆã‚Šå¾Œã‚
+            // ã“ã“ã§ã‚‚ã‚¢ãƒ³ãƒã‚¨ã‚¤ãƒªã‚¢ã‚¹ã‚’åŠ¹ã‹ã›ã‚‹ãŸã‚ã€å¢ƒç•Œä»˜è¿‘ã§ coverage ã‚’çµã‚‹
             float edge_alpha = 1.0f;
             if (t < 0.0f) {
-                // n“_‚Ì’f–ÊF‹——£‚ğ 0.5px ‚ÅŠŠ‚ç‚©‚É‚·‚é
+                // å§‹ç‚¹ã®æ–­é¢ï¼šè·é›¢ã‚’ 0.5px ã§æ»‘ã‚‰ã‹ã«ã™ã‚‹
                 edge_alpha = AE_CLAMP(t * std::sqrt(l2) + 0.5f, 0.0f, 1.0f);
                 t = 0.0f;
             }
             else if (t > 1.0f) {
-                // I“_‚Ì’f–Ê
+                // çµ‚ç‚¹ã®æ–­é¢
                 edge_alpha = AE_CLAMP((1.0f - t) * std::sqrt(l2) + 0.5f, 0.0f, 1.0f);
                 t = 1.0f;
             }
 
-            // 4. ‚»‚Ì’n“_‚Å‚Ì”¼Œa‚Æ‹——£‚ÌŒvZ
+            // 4. ãã®åœ°ç‚¹ã§ã®åŠå¾„ã¨è·é›¢ã®è¨ˆç®—
             float target_r = r0 + t * (r1 - r0);
             float proj_x = x0 + t * dx;
             float proj_y = y0 + t * dy;
             float dist = std::sqrt((fx - proj_x) * (fx - proj_x) + (fy - proj_y) * (fy - proj_y));
 
-            // 5. ƒJƒoƒŒƒbƒWŒvZi‘¾‚³•ûŒüj
+            // 5. ã‚«ãƒãƒ¬ãƒƒã‚¸è¨ˆç®—ï¼ˆå¤ªã•æ–¹å‘ï¼‰
             float radius_alpha = AE_CLAMP(target_r + 0.5f - dist, 0.0f, 1.0f);
 
-            // 6. “ñ‚Â‚ÌƒAƒ‹ƒtƒ@‚ğ‡¬i’f–Ê‚Ì‰s‚³‚Æ‘¾‚³‚ÌŠŠ‚ç‚©‚³j
+            // 6. äºŒã¤ã®ã‚¢ãƒ«ãƒ•ã‚¡ã‚’åˆæˆï¼ˆæ–­é¢ã®é‹­ã•ã¨å¤ªã•ã®æ»‘ã‚‰ã‹ã•ï¼‰
             float final_coverage = radius_alpha * edge_alpha;
 
             if (final_coverage > 0.0f) {
@@ -163,13 +163,13 @@ void draw_aa_line(std::vector<std::vector<float>>& data,
 // **************************************************************************************
 
 /**
- * ƒAƒ“ƒ`ƒGƒCƒŠƒAƒX•t‚«‰Â•Ï•ü•`‰æ
- * @param data •`‰æ‘ÎÛ‚Ì2ŸŒ³”z—ñ
- * @param x0, y0 n“_À•W
- * @param b0 n“_‚Ì‘¾‚³i’¼Œaj
- * @param x1, y1 I“_À•W
- * @param b1 I“_‚Ì‘¾‚³i’¼Œaj
- * @param value •`‰æ‚·‚é’l
+ * ã‚¢ãƒ³ãƒã‚¨ã‚¤ãƒªã‚¢ã‚¹ä»˜ãå¯å¤‰å¹…ç·šæç”»
+ * @param data æç”»å¯¾è±¡ã®2æ¬¡å…ƒé…åˆ—
+ * @param x0, y0 å§‹ç‚¹åº§æ¨™
+ * @param b0 å§‹ç‚¹ã®å¤ªã•ï¼ˆç›´å¾„ï¼‰
+ * @param x1, y1 çµ‚ç‚¹åº§æ¨™
+ * @param b1 çµ‚ç‚¹ã®å¤ªã•ï¼ˆç›´å¾„ï¼‰
+ * @param value æç”»ã™ã‚‹å€¤
  */
 void draw_a_line(
     std::vector<std::vector<float>>& data,
@@ -184,7 +184,7 @@ void draw_a_line(
     float r0 = b0 * 0.5f;
     float r1 = b1 * 0.5f;
 
-    // 1. ƒoƒEƒ“ƒfƒBƒ“ƒOƒ{ƒbƒNƒX‚ÌŒvZ
+    // 1. ãƒã‚¦ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒœãƒƒã‚¯ã‚¹ã®è¨ˆç®—
     float margin = max(r0, r1) + 1.0f;
     int min_x = AE_CLAMP((int)std::floor(min(x0, x1) - margin), 0, width - 1);
     int max_x = AE_CLAMP((int)std::ceil(max(x0, x1) + margin), 0, width - 1);
@@ -200,27 +200,27 @@ void draw_a_line(
             float fx = (float)x;
             float fy = (float)y;
 
-            // 2. ü•ª‚É‘Î‚·‚éË‰eŒW” t ‚ğ‹‚ß‚é
+            // 2. ç·šåˆ†ã«å¯¾ã™ã‚‹å°„å½±ä¿‚æ•° t ã‚’æ±‚ã‚ã‚‹
             float t = 0.0f;
             if (l2 > 0.0f) {
                 t = ((fx - x0) * dx + (fy - y0) * dy) / l2;
                 t = std::clamp(t, 0.0f, 1.0f);
             }
 
-            // 3. ‚»‚Ì’n“_‚Å‚Ìu–Ú•W”¼Œav‚ğ•âŠÔ
+            // 3. ãã®åœ°ç‚¹ã§ã®ã€Œç›®æ¨™åŠå¾„ã€ã‚’è£œé–“
             float target_r = r0 + t * (r1 - r0);
 
-            // 4. ƒsƒNƒZƒ‹‚Æ•âŠÔ‚³‚ê‚½’†S“_‚Æ‚Ì‹——£
+            // 4. ãƒ”ã‚¯ã‚»ãƒ«ã¨è£œé–“ã•ã‚ŒãŸä¸­å¿ƒç‚¹ã¨ã®è·é›¢
             float proj_x = x0 + t * dx;
             float proj_y = y0 + t * dy;
             float dist = std::sqrt((fx - proj_x) * (fx - proj_x) + (fy - proj_y) * (fy - proj_y));
 
-            // 5. ƒAƒ“ƒ`ƒGƒCƒŠƒAƒXiƒJƒoƒŒƒbƒWŒvZj
-            // ”¼Œa‚Ì“à‘¤‚È‚ç1.0AŠO‘¤1pxˆÈã‚È‚ç0.0
+            // 5. ã‚¢ãƒ³ãƒã‚¨ã‚¤ãƒªã‚¢ã‚¹ï¼ˆã‚«ãƒãƒ¬ãƒƒã‚¸è¨ˆç®—ï¼‰
+            // åŠå¾„ã®å†…å´ãªã‚‰1.0ã€å¤–å´1pxä»¥ä¸Šãªã‚‰0.0
             float coverage = AE_CLAMP(target_r + 0.5f - dist, 0.0f, 1.0f);
 
             if (coverage > 0.0f) {
-                // Œ³‚Ì’l‚ÆüŒ`•âŠ®iAlpha Blending•—j
+                // å…ƒã®å€¤ã¨ç·šå½¢è£œå®Œï¼ˆAlpha Blendingé¢¨ï¼‰
                 data[y][x] = data[y][x] * (1.0f - coverage) + value * coverage;
             }
         }
@@ -270,12 +270,12 @@ void draw_polyline(
         float x0 = points[i].x, y0 = points[i].y, r0 = points[i].b * 0.5f;
         float x1 = points[i + 1].x, y1 = points[i + 1].y, r1 = points[i + 1].b * 0.5f;
 
-        // 1. ü•ª‚ÌƒxƒNƒgƒ‹ŒvZ
+        // 1. ç·šåˆ†ã®ãƒ™ã‚¯ãƒˆãƒ«è¨ˆç®—
         float dx = x1 - x0;
         float dy = y1 - y0;
         float l2 = dx * dx + dy * dy;
 
-        // 2. ‚±‚Ìü•ª‚ª‰e‹¿‚·‚é”ÍˆÍiƒoƒEƒ“ƒfƒBƒ“ƒOƒ{ƒbƒNƒXj‚ğŒvZ
+        // 2. ã“ã®ç·šåˆ†ãŒå½±éŸ¿ã™ã‚‹ç¯„å›²ï¼ˆãƒã‚¦ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒœãƒƒã‚¯ã‚¹ï¼‰ã‚’è¨ˆç®—
         float max_r = max(r0, r1) + 1.5f;
         int min_x = AE_CLAMP((int)(min(x0, x1) - max_r), 0, width - 1);
         int max_x = AE_CLAMP((int)(max(x0, x1) + max_r), 0, width - 1);
@@ -286,27 +286,27 @@ void draw_polyline(
             for (int x = min_x; x <= max_x; ++x) {
                 float fx = (float)x, fy = (float)y;
 
-                // 3. “_(fx, fy)‚©‚çü•ª‚Ö‚ÌÅ’Z‹——£‚ğ‹‚ß‚é
+                // 3. ç‚¹(fx, fy)ã‹ã‚‰ç·šåˆ†ã¸ã®æœ€çŸ­è·é›¢ã‚’æ±‚ã‚ã‚‹
                 float t = 0.0f;
                 if (l2 > 0.0f) {
                     t = AE_CLAMP(((fx - x0) * dx + (fy - y0) * dy) / l2, 0.0f, 1.0f);
                 }
 
-                // ü•ªã‚ÌÅ’Z’n“_‚ÌÀ•W
+                // ç·šåˆ†ä¸Šã®æœ€çŸ­åœ°ç‚¹ã®åº§æ¨™
                 float proj_x = x0 + t * dx;
                 float proj_y = y0 + t * dy;
 
-                // ‚»‚Ì’n“_‚Å‚Ìu‘¾‚³i”¼Œajv‚ğüŒ`•âŠÔ
+                // ãã®åœ°ç‚¹ã§ã®ã€Œå¤ªã•ï¼ˆåŠå¾„ï¼‰ã€ã‚’ç·šå½¢è£œé–“
                 float target_r = r0 + t * (r1 - r0);
 
-                // ƒsƒNƒZƒ‹‚Æü•ª‚Ì‹——£
+                // ãƒ”ã‚¯ã‚»ãƒ«ã¨ç·šåˆ†ã®è·é›¢
                 float dist = std::sqrt((fx - proj_x) * (fx - proj_x) + (fy - proj_y) * (fy - proj_y));
 
-                // 4. ƒAƒ“ƒ`ƒGƒCƒŠƒAƒXŒvZ
+                // 4. ã‚¢ãƒ³ãƒã‚¨ã‚¤ãƒªã‚¢ã‚¹è¨ˆç®—
                 float alpha = AE_CLAMP(target_r + 0.5f - dist, 0.0f, 1.0f);
 
                 if (alpha > 0.0f) {
-                    // 5. Šù‘¶‚Ì•`‰æ“à—e‚ÆuÅ‘å’lv‚Å‡¬i‚±‚ê‚Åd‚È‚è‚àŒ„ŠÔ‚à‰ğŒˆj
+                    // 5. æ—¢å­˜ã®æç”»å†…å®¹ã¨ã€Œæœ€å¤§å€¤ã€ã§åˆæˆï¼ˆã“ã‚Œã§é‡ãªã‚Šã‚‚éš™é–“ã‚‚è§£æ±ºï¼‰
                     data[y][x] = max(data[y][x], v * alpha);
                 }
             }

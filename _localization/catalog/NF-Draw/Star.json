@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_ANGLE": "整体角度",
+        "L10N_LENGTH": "整体长度(px)",
+        "L10N_INTENSITY": "整体强度",
+        "L10N_HYPERBOLIC": "偏差",
+        "L10N_COLOR_MODE": "颜色模式",
+        "L10N_COLOR": "自定义颜色",
+        "L10N_LINE_LEN": "长度_",
+        "L10N_LINE_INT": "强度_",
+        "L10N_LINE_ANGLE": "角度偏移_"
+      },
+      "Popup": {
+        "L10N_COLOR_MODE_ITEMS": "原始颜色|自定义颜色"
+      },
+      "Topic": {
+        "L10N_MODE_TOPIC": "参数",
+        "L10N_LINE1_TOPIC": "线条1(垂直)",
+        "L10N_LINE2_TOPIC": "线条2(对角1)",
+        "L10N_LINE3_TOPIC": "线条3(水平)",
+        "L10N_LINE4_TOPIC": "线条4(对角2)"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "星芒"
+      }
+    }
+  }
+}

@@ -6,6 +6,9 @@
 
 
 #include "CellEmboss.h"
+#define L10N_LABEL_ON "on"
+#define L10N_COLOR_PREFIX "color"
+#include "CellEmbossText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,20 +19,21 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const CellEmbossText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 
-	cs.AddPopup(STR_COUNT,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_COUNT),
 		10,
 		2,
-		STR_COUNT_ITEMS,
+		AETEXT_POPUP(strings, L10N_COUNT_ITEMS),
 		ID_COUNT
 	);
 	// *************************
-	cs.AddTopic(STR_COLOR_TOPIC, ID_COLOR_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_COLOR_TOPIC), ID_COLOR_TOPIC);
 	for (int i = 0; i < 8; i++) {
-		std::string buf = std::string("color") +std::to_string(i+1);
+		std::string buf = std::string(AETEXT_PARAM(strings, L10N_COLOR_PREFIX)) +std::to_string(i+1);
 		cs.AddColor(	// color
 			buf.c_str(),
 			{ 0xFF, (A_u_char)(i * 32), (A_u_char)(255 - i * 32), 0xFF },
@@ -40,22 +44,22 @@ static PF_Err ParamsSetup (
 	// *************************
 
 	cs.AddAngle(	// angle
-		STR_DIRECTION,
+		AETEXT_PARAM(strings, L10N_DIRECTION),
 		45,
 		ID_DIRECTION//,
 		//PF_ParamFlag_NONE,
 		//PF_PUI_DISABLED
 	);
-	cs.AddPopup(STR_MODE,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_MODE),
 		4,
 		1,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_MODE_ITEMS),
 		ID_MODE
 	);
 	// ****************
-	cs.AddTopic(STR_HI_TOPIC, ID_HI_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_HI_TOPIC), ID_HI_TOPIC);
 	cs.AddFloatSlider(
-		STR_DISTANCE_HI,			//Name
+		AETEXT_PARAM(strings, L10N_DISTANCE_HI),			//Name
 		0,				//VALID_MIN
 		300,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -68,7 +72,7 @@ static PF_Err ParamsSetup (
 	);
 	// ----------------------------------------------------------------
 	cs.AddSlider(	// 
-		STR_BLUR_HI,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BLUR_HI),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		1000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -80,15 +84,15 @@ static PF_Err ParamsSetup (
 		//PF_ParamFlag_CANNOT_INTERP
 	);
 	cs.AddColor(
-		STR_COLOR_HI,
+		AETEXT_PARAM(strings, L10N_COLOR_HI),
 		{ 0xFF, 0xFF, 0xFF, 0xFF },
 		ID_COLOR_HI
 	);
 	cs.EndTopic(ID_HI_TOPIC_END);
 	// ***********
-	cs.AddTopic(STR_LO_TOPIC, ID_LO_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_LO_TOPIC), ID_LO_TOPIC);
 	cs.AddFloatSlider(
-		STR_DISTANCE_LO,			//Name
+		AETEXT_PARAM(strings, L10N_DISTANCE_LO),			//Name
 		0,				//VALID_MIN
 		300,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -102,7 +106,7 @@ static PF_Err ParamsSetup (
 	
 	// ----------------------------------------------------------------
 	cs.AddSlider(	// 
-		STR_BLUR_LO,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BLUR_LO),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		1000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -115,14 +119,14 @@ static PF_Err ParamsSetup (
 	);
 	
 	cs.AddColor(
-		STR_COLOR_LO,
+		AETEXT_PARAM(strings, L10N_COLOR_LO),
 		{ 0xFF, 0x00, 0x00, 0x00 },
 		ID_COLOR_LO
 	);
 	cs.EndTopic(ID_LO_TOPIC_END);
 	cs.AddCheckBox(
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLEND
 	);
@@ -302,8 +306,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const CellEmbossText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -367,7 +374,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			CellEmbossText::OpenSettings(in_data, L"NF-CellEmboss");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

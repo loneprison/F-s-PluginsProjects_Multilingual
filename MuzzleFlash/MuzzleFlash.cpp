@@ -6,6 +6,7 @@
 
 
 #include "MuzzleFlash.h"
+#include "MuzzleFlashText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,18 +17,19 @@ static PF_Err ParamsSetup(
 	PF_ParamDef* params[],
 	PF_LayerDef* output)
 {
+	const MuzzleFlashText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddPoint(
-		STR_PRONGS_POINT,
+		AETEXT_PARAM(strings, L10N_PRONGS_POINT),
 		50,
 		50,
 		FALSE,
 		ID_PRONGS_POINT
 	); cs.AddSlider(	// 
-		STR_PRONGS_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_PRONGS_COUNT),	//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		500,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -36,7 +38,7 @@ static PF_Err ParamsSetup(
 		ID_PRONGS_COUNT
 	);
 	cs.AddFloatSlider(	// R
-		STR_PRONGS_ROOT_SIZE,			//Name
+		AETEXT_PARAM(strings, L10N_PRONGS_ROOT_SIZE),			//Name
 		5,				//VALID_MIN
 		200,			//VALID_MAX
 		10,				//SLIDER_MIN
@@ -48,7 +50,7 @@ static PF_Err ParamsSetup(
 		ID_PRONGS_ROOT_SIZE
 	);
 	cs.AddFloatSlider(	// R
-		STR_PRONGS_LENGTH,			//Name
+		AETEXT_PARAM(strings, L10N_PRONGS_LENGTH),			//Name
 		10,				//VALID_MIN
 		2000,			//VALID_MAX
 		20,				//SLIDER_MIN
@@ -60,7 +62,7 @@ static PF_Err ParamsSetup(
 		ID_PRONGS_LENGTH
 	);
 	cs.AddSlider(	// 
-		STR_PRONGS_BRANCH,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_PRONGS_BRANCH),	//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		100,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -69,12 +71,12 @@ static PF_Err ParamsSetup(
 		ID_PRONGS_BRANCH
 	);
 	cs.AddAngle(	// angle
-		STR_PRONGS_DIR,
+		AETEXT_PARAM(strings, L10N_PRONGS_DIR),
 		0,
 		ID_PRONGS_DIR
 	);
 	cs.AddFloatSlider(	// R
-		STR_PRONGS_ANGLE,	//Name
+		AETEXT_PARAM(strings, L10N_PRONGS_ANGLE),	//Name
 		0,				//VALID_MIN
 		360,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -86,13 +88,13 @@ static PF_Err ParamsSetup(
 		ID_PRONGS_ANGLE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_PRONGS_FLASH_SCALE,
+		AETEXT_PARAM(strings, L10N_PRONGS_FLASH_SCALE),
 		"",
 		FALSE,
 		ID_PRONGS_FLASH_SCALE
 	);
 	cs.AddFloatSlider(	// R
-		STR_PRONGS_SCALE,	//Name
+		AETEXT_PARAM(strings, L10N_PRONGS_SCALE),	//Name
 		0,				//VALID_MIN
 		10000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -104,7 +106,7 @@ static PF_Err ParamsSetup(
 		ID_PRONGS_SCALE
 	);
 	cs.AddFloatSlider(	// R
-		STR_PRONGS_SCALE2,	//Name
+		AETEXT_PARAM(strings, L10N_PRONGS_SCALE2),	//Name
 		0,				//VALID_MIN
 		10000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -116,9 +118,9 @@ static PF_Err ParamsSetup(
 		ID_PRONGS_SCALE2
 	);
 	// *****************************************************************
-	cs.AddTopic(STR_SPARKS, ID_SPARKS);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_SPARKS), ID_SPARKS);
 	cs.AddSlider(	// 
-		STR_SPARKS_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SPARKS_COUNT),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		100,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -127,7 +129,7 @@ static PF_Err ParamsSetup(
 		ID_SPARKS_COUNT
 	);
 	cs.AddSlider(	// 
-		STR_SPARKS_SUBCOUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SPARKS_SUBCOUNT),	//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		20,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -136,7 +138,7 @@ static PF_Err ParamsSetup(
 		ID_SPARKS_SUBCOUNT
 	);
 	cs.AddFloatSlider(	// R
-		STR_SPARKS_SCALE,	//Name
+		AETEXT_PARAM(strings, L10N_SPARKS_SCALE),	//Name
 		10,				//VALID_MIN
 		500,			//VALID_MAX
 		10,				//SLIDER_MIN
@@ -150,19 +152,19 @@ static PF_Err ParamsSetup(
 	cs.EndTopic(ID_SPARKS_END);
 	// *****************************************************************
 	cs.AddColor(// color
-		STR_PRONGS_COLOR,
+		AETEXT_PARAM(strings, L10N_PRONGS_COLOR),
 		{ 0xFF, 0XFF,0xFF, 0xFF },
 		ID_PRONGS_COLOR
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_AUTO_SEED,
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),
 		"",
 		FALSE,
 		ID_AUTO_SEED,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddSlider(	// 
-		STR_SEED,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SEED),	//パラメータの名前
 		-30000, 		//数値入力する場合の最小値
 		30000,			//数値入力する場合の最大値
 		-1000,			//スライダーの最小値 
@@ -340,8 +342,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const MuzzleFlashText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -408,7 +413,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			MuzzleFlashText::OpenSettings(in_data, L"NF-MuzzleFlash");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

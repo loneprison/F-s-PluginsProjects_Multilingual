@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_ENABLEALL": "全部启用",
+        "L10N_ACTIVE_PARAM_COUNT": "启用方案数量",
+        "L10N_MODE_POP": "模式",
+        "L10N_TURNON": "方案",
+        "L10N_OLD": "原始颜色",
+        "L10N_NEW": "替换颜色",
+        "L10N_ALL_TURNOFF1": "全部关闭",
+        "L10N_SAVE_PARAMS1": "保存参数",
+        "L10N_LOAD_PARAMS1": "加载参数"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开",
+        "L10N_ALL_TURNOFF2": "关闭",
+        "L10N_SAVE_PARAMS2": "保存",
+        "L10N_LOAD_PARAMS2": "加载"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "替换|键控|提取"
+      },
+      "Topic": {
+        "L10N_TOPIC": "颜色"
+      },
+      "About": {
+        "L10N_FILE_SAVE": "保存 CSJ JSON",
+        "L10N_FILE_FILTER": "CSJ JSON 文件 (*.csj)",
+        "L10N_OVERWRITE_TITLE": "确认覆盖",
+        "L10N_OVERWRITE_MESSAGE": "文件已存在，是否覆盖？",
+        "L10N_FILE_LOAD": "加载 CSJ JSON",
+        "L10N_PLUGIN_DESC": "颜色替换"
+      }
+    }
+  }
+}

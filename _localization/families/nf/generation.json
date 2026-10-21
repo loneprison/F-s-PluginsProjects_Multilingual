@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "familyId": "nf",
+  "sourceVariantId": "source",
+  "variants": [
+    {
+      "id": "source",
+      "textSource": {
+        "kind": "source"
+      },
+      "encodingProfile": "windows-932"
+    },
+    {
+      "id": "zh",
+      "textSource": {
+        "kind": "translation",
+        "locale": "zh"
+      },
+      "encodingProfile": "windows-936"
+    }
+  ]
+}

@@ -34,7 +34,7 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_MAX				"minmax"
+#define	L10N_MAX				"minmax"
 
 
 //UIのパラメータ

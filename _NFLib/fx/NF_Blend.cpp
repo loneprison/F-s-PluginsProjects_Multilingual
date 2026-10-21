@@ -1,12 +1,12 @@
-#include "NF_Blend.h"
+ï»¿#include "NF_Blend.h"
 
 // *******************************************************************************
-// ƒrƒbƒg[“x‚²‚Æ‚ÌÅ‘å’l‚ğæ“¾‚·‚éƒwƒ‹ƒp[
+// ãƒ“ãƒƒãƒˆæ·±åº¦ã”ã¨ã®æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼
 template <typename T>
 inline PF_FpLong GetMaxChannel() {
 	if (std::is_same<T, PF_Pixel8>::value) return 255.0;
 	if (std::is_same<T, PF_Pixel16>::value) return 32768.0;
-	return 1.0; // PF_PixelFloat—p
+	return 1.0; // PF_PixelFloatç”¨
 }
 template <typename T> struct PixelTraits;
 
@@ -22,7 +22,7 @@ template <> struct PixelTraits<PF_PixelFloat> {
 	typedef PF_FpShort channel_type;
 };
 
-// --- 5. ‹¤’ÊƒtƒBƒ‹ƒ^ƒeƒ“ƒvƒŒ[ƒg ---
+// --- 5. å…±é€šãƒ•ã‚£ãƒ«ã‚¿ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ ---
 template <typename T>
 static PF_Err BlendBehindT(
 	refconType refcon,
@@ -60,9 +60,9 @@ static PF_Err BlendBehindT(
 		a *= max_val;
 	}
 
-	// o—Íˆ— (PixelTraits‚ğg—p‚µ‚Ä“KØ‚ÈŒ^‚ÉƒLƒƒƒXƒg)
+	// å‡ºåŠ›å‡¦ç† (PixelTraitsã‚’ä½¿ç”¨ã—ã¦é©åˆ‡ãªå‹ã«ã‚­ãƒ£ã‚¹ãƒˆ)
 	if (std::is_same<T, PF_PixelFloat>::value) {
-		// 32bit float ‚Ìê‡‚ÍƒNƒ‰ƒ“ƒv•s—v
+		// 32bit float ã®å ´åˆã¯ã‚¯ãƒ©ãƒ³ãƒ—ä¸è¦
 		outP->red = static_cast<typename PixelTraits<T>::channel_type>(r);
 		outP->green = static_cast<typename PixelTraits<T>::channel_type>(g);
 		outP->blue = static_cast<typename PixelTraits<T>::channel_type>(b);
@@ -70,7 +70,7 @@ static PF_Err BlendBehindT(
 
 	}
 	else {
-		// ®”Œ^‚Ìê‡‚ÍƒNƒ‰ƒ“ƒv‚µ‚Ä‚©‚ç“KØ‚ÈŒ^‚ÉƒLƒƒƒXƒg
+		// æ•´æ•°å‹ã®å ´åˆã¯ã‚¯ãƒ©ãƒ³ãƒ—ã—ã¦ã‹ã‚‰é©åˆ‡ãªå‹ã«ã‚­ãƒ£ã‚¹ãƒˆ
 		outP->red = static_cast<typename PixelTraits<T>::channel_type>(AE_CLAMP(r, 0, max_val));
 		outP->green = static_cast<typename PixelTraits<T>::channel_type>(AE_CLAMP(g, 0, max_val));
 		outP->blue = static_cast<typename PixelTraits<T>::channel_type>(AE_CLAMP(b, 0, max_val));
@@ -81,17 +81,17 @@ static PF_Err BlendBehindT(
 	return PF_Err_NONE;
 }
 
-// 8-bit—p
+// 8-bitç”¨
 static PF_Err BlendBehind8(refconType refcon, A_long xL, A_long yL, PF_Pixel* inP, PF_Pixel* outP) {
 	return BlendBehindT<PF_Pixel8>(refcon, xL, yL, reinterpret_cast<PF_Pixel8*>(inP), reinterpret_cast<PF_Pixel8*>(outP));
 }
 
-// 16-bit—p
+// 16-bitç”¨
 static PF_Err BlendBehind16(refconType refcon, A_long xL, A_long yL, PF_Pixel16* inP, PF_Pixel16* outP)
 {
 	return BlendBehindT<PF_Pixel16>(refcon, xL, yL, reinterpret_cast<PF_Pixel16*>(inP), reinterpret_cast<PF_Pixel16*>(outP));
 }
-// 32-bit—p (Float)
+// 32-bitç”¨ (Float)
 static PF_Err BlendBehindFloat(refconType refcon, A_long xL, A_long yL, PF_PixelFloat* inP, PF_PixelFloat* outP)
 {
 	return BlendBehindT<PF_PixelFloat>(refcon, xL, yL, reinterpret_cast<PF_PixelFloat*>(inP), reinterpret_cast<PF_PixelFloat*>(outP));
@@ -107,7 +107,7 @@ PF_Err BlendBehind(
 {
 	PF_Err err = PF_Err_NONE;
 
-	// ƒsƒNƒZƒ‹ƒtƒH[ƒ}ƒbƒg‚É‰‚¶‚Äƒeƒ“ƒvƒŒ[ƒgŠÖ”‚ğŒÄ‚Ño‚·
+	// ãƒ”ã‚¯ã‚»ãƒ«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¿œã˜ã¦ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆé–¢æ•°ã‚’å‘¼ã³å‡ºã™
 	switch (pixelFormat) {
 	case PF_PixelFormat_ARGB128:
 		err = suitesP->IterateFloatSuite1()->iterate(

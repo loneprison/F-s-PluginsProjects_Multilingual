@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_COLOR": "颜色",
+        "L10N_MINMAX": "大小",
+        "L10N_BLUR": "模糊度",
+        "L10N_HYPERBOLIC": "偏差",
+        "L10N_REVERCE": "反转",
+        "L10N_WHITE": "忽略白色",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "内发光"
+      }
+    }
+  }
+}

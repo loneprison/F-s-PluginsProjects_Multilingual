@@ -1,18 +1,18 @@
-#include "SelectiveColorBlur.h"
+ï»¿#include "SelectiveColorBlur.h"
 
 // ----------------------------------------------------------------------------
-// ‡¬—pƒRƒ“ƒeƒLƒXƒgFŠeƒrƒbƒg[“x‹¤’Ê
+// åˆæˆç”¨ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆï¼šå„ãƒ“ãƒƒãƒˆæ·±åº¦å…±é€š
 template<typename T>
 struct CombineContext {
 	T* in_data;
 	T* out_data;
 	A_long width;
-	A_long rowbytes; // ƒsƒNƒZƒ‹’PˆÊ‚ÌƒXƒgƒ‰ƒCƒh
+	A_long rowbytes; // ãƒ”ã‚¯ã‚»ãƒ«å˜ä½ã®ã‚¹ãƒˆãƒ©ã‚¤ãƒ‰
 };
 
 // ----------------------------------------------------------------------------
-// ‡¬ƒJ[ƒlƒ‹FIterate8Suite2€‹’
-// ˆø”‡˜Frefcon, thread_index, current_index, iterations
+// åˆæˆã‚«ãƒ¼ãƒãƒ«ï¼šIterate8Suite2æº–æ‹ 
+// å¼•æ•°é †åºï¼šrefcon, thread_index, current_index, iterations
 template<typename T>
 static PF_Err Combine_Kernel(
 	void* refconPV,
@@ -23,12 +23,12 @@ static PF_Err Combine_Kernel(
 	CombineContext<T>* ctx = reinterpret_cast<CombineContext<T>*>(refconPV);
 	if (!ctx) return PF_Err_INTERNAL_STRUCT_DAMAGED;
 
-	A_long y = i; // ‘æ3ˆø”‚ğŒ»İ‚ÌsƒCƒ“ƒfƒbƒNƒX‚Æ‚µ‚Äg—p
+	A_long y = i; // ç¬¬3å¼•æ•°ã‚’ç¾åœ¨ã®è¡Œã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨ã—ã¦ä½¿ç”¨
 	T* in_ptr = ctx->in_data + (y * ctx->rowbytes);
 	T* out_ptr = ctx->out_data + (y * ctx->rowbytes);
 
 	for (A_long x = 0; x < ctx->width; ++x) {
-		// output‚ÌƒAƒ‹ƒtƒ@‚ª0‚Ì•”•ªiƒuƒ‰[ˆ—‚³‚ê‚È‚©‚Á‚½”wŒij‚Éinput‚ğ‘‚«–ß‚·
+		// outputã®ã‚¢ãƒ«ãƒ•ã‚¡ãŒ0ã®éƒ¨åˆ†ï¼ˆãƒ–ãƒ©ãƒ¼å‡¦ç†ã•ã‚Œãªã‹ã£ãŸèƒŒæ™¯ï¼‰ã«inputã‚’æ›¸ãæˆ»ã™
 		if (out_ptr[x].alpha == 0) {
 			out_ptr[x] = in_ptr[x];
 		}
@@ -52,7 +52,7 @@ static PF_Err ExecCombine(NF_AE* ae) {
 }
 
 // ----------------------------------------------------------------------------
-// ŠO•”ŒöŠJƒGƒ“ƒgƒŠƒ|ƒCƒ“ƒg
+// å¤–éƒ¨å…¬é–‹ã‚¨ãƒ³ãƒˆãƒªãƒã‚¤ãƒ³ãƒˆ
 PF_Err CombineInput(NF_AE* ae) {
 	if (!ae || !ae->input->data || !ae->output->data) return PF_Err_INTERNAL_STRUCT_DAMAGED;
 

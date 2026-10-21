@@ -6,6 +6,8 @@
 
 
 #include "RandomMosaic.h"
+#define L10N_LABEL_ON "on"
+#include "RandomMosaicText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,12 +18,13 @@ static PF_Err ParamsSetup(
 	PF_ParamDef* params[],
 	PF_LayerDef* output)
 {
+	const RandomMosaicText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddFloatSlider(	// R
-		STR_MASTER,		//Name
+		AETEXT_PARAM(strings, L10N_MASTER),		//Name
 		0,				//VALID_MIN
 		500,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -35,18 +38,18 @@ static PF_Err ParamsSetup(
 	// ----------------------------------------------------------------
 	// *******************************************************	
 	// *******************************************************	
-	cs.AddTopic(STR_MOSAIC_TOPIC, ID_MOSAIC_TOPIC//,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_MOSAIC_TOPIC), ID_MOSAIC_TOPIC//,
 		//PF_ParamFlag_START_COLLAPSED,
 		//PF_PUI_DISABLED
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_MOSAIC_ENABLED,
-		"on",
+		AETEXT_PARAM(strings, L10N_MOSAIC_ENABLED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_MOSAIC_ENABLED
 	);
 	cs.AddFloatSlider(	// R
-		STR_MOSAIC_AMOUNT,			//Name
+		AETEXT_PARAM(strings, L10N_MOSAIC_AMOUNT),			//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -58,7 +61,7 @@ static PF_Err ParamsSetup(
 		ID_MOSAIC_AMOUNT
 	);
 	cs.AddSlider(	// 
-		STR_MOSAIC_WIDTH,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_MOSAIC_WIDTH),	//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -67,7 +70,7 @@ static PF_Err ParamsSetup(
 		ID_MOSAIC_WIDTH
 	);
 	cs.AddSlider(	// 
-		STR_MOSAIC_HEIGHT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_MOSAIC_HEIGHT),	//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -76,7 +79,7 @@ static PF_Err ParamsSetup(
 		ID_MOSAIC_HEIGHT
 	);
 	cs.AddFloatSlider(	// R
-		STR_MOSAIC_VALUE,	//Name
+		AETEXT_PARAM(strings, L10N_MOSAIC_VALUE),	//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -88,26 +91,26 @@ static PF_Err ParamsSetup(
 		ID_MOSAIC_VALUE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_MOSAIC_ISCOLOR,
-		"on",
+		AETEXT_PARAM(strings, L10N_MOSAIC_ISCOLOR),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_MOSAIC_ISCOLOR
 	);
 	cs.EndTopic(ID_MOSAIC_TOPIC_END);
 	// *******************************************************	
 	// *******************************************************	
-	cs.AddTopic(STR_CBLOCK_TOPIC, ID_CBLOCK_TOPIC//,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_CBLOCK_TOPIC), ID_CBLOCK_TOPIC//,
 		//PF_ParamFlag_START_COLLAPSED,
 		//PF_PUI_DISABLED
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_CBLOCK_ENABLED,
-		"on",
+		AETEXT_PARAM(strings, L10N_CBLOCK_ENABLED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_CBLOCK_ENABLED
 	); 
 	cs.AddSlider(	// 
-		STR_CBLOCK_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_CBLOCK_COUNT),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		10000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -116,7 +119,7 @@ static PF_Err ParamsSetup(
 		ID_CBLOCK_COUNT
 	);
 	cs.AddSlider(	// 
-		STR_CBLOCK_WIDTH,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_CBLOCK_WIDTH),	//パラメータの名前
 		8, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		8,				//スライダーの最小値 
@@ -125,7 +128,7 @@ static PF_Err ParamsSetup(
 		ID_CBLOCK_WIDTH
 	);
 	cs.AddSlider(	// 
-		STR_CBLOCK_HEIGHT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_CBLOCK_HEIGHT),	//パラメータの名前
 		8, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		8,				//スライダーの最小値 
@@ -134,7 +137,7 @@ static PF_Err ParamsSetup(
 		ID_CBLOCK_HEIGHT
 	);
 	cs.AddFloatSlider(	// R
-		STR_CBLOCK_VALUE,			//Name
+		AETEXT_PARAM(strings, L10N_CBLOCK_VALUE),			//Name
 		0,				//VALID_MIN
 		300,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -146,25 +149,25 @@ static PF_Err ParamsSetup(
 		ID_CBLOCK_VALUE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_CBLOCK_ALPHA,
-		"on",
+		AETEXT_PARAM(strings, L10N_CBLOCK_ALPHA),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_CBLOCK_ALPHA
 	);
 	cs.EndTopic(ID_CBLOCK_TOPIC_END);
 	// *******************************************************	
-	cs.AddTopic(STR_SHIFT_TOPIC, ID_SHIFT_TOPIC//,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_SHIFT_TOPIC), ID_SHIFT_TOPIC//,
 		//PF_ParamFlag_START_COLLAPSED,
 		//PF_PUI_DISABLED
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_SHIFT_ENABLED,
-		"on",
+		AETEXT_PARAM(strings, L10N_SHIFT_ENABLED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_SHIFT_ENABLED
 	);
 	cs.AddSlider(	// 
-		STR_SHIFT_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SHIFT_COUNT),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		10000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -173,7 +176,7 @@ static PF_Err ParamsSetup(
 		ID_SHIFT_COUNT
 	);
 	cs.AddSlider(	// 
-		STR_SHIFT_WIDTH,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SHIFT_WIDTH),	//パラメータの名前
 		8, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		8,				//スライダーの最小値 
@@ -182,7 +185,7 @@ static PF_Err ParamsSetup(
 		ID_SHIFT_WIDTH
 	);
 	cs.AddSlider(	// 
-		STR_SHIFT_HEIGHT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SHIFT_HEIGHT),	//パラメータの名前
 		8, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		8,				//スライダーの最小値 
@@ -191,7 +194,7 @@ static PF_Err ParamsSetup(
 		ID_SHIFT_HEIGHT
 	);
 	cs.AddSlider(	// 
-		STR_SHIFT_OFFSET_X,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SHIFT_OFFSET_X),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -200,7 +203,7 @@ static PF_Err ParamsSetup(
 		ID_SHIFT_OFFSET_X
 	);
 	cs.AddSlider(	// 
-		STR_SHIFT_OFFSET_Y,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SHIFT_OFFSET_Y),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -210,18 +213,18 @@ static PF_Err ParamsSetup(
 	);
 	cs.EndTopic(ID_SHIFT_TOPIC_END);
 	// *******************************************************	
-	cs.AddTopic(STR_BLOCK_TOPIC, ID_BLOCK_TOPIC//,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_BLOCK_TOPIC), ID_BLOCK_TOPIC//,
 		//PF_ParamFlag_START_COLLAPSED,
 		//PF_PUI_DISABLED
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_BLOCK_ENABLED,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLOCK_ENABLED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLOCK_ENABLED
 	);
 	cs.AddSlider(	// 
-		STR_BLOCK_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BLOCK_COUNT),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		10000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -230,7 +233,7 @@ static PF_Err ParamsSetup(
 		ID_BLOCK_COUNT
 	);
 	cs.AddSlider(	// 
-		STR_BLOCK_WIDTH,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BLOCK_WIDTH),	//パラメータの名前
 		8, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		8,				//スライダーの最小値 
@@ -239,7 +242,7 @@ static PF_Err ParamsSetup(
 		ID_BLOCK_WIDTH
 	);
 	cs.AddSlider(	// 
-		STR_BLOCK_HEIGHT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BLOCK_HEIGHT),	//パラメータの名前
 		8, 				//数値入力する場合の最小値
 		4000,			//数値入力する場合の最大値
 		8,				//スライダーの最小値 
@@ -248,7 +251,7 @@ static PF_Err ParamsSetup(
 		ID_BLOCK_HEIGHT
 	);
 	cs.AddFloatSlider(	// R
-		STR_BLOCK_NOISE,			//Name
+		AETEXT_PARAM(strings, L10N_BLOCK_NOISE),			//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -260,25 +263,25 @@ static PF_Err ParamsSetup(
 		ID_BLOCK_NOISE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_BLOCK_NOISE_ISCOLOR,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLOCK_NOISE_ISCOLOR),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLOCK_NOISE_ISCOLOR
 	);
 	cs.EndTopic(ID_BLOCK_TOPIC_END);
 	// *******************************************************	
-	cs.AddTopic(STR_EMBOSS_TOPIC, ID_EMBOSS_TOPIC//,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_EMBOSS_TOPIC), ID_EMBOSS_TOPIC//,
 		//PF_ParamFlag_START_COLLAPSED,
 		//PF_PUI_DISABLED
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_EMBOSS_ENABLED,
-		"on",
+		AETEXT_PARAM(strings, L10N_EMBOSS_ENABLED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_EMBOSS_ENABLED
 	);
 	cs.AddFloatSlider(	// R
-		STR_EMBOSS_DISTANCE,			//Name
+		AETEXT_PARAM(strings, L10N_EMBOSS_DISTANCE),			//Name
 		-1000,				//VALID_MIN
 		1000,				//VALID_MAX
 		-100,				//SLIDER_MIN
@@ -290,31 +293,31 @@ static PF_Err ParamsSetup(
 		ID_EMBOSS_DISTANCE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_EMBOSS_ISCOLOR,
-		"on",
+		AETEXT_PARAM(strings, L10N_EMBOSS_ISCOLOR),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_EMBOSS_ISCOLOR
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_EMBOSS_ALPHA,
-		"on",
+		AETEXT_PARAM(strings, L10N_EMBOSS_ALPHA),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_EMBOSS_ALPHA
 	);
 	cs.EndTopic(ID_EMBOSS_TOPIC_END);
 	// **************************************************************
-	cs.AddTopic(STR_NOISE_TOPIC, ID_NOISE_TOPIC//,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_NOISE_TOPIC), ID_NOISE_TOPIC//,
 		//PF_ParamFlag_START_COLLAPSED,
 		//PF_PUI_DISABLED
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_NOISE_ENABLED,
-		"on",
+		AETEXT_PARAM(strings, L10N_NOISE_ENABLED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_NOISE_ENABLED
 	);
 	cs.AddFloatSlider(	// R
-		STR_NOISE_AMOUNT,			//Name
+		AETEXT_PARAM(strings, L10N_NOISE_AMOUNT),			//Name
 		0,				//VALID_MIN
 		300,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -327,22 +330,22 @@ static PF_Err ParamsSetup(
 
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_NOISE_ISCOLOR,
-		"on",
+		AETEXT_PARAM(strings, L10N_NOISE_ISCOLOR),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_NOISE_ISCOLOR
 	);
 	cs.EndTopic(ID_NOISE_TOPIC_END);
 	// *******************************************************	
 	cs.AddCheckBox(	// noise frame
-		STR_AUTO_SEED,
-		"on",
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		TRUE,
 		ID_AUTO_SEED,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddSlider(	// 
-		STR_SEED,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SEED),	//パラメータの名前
 		-30000, 		//数値入力する場合の最小値
 		30000,			//数値入力する場合の最大値
 		-1000,			//スライダーの最小値 
@@ -681,8 +684,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const RandomMosaicText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -749,7 +755,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			RandomMosaicText::OpenSettings(in_data, L"NF-RandomMosaic");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

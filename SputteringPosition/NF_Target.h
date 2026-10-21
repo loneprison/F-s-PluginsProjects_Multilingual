@@ -16,7 +16,8 @@
 
 //-----------------------------------------------------------------------------------
 //プラグインの説明に使われる文字
-#define NF_DESCRIPTION	"SputteringPosition"
+#define L10N_PLUGIN_DESC	"SputteringPosition"
+#define NF_DESCRIPTION L10N_PLUGIN_DESC
 
 //-----------------------------------------------------------------------------------
 //プラグインが表示されるメニュー名

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_R_SCALE": "红色通道缩放",
+        "L10N_G_SCALE": "绿色通道缩放",
+        "L10N_B_SCALE": "蓝色通道缩放",
+        "L10N_R_BLUR": "红色模糊",
+        "L10N_G_BLUR": "绿色模糊",
+        "L10N_B_BLUR": "蓝色模糊",
+        "L10N_CENTER": "中心点",
+        "L10N_ALPHA_MODE": "Alpha 处理"
+      },
+      "Popup": {
+        "L10N_ALPHA_ITEMS": "原始|扩散"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "色散"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_SHAKE_VALUE": "镜头抖动量",
+        "L10N_SHAKE_VALUE_RAND": "随机幅度",
+        "L10N_SUB_SHAKE": "子抖动概率",
+        "L10N_ANGLE": "抖动方向",
+        "L10N_ANGLE_RAND": "随机方向",
+        "L10N_HAND_SHAKE_VALUE": "手持抖动量",
+        "L10N_HAND_SHAKE_SPEED": "手持抖动速度",
+        "L10N_HAND_SHAKE_SEED": "手持抖动随机种子",
+        "L10N_AMPLITUDE": "基础振幅",
+        "L10N_X_VALUE": "X 抖动量",
+        "L10N_X_SPEED1": "X 速度1",
+        "L10N_X_SPEED2": "X 速度2",
+        "L10N_X_SEED": "X 随机种子",
+        "L10N_Y_VALUE": "Y 抖动量",
+        "L10N_Y_SPEED1": "Y 速度1",
+        "L10N_Y_SPEED2": "Y 速度2",
+        "L10N_Y_SEED": "Y 随机种子",
+        "L10N_REP_MODE": "边缘模式"
+      },
+      "Popup": {
+        "L10N_REP_MODE_ITEMS": "平铺|扩展|无"
+      },
+      "Topic": {
+        "L10N_CAMERA_SHAKE_TOPIC": "镜头抖动",
+        "L10N_HAND_SHAKE_TOPIC": "手持抖动"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "镜头抖动"
+      }
+    }
+  }
+}

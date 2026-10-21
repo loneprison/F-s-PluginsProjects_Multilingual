@@ -50,17 +50,17 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_POS1			"pos1"
-#define	STR_POS2			"pos2"
-#define	STR_POS3			"pos3"
+#define	L10N_POS1			"pos1"
+#define	L10N_POS2			"pos2"
+#define	L10N_POS3			"pos3"
 #define	STR_POS4			"pos4"
-#define	STR_POSA1			"posA1"
+#define	L10N_POSA1			"posA1"
 #define	STR_POSA2			"posA2"
 #define	STR_POSA3			"posA3"
-#define	STR_WA1				"wA1"
-#define	STR_WA2				"wA2"
-#define	STR_WA3				"wA3"
-#define	STR_PATH			"path"
+#define	L10N_WA1				"wA1"
+#define	L10N_WA2				"wA2"
+#define	L10N_WA3				"wA3"
+#define	L10N_PATH			"path"
 //UIのパラメータ
 typedef struct ParamInfo {
 	PF_Point	pos[4];

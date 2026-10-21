@@ -6,6 +6,7 @@
 
 
 #include "Chroma.h"
+#include "ChromaText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,12 +17,13 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const ChromaText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddFloatSlider(	// R
-		STR_R_SCALE,			//Name
+		AETEXT_PARAM(strings, L10N_R_SCALE),			//Name
 		50,				//VALID_MIN
 		150,			//VALID_MAX
 		80,				//SLIDER_MIN
@@ -33,7 +35,7 @@ static PF_Err ParamsSetup (
 		ID_R_SCALE
 	);
 	cs.AddFloatSlider(	// R
-		STR_G_SCALE,			//Name
+		AETEXT_PARAM(strings, L10N_G_SCALE),			//Name
 		50,				//VALID_MIN
 		150,			//VALID_MAX
 		80,				//SLIDER_MIN
@@ -45,7 +47,7 @@ static PF_Err ParamsSetup (
 		ID_G_SCALE
 	);
 	cs.AddFloatSlider(	// R
-		STR_B_SCALE,			//Name
+		AETEXT_PARAM(strings, L10N_B_SCALE),			//Name
 		50,				//VALID_MIN
 		150,			//VALID_MAX
 		80,				//SLIDER_MIN
@@ -57,7 +59,7 @@ static PF_Err ParamsSetup (
 		ID_G_SCALE
 	);
 	cs.AddSlider(	// noise offset
-		STR_R_BLUR,		//パラメータの名前
+		AETEXT_PARAM(strings, L10N_R_BLUR),		//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		100,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -66,7 +68,7 @@ static PF_Err ParamsSetup (
 		ID_R_BLUR
 	);
 	cs.AddSlider(	// noise offset
-		STR_G_BLUR,		//パラメータの名前
+		AETEXT_PARAM(strings, L10N_G_BLUR),		//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		100,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -75,7 +77,7 @@ static PF_Err ParamsSetup (
 		ID_G_BLUR
 	);
 	cs.AddSlider(	// noise offset
-		STR_B_BLUR,		//パラメータの名前
+		AETEXT_PARAM(strings, L10N_B_BLUR),		//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		100,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -84,16 +86,16 @@ static PF_Err ParamsSetup (
 		ID_B_BLUR
 	);
 	cs.AddPoint(
-		STR_CENTER,
+		AETEXT_PARAM(strings, L10N_CENTER),
 		50,
 		50,
 		FALSE,
 		ID_CENTER
 	);
-	cs.AddPopup(STR_ALPHA_MODE,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_ALPHA_MODE),
 		STR_ALPHA_COUNT,
 		STR_ALPHA_DFLT,
-		STR_ALPHA_ITEMS,
+		AETEXT_POPUP(strings, L10N_ALPHA_ITEMS),
 		ID_ALPHA_MODE
 	);
 	
@@ -264,8 +266,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const ChromaText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -329,7 +334,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			ChromaText::OpenSettings(in_data, L"NF-Chroma");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

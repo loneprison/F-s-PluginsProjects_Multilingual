@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "zh": {
+      "L10N_OUTER_WIDTH": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:113bb842e26dd2fb0dd52ceed1089eef44eb8aa971d848d0b12b7d67583d82b9",
+          "translation": "sha256-v1:d74c10ed6a146a9d6be7a6438280696c37704233e21aaaf43a23492517694711"
+        }
+      },
+      "L10N_INNER_WIDTH": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:3b08f39d2b50df5865427b032d7b8907297829693e533a55765e58cffd78d59c",
+          "translation": "sha256-v1:3f25c90a2d00179d26da6ec8a66c790e5622fd63eca55d795ecece3ee262a5b1"
+        }
+      },
+      "L10N_COLOR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:da5112be93f58470c1cb2a7a74c06f7b386e453ba63c4b5be5e47c9a1631ba64",
+          "translation": "sha256-v1:efbb77e96bef33784c9a23ba5865387a3b26b5c5225be3b7c7b6d6d91fedcdab"
+        }
+      },
+      "L10N_WHITE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:3cc7d14ec6df8fc7efc6926f457cf7a84325003606e17e85c54e830fee7837af",
+          "translation": "sha256-v1:ac5a38e3db2904f46bdcfd7dfa51287264391da005aecc8d847bf8e27b73458a"
+        }
+      },
+      "L10N_BLEND": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:05291d859fbeca2c3a46c1360dfe95d94a89f7e0c1be3c937600715c9ebb34c1",
+          "translation": "sha256-v1:a821cb11a404bddea7a6c5bcad018566877d430be6bd6b2e915a6a7796bb34a2"
+        }
+      },
+      "L10N_LABEL_ON": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:81a5d6bdfadc8a14fc29b27edce2b9bee4e3c8e90b099079625e94bf0e80a53e",
+          "translation": "sha256-v1:77a7c7e34baeb909fde17c595adb618229b8cffef2a33c6245f89c048f09ba5d"
+        }
+      },
+      "L10N_PLUGIN_DESC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:6c586f30d6468cf6100cb1114512c29bc9aea98a4997d73db50c07d0cf28c133",
+          "translation": "sha256-v1:53e25156ec152a12ba05009094f7b325152ce11a0495b42fe1f2f779fc30d55b"
+        }
+      }
+    }
+  }
+}

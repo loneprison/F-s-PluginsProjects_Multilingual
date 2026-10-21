@@ -6,6 +6,7 @@
 
 
 #include "Emboss.h"
+#include "EmbossText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,18 +17,19 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const EmbossText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	cs.AddAngle(	// angle
-		STR_DIRECTION,
+		AETEXT_PARAM(strings, L10N_DIRECTION),
 		45,
 		ID_DIRECTION//,
 		//PF_ParamFlag_NONE,
 		//PF_PUI_DISABLED
 	);
 	cs.AddFloatSlider(
-		STR_DISTANCE,			//Name
+		AETEXT_PARAM(strings, L10N_DISTANCE),			//Name
 		0,				//VALID_MIN
 		300,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -391,8 +393,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const EmbossText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -456,7 +461,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			EmbossText::OpenSettings(in_data, L"NF-Emboss");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

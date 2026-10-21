@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MINMAX": "最大值",
+        "L10N_BLUR": "模糊度",
+        "L10N_HYPERBOLIC": "偏差"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "最大值与模糊"
+      }
+    }
+  }
+}

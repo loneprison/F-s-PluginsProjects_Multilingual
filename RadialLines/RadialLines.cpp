@@ -6,6 +6,9 @@
 
 
 #include "RadialLines.h"
+#define L10N_LABEL_ON "on"
+#define L10N_POPUP_1_2_3_4_5_6_7_8 "1|2|3|4|5|6|7|8"
+#include "RadialLinesText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,6 +19,7 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const RadialLinesText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	PF_Pixel 	def_color[] = {
@@ -31,19 +35,19 @@ static PF_Err ParamsSetup (
 
 	NF_ParamsSetup cs(in_data, out_data);
 	cs.AddTopic(
-		STR_PARAMS_TOPIC,
+		AETEXT_TOPIC(strings, L10N_PARAMS_TOPIC),
 		ID_PARAMS_TOPIC
 	);
 	// ----------------------------------------------------------------
 	cs.AddCheckBox(	// noise frame
-		STR_AUTO_SEED,
-		"on",
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		TRUE,
 		ID_AUTO_SEED
 
 	);
 	cs.AddSlider(	// 
-		STR_SEED,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SEED),	//パラメータの名前
 		-30000, 		//数値入力する場合の最小値
 		30000,			//数値入力する場合の最大値
 		-1000,				//スライダーの最小値 
@@ -52,7 +56,7 @@ static PF_Err ParamsSetup (
 		ID_SEED
 	);
 	cs.AddSlider(	// 
-		STR_VALUE,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_VALUE),	//パラメータの名前
 		0, 			//数値入力する場合の最小値
 		1000,		//数値入力する場合の最大値
 		0,			//スライダーの最小値 
@@ -61,7 +65,7 @@ static PF_Err ParamsSetup (
 		ID_VALUE
 	);
 	cs.AddPoint(
-		STR_POS,
+		AETEXT_PARAM(strings, L10N_POS),
 		50,
 		50,
 		FALSE,
@@ -69,7 +73,7 @@ static PF_Err ParamsSetup (
 	);
 	// ----------------------------------------------------------------
 	cs.AddFloatSlider(	// R
-		STR_LENGTH,		//Name
+		AETEXT_PARAM(strings, L10N_LENGTH),		//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -81,7 +85,7 @@ static PF_Err ParamsSetup (
 		ID_LENGTH
 	);
 	cs.AddFloatSlider(	// R
-		STR_LENGTH_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH_RAND),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -94,7 +98,7 @@ static PF_Err ParamsSetup (
 	);
 	// ----------------------------------------------------------------
 	cs.AddFloatSlider(	// R
-		STR_WEIGHT,		//Name
+		AETEXT_PARAM(strings, L10N_WEIGHT),		//Name
 		0.5,			//VALID_MIN
 		40,				//VALID_MAX
 		0.5,			//SLIDER_MIN
@@ -106,7 +110,7 @@ static PF_Err ParamsSetup (
 		ID_WEIGHT
 	);
 	cs.AddFloatSlider(	// R
-		STR_WEIGHT_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_WEIGHT_RAND),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -119,7 +123,7 @@ static PF_Err ParamsSetup (
 	);
 	// ----------------------------------------------------------------
 	cs.AddFloatSlider(	// R
-		STR_OPACITY,		//Name
+		AETEXT_PARAM(strings, L10N_OPACITY),		//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -131,7 +135,7 @@ static PF_Err ParamsSetup (
 		ID_OPACITY
 	);
 	cs.AddFloatSlider(	// R
-		STR_OPACITY_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_OPACITY_RAND),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -143,7 +147,7 @@ static PF_Err ParamsSetup (
 		ID_OPACITY_RAND
 	);
 	cs.AddFloatSlider(	// R
-		STR_HYPERBOLIC,	//Name
+		AETEXT_PARAM(strings, L10N_HYPERBOLIC),	//Name
 		-10,				//VALID_MIN
 		50,			//VALID_MAX
 		-2,				//SLIDER_MIN
@@ -155,7 +159,7 @@ static PF_Err ParamsSetup (
 		ID_HYPERBOLIC
 	);
 	cs.AddSlider(	// 
-		STR_BLUR,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BLUR),	//パラメータの名前
 		-0, 		//数値入力する場合の最小値
 		100,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -164,7 +168,7 @@ static PF_Err ParamsSetup (
 		ID_BLUR
 	);
 	cs.AddFloatSlider(	// R
-		STR_NOISE,	//Name
+		AETEXT_PARAM(strings, L10N_NOISE),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -178,21 +182,21 @@ static PF_Err ParamsSetup (
 	cs.EndTopic(ID_PARAMS_TOPIC_END);
 	// **************************************************
 	cs.AddTopic(
-		STR_COLOR_TOPIC,
+		AETEXT_TOPIC(strings, L10N_COLOR_TOPIC),
 		ID_COLOR_TOPIC
 	);
 	cs.AddPopup(	// 
-		STR_COLOR_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_COLOR_COUNT),	//パラメータの名前
 		8, 					
 		1,					
-		"1|2|3|4|5|6|7|8",					 
+		AETEXT_POPUP(strings, L10N_POPUP_1_2_3_4_5_6_7_8),
 		ID_COLOR_COUNT,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	for(int i = 0; i < 8; i++) {
-		std::string str = STR_COLOR + std::to_string(i + 1);
+		std::string str = AETEXT_PARAM(strings, L10N_COLOR) + std::to_string(i + 1);
 		cs.AddColor(
 			str.c_str(),	//パラメータの名前
 			def_color[i],	//デフォルトの色
@@ -204,8 +208,8 @@ static PF_Err ParamsSetup (
 	cs.EndTopic(ID_COLOR_END);
 	// **************************************************
 	cs.AddCheckBox(
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLEND
 	);
@@ -468,8 +472,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const RadialLinesText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -533,7 +540,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			RadialLinesText::OpenSettings(in_data, L"NF-RadialLines");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

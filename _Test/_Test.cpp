@@ -6,6 +6,7 @@
 
 
 #include "_Test.h"
+#include "_TestText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,61 +17,62 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const _TestText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddPoint(
-		STR_POS1,
+		AETEXT_PARAM(strings, L10N_POS1),
 		25,
 		25,
 		FALSE,
 		ID_POS1
 	);
 	cs.AddPoint(
-		STR_POS2,
+		AETEXT_PARAM(strings, L10N_POS2),
 		75,
 		25,
 		FALSE,
 		ID_POS2
 	);
 	cs.AddPoint(
-		STR_POS3,
+		AETEXT_PARAM(strings, L10N_POS3),
 		75,
 		75,
 		FALSE,
 		ID_POS3
 	);
 	cs.AddPoint(
-		STR_POS3,
+		AETEXT_PARAM(strings, L10N_POS3),
 		25,
 		75,
 		FALSE,
 		ID_POS3
 	);
 	cs.AddPoint(
-		STR_POSA1,
+		AETEXT_PARAM(strings, L10N_POSA1),
 		0,
 		0,
 		FALSE,
 		ID_POSA1
 	);
 	cs.AddPoint(
-		STR_POS2,
+		AETEXT_PARAM(strings, L10N_POS2),
 		50,
 		10,
 		FALSE,
 		ID_POSA2
 	);
 	cs.AddPoint(
-		STR_POS3,
+		AETEXT_PARAM(strings, L10N_POS3),
 		100,
 		30,
 		FALSE,
 		ID_POSA3
 	);
 	cs.AddFloatSlider(
-		STR_WA1,
+		AETEXT_PARAM(strings, L10N_WA1),
 		0,
 		100,
 		0,
@@ -82,7 +84,7 @@ static PF_Err ParamsSetup (
 		ID_WA1
 	);
 	cs.AddFloatSlider(
-		STR_WA2,
+		AETEXT_PARAM(strings, L10N_WA2),
 		0,
 		100,
 		0,
@@ -94,7 +96,7 @@ static PF_Err ParamsSetup (
 		ID_WA2
 	);
 	cs.AddFloatSlider(
-		STR_WA3,
+		AETEXT_PARAM(strings, L10N_WA3),
 		0,
 		100,
 		0,
@@ -106,7 +108,7 @@ static PF_Err ParamsSetup (
 		ID_WA3
 	);
 	cs.AddPath(
-		STR_PATH,
+		AETEXT_PARAM(strings, L10N_PATH),
 		0,
 		ID_PATH
 	);
@@ -250,8 +252,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const _TestText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;

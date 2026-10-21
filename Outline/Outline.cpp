@@ -6,6 +6,8 @@
 
 
 #include "Outline.h"
+#define L10N_LABEL_ON "on"
+#include "OutlineText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,10 +18,11 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const OutlineText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 	NF_ParamsSetup cs(in_data, out_data);
 	cs.AddSlider(	// 
-		STR_OUTER_WIDTH,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_OUTER_WIDTH),	//パラメータの名前
 		0, 		//数値入力する場合の最小値
 		200,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -28,7 +31,7 @@ static PF_Err ParamsSetup (
 		ID_OUTER_WIDTH
 	);
 	cs.AddSlider(	// 
-		STR_INNER_WIDTH,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_INNER_WIDTH),	//パラメータの名前
 		0, 		//数値入力する場合の最小値
 		200,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -38,19 +41,19 @@ static PF_Err ParamsSetup (
 	);
 	
 	cs.AddColor(	// color
-		STR_COLOR,
+		AETEXT_PARAM(strings, L10N_COLOR),
 		{ 0xFF, 0xFF, 0x00, 0xFF },
 		ID_COLOR
 	);
 	cs.AddCheckBox(
-		STR_WHITE,
-		"on",
+		AETEXT_PARAM(strings, L10N_WHITE),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_WHITE
 	);
 	cs.AddCheckBox(
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLEND
 	);
@@ -208,8 +211,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const OutlineText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -273,7 +279,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			OutlineText::OpenSettings(in_data, L"NF-Outline");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

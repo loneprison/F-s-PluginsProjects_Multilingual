@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_LUMA_LEVEL": "亮度阈值",
+        "L10N_RED": "红",
+        "L10N_GREEN": "绿",
+        "L10N_BLUE": "蓝",
+        "L10N_ALPHA": "Alpha",
+        "L10N_RED_LEVEL": "红色阈值",
+        "L10N_GREEN_LEVEL": "绿色阈值",
+        "L10N_BLUE_LEVEL": "蓝色阈值",
+        "L10N_ALPHA_LEVEL": "Alpha 阈值",
+        "L10N_MODE": "模式"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "亮度|RGB"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "阈值"
+      }
+    }
+  }
+}

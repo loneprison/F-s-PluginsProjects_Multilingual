@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "suite": {
+    "name": "NF Text Suite",
+    "version": 1,
+    "internalVersion": 1
+  },
+  "config": {
+    "directoryName": "NF-Plugins-Localization",
+    "fileName": "language.json",
+    "invalidBackupFileName": "language.invalid.json",
+    "mutexName": "Local\\NfPluginsLanguageConfig"
+  }
+}

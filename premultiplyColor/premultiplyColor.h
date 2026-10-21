@@ -35,9 +35,9 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_COLOR		"color"
-#define	STR_FORWORD		"Alpha Channel Terminology"
-#define	STR_FORWORD_ITEMS		"To Premultiplied-Matted|To Straight-Unmultiplied"
+#define	L10N_COLOR		"color"
+#define	L10N_FORWORD		"Alpha Channel Terminology"
+#define	L10N_FORWORD_ITEMS		"To Premultiplied-Matted|To Straight-Unmultiplied"
 
 //UIのパラメータ
 typedef struct ParamInfo {

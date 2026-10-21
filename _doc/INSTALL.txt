@@ -1,0 +1,8 @@
+NF Plugins 安装说明（Windows）
+
+1. 关闭 After Effects。
+2. 如果已经安装 NF Plugins，先将旧版 NF-Plugins 文件夹移出插件目录并备份，避免重复安装。
+3. 将压缩包中的 NF-Plugins 文件夹完整复制到以下目录：
+   C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\
+   保留全部分类子文件夹和 _Support 文件夹。
+4. 重新启动 After Effects，即可在“效果”菜单的 NF 分类中找到插件。

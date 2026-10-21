@@ -6,6 +6,8 @@
 
 
 #include "Ligtning.h"
+#define L10N_LABEL_ON "on"
+#include "LigtningText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,26 +18,27 @@ static PF_Err ParamsSetup(
 	PF_ParamDef* params[],
 	PF_LayerDef* output)
 {
+	const LigtningText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
-	cs.AddPopup(STR_MODE,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_MODE),
 		STR_MODE_COUNT,
 		STR_MODE_DFLT,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_MODE_ITEMS),
 		ID_MODE,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_AUTO_SEED,
-		"on",
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_AUTO_SEED,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddSlider(	// 
-		STR_SEED,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SEED),	//パラメータの名前
 		-30000, 		//数値入力する場合の最小値
 		30000,			//数値入力する場合の最大値
 		-1000,			//スライダーの最小値 
@@ -45,14 +48,14 @@ static PF_Err ParamsSetup(
 	);
 	// ******************************************************
 	cs.AddPoint(
-		STR_START_POS,
+		AETEXT_PARAM(strings, L10N_START_POS),
 		25,
 		25,
 		FALSE,
 		ID_START_POS
 		);
 	cs.AddPoint(
-		STR_END_POS,
+		AETEXT_PARAM(strings, L10N_END_POS),
 		75,
 		75,
 		FALSE,
@@ -60,7 +63,7 @@ static PF_Err ParamsSetup(
 	);
 	// ----------------------------------------------------------------
 	cs.AddPath(
-		STR_PATH,
+		AETEXT_PARAM(strings, L10N_PATH),
 		0,
 		ID_PATH,
 		PF_ParamFlag_NONE,
@@ -68,7 +71,7 @@ static PF_Err ParamsSetup(
 	);
 	// ----------------------------------------------------------------
 	cs.AddPoint(
-		STR_START1_POS,
+		AETEXT_PARAM(strings, L10N_START1_POS),
 		25,
 		25,
 		FALSE,
@@ -77,7 +80,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddPoint(
-		STR_START2_POS,
+		AETEXT_PARAM(strings, L10N_START2_POS),
 		25,
 		75,
 		FALSE,
@@ -86,7 +89,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddPoint(
-		STR_END1_POS,
+		AETEXT_PARAM(strings, L10N_END1_POS),
 		75,
 		25,
 		FALSE,
@@ -95,7 +98,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddPoint(
-		STR_END2_POS,
+		AETEXT_PARAM(strings, L10N_END2_POS),
 		75,
 		75,
 		FALSE,
@@ -104,7 +107,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddSlider(	// 
-		STR_2_2POINT_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_2_2POINT_COUNT),	//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		1000,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -115,7 +118,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(
-		STR_START_RAND,//Name
+		AETEXT_PARAM(strings, L10N_START_RAND),//Name
 		0,			//VALID_MIN
 		1000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -129,7 +132,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(
-		STR_END_RAND,//Name
+		AETEXT_PARAM(strings, L10N_END_RAND),//Name
 		0,			//VALID_MIN
 		1000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -144,7 +147,7 @@ static PF_Err ParamsSetup(
 	);
 	// ----------------------------------------------------------------
 	cs.AddPoint(
-		STR_SRC_POS,
+		AETEXT_PARAM(strings, L10N_SRC_POS),
 		25,
 		50,
 		FALSE,
@@ -153,7 +156,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddPoint(
-		STR_IMPACT1_POS,
+		AETEXT_PARAM(strings, L10N_IMPACT1_POS),
 		75,
 		25,
 		FALSE,
@@ -162,7 +165,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddPoint(
-		STR_IMPACT2_POS,
+		AETEXT_PARAM(strings, L10N_IMPACT2_POS),
 		75,
 		75,
 		FALSE,
@@ -171,7 +174,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(
-		STR_IMPACT_RAND,//Name
+		AETEXT_PARAM(strings, L10N_IMPACT_RAND),//Name
 		0,			//VALID_MIN
 		2000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -185,7 +188,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddSlider(	// 
-		STR_BRANCH_CNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_BRANCH_CNT),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		100,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -197,7 +200,7 @@ static PF_Err ParamsSetup(
 	);
 	// ----------------------------------------------------------------
 	cs.AddSlider(	// 
-		STR_RADICAL_COUNT,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_RADICAL_COUNT),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		1000,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -208,12 +211,12 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddAngle(
-		STR_RADICAL_ANGLE,			//Name
+		AETEXT_PARAM(strings, L10N_RADICAL_ANGLE),			//Name
 		0,
 		ID_RADICAL_ANGLE
 	);
 	cs.AddPoint(
-		STR_CENTER_POS,
+		AETEXT_PARAM(strings, L10N_CENTER_POS),
 		50,
 		50,
 		FALSE,
@@ -222,7 +225,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(
-		STR_RADIUS,	//Name
+		AETEXT_PARAM(strings, L10N_RADIUS),	//Name
 		0,			//VALID_MIN
 		2000,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -236,7 +239,7 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(
-		STR_RADIUS_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_RADIUS_RAND),	//Name
 		0,			//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -250,12 +253,12 @@ static PF_Err ParamsSetup(
 		PF_PUI_INVISIBLE
 	);
 	// ******************************************************
-	cs.AddTopic(STR_PARAMS_TOPIC, ID_PARAMS_TOPIC//,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_PARAMS_TOPIC), ID_PARAMS_TOPIC//,
 		//PF_ParamFlag_START_COLLAPSED,
 		//PF_PUI_INVISIBLE
 	);
 	cs.AddFloatSlider(
-		STR_WIPE,		//Name
+		AETEXT_PARAM(strings, L10N_WIPE),		//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -267,7 +270,7 @@ static PF_Err ParamsSetup(
 		ID_WIPE
 	);
 	cs.AddFloatSlider(
-		STR_START_WEIGHT,//Name
+		AETEXT_PARAM(strings, L10N_START_WEIGHT),//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -279,7 +282,7 @@ static PF_Err ParamsSetup(
 		ID_START_WEIGHT
 	);
 	cs.AddFloatSlider(
-		STR_END_WEIGHT,	//Name
+		AETEXT_PARAM(strings, L10N_END_WEIGHT),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -291,7 +294,7 @@ static PF_Err ParamsSetup(
 		ID_END_WEIGHT
 	);
 	cs.AddFloatSlider(
-		STR_WEIGHT,		//Name
+		AETEXT_PARAM(strings, L10N_WEIGHT),		//Name
 		0,				//VALID_MIN
 		300,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -303,7 +306,7 @@ static PF_Err ParamsSetup(
 		ID_WEIGHT
 	);
 	cs.AddSlider(	// noise offset
-		STR_COMPLEXTTY,		//パラメータの名前
+		AETEXT_PARAM(strings, L10N_COMPLEXTTY),		//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		100,				//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -312,7 +315,7 @@ static PF_Err ParamsSetup(
 		ID_COMPLEXTTY
 	);
 	cs.AddFloatSlider(	// R
-		STR_JAGGEDNESS,			//Name
+		AETEXT_PARAM(strings, L10N_JAGGEDNESS),			//Name
 		0,				//VALID_MIN
 		500,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -324,12 +327,12 @@ static PF_Err ParamsSetup(
 		ID_JAGGEDNESS
 	);
 	cs.AddAngle(
-		STR_COMPL_ANGLE,			//Name
+		AETEXT_PARAM(strings, L10N_COMPL_ANGLE),			//Name
 		0,
 		ID_COMPL_ANGLE
 	);
 	cs.AddSlider(	// noise offset
-		STR_FORK,		//パラメータの名前
+		AETEXT_PARAM(strings, L10N_FORK),		//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		10,				//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -338,7 +341,7 @@ static PF_Err ParamsSetup(
 		ID_FORK
 	);
 	cs.AddColor(	// color
-		STR_COLOR,
+		AETEXT_PARAM(strings, L10N_COLOR),
 		{ 0xFF, 0xFF, 0xFF, 0x80 },
 		ID_COLOR
 	);
@@ -586,8 +589,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const LigtningText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -654,7 +660,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			LigtningText::OpenSettings(in_data, L"NF-Ligtning");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

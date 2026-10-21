@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_VALUE": "数量",
+        "L10N_THRESHOLD": "生成模式",
+        "L10N_LUM_LEVEL": "亮度阈值",
+        "L10N_ALPHA_LEVEL": "Alpha 阈值",
+        "L10N_TARGET_COLOR": "目标颜色",
+        "L10N_TARGET_COLOR_LEVEL": "颜色阈值",
+        "L10N_DRAW_TARGET": "显示目标遮罩",
+        "L10N_MODE": "线条模式",
+        "L10N_ANGLE": "方向",
+        "L10N_CENTER": "中心点",
+        "L10N_INNER_LENGTH": "内侧长度",
+        "L10N_OUTER_LENGTH": "外侧长度",
+        "L10N_LENGTH_RAND": "随机长度",
+        "L10N_SIZE": "大小",
+        "L10N_SIZE_RAND": "随机大小",
+        "L10N_OPACITY": "不透明度",
+        "L10N_OPACITY_RAND": "随机不透明度",
+        "L10N_BLUR": "羽化",
+        "L10N_NOISE": "杂色",
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子",
+        "L10N_COLOR_COUNT": "颜色数量",
+        "L10N_COLOR": "颜色_",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_THRESHOLD_ITEMS": "亮度|Alpha|颜色",
+        "L10N_MODE_ITEMS": "直线|径向",
+        "L10N_COLOR_ITEMS": "1|2|3|4|5|6|7|8"
+      },
+      "Topic": {
+        "L10N_TARGET_TOPIC": "目标",
+        "L10N_MODE_TOPIC": "参数",
+        "L10N_COLOR_TOPIC": "颜色"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "触线"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_GRAY_MODE_POP1": "采样模式",
+        "L10N_ORG_BLEND": "与原始图像混合"
+      },
+      "Popup": {
+        "L10N_GRAY_MODE_POP2": "亮度 (YUV)|明度 (HLS)|平均值 (RGB)|红色通道|绿色通道|蓝色通道|最大值 (RGB)|发光度 (Lab)"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "基于多种颜色逻辑转换灰度"
+      }
+    }
+  }
+}

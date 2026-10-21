@@ -6,6 +6,8 @@
 
 
 #include "_Skeleton.h"
+#define L10N_LABEL_ON "on"
+#include "_SkeletonText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,26 +18,27 @@ static PF_Err ParamsSetup(
 	PF_ParamDef* params[],
 	PF_LayerDef* output)
 {
+	const _SkeletonText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
-	cs.AddPopup(STR_MODE,
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_MODE),
 		STR_MODE_COUNT,
 		STR_MODE_DFLT,
-		STR_MODE_ITEMS,
+		AETEXT_POPUP(strings, L10N_MODE_ITEMS),
 		ID_MODE,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_AUTO_SEED,
-		"on",
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_AUTO_SEED,
 		PF_ParamFlag_SUPERVISE
 	);
 	cs.AddSlider(	// 
-		STR_SEED,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SEED),	//パラメータの名前
 		-30000, 		//数値入力する場合の最小値
 		30000,			//数値入力する場合の最大値
 		-1000,			//スライダーの最小値 
@@ -44,12 +47,12 @@ static PF_Err ParamsSetup(
 		ID_SEED
 	);
 	// ******************************************************
-	cs.AddTopic(STR_NOISE_TOPIC, ID_NOISE_TOPIC//,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_NOISE_TOPIC), ID_NOISE_TOPIC//,
 		//PF_ParamFlag_START_COLLAPSED,
 		//PF_PUI_DISABLED
 	);
 	cs.AddFloatSlider(	// R
-		STR_NOISE_VALUE,			//Name
+		AETEXT_PARAM(strings, L10N_NOISE_VALUE),			//Name
 		0,				//VALID_MIN
 		300,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -61,7 +64,7 @@ static PF_Err ParamsSetup(
 		ID_NOISE_VALUE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_NOISE_ISCOlOR,
+		AETEXT_PARAM(strings, L10N_NOISE_ISCOLOR),
 		"",
 		FALSE,
 		ID_NOISE_ISCOLOR//,
@@ -71,14 +74,14 @@ static PF_Err ParamsSetup(
 	cs.EndTopic(ID_NOISE_TOPIC_END);
 	
 	// ******************************************************
-	cs.AddTopic(STR_RECT_TOPIC, ID_RECT_TOPIC,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_RECT_TOPIC), ID_RECT_TOPIC,
 		PF_ParamFlag_NONE,
 		PF_PUI_INVISIBLE
 	);
 	A_long def_p[4][4] = { {25,25}, {75, 25}, {75,75},{25,75} };
 	for (int i = 0; i < 4; i++) {
 		cs.AddPoint(
-			(STR_RECT + std::to_string(i + 1)).c_str(),
+			(AETEXT_PARAM(strings, L10N_RECT) + std::to_string(i + 1)).c_str(),
 			def_p[i][0],
 			def_p[i][1],
 			FALSE,
@@ -88,21 +91,21 @@ static PF_Err ParamsSetup(
 		);
 	}
 	cs.AddColor(	// color
-		STR_RECT_COLOR,
+		AETEXT_PARAM(strings, L10N_RECT_COLOR),
 		{ 0xFF, 0xFF, 0xFF, 0xFF },
 		ID_RECT_COLOR
 	);
 	cs.EndTopic(ID_NOISE_TOPIC_END);
 	// ******************************************************
 	// ******************************************************
-	cs.AddTopic(STR_LINE_TOPIC, ID_LINE_TOPIC,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_LINE_TOPIC), ID_LINE_TOPIC,
 		PF_ParamFlag_NONE,
 		PF_PUI_INVISIBLE
 	);
 	A_long def_p2[4][4] = { {25,25}, {50, 25}, {50,75},{75,75} };
 	for (int i = 0; i < 4; i++) {
 		cs.AddPoint(
-			(STR_LINE + std::to_string(i + 1)).c_str(),
+			(AETEXT_PARAM(strings, L10N_LINE) + std::to_string(i + 1)).c_str(),
 			def_p2[i][0],
 			def_p2[i][1],
 			FALSE,
@@ -111,7 +114,7 @@ static PF_Err ParamsSetup(
 			PF_PUI_INVISIBLE
 		);
 		cs.AddFloatSlider(	// R
-			(STR_LINE_W + std::to_string(i + 1)).c_str(),			//Name
+			(AETEXT_PARAM(strings, L10N_LINE_W) + std::to_string(i + 1)).c_str(),			//Name
 			0,				//VALID_MIN
 			150,			//VALID_MAX
 			0,				//SLIDER_MIN
@@ -126,7 +129,7 @@ static PF_Err ParamsSetup(
 		);
 	}
 	cs.AddColor(	// color
-		STR_LINE_COLOR,
+		AETEXT_PARAM(strings, L10N_LINE_COLOR),
 		{ 0xFF, 0xFF, 0x00, 0xFF },
 		ID_RECT_COLOR
 	);
@@ -840,8 +843,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const _SkeletonText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;

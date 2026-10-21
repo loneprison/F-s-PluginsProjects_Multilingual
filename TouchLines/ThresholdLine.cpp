@@ -1,4 +1,4 @@
-#include "ThresholdLine.h"
+ï»¿#include "ThresholdLine.h"
 typedef struct {
 	PF_EffectWorld* world;
 	A_long width;
@@ -14,7 +14,7 @@ template <typename T>
 inline PF_FpLong GetMaxChannel() {
 	if (std::is_same<T, PF_Pixel8>::value) return 255.0;
 	if (std::is_same<T, PF_Pixel16>::value) return 32768.0;
-	return 1.0; // PF_PixelFloat—p
+	return 1.0; // PF_PixelFloatç”¨
 }
 
 // ***********************************************************************************
@@ -27,22 +27,22 @@ static PF_Err DrawMaskT(
 	A_long itrtL)
 {
 	THInfo* infoP = reinterpret_cast<THInfo*>(refconPV);
-	PF_FpLong max_chan = GetMaxChannel<T>(); // _SkeletonFilter.cpp‚É‚ ‚éƒwƒ‹ƒp[‚ğ—˜—p
+	PF_FpLong max_chan = GetMaxChannel<T>(); // _SkeletonFilter.cppã«ã‚ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼ã‚’åˆ©ç”¨
 
 
 	T* outRow = reinterpret_cast<T*>((char*)infoP->world->data + (y * infoP->rowbytes));
 	for (A_long x = 0; x < infoP->width; x++) {
-		//float luma = *(infoP->mask->data() + y * infoP->width + x); // ƒ}ƒXƒN‚©‚ç‹P“x‚ğæ“¾
-		float luma = (float)infoP->mask->at(y).at(x); // ƒ}ƒXƒN‚©‚ç‹P“x‚ğæ“¾
+		//float luma = *(infoP->mask->data() + y * infoP->width + x); // ãƒã‚¹ã‚¯ã‹ã‚‰è¼åº¦ã‚’å–å¾—
+		float luma = (float)infoP->mask->at(y).at(x); // ãƒã‚¹ã‚¯ã‹ã‚‰è¼åº¦ã‚’å–å¾—
 		T* outP = &outRow[x];
 		if (std::is_same<T, PF_PixelFloat>::value) {
-			// 32bit float ‚Ìê‡‚ÍƒNƒ‰ƒ“ƒv•s—v
+			// 32bit float ã®å ´åˆã¯ã‚¯ãƒ©ãƒ³ãƒ—ä¸è¦
 			outP->red = static_cast<channelType>(luma);
 			outP->green = static_cast<channelType>(luma);
 			outP->blue = static_cast<channelType>(luma);
 		}
 		else {
-			// ®”Œ^‚Ìê‡‚ÍƒNƒ‰ƒ“ƒv‚µ‚Ä‚©‚ç“KØ‚ÈŒ^‚ÉƒLƒƒƒXƒg
+			// æ•´æ•°å‹ã®å ´åˆã¯ã‚¯ãƒ©ãƒ³ãƒ—ã—ã¦ã‹ã‚‰é©åˆ‡ãªå‹ã«ã‚­ãƒ£ã‚¹ãƒˆ
 			outP->red = static_cast<channelType>(AE_CLAMP(luma * max_chan, 0, max_chan));
 			outP->green = static_cast<channelType>(AE_CLAMP(luma * max_chan, 0, max_chan));
 			outP->blue = static_cast<channelType>(AE_CLAMP(luma * max_chan, 0, max_chan));
@@ -92,7 +92,7 @@ PF_Err DrawMask(
 }
 // ***********************************************************************************
 // ***********************************************************************************
-// ‹P“xŒvZƒwƒ‹ƒp[ (RGB‚ÌÅ‘å’l‚ğŠî€‚É‚·‚éd—l)
+// è¼åº¦è¨ˆç®—ãƒ˜ãƒ«ãƒ‘ãƒ¼ (RGBã®æœ€å¤§å€¤ã‚’åŸºæº–ã«ã™ã‚‹ä»•æ§˜)
 template <typename T>
 inline float GetLuminance(T* p, PF_FpLong max_chan) {
 	PF_FpLong ret = 0;
@@ -111,16 +111,16 @@ static PF_Err ThresholdLumT(
 	A_long itrtL)
 {
 	THInfo* infoP = reinterpret_cast<THInfo*>(refconPV);
-	PF_FpLong max_chan = GetMaxChannel<T>(); // _SkeletonFilter.cpp‚É‚ ‚éƒwƒ‹ƒp[‚ğ—˜—p
+	PF_FpLong max_chan = GetMaxChannel<T>(); // _SkeletonFilter.cppã«ã‚ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼ã‚’åˆ©ç”¨
 
 	if(y==0|| y== infoP->height-1) {
 		for(A_long x=0; x< infoP->width; x++) {
-			infoP->mask->at(y).at(x) = 0.0f; // ã‰º‚Ìs‚Í‘S‚Ä0‚É‚·‚é
+			infoP->mask->at(y).at(x) = 0.0f; // ä¸Šä¸‹ã®è¡Œã¯å…¨ã¦0ã«ã™ã‚‹
 		}
 		return PF_Err_NONE;
 	}
 
-	// Šes‚Ìæ“ªƒ|ƒCƒ“ƒ^‚ğƒoƒCƒg’PˆÊ‚ÅŒvZ‚µ‚Ä‚©‚çŒ^ƒLƒƒƒXƒg
+	// å„è¡Œã®å…ˆé ­ãƒã‚¤ãƒ³ã‚¿ã‚’ãƒã‚¤ãƒˆå˜ä½ã§è¨ˆç®—ã—ã¦ã‹ã‚‰å‹ã‚­ãƒ£ã‚¹ãƒˆ
 	T* inRow = reinterpret_cast<T*>((char*)infoP->world->data + (y * infoP->rowbytes));
 	T* prevRow = reinterpret_cast<T*>((char*)infoP->world->data + ((y - 1) * infoP->rowbytes));
 	T* nextRow = reinterpret_cast<T*>((char*)infoP->world->data + ((y + 1) * infoP->rowbytes));
@@ -128,14 +128,14 @@ static PF_Err ThresholdLumT(
 	infoP->mask->at(y).at(infoP->width - 1) = 0;
 	for (A_long x = 1; x < infoP->width-1; x++) {
 		float cv = GetLuminance<T>(&inRow[x], max_chan);
-		// ã‰º¶‰E‚Ì·•ªiâ‘Î’lj
-		float v0 = ABS(GetLuminance<T>(&inRow[x - 1], max_chan) - cv); // ¶
-		float v1 = ABS(GetLuminance<T>(&inRow[x + 1], max_chan) - cv); // ‰E
-		float v2 = ABS(GetLuminance<T>(&prevRow[x], max_chan) - cv);   // ã
-		float v3 = ABS(GetLuminance<T>(&nextRow[x], max_chan) - cv);   // ‰º
+		// ä¸Šä¸‹å·¦å³ã®å·®åˆ†ï¼ˆçµ¶å¯¾å€¤ï¼‰
+		float v0 = ABS(GetLuminance<T>(&inRow[x - 1], max_chan) - cv); // å·¦
+		float v1 = ABS(GetLuminance<T>(&inRow[x + 1], max_chan) - cv); // å³
+		float v2 = ABS(GetLuminance<T>(&prevRow[x], max_chan) - cv);   // ä¸Š
+		float v3 = ABS(GetLuminance<T>(&nextRow[x], max_chan) - cv);   // ä¸‹
 		float max_v = MAX(MAX(v0, v1), MAX(v2, v3));
 
-		// ”»’èŒ‹‰Ê‚ğ 0.0f ‚© 1.0f ‚Å‘ã“ü
+		// åˆ¤å®šçµæœã‚’ 0.0f ã‹ 1.0f ã§ä»£å…¥
 		infoP->mask->at(y).at(x) = (max_v > (1-infoP->level)) ? 1.0f : 0.0f;
 	}
 	//std::string msg = "ThresholdLumT Level: " + std::to_string(infoP->level) + "\n";
@@ -192,16 +192,16 @@ static PF_Err ThresholdAlphaT(
 	A_long itrtL)
 {
 	THInfo* infoP = reinterpret_cast<THInfo*>(refconPV);
-	PF_FpLong max_chan = GetMaxChannel<T>(); // _SkeletonFilter.cpp‚É‚ ‚éƒwƒ‹ƒp[‚ğ—˜—p
+	PF_FpLong max_chan = GetMaxChannel<T>(); // _SkeletonFilter.cppã«ã‚ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼ã‚’åˆ©ç”¨
 
 	if (y == 0 || y == infoP->height - 1) {
 		for (A_long x = 0; x < infoP->width; x++) {
-			infoP->mask->at(y).at(x) = 0.0f; // ã‰º‚Ìs‚Í‘S‚Ä0‚É‚·‚é
+			infoP->mask->at(y).at(x) = 0.0f; // ä¸Šä¸‹ã®è¡Œã¯å…¨ã¦0ã«ã™ã‚‹
 		}
 		return PF_Err_NONE;
 	}
 
-	// Šes‚Ìæ“ªƒ|ƒCƒ“ƒ^‚ğƒoƒCƒg’PˆÊ‚ÅŒvZ‚µ‚Ä‚©‚çŒ^ƒLƒƒƒXƒg
+	// å„è¡Œã®å…ˆé ­ãƒã‚¤ãƒ³ã‚¿ã‚’ãƒã‚¤ãƒˆå˜ä½ã§è¨ˆç®—ã—ã¦ã‹ã‚‰å‹ã‚­ãƒ£ã‚¹ãƒˆ
 	T* inRow = reinterpret_cast<T*>((char*)infoP->world->data + (y * infoP->rowbytes));
 	T* prevRow = reinterpret_cast<T*>((char*)infoP->world->data + ((y - 1) * infoP->rowbytes));
 	T* nextRow = reinterpret_cast<T*>((char*)infoP->world->data + ((y + 1) * infoP->rowbytes));
@@ -215,7 +215,7 @@ static PF_Err ThresholdAlphaT(
 		float v2 = ABS(GetAlpha<T>(&prevRow[x], max_chan) - cv);
 		float v3 = ABS(GetAlpha<T>(&nextRow[x], max_chan) - cv);
 		float max_v = MAX(MAX(v0, v1), MAX(v2, v3));
-		infoP->mask->at(y).at(x) = (max_v > (1-infoP->level)) ? 1.0f : 0.0f; // ”äŠrŒ‹‰Ê‚ğ‘ã“ü
+		infoP->mask->at(y).at(x) = (max_v > (1-infoP->level)) ? 1.0f : 0.0f; // æ¯”è¼ƒçµæœã‚’ä»£å…¥
 		//infoP->mask->at(y).at(x) = max_v;
 	}
 	return PF_Err_NONE;
@@ -258,7 +258,7 @@ PF_Err ThresholdAlpha(
 // ***********************************************************************************
 // ***********************************************************************************
 
-// --- ƒrƒbƒg[“x‚²‚Æ‚ÌŒ^•ÏŠ·‚ğ‹zû‚·‚éƒwƒ‹ƒp[ ---
+// --- ãƒ“ãƒƒãƒˆæ·±åº¦ã”ã¨ã®å‹å¤‰æ›ã‚’å¸åã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼ ---
 inline PF_Pixel NF_To8(PF_Pixel c) { return c; }
 inline PF_Pixel NF_To8(PF_Pixel16 c) { return NF_Pixel16To8(c); }
 inline PF_Pixel NF_To8(PF_PixelFloat c) { return NF_Pixel32To8(c); }
@@ -271,16 +271,16 @@ static PF_Err ThresholdColorT(
 	A_long itrtL)
 {
 	THInfo* infoP = reinterpret_cast<THInfo*>(refconPV);
-	PF_FpLong max_chan = GetMaxChannel<T>(); // _SkeletonFilter.cpp‚É‚ ‚éƒwƒ‹ƒp[‚ğ—˜—p
+	PF_FpLong max_chan = GetMaxChannel<T>(); // _SkeletonFilter.cppã«ã‚ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼ã‚’åˆ©ç”¨
 
 	T* inRow = reinterpret_cast<T*>((char*)infoP->world->data + (y * infoP->rowbytes));
 	for (A_long x = 0; x < infoP->width; x++) {
-		PF_Pixel pixel8 = NF_To8(inRow[x]); // ƒrƒbƒg[“x‚É‰‚¶‚½Œ^•ÏŠ·‚ğs‚¤
+		PF_Pixel pixel8 = NF_To8(inRow[x]); // ãƒ“ãƒƒãƒˆæ·±åº¦ã«å¿œã˜ãŸå‹å¤‰æ›ã‚’è¡Œã†
 		double r_diff = (ABS((double)pixel8.red - (double)infoP->target_color.red))/255;
 		double g_diff = (ABS((double)pixel8.green - (double)infoP->target_color.green)) / 255;
 		double b_diff = (ABS((double)pixel8.blue - (double)infoP->target_color.blue)) / 255;
-		double d = sqrt(pow(r_diff, 2) + pow(g_diff, 2) + pow(b_diff, 2)); // RGB‚Ì·•ª‚ğ‹——£‚Æ‚µ‚ÄŒvZ
-		infoP->mask->at(y).at(x) = ((1 - d) > (1 - infoP->level)) ? 1.0f : 0.0f; // ”äŠrŒ‹‰Ê‚ğ‘ã“ü
+		double d = sqrt(pow(r_diff, 2) + pow(g_diff, 2) + pow(b_diff, 2)); // RGBã®å·®åˆ†ã‚’è·é›¢ã¨ã—ã¦è¨ˆç®—
+		infoP->mask->at(y).at(x) = ((1 - d) > (1 - infoP->level)) ? 1.0f : 0.0f; // æ¯”è¼ƒçµæœã‚’ä»£å…¥
 
 	}
 

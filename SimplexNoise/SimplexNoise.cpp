@@ -6,6 +6,7 @@
 
 
 #include "SimplexNoise.h"
+#include "SimplexNoiseText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,12 +17,13 @@ static PF_Err ParamsSetup(
 	PF_ParamDef* params[],
 	PF_LayerDef* output)
 {
+	const SimplexNoiseText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddFloatSlider(	// R
-		STR_EVOLUTION,	//Name
+		AETEXT_PARAM(strings, L10N_EVOLUTION),	//Name
 		-30000,				//VALID_MIN
 		30000,				//VALID_MAX
 		-1000,				//SLIDER_MIN
@@ -33,7 +35,7 @@ static PF_Err ParamsSetup(
 		ID_EVOLUTION
 	);
 	cs.AddSlider(	// 
-		STR_OCTAVES,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_OCTAVES),	//パラメータの名前
 		1, 		//数値入力する場合の最小値
 		30,			//数値入力する場合の最大値
 		0,			//スライダーの最小値 
@@ -42,7 +44,7 @@ static PF_Err ParamsSetup(
 		ID_OCTAVES
 	);
 	cs.AddFloatSlider(	// R
-		STR_SCALE,	//Name
+		AETEXT_PARAM(strings, L10N_SCALE),	//Name
 		1,				//VALID_MIN
 		3000,				//VALID_MAX
 		1,				//SLIDER_MIN
@@ -157,8 +159,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const SimplexNoiseText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -225,7 +230,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			SimplexNoiseText::OpenSettings(in_data, L"NF-SimplexNoise");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

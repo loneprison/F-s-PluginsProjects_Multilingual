@@ -6,6 +6,8 @@
 
 
 #include "SpeedLines.h"
+#define L10N_LABEL_ON "on"
+#include "SpeedLinesText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,12 +18,13 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const SpeedLinesText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddFloatSlider(
-		STR_VALUE,	//Name
+		AETEXT_PARAM(strings, L10N_VALUE),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -33,15 +36,15 @@ static PF_Err ParamsSetup (
 		ID_VALUE
 	);
 	 // *************************************************
-	cs.AddTopic(STR_POS_TOPIC, ID_POS_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_POS_TOPIC), ID_POS_TOPIC);
 	cs.AddAngle(	// angle
-		STR_ANGLE,
+		AETEXT_PARAM(strings, L10N_ANGLE),
 		0,
 		ID_ANGLE
 	);
 
 	cs.AddFloatSlider(
-		STR_LENGTH1_VALUE,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH1_VALUE),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		50,				//SLIDER_MIN
@@ -53,7 +56,7 @@ static PF_Err ParamsSetup (
 		ID_LENGTH1_VALUE
 	);
 	cs.AddFloatSlider(
-		STR_LENGTH1_FAR,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH1_FAR),	//Name
 		100,			//VALID_MIN
 		200,			//VALID_MAX
 		100,			//SLIDER_MIN
@@ -65,7 +68,7 @@ static PF_Err ParamsSetup (
 		ID_LENGTH1_FAR
 	);
 	cs.AddFloatSlider(
-		STR_LENGTH1_NEAR,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH1_NEAR),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -77,7 +80,7 @@ static PF_Err ParamsSetup (
 		ID_LENGTH1_NEAR
 	);
 	cs.AddFloatSlider(
-		STR_LENGTH2_VALUE,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH2_VALUE),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		50,				//SLIDER_MIN
@@ -89,7 +92,7 @@ static PF_Err ParamsSetup (
 		ID_LENGTH2_VALUE
 	);
 	cs.AddFloatSlider(
-		STR_LENGTH2_FAR,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH2_FAR),	//Name
 		100,			//VALID_MIN
 		200,			//VALID_MAX
 		100,			//SLIDER_MIN
@@ -101,7 +104,7 @@ static PF_Err ParamsSetup (
 		ID_LENGTH2_FAR
 	);
 	cs.AddFloatSlider(
-		STR_LENGTH2_NEAR,	//Name
+		AETEXT_PARAM(strings, L10N_LENGTH2_NEAR),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -113,20 +116,20 @@ static PF_Err ParamsSetup (
 		ID_LENGTH2_NEAR
 	);
 	cs.AddPoint(
-		STR_CENTER,
+		AETEXT_PARAM(strings, L10N_CENTER),
 		50,
 		50,
 		FALSE,
 		ID_CENTER
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_AUTO_SEED,
-		"on",
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_AUTO_SEED
 	);
 	cs.AddSlider(	// 
-		STR_SEED,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SEED),	//パラメータの名前
 		-30000, 	//数値入力する場合の最小値
 		30000,		//数値入力する場合の最大値
 		0,			//スライダーの最小値 
@@ -136,9 +139,9 @@ static PF_Err ParamsSetup (
 	);
 	cs.EndTopic(ID_POS_TOPIC_END);
 	// *************************************************
-	cs.AddTopic(STR_LINE_TOPIC, ID_LINE_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_LINE_TOPIC), ID_LINE_TOPIC);
 	cs.AddFloatSlider(
-		STR_LINE_LENGTH,	//Name
+		AETEXT_PARAM(strings, L10N_LINE_LENGTH),	//Name
 		0,				//VALID_MIN
 		200,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -150,7 +153,7 @@ static PF_Err ParamsSetup (
 		ID_LINE_LENGTH
 	);
 	cs.AddFloatSlider(
-		STR_LINE_LENGTH_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_LINE_LENGTH_RAND),	//Name
 		0,				//VALID_MIN
 		100,				//VALID_MAX
 		0,				//SLIDER_MIN
@@ -162,7 +165,7 @@ static PF_Err ParamsSetup (
 		ID_LINE_LENGTH_RAND
 	);
 	cs.AddFloatSlider(
-		STR_LINE_SIZE,	//Name
+		AETEXT_PARAM(strings, L10N_LINE_SIZE),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -174,7 +177,7 @@ static PF_Err ParamsSetup (
 		ID_LINE_SIZE
 	);
 	cs.AddFloatSlider(
-		STR_LINE_SIZE_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_LINE_SIZE_RAND),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -186,7 +189,7 @@ static PF_Err ParamsSetup (
 		ID_LINE_SIZE_RAND
 	);
 	cs.AddFloatSlider(
-		STR_LINE_OPACITY,	//Name
+		AETEXT_PARAM(strings, L10N_LINE_OPACITY),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -198,7 +201,7 @@ static PF_Err ParamsSetup (
 		ID_LINE_OPACITY
 	);
 	cs.AddFloatSlider(
-		STR_LINE_OPACITY_RAND,	//Name
+		AETEXT_PARAM(strings, L10N_LINE_OPACITY_RAND),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -210,7 +213,7 @@ static PF_Err ParamsSetup (
 		ID_LINE_OPACITY_RAND
 	);
 	cs.AddSlider(	// 
-		STR_LINE_BLUR,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_LINE_BLUR),	//パラメータの名前
 		0, 		//数値入力する場合の最小値
 		20,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -219,7 +222,7 @@ static PF_Err ParamsSetup (
 		ID_LINE_BLUR
 	);
 	cs.AddFloatSlider(
-		STR_LINE_NOISE,	//Name
+		AETEXT_PARAM(strings, L10N_LINE_NOISE),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -232,18 +235,18 @@ static PF_Err ParamsSetup (
 	);
 	cs.EndTopic(ID_LINE_TOPIC_END);
 	// *************************************************
-	cs.AddTopic(STR_COLOR_TOPIC, ID_COLOR_TOPIC);
-	cs.AddPopup(STR_COLOR_COUNT,
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_COLOR_TOPIC), ID_COLOR_TOPIC);
+	cs.AddPopup(AETEXT_PARAM(strings, L10N_COLOR_COUNT),
 		8,
 		1,
-		STR_COLOR_ITEMS,
+		AETEXT_POPUP(strings, L10N_COLOR_ITEMS),
 		ID_COLOR_COUNT,
 		PF_ParamFlag_SUPERVISE |
 		PF_ParamFlag_CANNOT_TIME_VARY |
 		PF_ParamFlag_CANNOT_INTERP
 	);
 	for(int i = 0; i < 8; i++) {
-		std::string name = STR_COLOR +std::to_string(i+1);
+		std::string name = AETEXT_PARAM(strings, L10N_COLOR) +std::to_string(i+1);
 		PF_ParamUIFlags ui_flags = PF_PUI_INVISIBLE;
 		if(i==0) {
 			ui_flags = PF_PUI_NONE;
@@ -259,8 +262,8 @@ static PF_Err ParamsSetup (
 	cs.EndTopic(ID_COLOR_TOPIC_END);
 	// *************************************************
 	cs.AddCheckBox(	// noise frame
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_BLEND
 	);
@@ -446,8 +449,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const SpeedLinesText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -511,7 +517,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			SpeedLinesText::OpenSettings(in_data, L"NF-SpeedLines");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

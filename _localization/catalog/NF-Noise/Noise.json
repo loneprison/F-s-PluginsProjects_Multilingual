@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子",
+        "L10N_NOISE_AMAOUNT": "杂色数量",
+        "L10N_NOISE_INDENSITY": "杂色强度",
+        "L10N_ACCENT_COUNT": "斑点数量",
+        "L10N_ACCENT_INTENSITY": "斑点强度",
+        "L10N_COLOR": "彩色化"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "噪声"
+      }
+    }
+  }
+}

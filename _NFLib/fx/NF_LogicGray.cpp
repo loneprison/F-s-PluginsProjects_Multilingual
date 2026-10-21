@@ -1,7 +1,7 @@
-#include "NF_LogicGray.h"
+ï»¿#include "NF_LogicGray.h"
 #include <math.h>
 
-// “à•”ƒf[ƒ^\‘¢
+// å†…éƒ¨ãƒ‡ãƒ¼ã‚¿æ§‹é€ 
 typedef struct {
 	PF_FpLong	H;
 	PF_FpLong	L;
@@ -16,7 +16,7 @@ typedef struct {
 	PF_FpShort	alpha;
 }LABA;
 
-// “à•”ŠÖ”’è‹`
+// å†…éƒ¨é–¢æ•°å®šç¾©
 static HLSA RGBtoHLS(PF_PixelFloat c)
 {
 	HLSA hls;
@@ -80,7 +80,7 @@ static LABA RgbToLab(PF_PixelFloat rgb)
 	else
 		sb = pow((sb + 0.055) / 1.055, 2.4);
 
-	// XYZ‚É•ÏŠ·
+	// XYZã«å¤‰æ›
 	double x = 0.412453 * sr + 0.357580 * sg + 0.180423 * sb;
 	double y = 0.212671 * sr + 0.715160 * sg + 0.072169 * sb;
 	double z = 0.019334 * sr + 0.119193 * sg + 0.950227 * sb;
@@ -88,7 +88,7 @@ static LABA RgbToLab(PF_PixelFloat rgb)
 	x /= 0.950456;
 	z /= 1.088754;
 
-	// Lab‚É•ÏŠ·
+	// Labã«å¤‰æ›
 	LABA lab;
 	double fy;
 	if (y > 0.008856) {
@@ -111,7 +111,7 @@ static LABA RgbToLab(PF_PixelFloat rgb)
 }
 
 //**********************************************************************************************
-// ƒeƒ“ƒvƒŒ[ƒg‰»‚³‚ê‚½GMIXŠÖ”
+// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆåŒ–ã•ã‚ŒãŸGMIXé–¢æ•°
 template<typename PixelType, typename ChanType, ChanType MaxChan>
 inline PixelType GMIX(PixelType* s, auto v, PF_FpShort p)
 {
@@ -153,7 +153,7 @@ inline PixelType GMIX(PixelType* s, auto v, PF_FpShort p)
 }
 
 //-------------------------------------------------------------------------------------------------
-// YUVƒ‚[ƒh
+// YUVãƒ¢ãƒ¼ãƒ‰
 template<typename PixelType, typename ChanType, ChanType MaxChan>
 static PF_Err ToGrayFunc_yuv(
 	refconType refcon,
@@ -175,7 +175,7 @@ static PF_Err ToGrayFunc_yuv(
 }
 
 //-------------------------------------------------------------------------------------------------
-// HLSƒ‚[ƒh
+// HLSãƒ¢ãƒ¼ãƒ‰
 template<typename PixelType, typename ChanType, ChanType MaxChan>
 static PF_Err ToGrayFunc_hls(
 	refconType refcon,
@@ -201,7 +201,7 @@ static PF_Err ToGrayFunc_hls(
 }
 
 //-------------------------------------------------------------------------------------------------
-// RGB•½‹Ïƒ‚[ƒh
+// RGBå¹³å‡ãƒ¢ãƒ¼ãƒ‰
 template<typename PixelType, typename ChanType, ChanType MaxChan>
 static PF_Err ToGrayFunc_rgb(
 	refconType refcon,
@@ -220,7 +220,7 @@ static PF_Err ToGrayFunc_rgb(
 }
 
 //-------------------------------------------------------------------------------------------------
-// Rƒ`ƒƒƒ“ƒlƒ‹ƒ‚[ƒh
+// Rãƒãƒ£ãƒ³ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰
 template<typename PixelType, typename ChanType, ChanType MaxChan>
 static PF_Err ToGrayFunc_r(
 	refconType refcon,
@@ -239,7 +239,7 @@ static PF_Err ToGrayFunc_r(
 }
 
 //-------------------------------------------------------------------------------------------------
-// Gƒ`ƒƒƒ“ƒlƒ‹ƒ‚[ƒh
+// Gãƒãƒ£ãƒ³ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰
 template<typename PixelType, typename ChanType, ChanType MaxChan>
 static PF_Err ToGrayFunc_g(
 	refconType refcon,
@@ -258,7 +258,7 @@ static PF_Err ToGrayFunc_g(
 }
 
 //-------------------------------------------------------------------------------------------------
-// Bƒ`ƒƒƒ“ƒlƒ‹ƒ‚[ƒh
+// Bãƒãƒ£ãƒ³ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰
 template<typename PixelType, typename ChanType, ChanType MaxChan>
 static PF_Err ToGrayFunc_b(
 	refconType refcon,
@@ -277,7 +277,7 @@ static PF_Err ToGrayFunc_b(
 }
 
 //-------------------------------------------------------------------------------------------------
-// RGBÅ‘å’lƒ‚[ƒh
+// RGBæœ€å¤§å€¤ãƒ¢ãƒ¼ãƒ‰
 template<typename PixelType, typename ChanType, ChanType MaxChan>
 static PF_Err ToGrayFunc_rgbmax(
 	refconType refcon,
@@ -296,7 +296,7 @@ static PF_Err ToGrayFunc_rgbmax(
 }
 
 //-------------------------------------------------------------------------------------------------
-// LABƒ‚[ƒh
+// LABãƒ¢ãƒ¼ãƒ‰
 template<typename PixelType, typename ChanType, ChanType MaxChan>
 static PF_Err ToGrayFunc_lab(
 	refconType refcon,
@@ -332,7 +332,7 @@ static PF_Err ToGrayFunc_lab(
 
 //-------------------------------------------------------------------------------------------------
 /**
- * LogicalGrayMain - ƒOƒŒ[ƒXƒP[ƒ‹•ÏŠ·‚ÌƒƒCƒ“ˆ—ŠÖ”
+ * LogicalGrayMain - ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«å¤‰æ›ã®ãƒ¡ã‚¤ãƒ³å‡¦ç†é–¢æ•°
  */
 PF_Err LogicalGrayMain(
 	PF_InData* in_dataP,

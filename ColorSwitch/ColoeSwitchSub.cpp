@@ -1,11 +1,11 @@
-#include "ColorSwitch.h"
+ï»¿#include "ColorSwitch.h"
 
-// --- ƒrƒbƒg[“x‚²‚Æ‚ÌŒ^•ÏŠ·‚ğ‹zû‚·‚éƒwƒ‹ƒp[ ---
+// --- ãƒ“ãƒƒãƒˆæ·±åº¦ã”ã¨ã®å‹å¤‰æ›ã‚’å¸åã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼ ---
 inline PF_Pixel NF_To8(PF_Pixel c) { return c; }
 inline PF_Pixel NF_To8(PF_Pixel16 c) { return NF_Pixel16To8(c); }
 inline PF_Pixel NF_To8(PF_PixelFloat c) { return NF_Pixel32To8(c); }
 
-// ƒeƒ“ƒvƒŒ[ƒg—p‚Ìî•ñ‚ğ•Û‚·‚é\‘¢‘Ì
+// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨ã®æƒ…å ±ã‚’ä¿æŒã™ã‚‹æ§‹é€ ä½“
 template <typename T>
 struct ColSWInfo {
 	A_long		count;
@@ -15,7 +15,7 @@ struct ColSWInfo {
 };
 
 //-------------------------------------------------------------------------------------------------
-// ƒeƒ“ƒvƒŒ[ƒg‰»‚µ‚½ƒsƒNƒZƒ‹ƒTƒ“ƒvƒŠƒ“ƒOŠÖ”
+// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆåŒ–ã—ãŸãƒ”ã‚¯ã‚»ãƒ«ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°é–¢æ•°
 //-------------------------------------------------------------------------------------------------
 template <typename T>
 static PF_Err
@@ -29,7 +29,7 @@ ColSW_Template(
 	PF_Err			err = PF_Err_NONE;
 	ColSWInfo<T>* infoP = reinterpret_cast<ColSWInfo<T>*>(refcon);
 
-	// ƒI[ƒo[ƒ[ƒh‚³‚ê‚½ NF_To8 ‚É‚æ‚èAT ‚ÌŒ^‚É‰‚¶‚½ŠÖ”‚ªŒÄ‚Î‚ê‚Ü‚·
+	// ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸ NF_To8 ã«ã‚ˆã‚Šã€T ã®å‹ã«å¿œã˜ãŸé–¢æ•°ãŒå‘¼ã°ã‚Œã¾ã™
 	PF_Pixel src = NF_To8(*inP);
 	int idx = -1;
 
@@ -102,12 +102,12 @@ PF_Err ColSWitch(NF_AE* ae, ParamInfo* infoP)
 	for (int i = 0; i < infoP->active_param_count; i++)
 	{
 		if(infoP->turnon_colors[i] == FALSE) {
-			// –³Œø‚ÈF‚ÍƒXƒLƒbƒv
+			// ç„¡åŠ¹ãªè‰²ã¯ã‚¹ã‚­ãƒƒãƒ—
 			continue;
 		}
 		int idx = IndexOfColor(info8.old_colors, i, infoP->old_colors[i]);
 		if(idx>=0){
-			// ‚·‚Å‚É“o˜^‚³‚ê‚Ä‚¢‚éF‚ÍƒXƒLƒbƒv
+			// ã™ã§ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹è‰²ã¯ã‚¹ã‚­ãƒƒãƒ—
 			continue;
 		}
 		info8.old_colors[cnt] = infoP->old_colors[i];
@@ -116,7 +116,7 @@ PF_Err ColSWitch(NF_AE* ae, ParamInfo* infoP)
 	}
 	info8.count = cnt;
 	if(cnt<=0){
-		// ’uŠ·‘ÎÛ‚ÌF‚ª–³‚¢ê‡‚Íˆ—‚µ‚È‚¢
+		// ç½®æ›å¯¾è±¡ã®è‰²ãŒç„¡ã„å ´åˆã¯å‡¦ç†ã—ãªã„
 		return err;
 	}
 
@@ -129,7 +129,7 @@ PF_Err ColSWitch(NF_AE* ae, ParamInfo* infoP)
 		info32.mode = info8.mode;
 		for (int i = 0; i < info8.count; i++) {
 			info32.old_colors[i] = info8.old_colors[i];
-			// 32bit—p‚Ì•ÏŠ·ŠÖ”‚ª‚ ‚ê‚Î‚»‚ê‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢i—á: NF_Pixel8ToFloatj
+			// 32bitç”¨ã®å¤‰æ›é–¢æ•°ãŒã‚ã‚Œã°ãã‚Œã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ï¼ˆä¾‹: NF_Pixel8ToFloatï¼‰
 			info32.new_colors[i] = NF_Pixel8ToFloat(info8.new_colors[i]);
 		}
 		ae->iterate32(ae->input, &info32, ColSW_Template<PF_PixelFloat>, ae->output);

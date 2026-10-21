@@ -54,26 +54,26 @@ enum {
 //#define ID_NUM_PARAMS (ID_LOAD_PARAMS+1)
 
 //UIの表示文字列
-#define	STR_ENABLEALL				"EnableAll"
-#define	STR_ACTIVE_PARAM_COUNT		"ActiveParamCount"
+#define	L10N_ENABLEALL				"EnableAll"
+#define	L10N_ACTIVE_PARAM_COUNT		"ActiveParamCount"
 
-#define	STR_MODE_POP		"Mode"
-#define	STR_MODE_ITEMS		"Replace|Key|Extract"
+#define	L10N_MODE_POP		"Mode"
+#define	L10N_MODE_ITEMS		"Replace|Key|Extract"
 #define	STR_MODE_COUNT		3
 #define	STR_MODE_DFLT		1
 
-#define	STR_TOPIC			"Colors"
+#define	L10N_TOPIC			"Colors"
 
-#define	STR_TURNON			"TurnON"
-#define	STR_OLD				"Old"
-#define	STR_NEW				"New"
+#define	L10N_TURNON			"TurnON"
+#define	L10N_OLD				"Old"
+#define	L10N_NEW				"New"
 
-#define	STR_ALL_TURNOFF1	"All turn off"
-#define	STR_ALL_TURNOFF2	"OFF"
-#define	STR_SAVE_PARAMS1	"Save Params"
-#define	STR_SAVE_PARAMS2	"Save"
-#define	STR_LOAD_PARAMS1	"Load Params"
-#define	STR_LOAD_PARAMS2	"Load"
+#define	L10N_ALL_TURNOFF1	"All turn off"
+#define	L10N_ALL_TURNOFF2	"OFF"
+#define	L10N_SAVE_PARAMS1	"Save Params"
+#define	L10N_SAVE_PARAMS2	"Save"
+#define	L10N_LOAD_PARAMS1	"Load Params"
+#define	L10N_LOAD_PARAMS2	"Load"
 
 enum SwitchMode {
 	SWITCH_MODE_REPLACE = 1,

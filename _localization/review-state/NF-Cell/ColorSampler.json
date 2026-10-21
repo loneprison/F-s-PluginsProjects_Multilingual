@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "zh": {
+      "L10N_COLOR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:bd2c4b28f6aae035f0df50d21b268356a6e667425eac6501a981a828d513e941",
+          "translation": "sha256-v1:efbb77e96bef33784c9a23ba5865387a3b26b5c5225be3b7c7b6d6d91fedcdab"
+        }
+      },
+      "L10N_PARAM_COLORCOUNT": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:0a411ca4c8c36f5bfeb36d9ccd9fe46ed04a05496280e530ef5ffa1206cf2211",
+          "translation": "sha256-v1:9690938e5137963dda4c9e161068b5cd8ec3ea4fb81c9c3911a1485fdecd075d"
+        }
+      },
+      "L10N_GET_BTN": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:044b7904a9b939cfe62d9fce680704b36a30d150fac6b87309ab6e398b7fbc72",
+          "translation": "sha256-v1:788b8ea19157eb0871d56cd5591d64081b4e9559b1893f13ac43423cdb5a84b4"
+        }
+      },
+      "L10N_NAME_EDIT_BTN": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:2715017f1089e32a00fbe049e3fe3a1ebe89dc14bffad047e6cd86edf755b22c",
+          "translation": "sha256-v1:1fd069c9588e45050427ec8d1ac0ee5fa37b7aa639a418b2a6d5c7f5369c9018"
+        }
+      },
+      "L10N_COLOR_DEFAULT": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:db3e7ea89051acc9d2d17a1b8574fabea0191bc4a6322a3aaf370d9196d8e956",
+          "translation": "sha256-v1:1e97dd196782277e53ca91e995a0c02f69ded3abe78c1f9fc36aec063fd8d204"
+        }
+      },
+      "L10N_LABEL_GET": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:bcd5f0ebe1106f6106c1392c7c2dd9e5d9fcff2f9f721e31e591cd2695a65d30",
+          "translation": "sha256-v1:942a8c8193a64fa8d62516ea5919761253783a25573d77fb5008f782477a5510"
+        }
+      },
+      "L10N_LABEL_EDIT": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:7a49e28f5f042ca38d8f966b7ce7df841f0e5d33cc135418e4e4809de7b2f97a",
+          "translation": "sha256-v1:07f976c60063750aeb54733c3aadcf3fe592a4ca15b60c29eea9b0f95af1962a"
+        }
+      },
+      "L10N_DIALOG_TITLE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:5b811573c83f0d53b1ce1c00cd59fb334f0c63b1a67f2588cbfc5cd16211ac31",
+          "translation": "sha256-v1:5c0a194638202efa7bfe67212ee949472ad7c0a2369a0a7bf81fc8d30e55f20c"
+        }
+      },
+      "L10N_DIALOG_ACTIVE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:97f8c43589ffe2aa71fa8ebe8d5f26381f365004716f327758539737f213f5ea",
+          "translation": "sha256-v1:8e696e9e3825a28895fd32fbd63f3629f74b04185bb4402feaecc2aa239faecd"
+        }
+      },
+      "L10N_DIALOG_OK": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:ceea993e7e17403d1da5a2ca5d2c52ca259bd50de5cc9c38e01cb5724c14fda6",
+          "translation": "sha256-v1:aeeb675f074655bfc5634528ebc900968b0a05ec7930b4689fecda292814c986"
+        }
+      },
+      "L10N_DIALOG_CANCEL": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:6028d2e8b7c75f0268f641605a82db598b0fc0a35a14d33e6f8dd873203e0fab",
+          "translation": "sha256-v1:42c3d65ebbe5b50c5f27ba1fc3d623f545d55013ac031af69a593cea74500e2b"
+        }
+      },
+      "L10N_DIALOG_COLOR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:804694fbfce5b49b61c9e4b8981f858512688451c34d62813fe1f24bb66a7fa3",
+          "translation": "sha256-v1:4b674bcaa00815d87c1b6e6dbf60755d41226ffe7b069027a184fa56e3d1df32"
+        }
+      },
+      "L10N_PLUGIN_DESC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:b0c650ea3b5e5c9e94a40a9ef3a7b958363ab1593cec7d8cc67ece621e1ab01e",
+          "translation": "sha256-v1:a3b066881994bfce8efc92403a74e31d1e40513f8f3995e282361cfde44f8946"
+        }
+      }
+    }
+  }
+}

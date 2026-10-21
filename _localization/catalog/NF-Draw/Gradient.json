@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MODE_POP": "模式",
+        "L10N_START_POS": "渐变起点",
+        "L10N_START_COLOR": "起始颜色",
+        "L10N_START_OPACITY": "起始不透明度",
+        "L10N_END_POS": "渐变终点",
+        "L10N_END_COLOR": "结束颜色",
+        "L10N_END_OPACITY": "结束不透明度",
+        "L10N_ALPHA_HYPERBOLIC": "Alpha 偏差",
+        "L10N_RGB_HYPERBOLIC": "RGB 偏差",
+        "L10N_SWAP_COLOR_BTN": "交换颜色",
+        "L10N_BLEND": "与原始图像混合"
+      },
+      "Label": {
+        "L10N_SWAP_COLOR_BTN2": "交换",
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "线性|径向"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "渐变"
+      }
+    }
+  }
+}

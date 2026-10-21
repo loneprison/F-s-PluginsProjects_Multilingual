@@ -63,31 +63,31 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_SHAKE_VALUE		"camera_value"
-#define	STE_CAMERA_SHAKE_TOPIC		"cameraShake"
-#define	STR_SHAKE_VALUE_RAND	"valueRand"
-#define	STR_SUB_SHAKE		"subShake"
-#define	STR_ANGLE			"angle"
-#define	STR_ANGLE_RAND		"angleRand"
-#define	STR_REP_MODE		"edgeMode"
+#define	L10N_SHAKE_VALUE		"camera_value"
+#define	L10N_CAMERA_SHAKE_TOPIC		"cameraShake"
+#define	L10N_SHAKE_VALUE_RAND	"valueRand"
+#define	L10N_SUB_SHAKE		"subShake"
+#define	L10N_ANGLE			"angle"
+#define	L10N_ANGLE_RAND		"angleRand"
+#define	L10N_REP_MODE		"edgeMode"
 
-#define	STR_HAND_SHAKE_VALUE		"hand_value"
-#define	STR_HAND_SHAKE_SPEED		"hand_speed"
-#define	STR_HAND_SHAKE_SEED			"hand_seed"
-#define	STR_HAND_SHAKE_TOPIC		"handShake"
-#define	STR_AMPLITUDE		"amplitude"
-#define	STR_X_VALUE		"x_value"
-#define	STR_X_SPEED1	"x_speed1"
-#define	STR_X_SPEED2	"x_speed2"
-#define	STR_X_SEED		"x_seed"
-#define	STR_Y_VALUE		"y_value"
-#define	STR_Y_SPEED1	"y_speed1"
-#define	STR_Y_SPEED2	"y_speed2"
-#define	STR_Y_SEED		"y_seed"
+#define	L10N_HAND_SHAKE_VALUE		"hand_value"
+#define	L10N_HAND_SHAKE_SPEED		"hand_speed"
+#define	L10N_HAND_SHAKE_SEED			"hand_seed"
+#define	L10N_HAND_SHAKE_TOPIC		"handShake"
+#define	L10N_AMPLITUDE		"amplitude"
+#define	L10N_X_VALUE		"x_value"
+#define	L10N_X_SPEED1	"x_speed1"
+#define	L10N_X_SPEED2	"x_speed2"
+#define	L10N_X_SEED		"x_seed"
+#define	L10N_Y_VALUE		"y_value"
+#define	L10N_Y_SPEED1	"y_speed1"
+#define	L10N_Y_SPEED2	"y_speed2"
+#define	L10N_Y_SEED		"y_seed"
 
 //#define	STR_HANDSHAKE_VALUE		"handShakeValue"
 
-#define	STR_REP_MODE_ITEMS	"tiling|stretch|none"
+#define	L10N_REP_MODE_ITEMS	"tiling|stretch|none"
 
 //UIのパラメータ
 

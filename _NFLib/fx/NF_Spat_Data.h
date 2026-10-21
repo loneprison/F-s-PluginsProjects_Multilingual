@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef SPAT_DATA_H
 #define SPAT_DATA_H
 
@@ -36,11 +36,11 @@
 #define AE_CLAMP(VAL, MIN, MAX) ((VAL) < (MIN) ? (MIN) : ((VAL) > (MAX) ? (MAX) : (VAL)))
 #endif
 
-// SPT_DATA”z—ñ“à‚Ì‰æ‘œƒtƒ@ƒCƒ‹‚ÌƒTƒCƒYƒe[ƒuƒ‹B¶ã‹N“_‚Åc‰¡“¯‚¶ƒTƒCƒY‚Å‚·B
-// SPT_DATA‚Í‰¡•16‚Å‚·‚ªA‰E‰¡2px‚Íƒƒ‚ƒŠƒAƒNƒZƒXŒø—¦‰»‚Ì‚½‚ß‚ÌƒAƒ‰ƒCƒƒ“ƒg‚Åg—p‚µ‚Ä‚Ü‚¹‚ñ
+// SPT_DATAé…åˆ—å†…ã®ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µã‚¤ã‚ºãƒ†ãƒ¼ãƒ–ãƒ«ã€‚å·¦ä¸Šèµ·ç‚¹ã§ç¸¦æ¨ªåŒã˜ã‚µã‚¤ã‚ºã§ã™ã€‚
+// SPT_DATAã¯æ¨ªå¹…16ã§ã™ãŒã€å³æ¨ª2pxã¯ãƒ¡ãƒ¢ãƒªã‚¢ã‚¯ã‚»ã‚¹åŠ¹ç‡åŒ–ã®ãŸã‚ã®ã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆã§ä½¿ç”¨ã—ã¦ã¾ã›ã‚“
 static A_u_char SPT_SIZE_TBL[SPT_COUNT] = {2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,5,6,6,6,6,7,7,7,7,7,7,7,8,8,8,8,8,8,8,9,9,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14};
 
-//8bit‰æ‘œƒtƒ@ƒCƒ‹”z—ñ
+//8bitç”»åƒãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—
 static A_u_char SPT_DATA[SPT_COUNT][SPT_WIDTH * SPT_HEIGHT] = {
 	{
 		 68,106,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
@@ -1007,17 +1007,17 @@ template <typename P, typename C>
 void DrawSpatDataT(
 	PF_EffectWorld* output,
 	A_long          idx,
-	A_long          center_x,   // ’†SÀ•WX
-	A_long          center_y,   // ’†SÀ•WY
+	A_long          center_x,   // ä¸­å¿ƒåº§æ¨™X
+	A_long          center_y,   // ä¸­å¿ƒåº§æ¨™Y
 	P               color,
 	PF_FpShort      intensity);
 PF_Err DrawSpatData(
 	PF_EffectWorld* output,
 	PF_PixelFormat  format,
 	A_long          idx,
-	A_long          x,       // ’†S‚Æ‚È‚éX
-	A_long          y,       // ’†S‚Æ‚È‚éY
-	void* color,  // PF_Pixel8*, 16*, 32* ‚Ö‚Ìƒ|ƒCƒ“ƒ^
+	A_long          x,       // ä¸­å¿ƒã¨ãªã‚‹X
+	A_long          y,       // ä¸­å¿ƒã¨ãªã‚‹Y
+	void* color,  // PF_Pixel8*, 16*, 32* ã¸ã®ãƒã‚¤ãƒ³ã‚¿
 	PF_FpShort      intensity);
 template <typename T>
 void DrawSpatAccentT(

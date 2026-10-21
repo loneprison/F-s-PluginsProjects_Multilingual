@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MODE": "模式",
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子",
+        "L10N_NOISE_VALUE": "杂色数量",
+        "L10N_NOISE_ISCOLOR": "杂色彩色化",
+        "L10N_RECT": "点_",
+        "L10N_RECT_COLOR": "矩形颜色",
+        "L10N_LINE": "点_",
+        "L10N_LINE_W": "宽度_",
+        "L10N_LINE_COLOR": "矩形颜色"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_MODE_ITEMS": "杂色|矩形|线条"
+      },
+      "Topic": {
+        "L10N_NOISE_TOPIC": "杂色",
+        "L10N_RECT_TOPIC": "矩形",
+        "L10N_LINE_TOPIC": "线条"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "模板"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_PAINT_COUNT": "绘制数量",
+        "L10N_ENABLE_BAR": "----",
+        "L10N_ENABLE": "方案",
+        "L10N_GUIDE": "启用参考线",
+        "L10N_POS": "填充点",
+        "L10N_COLOR": "颜色",
+        "L10N_GUIDE_COLOR": "参考线颜色",
+        "L10N_GUIDE_ALL_CLEAR": "清除所有参考线"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开",
+        "L10N_LABEL_CLEAR": "清除"
+      },
+      "Popup": {
+        "L10N_PAINT_ITEMS": {"useSource": true}
+      },
+      "Topic": {
+        "L10N_PAINT_TOPIC": "绘制方案"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "绘制／油漆桶填充／种子填充"
+      }
+    }
+  }
+}

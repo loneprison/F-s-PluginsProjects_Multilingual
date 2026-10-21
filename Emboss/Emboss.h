@@ -38,8 +38,8 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_DIRECTION		"direction"
-#define	STR_DISTANCE		"distance"
+#define	L10N_DIRECTION		"direction"
+#define	L10N_DISTANCE		"distance"
 /*
 #define	STR_PAINT_POS		"paintPos"
 #define	STR_PAINT_COLOR		"paintColor"

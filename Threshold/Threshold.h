@@ -51,17 +51,17 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_MODE			"mode"
-#define	STR_MODE_ITEMS		"Luma|RGB"
-#define	STR_RED				"red"
-#define	STR_GREEN			"green"
-#define	STR_BLUE			"blue"
-#define	STR_ALPHA			"alpha"
-#define	STR_LUMA_LEVEL		"luma_level"
-#define	STR_RED_LEVEL		"red_level"
-#define	STR_GREEN_LEVEL		"green_level"
-#define	STR_BLUE_LEVEL		"blue_level"
-#define	STR_ALPHA_LEVEL		"alpha_level"
+#define	L10N_MODE			"mode"
+#define	L10N_MODE_ITEMS		"Luma|RGB"
+#define	L10N_RED				"red"
+#define	L10N_GREEN			"green"
+#define	L10N_BLUE			"blue"
+#define	L10N_ALPHA			"alpha"
+#define	L10N_LUMA_LEVEL		"luma_level"
+#define	L10N_RED_LEVEL		"red_level"
+#define	L10N_GREEN_LEVEL		"green_level"
+#define	L10N_BLUE_LEVEL		"blue_level"
+#define	L10N_ALPHA_LEVEL		"alpha_level"
 
 enum {
 	CHAN_LUMA = 0,

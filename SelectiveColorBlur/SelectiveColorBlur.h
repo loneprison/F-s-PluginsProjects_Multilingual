@@ -72,12 +72,12 @@ enum {
 };
 //UIの表示文字列
 
-#define	STR_BLUR_VALUE	"blur"
-#define	STR_TOPIC_COLOR	"TargetColors"
-#define	STR_TARGET_ENABLE	"TurnOn"
-#define	STR_TARGET_ENABLE1	"on"
+#define	L10N_BLUR_VALUE	"blur"
+#define	L10N_TOPIC_COLOR	"TargetColors"
+#define	L10N_TARGET_ENABLE	"TurnOn"
+#define	L10N_TARGET_ENABLE1	"on"
 
-#define	STR_TARGET_COL	"targetColor"
+#define	L10N_TARGET_COL	"targetColor"
 
 #define	STR_TARGET_COL1	"target1"
 

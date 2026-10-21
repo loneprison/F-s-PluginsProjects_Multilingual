@@ -16,7 +16,8 @@
 
 //-----------------------------------------------------------------------------------
 //プラグインの説明に使われる文字
-#define NF_DESCRIPTION	"This is a rip-off of Silverlink’s “MaskDropper.aex.” Sorry, K."
+#define L10N_PLUGIN_DESC	"This is a rip-off of Silverlink’s “MaskDropper.aex.” Sorry, K."
+#define NF_DESCRIPTION L10N_PLUGIN_DESC
 
 //-----------------------------------------------------------------------------------
 //プラグインが表示されるメニュー名
@@ -50,7 +51,7 @@ PF_OutFlag_SEQUENCE_DATA_NEEDS_FLATTENING
 | PF_OutFlag_SEND_UPDATE_PARAMS_UI;
 */
 
-#define NF_OUT_FLAGS 100663312
+#define NF_OUT_FLAGS 100663344
 //#define NF_OUT_FLAGS	33556032	//通常はこちら
 //#define NF_OUT_FLAGS	33556068	//こっちを有効にすると毎フレームごとに描画する。NON_PARAM_VARYを動作中に切り替えるときもこちらに
 //#define NF_OUT_FLAGS	1600		//8bitのみ

@@ -1,4 +1,4 @@
-
+ï»¿
 #pragma once
 #ifndef NFUTILS_H
 #define NFUTILS_H
@@ -33,7 +33,7 @@
 #ifndef F_MIN
 #define F_MIN(a,b)            (((a) < (b)) ? (a) : (b))
 #endif
-//•Ï”‚ÌŒ^•ÏŠ·
+//å¤‰æ•°ã®å‹å¤‰æ›
 
 //-----------------------------------------------------------------------------------
 inline A_u_char RoundByteLong(A_long x)
@@ -81,7 +81,7 @@ inline PF_FpShort RoundFpShort2(PF_FpLong x)
 	return (PF_FpShort)AE_CLAMP(x, 0, 1);
 }
 //-----------------------------------------------------------------------------------
-// •„†‚È‚µ32bit®”‚ğ—p‚¢‚½ƒnƒbƒVƒ…
+// ç¬¦å·ãªã—32bitæ•´æ•°ã‚’ç”¨ã„ãŸãƒãƒƒã‚·ãƒ¥
 static unsigned int hash_int(unsigned int x, unsigned int y, unsigned int seed) {
 	unsigned int h = seed ^ (x * 2654435761U) ^ (y * 2246822519U);
 	h ^= h >> 16;
@@ -92,14 +92,14 @@ static unsigned int hash_int(unsigned int x, unsigned int y, unsigned int seed) 
 	return h;
 }
 
-// 0.0f ` 1.0f ‚Ì”ÍˆÍ‚É³‹K‰»
+// 0.0f ï½ 1.0f ã®ç¯„å›²ã«æ­£è¦åŒ–
 static float hash_float(int x, int y, int seed) {
 	return (float)hash_int((unsigned int)x, (unsigned int)y, (unsigned int)seed) / (float)0xFFFFFFFFU;
 }
 
 //***********************************************************************************
 /*
-	ƒsƒNƒZƒ‹•ÏŠ·
+	ãƒ”ã‚¯ã‚»ãƒ«å¤‰æ›
 */
 //***********************************************************************************
 #define NF_CONVERT8TO16(A)		( (((A_long)(A) * PF_MAX_CHAN16) + PF_HALF_CHAN8) / PF_MAX_CHAN8 )
@@ -190,7 +190,7 @@ inline PF_Pixel16 NF_Pixel32To16(PF_PixelFloat c)
 }
 //-------------------------------------------------------------------------------------------------
 //*************************************************************************************************
-//ƒsƒNƒZƒ‹‚Ì”äŠr
+//ãƒ”ã‚¯ã‚»ãƒ«ã®æ¯”è¼ƒ
 //*************************************************************************************************
 //-------------------------------------------------------------------------------------------------
 inline PF_Boolean compPix8(PF_Pixel s,PF_Pixel d)
@@ -321,18 +321,18 @@ template <> struct PixelTraits<A_u_short> { // 16-bit
 };
 
 template <> struct PixelTraits<PF_FpShort> { // 32-bit Float
-	// Float‚Ìê‡‚Í1.0‚ªÅ‘å
+	// Floatã®å ´åˆã¯1.0ãŒæœ€å¤§
 	typedef PF_PixelFloat PixelType;
 };
-// ƒsƒNƒZƒ‹‚ÌƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒhi‹¤’ÊÀ‘•j
+// ãƒ”ã‚¯ã‚»ãƒ«ã®ã‚¢ãƒ«ãƒ•ã‚¡ãƒ–ãƒ¬ãƒ³ãƒ‰ï¼ˆå…±é€šå®Ÿè£…ï¼‰
 /*
-// 8bit‚Ìê‡
+// 8bitã®å ´åˆ
 PF_Pixel res = PixelAlphaBlendGeneric<A_u_char>(s_px, d_px);
 
-// 16bit‚Ìê‡
+// 16bitã®å ´åˆ
 PF_Pixel16 res16 = PixelAlphaBlendGeneric<A_u_short>(s_px16, d_px16);
 
-// 32bit‚Ìê‡
+// 32bitã®å ´åˆ
 PF_PixelFloat resF = PixelAlphaBlendGeneric<PF_FpShort>(s_pxF, d_pxF);
 */
 template <typename T>
@@ -345,7 +345,7 @@ PixelAlphaBlendGeneric(
 	PType rr = { 0, 0, 0, 0 };
 
 	if constexpr (std::is_floating_point_v<T>) {
-		// --- 32-bit Float (0.0 - 1.0) ‚Ìˆ— ---
+		// --- 32-bit Float (0.0 - 1.0) ã®å‡¦ç† ---
 		if (src.alpha <= 0.0f || dst.alpha >= 1.0f) return dst;
 		if (dst.alpha <= 0.0f) return src;
 
@@ -362,7 +362,7 @@ PixelAlphaBlendGeneric(
 		return rr;
 	}
 	else {
-		// --- 8/16-bit Integer ‚Ìˆ— ---
+		// --- 8/16-bit Integer ã®å‡¦ç† ---
 		const A_long max_val = PixelTraits<T>::MAX;
 		const A_long shift = PixelTraits<T>::SHIFT;
 
@@ -370,7 +370,7 @@ PixelAlphaBlendGeneric(
 		if (dst.alpha == 0) return src;
 
 		// as2 = ((MAX + 1) - dst.alpha) * src.alpha / (MAX + 1)
-		// 16bit‚Ìê‡‚Í32768‚ğ’´‚¦‚éŒvZ‚É‚È‚é‚½‚ß A_longlong (64bit) ‚ğ„§
+		// 16bitã®å ´åˆã¯32768ã‚’è¶…ãˆã‚‹è¨ˆç®—ã«ãªã‚‹ãŸã‚ A_longlong (64bit) ã‚’æ¨å¥¨
 		long long as2 = (long long)((max_val + 1) - dst.alpha) * src.alpha >> shift;
 		long long ad2 = (long long)dst.alpha + as2;
 
@@ -698,7 +698,7 @@ inline PF_FpShort ScrBlend32(PF_FpShort c0, PF_FpShort c1)
 	return RoundFpShortDouble((double)c0 + (double)c1 - (double)c0 * (double)c1);
 }
 //*************************************************************************************************
-//ƒ~ƒŠŒvZ
+//ãƒŸãƒªè¨ˆç®—
 //*************************************************************************************************
 inline PF_Fixed mm2px(PF_Fixed mm,PF_Fixed dpi)
 {
@@ -713,7 +713,7 @@ inline PF_Fixed px2mm(PF_Fixed px,PF_Fixed dpi)
 	return F_FLT2FIX(ret);
 }
 //*************************************************************rot************************************
-//À•WŒvZ
+//åº§æ¨™è¨ˆç®—
 //*************************************************************************************************
 inline PF_FpLong pointLength(PF_InData* in_data,PF_FpLong x0, PF_FpLong y0, PF_FpLong x1, PF_FpLong y1)
 {
@@ -721,7 +721,7 @@ inline PF_FpLong pointLength(PF_InData* in_data,PF_FpLong x0, PF_FpLong y0, PF_F
 	return PF_SQRT( PF_POW(x1 - x0, 2) + PF_POW(y1 - y0, 2));
 }	
 //*************************************************************rot************************************
-//Šp“xŒvZ
+//è§’åº¦è¨ˆç®—
 //*************************************************************************************************
 
 inline  A_FloatPoint ROT_LENGTH(PF_InData* in_data,PF_FpLong r, PF_FpLong l, A_FloatPoint p)
@@ -883,7 +883,7 @@ inline PF_Fixed RoundAngle360(PF_Fixed f)
 //*******************************************************
 
 //*************************************************************rot************************************
-//Šp“xŒvZ
+//è§’åº¦è¨ˆç®—
 //*************************************************************************************************
 inline PF_Boolean CrossPointer(
 	A_FloatPoint s0,

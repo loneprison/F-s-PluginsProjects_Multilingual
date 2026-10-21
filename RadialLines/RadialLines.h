@@ -73,27 +73,27 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_AUTO_SEED		"autoSeed"
-#define	STR_SEED			"seed"
-#define	STR_VALUE			"value"
+#define	L10N_AUTO_SEED		"autoSeed"
+#define	L10N_SEED			"seed"
+#define	L10N_VALUE			"value"
 
-#define	STR_POS				"centerPos"
-#define	STR_LENGTH			"length"
-#define	STR_LENGTH_RAND		"lengthRand"
-#define	STR_WEIGHT			"weight"
-#define	STR_WEIGHT_RAND		"weightRand"
+#define	L10N_POS				"centerPos"
+#define	L10N_LENGTH			"length"
+#define	L10N_LENGTH_RAND		"lengthRand"
+#define	L10N_WEIGHT			"weight"
+#define	L10N_WEIGHT_RAND		"weightRand"
 
-#define	STR_OPACITY			"opacity"
-#define	STR_OPACITY_RAND	"opacityRand"
-#define	STR_COLOR_TOPIC		"colors"
-#define	STR_COLOR_COUNT		"colorCount"
-#define	STR_COLOR			"color"
+#define	L10N_OPACITY			"opacity"
+#define	L10N_OPACITY_RAND	"opacityRand"
+#define	L10N_COLOR_TOPIC		"colors"
+#define	L10N_COLOR_COUNT		"colorCount"
+#define	L10N_COLOR			"color"
 
-#define	STR_NOISE			"noise"
-#define	STR_BLUR			"blur"
-#define	STR_HYPERBOLIC		"hyperboilc"
-#define STR_PARAMS_TOPIC	"parameters"
-#define STR_BLEND			"Blend with original"
+#define	L10N_NOISE			"noise"
+#define	L10N_BLUR			"blur"
+#define	L10N_HYPERBOLIC		"hyperboilc"
+#define L10N_PARAMS_TOPIC	"parameters"
+#define L10N_BLEND			"Blend with original"
 
 //UIのパラメータ
 typedef struct ParamInfo {

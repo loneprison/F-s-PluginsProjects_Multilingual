@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_MASTER": "主强度",
+        "L10N_MOSAIC_ENABLED": "启用马赛克",
+        "L10N_MOSAIC_AMOUNT": "马赛克数量",
+        "L10N_MOSAIC_WIDTH": "马赛克宽度",
+        "L10N_MOSAIC_HEIGHT": "马赛克高度",
+        "L10N_MOSAIC_VALUE": "马赛克杂色强度",
+        "L10N_MOSAIC_ISCOLOR": "马赛克彩色化",
+        "L10N_CBLOCK_ENABLED": "启用故障块",
+        "L10N_CBLOCK_COUNT": "故障块数量",
+        "L10N_CBLOCK_WIDTH": "故障块宽度",
+        "L10N_CBLOCK_HEIGHT": "故障块高度",
+        "L10N_CBLOCK_VALUE": "故障块强度",
+        "L10N_CBLOCK_ALPHA": "故障块影响 Alpha",
+        "L10N_SHIFT_ENABLED": "启用偏移块",
+        "L10N_SHIFT_COUNT": "偏移块数量",
+        "L10N_SHIFT_WIDTH": "偏移块宽度",
+        "L10N_SHIFT_HEIGHT": "偏移块高度",
+        "L10N_SHIFT_OFFSET_X": "X 偏移",
+        "L10N_SHIFT_OFFSET_Y": "Y 偏移",
+        "L10N_BLOCK_ENABLED": "启用颜色块",
+        "L10N_BLOCK_COUNT": "颜色块数量",
+        "L10N_BLOCK_WIDTH": "颜色块宽度",
+        "L10N_BLOCK_HEIGHT": "颜色块高度",
+        "L10N_BLOCK_NOISE": "颜色块杂色强度",
+        "L10N_BLOCK_NOISE_ISCOLOR": "颜色块彩色化",
+        "L10N_EMBOSS_ENABLED": "启用浮雕",
+        "L10N_EMBOSS_DISTANCE": "浮雕距离",
+        "L10N_EMBOSS_ISCOLOR": "彩色浮雕",
+        "L10N_EMBOSS_ALPHA": "浮雕影响 Alpha",
+        "L10N_NOISE_ENABLED": "启用杂色",
+        "L10N_NOISE_AMOUNT": "杂色数量",
+        "L10N_NOISE_ISCOLOR": "杂色彩色化",
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Topic": {
+        "L10N_MOSAIC_TOPIC": "马赛克",
+        "L10N_CBLOCK_TOPIC": "故障块",
+        "L10N_SHIFT_TOPIC": "偏移块",
+        "L10N_BLOCK_TOPIC": "颜色块",
+        "L10N_EMBOSS_TOPIC": "浮雕",
+        "L10N_NOISE_TOPIC": "杂色"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "随机马赛克"
+      }
+    }
+  }
+}

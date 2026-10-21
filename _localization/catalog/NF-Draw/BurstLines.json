@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_LINE_CENTER": "中心点",
+        "L10N_LINE_COUNT": "线条数量",
+        "L10N_DISTANCE": "距离",
+        "L10N_LENGTH": "长度",
+        "L10N_LINE_SUB_COUNT": "子数量",
+        "L10N_LINE_SUB_ANGLE": "子角度",
+        "L10N_DISTANCE_RAND": "随机距离",
+        "L10N_LENGTH_RAND": "随机长度",
+        "L10N_THICKNESS": "厚度",
+        "L10N_THICKNESS_RAND": "随机厚度",
+        "L10N_THICKNESS_START": "起点厚度",
+        "L10N_THICKNESS_END": "终点厚度",
+        "L10N_OPACITY_START": "起点不透明度",
+        "L10N_OPACITY_END": "终点不透明度",
+        "L10N_DIRECTION": "生成方向",
+        "L10N_ANGLE_RANGE": "角度范围",
+        "L10N_COLOR_CNT": "颜色数量",
+        "L10N_COLOR": "颜色_",
+        "L10N_PARAM_AUTOSEED": "自动随机种子",
+        "L10N_PARAM_SEED": "随机种子"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "Popup": {
+        "L10N_COLOR_CNT_ITEMS": "1|2|3|4|5|6|7|8"
+      },
+      "Topic": {
+        "L10N_PARAMS_TOIPC": "参数",
+        "L10N_COLOR_TOIPC": "颜色"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "爆发线"
+      }
+    }
+  }
+}

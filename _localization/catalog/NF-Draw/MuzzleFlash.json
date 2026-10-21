@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_PRONGS_POINT": "中心点",
+        "L10N_PRONGS_COUNT": "数量",
+        "L10N_PRONGS_ROOT_SIZE": "根部大小",
+        "L10N_PRONGS_LENGTH": "长度",
+        "L10N_PRONGS_BRANCH": "分支",
+        "L10N_PRONGS_DIR": "方向",
+        "L10N_PRONGS_ANGLE": "角度范围",
+        "L10N_PRONGS_FLASH_SCALE": "启用缩放闪烁",
+        "L10N_PRONGS_SCALE": "缩放1",
+        "L10N_PRONGS_SCALE2": "缩放2",
+        "L10N_SPARKS_COUNT": "火花数量",
+        "L10N_SPARKS_SUBCOUNT": "子火花数量",
+        "L10N_SPARKS_SCALE": "火花缩放",
+        "L10N_PRONGS_COLOR": "颜色",
+        "L10N_AUTO_SEED": "自动随机种子",
+        "L10N_SEED": "随机种子"
+      },
+      "Topic": {
+        "L10N_SPARKS": "火花"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "枪口闪光"
+      }
+    }
+  }
+}

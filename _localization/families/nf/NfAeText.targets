@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
+    <AeTextCatalogName>$(MSBuildProjectName)</AeTextCatalogName>
+    <AeTextCatalogName Condition="'$(MSBuildProjectName)'=='NfLanguageSettings'">Settings</AeTextCatalogName>
+    <AeTextCatalogKind>Effect</AeTextCatalogKind>
+    <AeTextCatalogKind Condition="'$(MSBuildProjectName)'=='NfLanguageSettings'">Settings</AeTextCatalogKind>
+    <AeTextNamespace>$([System.Text.RegularExpressions.Regex]::Replace('$(MSBuildProjectName)', '[^A-Za-z0-9_]', '_'))Text</AeTextNamespace>
+    <AeTextNamespace Condition="'$(MSBuildProjectName)'=='NfLanguageSettings'">NfLanguageSettingsText</AeTextNamespace>
+    <AeTextCatalogDirectory>$(MSBuildThisFileDirectory)..\..\catalog\$(NfOutputCategory)\</AeTextCatalogDirectory>
+    <AeTextCatalogDirectory Condition="'$(MSBuildProjectName)'=='NfLanguageSettings'">$(MSBuildThisFileDirectory)..\..\catalog\</AeTextCatalogDirectory>
+    <AeTextCatalogPath>$(AeTextCatalogDirectory)$(AeTextCatalogName).json</AeTextCatalogPath>
+    <AeTextFamilyDefinitionPath>$(MSBuildThisFileDirectory)generation.json</AeTextFamilyDefinitionPath>
+    <AeTextRuntimeIdentityPath>$(MSBuildThisFileDirectory)runtime-identity.json</AeTextRuntimeIdentityPath>
+    <AeTextDefaultVariantId Condition="'$(AeTextDefaultVariantId)'==''">source</AeTextDefaultVariantId>
+    <AeTextCustomBuild Condition="'$(AeTextCustomBuild)'==''">false</AeTextCustomBuild>
+    <AeTextSingleLanguage Condition="'$(AeTextSingleLanguage)'==''">false</AeTextSingleLanguage>
+    <BuildSteps Condition="'$(MSBuildProjectName)'=='NfLanguageSettings' and '$(AeTextSingleLanguage)'=='true' and '$(AeTextPublicationValidation)'!='true'">SkipNfLanguageSettingsForSingleLanguageBuild</BuildSteps>
+  </PropertyGroup>
+
+  <Target Name="ValidateNfAeTextBuildMode"
+          BeforeTargets="PrepareForBuild"
+          Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
+    <Error Condition="'$(AeTextPublicationValidation)'=='true' and '$(AeTextDefaultVariantId)'!='source'"
+           Text="NF publication builds require the source Variant as the compiled fallback." />
+    <Error Condition="'$(AeTextCustomBuild)'!='true' and '$(AeTextDefaultVariantId)'!='source'"
+           Text="A non-source fallback is allowed only when AeTextCustomBuild=true." />
+    <Error Condition="'$(AeTextCustomBuild)'!='true' and '$(AeTextSingleLanguage)'=='true'"
+           Text="Single-language generation is allowed only when AeTextCustomBuild=true." />
+  </Target>
+
+  <Target Name="SkipNfLanguageSettingsForSingleLanguageBuild"
+          DependsOnTargets="ValidateAeTextBuildMode;ValidateNfAeTextBuildMode"
+          Condition="'$(MSBuildProjectName)'=='NfLanguageSettings' and '$(AeTextSingleLanguage)'=='true' and '$(AeTextPublicationValidation)'!='true'">
+    <Message Text="Skipping NF Language Settings for a fixed single-language build."
+             Importance="high" />
+  </Target>
+</Project>

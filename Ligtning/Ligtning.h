@@ -112,49 +112,49 @@ enum {
 //UIの表示文字列
 
 //-------
-#define	STR_MODE			"mode"
-#define	STR_MODE_ITEMS		"2points|path|2-2Points|1-2Points|radical"
+#define	L10N_MODE			"mode"
+#define	L10N_MODE_ITEMS		"2points|path|2-2Points|1-2Points|radical"
 #define	STR_MODE_COUNT		5
 #define	STR_MODE_DFLT		MODE_2POINT
 
-#define	STR_AUTO_SEED		"autoSeed"
-#define	STR_SEED			"seed"
+#define	L10N_AUTO_SEED		"autoSeed"
+#define	L10N_SEED			"seed"
 
-#define	STR_START_POS		"start"
-#define	STR_END_POS			"end"
-#define	STR_PATH			"path"
+#define	L10N_START_POS		"start"
+#define	L10N_END_POS			"end"
+#define	L10N_PATH			"path"
 
-#define	STR_START1_POS		"startPoint1"
-#define	STR_START2_POS		"startPoint2"
-#define	STR_END1_POS		"endPoint1"
-#define	STR_END2_POS		"endPoint2"
-#define	STR_2_2POINT_COUNT	"2_2_count"
-#define	STR_START_RAND		"startRand"
-#define	STR_END_RAND		"endRand"
+#define	L10N_START1_POS		"startPoint1"
+#define	L10N_START2_POS		"startPoint2"
+#define	L10N_END1_POS		"endPoint1"
+#define	L10N_END2_POS		"endPoint2"
+#define	L10N_2_2POINT_COUNT	"2_2_count"
+#define	L10N_START_RAND		"startRand"
+#define	L10N_END_RAND		"endRand"
 
-#define	STR_SRC_POS			"srcPoint"
-#define	STR_IMPACT1_POS		"impactLine1"
-#define	STR_IMPACT2_POS		"impactLine2"
-#define	STR_IMPACT_RAND		"impactRand"
-#define	STR_BRANCH_CNT		"branch"
+#define	L10N_SRC_POS			"srcPoint"
+#define	L10N_IMPACT1_POS		"impactLine1"
+#define	L10N_IMPACT2_POS		"impactLine2"
+#define	L10N_IMPACT_RAND		"impactRand"
+#define	L10N_BRANCH_CNT		"branch"
 
-#define	STR_RADICAL_COUNT	"r_count"
-#define	STR_RADICAL_ANGLE	"r_angle"
-#define	STR_CENTER_POS		"r_center"
-#define	STR_RADIUS			"r_radius"
-#define	STR_RADIUS_RAND		"r_radiusRand"
+#define	L10N_RADICAL_COUNT	"r_count"
+#define	L10N_RADICAL_ANGLE	"r_angle"
+#define	L10N_CENTER_POS		"r_center"
+#define	L10N_RADIUS			"r_radius"
+#define	L10N_RADIUS_RAND		"r_radiusRand"
 
 //-------
-#define	STR_PARAMS_TOPIC	"params"
-#define	STR_WIPE			"wipe"
-#define	STR_START_WEIGHT	"startWeight"
-#define	STR_END_WEIGHT		"endWeight"
-#define	STR_WEIGHT			"weight"
-#define	STR_COMPLEXTTY		"complexity"
-#define	STR_JAGGEDNESS		"jaggedness"
-#define	STR_COMPL_ANGLE		"comple_angle"
-#define	STR_FORK			"fork"
-#define	STR_COLOR			"color"
+#define	L10N_PARAMS_TOPIC	"params"
+#define	L10N_WIPE			"wipe"
+#define	L10N_START_WEIGHT	"startWeight"
+#define	L10N_END_WEIGHT		"endWeight"
+#define	L10N_WEIGHT			"weight"
+#define	L10N_COMPLEXTTY		"complexity"
+#define	L10N_JAGGEDNESS		"jaggedness"
+#define	L10N_COMPL_ANGLE		"comple_angle"
+#define	L10N_FORK			"fork"
+#define	L10N_COLOR			"color"
 //-------
 
 //UIのパラメータ

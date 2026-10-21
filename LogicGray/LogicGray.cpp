@@ -6,6 +6,7 @@
 
 
 #include "LogicGray.h"
+#include "LogicGrayText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,6 +17,7 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const LogicGrayText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	PF_ParamDef		def;
@@ -23,17 +25,17 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//ポップアップメニュー
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_POPUP(STR_GRAY_MODE_POP1,
+	PF_ADD_POPUP(AETEXT_PARAM(strings, L10N_GRAY_MODE_POP1),
 		STR_GRAY_MODE_COUNT,	//メニューの数
 		STR_GRAY_MODE_DEF,	//デフォルト
-		STR_GRAY_MODE_POP2,
+		AETEXT_POPUP(strings, L10N_GRAY_MODE_POP2),
 		ID_GRAY_MODE
 	);
 
 	//----------------------------------------------------------------
 	//固定小数のスライダーバー
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_FIXED(STR_ORG_BLEND,	//パラメータの名前
+	PF_ADD_FIXED(AETEXT_PARAM(strings, L10N_ORG_BLEND),	//パラメータの名前
 		0, 				//数値入力する場合の最小値
 		100,			//数値入力する場合の最大値
 		0,				//スライダーの最小値 
@@ -145,8 +147,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const LogicGrayText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -210,7 +215,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			LogicGrayText::OpenSettings(in_data, L"NF-LogicGray");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

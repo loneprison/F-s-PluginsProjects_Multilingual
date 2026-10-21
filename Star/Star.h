@@ -72,29 +72,29 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_ANGLE			"Overall Angle"
-#define	STR_INTENSITY		"Overall Intensity"
-#define	STR_LENGTH			"Overall Length (px)"
+#define	L10N_ANGLE			"Overall Angle"
+#define	L10N_INTENSITY		"Overall Intensity"
+#define	L10N_LENGTH			"Overall Length (px)"
 
-#define	STR_HYPERBOLIC		"hyperbolic"
+#define	L10N_HYPERBOLIC		"hyperbolic"
 
-#define	STR_MODE_TOPIC		"Params"
+#define	L10N_MODE_TOPIC		"Params"
 
 
-#define	STR_COLOR_MODE		"Color Mode"
-#define	STR_COLOR_MODE_ITEMS "Original|CustomColor"
-#define	STR_COLOR			"CustomColor"
+#define	L10N_COLOR_MODE		"Color Mode"
+#define	L10N_COLOR_MODE_ITEMS "Original|CustomColor"
+#define	L10N_COLOR			"CustomColor"
 #define	STR_THRESH_LOW		"Threshold low"
 #define	STR_THRESH_HIGH		"Threshold High"
 
-#define	STR_LINE1_TOPIC		"Line 1 (Vertical)"
-#define	STR_LINE2_TOPIC		"Line 2 (Diagonal 1)"
-#define	STR_LINE3_TOPIC		"Line 3 (Horizontal)"
-#define	STR_LINE4_TOPIC		"Line 4 (Diagonal 2)"
+#define	L10N_LINE1_TOPIC		"Line 1 (Vertical)"
+#define	L10N_LINE2_TOPIC		"Line 2 (Diagonal 1)"
+#define	L10N_LINE3_TOPIC		"Line 3 (Horizontal)"
+#define	L10N_LINE4_TOPIC		"Line 4 (Diagonal 2)"
 
-#define	STR_LINE_LEN		"Length_"
-#define	STR_LINE_INT		"Intensity_"
-#define	STR_LINE_ANGLE		"AngleOffset_"
+#define	L10N_LINE_LEN		"Length_"
+#define	L10N_LINE_INT		"Intensity_"
+#define	L10N_LINE_ANGLE		"AngleOffset_"
 
 
 //UIのパラメータ

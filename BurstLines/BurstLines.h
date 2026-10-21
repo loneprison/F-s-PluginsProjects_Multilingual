@@ -99,34 +99,34 @@ enum {
 //UIの表示文字列
 
 //-------
-#define	STR_LINE_CENTER		"center"
-#define	STR_LINE_COUNT		"lineCount"
-#define	STR_DISTANCE		"distance"
-#define	STR_LENGTH			"length"
+#define	L10N_LINE_CENTER		"center"
+#define	L10N_LINE_COUNT		"lineCount"
+#define	L10N_DISTANCE		"distance"
+#define	L10N_LENGTH			"length"
 
-#define	STR_PARAMS_TOIPC	"params"
-#define	STR_LINE_SUB_COUNT	"subCount"
-#define	STR_LINE_SUB_ANGLE	"subAngle"
-#define	STR_DISTANCE_RAND	"distanceRand"
-#define	STR_LENGTH_RAND		"lengthRand"
-#define	STR_THICKNESS		"thickness"
-#define	STR_THICKNESS_RAND	"thicknessRand"
+#define	L10N_PARAMS_TOIPC	"params"
+#define	L10N_LINE_SUB_COUNT	"subCount"
+#define	L10N_LINE_SUB_ANGLE	"subAngle"
+#define	L10N_DISTANCE_RAND	"distanceRand"
+#define	L10N_LENGTH_RAND		"lengthRand"
+#define	L10N_THICKNESS		"thickness"
+#define	L10N_THICKNESS_RAND	"thicknessRand"
 
-#define	STR_THICKNESS_START		"thick_start"
-#define	STR_THICKNESS_END		"thick_end"
+#define	L10N_THICKNESS_START		"thick_start"
+#define	L10N_THICKNESS_END		"thick_end"
 
-#define	STR_OPACITY_START	"opacity_start"
-#define	STR_OPACITY_END		"opacity_end"
+#define	L10N_OPACITY_START	"opacity_start"
+#define	L10N_OPACITY_END		"opacity_end"
 
-#define	STR_DIRECTION		"direction"
-#define	STR_ANGLE_RANGE		"angleRange"
+#define	L10N_DIRECTION		"direction"
+#define	L10N_ANGLE_RANGE		"angleRange"
 //-------
-#define	STR_COLOR_TOIPC		"colors"
-#define	STR_COLOR_CNT		"colorCount"
+#define	L10N_COLOR_TOIPC		"colors"
+#define	L10N_COLOR_CNT		"colorCount"
 #define	STR_COLOR_CNT_NUM	8
 #define	STR_COLOR_CNT_DFT	1
-#define	STR_COLOR_CNT_ITEMS	"1|2|3|4|5|6|7|8"
-#define	STR_COLOR			"color_"
+#define	L10N_COLOR_CNT_ITEMS	"1|2|3|4|5|6|7|8"
+#define	L10N_COLOR			"color_"
 
 
 

@@ -6,6 +6,8 @@
 
 
 #include "Mosaic.h"
+#define L10N_LABEL_ON "on"
+#include "MosaicText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,19 +18,20 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const MosaicText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	NF_ParamsSetup cs(in_data, out_data);
 	// ----------------------------------------------------------------
 	cs.AddCheckBox(	// noise frame
-		STR_MOSAIC_UNLINK,
-		"on",
+		AETEXT_PARAM(strings, L10N_MOSAIC_UNLINK),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_MOSAIC_UNLINK,
 		PF_ParamFlag_SUPERVISE
 	); 
 	cs.AddSlider(	// 
-		STR_MOSAIC_W,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_MOSAIC_W),	//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		6000,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -37,7 +40,7 @@ static PF_Err ParamsSetup (
 		ID_MOSAIC_W
 	);
 	cs.AddSlider(	// 
-		STR_MOSAIC_H,	//パラメータの名前
+		AETEXT_PARAM(strings, L10N_MOSAIC_H),	//パラメータの名前
 		1, 				//数値入力する場合の最小値
 		6000,			//数値入力する場合の最大値
 		1,				//スライダーの最小値 
@@ -48,16 +51,16 @@ static PF_Err ParamsSetup (
 		PF_PUI_INVISIBLE
 	);
 	cs.AddPoint(
-		STR_MOSAIC_CENTER,
+		AETEXT_PARAM(strings, L10N_MOSAIC_CENTER),
 		50,
 		50,
 		FALSE,
 		ID_MOSAIC_CENTER
 	);
 	// ----------------------------------------------------------------
-	cs.AddTopic(STR_NOISE_TOPIC, ID_NOISE_TOPIC);
+	cs.AddTopic(AETEXT_TOPIC(strings, L10N_NOISE_TOPIC), ID_NOISE_TOPIC);
 	cs.AddFloatSlider(	// R
-		STR_NOISE,	//Name
+		AETEXT_PARAM(strings, L10N_NOISE),	//Name
 		0,				//VALID_MIN
 		100,			//VALID_MAX
 		0,				//SLIDER_MIN
@@ -69,19 +72,19 @@ static PF_Err ParamsSetup (
 		ID_NOISE
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_IS_COLOR,
-		"on",
+		AETEXT_PARAM(strings, L10N_IS_COLOR),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_IS_COLOR
 	);
 	cs.AddCheckBox(	// noise frame
-		STR_AUTO_SEED,
-		"on",
+		AETEXT_PARAM(strings, L10N_AUTO_SEED),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		ID_AUTO_SEED
 	);
 	cs.AddSlider(	// 
-		STR_SEED,		//パラメータの名前
+		AETEXT_PARAM(strings, L10N_SEED),		//パラメータの名前
 		-30000, 		//数値入力する場合の最小値
 		30000,			//数値入力する場合の最大値
 		-1000,			//スライダーの最小値 
@@ -291,8 +294,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const MosaicText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -356,7 +362,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			MosaicText::OpenSettings(in_data, L"NF-Mosaic");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

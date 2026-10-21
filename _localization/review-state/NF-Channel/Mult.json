@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "zh": {
+      "L10N_MODE_POP": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:a2fd796204c8cb0417e27ee09e9edfda542f052c5398c371c9e19fc6618bc2bc",
+          "translation": "sha256-v1:2bcd40b375ecf46f0052bc0f90564827627f4fc4566f192a108c66e372c66e94"
+        }
+      },
+      "L10N_MODE_ITEMS": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:2ab5e2c14367191f2e15f2f1ab0df4385d884545c21b2ddfd37103d07b6c3d98",
+          "translation": "sha256-v1:3435eba240c9325ab61471f0492ac77a64cead394ce0b8072c231743ec8889d8"
+        }
+      },
+      "L10N_PLUGIN_DESC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:516e1b7aa1e04327d3d3d590e26e3ac914caae3eaf36ea31b0fa033bf1460050",
+          "translation": "sha256-v1:2dfc017983a3db02625a2f826dbb3e86194aab49f7755790436a515e84fe2327"
+        }
+      }
+    }
+  }
+}

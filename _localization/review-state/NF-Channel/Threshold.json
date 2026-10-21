@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "zh": {
+      "L10N_LUMA_LEVEL": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:61b06337dcdf511b7be92b7680debec7ccc8a6d174eb439d8527741adc928f0d",
+          "translation": "sha256-v1:ee5abd35c7b2e223cabc2565bf87f6e7f22ea42e0a213b1bcc17a6249c173bad"
+        }
+      },
+      "L10N_RED": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:bca97ace65be594a9c4757e8d7ff0e46735534abe4a4bf7cc6821f3fe528b011",
+          "translation": "sha256-v1:ed0867e97e08baf2d98a58fb3d60b9c26a29542ec092aab45917947a4bdd34bf"
+        }
+      },
+      "L10N_GREEN": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:928bf5802b41249af6139e4f28dc8e21c4b980167a3cf99300e17b7ff43f89a7",
+          "translation": "sha256-v1:e293c3ed58f19c04b5ad6a63194640e5503b2448fed9e8a1ff299f6e0d469b8c"
+        }
+      },
+      "L10N_BLUE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:12d2b3dfde4217119720b76d5e1dde9f372f6e920fa29977bb11da929fc7d786",
+          "translation": "sha256-v1:95afcf236b50cc7c4bfbfb14727854339fb604c4d891fa9fd56d1ac4f96c7f32"
+        }
+      },
+      "L10N_ALPHA": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:30f3c2e222c0e10a467c7f413252ccdfeeed4c9d5ebb7b83ecf502a7ae890add",
+          "translation": "sha256-v1:84cbbd9c9df07c5cc653b717a4bba323411456851954bd7924e0189dd2607d0b"
+        }
+      },
+      "L10N_RED_LEVEL": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:17af3c5e22c08ea869fdb905e060bddc51b4ab7b7cb1f45804c45a9c9fd0f56b",
+          "translation": "sha256-v1:2625e4352b1fad2bd6953fb5f2720d337e9b659f5ef5d139a122f4a7c44162bb"
+        }
+      },
+      "L10N_GREEN_LEVEL": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:b046aaf8f7d94d650341ef0ff9246f05fa789f81224e07614274899447956ad4",
+          "translation": "sha256-v1:04a180a346fe44773a2045dbfa95b1cc86af5e475bea024cbcd59c5160b618a4"
+        }
+      },
+      "L10N_BLUE_LEVEL": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:8d14ac37f6f3be5b6951c8a7fff553033feff23bbca3f381d2d72890ee19b979",
+          "translation": "sha256-v1:fb2acb3038e2497f7fcc6c5eb2d4f958e228bb62c3a953e913fa3d250c0d6809"
+        }
+      },
+      "L10N_ALPHA_LEVEL": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:4631ff1f79233de5ec3add89438884f3f467b7ea4299cdd6b89f14d50389779a",
+          "translation": "sha256-v1:ac3fcce2721b1324b18dd5942ff1879eade286ec439fd0ee4a1b79b85798eda9"
+        }
+      },
+      "L10N_MODE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:e0ea2915095a762d0f915f37f0c19d4c4b6f9a87652be8bf4e285408f05687b0",
+          "translation": "sha256-v1:5d242b81eafc7b31f6e0e9368e4decf99963d4369b35600d2ab3c69b9faf2655"
+        }
+      },
+      "L10N_LABEL_ON": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:81a5d6bdfadc8a14fc29b27edce2b9bee4e3c8e90b099079625e94bf0e80a53e",
+          "translation": "sha256-v1:77a7c7e34baeb909fde17c595adb618229b8cffef2a33c6245f89c048f09ba5d"
+        }
+      },
+      "L10N_MODE_ITEMS": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:f4be5535c74ecea8801367146617e772171ffe376995512ff8eeb30f161e072d",
+          "translation": "sha256-v1:83bd689c13a544d1194c99406d3c4e3fb19268ecccf705718a3500f602df4e1b"
+        }
+      },
+      "L10N_PLUGIN_DESC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:aef22326f1889763f06226105a5b89a0bbee3ebf7c32d9c34e5ae0cefe9042a2",
+          "translation": "sha256-v1:351c521c1021a56eeb46b6b4b2f51d689826d466ff8088c7fb53fba0a1102c23"
+        }
+      }
+    }
+  }
+}

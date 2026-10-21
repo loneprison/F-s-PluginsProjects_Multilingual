@@ -1,37 +1,37 @@
-#pragma once
+ï»¿#pragma once
 #ifndef Mult_H
 #define Mult_H
 
 #include "..\_NFLib\AE_SDK.h"
 
-#include "NF_Target.h" //‚±‚ê‚ğÅ‰‚Éinclude‚·‚é‚±‚Æ
+#include "NF_Target.h" //ã“ã‚Œã‚’æœ€åˆã«includeã™ã‚‹ã“ã¨
 
 #include "..\_NFLib\NF_AE.h"
 #include "..\_NFLib\NF_ParamsSetup.h"
 #include "..\_NFLib\fx\NF_Mult.h"
 #include "..\_NFLib\fx\NF_UnMult.h"
 
-//UI‚Ìƒpƒ‰ƒ[ƒ^
+//UIã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 typedef struct ParamInfo {
 	A_long		Mode;
 } ParamInfo, * ParamInfoP, ** ParamInfoH;
 
-//ƒ†[ƒU[ƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌID
-//ParamsSetupŠÖ”‚ÆRenderŠÖ”‚Ìparamsƒpƒ‰ƒ[ƒ^‚ÌID‚É‚È‚é
+//ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®ID
+//ParamsSetupé–¢æ•°ã¨Renderé–¢æ•°ã®paramsãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®IDã«ãªã‚‹
 enum {
 	ID_INPUT = 0,	// default input layer
 	ID_MODE,
 	ID_NUM_PARAMS
 };
 
-//UI‚Ì•\¦•¶š—ñ
-#define	STR_MODE_POP		"Mode"
-#define	STR_MODE_ITEMS		"Unmult|Mult|ToStraight|ToPremultiplited"
+//UIã®è¡¨ç¤ºæ–‡å­—åˆ—
+#define	L10N_MODE_POP		"Mode"
+#define	L10N_MODE_ITEMS		"Unmult|Mult|ToStraight|ToPremultiplited"
 #define	STR_MODE_COUNT		4
 #define	STR_MODE_DFLT		1
 
 
-// ŠÖ”’è‹`
+// é–¢æ•°å®šç¾©
 /*
 static PF_Err
 Mult8(

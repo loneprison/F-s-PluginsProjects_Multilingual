@@ -88,29 +88,29 @@ enum {
 //-------
 #define	STR_MASTER			"master"
 
-#define	STR_PRONGS_POINT		"center"
-#define	STR_PRONGS_COUNT		"count"
-#define	STR_PRONGS_ROOT_SIZE	"rootSize"
-#define	STR_PRONGS_LENGTH		"length"
-#define	STR_PRONGS_BRANCH		"branch"
-#define	STR_PRONGS_DIR			"direction"
-#define	STR_PRONGS_ANGLE		"angle"
-#define	STR_PRONGS_FLASH_SCALE	"flash_scale"
-#define	STR_PRONGS_SCALE		"scale"
-#define	STR_PRONGS_SCALE2		"scale2nd"
+#define	L10N_PRONGS_POINT		"center"
+#define	L10N_PRONGS_COUNT		"count"
+#define	L10N_PRONGS_ROOT_SIZE	"rootSize"
+#define	L10N_PRONGS_LENGTH		"length"
+#define	L10N_PRONGS_BRANCH		"branch"
+#define	L10N_PRONGS_DIR			"direction"
+#define	L10N_PRONGS_ANGLE		"angle"
+#define	L10N_PRONGS_FLASH_SCALE	"flash_scale"
+#define	L10N_PRONGS_SCALE		"scale"
+#define	L10N_PRONGS_SCALE2		"scale2nd"
 
 #define	STR_PRONGS_SCALE		"scale"
 
-#define	STR_SPARKS				"sparks"
-#define	STR_SPARKS_COUNT		"sparkCount"
-#define	STR_SPARKS_SUBCOUNT		"sparkSubCount"
-#define	STR_SPARKS_SCALE		"sparkScale"
+#define	L10N_SPARKS				"sparks"
+#define	L10N_SPARKS_COUNT		"sparkCount"
+#define	L10N_SPARKS_SUBCOUNT		"sparkSubCount"
+#define	L10N_SPARKS_SCALE		"sparkScale"
 
-#define	STR_PRONGS_COLOR		"color"
+#define	L10N_PRONGS_COLOR		"color"
 
 
-#define	STR_AUTO_SEED		"autoSeed"
-#define	STR_SEED			"seed"
+#define	L10N_AUTO_SEED		"autoSeed"
+#define	L10N_SEED			"seed"
 
 
 

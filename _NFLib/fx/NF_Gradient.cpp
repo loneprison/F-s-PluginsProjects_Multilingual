@@ -1,4 +1,4 @@
-#include "NF_Gradient.h"
+ï»¿#include "NF_Gradient.h"
 
 #ifndef AE_CLAMP
 #define AE_CLAMP(VAL, MIN, MAX) ((VAL) < (MIN) ? (MIN) : ((VAL) > (MAX) ? (MAX) : (VAL)))
@@ -7,31 +7,31 @@
 typedef struct {
 	float x0, y0;
 	float ux, uy;
-	float inv_len_sq;	// ’¼ü—p: 1/’·‚³^2
-	float inv_radius;	// ‰~Œ`—p: 1/”¼Œa
-	float k_rgb;		// RGB—p‘o‹ÈüŒW”
-	float k_alpha;		// Alpha—p‘o‹ÈüŒW”
+	float inv_len_sq;	// ç›´ç·šç”¨: 1/é•·ã•^2
+	float inv_radius;	// å††å½¢ç”¨: 1/åŠå¾„
+	float k_rgb;		// RGBç”¨åŒæ›²ç·šä¿‚æ•°
+	float k_alpha;		// Alphaç”¨åŒæ›²ç·šä¿‚æ•°
 	A_long mode;		// 0:Linear, 1:Radial
 
-	float c0[4];		// ŠJnF(r,g,b,a) 0.0-1.0
-	float c1[4];		// I—¹F(r,g,b,a) 0.0-1.0
+	float c0[4];		// é–‹å§‹è‰²(r,g,b,a) 0.0-1.0
+	float c1[4];		// çµ‚äº†è‰²(r,g,b,a) 0.0-1.0
 } GradRenderData;
 
 
-// •‰”‘Î‰‚Ì‘o‹Èü•âŠÔ
+// è² æ•°å¯¾å¿œã®åŒæ›²ç·šè£œé–“
 static inline float ApplyHyperbolic(float t, float k) {
-	if (k == 0.0f) return t; // 0‚Ì‚Íˆ—‚µ‚È‚¢
+	if (k == 0.0f) return t; // 0ã®æ™‚ã¯å‡¦ç†ã—ãªã„
 
 	if (k > 0.0f) {
-		// ³”‚Ìê‡
+		// æ­£æ•°ã®å ´åˆ
 		return ((1.0f + k) * t) / (1.0f + k * t);
 	}
 	else {
-		// •‰”‚Ìê‡: ”½“]‚µ‚Ä³”(-k)‚Åˆ—‚µAÄ“x”½“]
+		// è² æ•°ã®å ´åˆ: åè»¢ã—ã¦æ­£æ•°(-k)ã§å‡¦ç†ã—ã€å†åº¦åè»¢
 		float pk = -k;
 		float inv_t = 1.0f - t;
 		float pk2 = pk * inv_t;
-		if (pk2 == -1.0f) pk2 = -0.99999f; // 0œZ–h~	
+		if (pk2 == -1.0f) pk2 = -0.99999f; // 0é™¤ç®—é˜²æ­¢	
 		float res = ((1.0f + pk) * inv_t) / (1.0f + pk2);
 		return 1.0f - res;
 	}
@@ -65,7 +65,7 @@ static PF_Err GradientFunc(
 		}
 		t = AE_CLAMP(t, 0.0f, 1.0f);
 
-		// RGB/AlphaŒÂ•Ê‚É•‰”‘Î‰‚Ì‘o‹Èü•âŠÔ‚ğ“K—p
+		// RGB/Alphaå€‹åˆ¥ã«è² æ•°å¯¾å¿œã®åŒæ›²ç·šè£œé–“ã‚’é©ç”¨
 		accum_tr += ApplyHyperbolic(t, gd->k_rgb);
 		accum_ta += ApplyHyperbolic(t, gd->k_alpha);
 	}
@@ -73,7 +73,7 @@ static PF_Err GradientFunc(
 	float tr = accum_tr * 0.25f;
 	float ta = accum_ta * 0.25f;
 
-	// ƒJƒ‰[•âŠÔ‚Æo—Í (32bit float / 16bit / 8bit)
+	// ã‚«ãƒ©ãƒ¼è£œé–“ã¨å‡ºåŠ› (32bit float / 16bit / 8bit)
 	if constexpr (std::is_same_v<PixelType, PF_PixelFloat>) {
 		out->red = gd->c0[0] + tr * (gd->c1[0] - gd->c0[0]);
 		out->green = gd->c0[1] + tr * (gd->c1[1] - gd->c0[1]);
@@ -115,7 +115,7 @@ PF_FpLong	alpha_hyperbolic)
 	}
 
 
-	// À•W‚Æ•ûŒüƒxƒNƒgƒ‹‚Ì€”õ
+	// åº§æ¨™ã¨æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«ã®æº–å‚™
 	float x0 = static_cast<float>(start_pos.x);
 	float y0 = static_cast<float>(start_pos.y);
 	float x1 = static_cast<float>(end_pos.x);
@@ -128,17 +128,17 @@ PF_FpLong	alpha_hyperbolic)
 	gd.ux = ux; gd.uy = uy;
 	gd.inv_len_sq = 1.0f / lensq;
 	gd.inv_radius = 1.0f / sqrtf(lensq);
-	gd.mode = mode - 1; // Popup‚Í1‚©‚çn‚Ü‚é‚½‚ß
+	gd.mode = mode - 1; // Popupã¯1ã‹ã‚‰å§‹ã¾ã‚‹ãŸã‚
 
 
 	gd.k_rgb = static_cast<float>(rgb_hyperbolic);
 	gd.k_alpha = static_cast<float>(alpha_hyperbolic);
 
-	// •‰‚Ì’l‚É‚æ‚éƒ[ƒœZ‚â•s˜A‘±‚ğ–h‚®ƒK[ƒh‚Ì‚İ
+	// è² ã®å€¤ã«ã‚ˆã‚‹ã‚¼ãƒ­é™¤ç®—ã‚„ä¸é€£ç¶šã‚’é˜²ãã‚¬ãƒ¼ãƒ‰ã®ã¿
 	//if (gd.k_rgb < 0.0f)   gd.k_rgb = 0.0f;
 	//if (gd.k_alpha < 0.0f) gd.k_alpha = 0.0f;
 
-	// F‚Ì³‹K‰» (0.0-1.0)
+	// è‰²ã®æ­£è¦åŒ– (0.0-1.0)
 	gd.c0[0] = start_color.red / 255.0f;
 	gd.c0[1] = start_color.green / 255.0f;
 	gd.c0[2] = start_color.blue / 255.0f;
@@ -149,7 +149,7 @@ PF_FpLong	alpha_hyperbolic)
 	gd.c1[2] = end_color.blue / 255.0f;
 	gd.c1[3] = (float)end_opa / 100.0f;
 
-	// [“x‚É‰‚¶‚½ƒCƒeƒŒ[ƒgÀs
+	// æ·±åº¦ã«å¿œã˜ãŸã‚¤ãƒ†ãƒ¬ãƒ¼ãƒˆå®Ÿè¡Œ
 
 	switch (pixelFormat) {
 	case PF_PixelFormat_ARGB32:

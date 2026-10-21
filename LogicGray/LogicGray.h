@@ -37,11 +37,11 @@ enum {
 };
 
 //UIの表示文字列
-#define STR_GRAY_MODE_POP1	"LogicType"
-#define STR_GRAY_MODE_POP2	"Luma(YUV)|Lightness(HLS)|Average(RGB)|Red Channel|Green Channel|Blue Channel|Max(RGB)|Perceptual(Lab)"
+#define L10N_GRAY_MODE_POP1	"LogicType"
+#define L10N_GRAY_MODE_POP2	"Luma(YUV)|Lightness(HLS)|Average(RGB)|Red Channel|Green Channel|Blue Channel|Max(RGB)|Perceptual(Lab)"
 #define STR_GRAY_MODE_COUNT	8
 #define STR_GRAY_MODE_DEF	1
-#define STR_ORG_BLEND		"Original Blend"
+#define L10N_ORG_BLEND		"Original Blend"
 
 
 //UIのパラメータ

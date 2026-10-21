@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "translations": {
+    "zh": {
+      "Param": {
+        "L10N_COLOR_COUNT": "目标颜色数量",
+        "L10N_COLOR1": "颜色1",
+        "L10N_COLOR2": "颜色2",
+        "L10N_COLOR3": "颜色3",
+        "L10N_COLOR4": "颜色4",
+        "L10N_COLOR5": "颜色5",
+        "L10N_COLOR6": "颜色6",
+        "L10N_COLOR7": "颜色7",
+        "L10N_COLOR8": "颜色8",
+        "L10N_COLOR9": "颜色9",
+        "L10N_COLOR10": "颜色10",
+        "L10N_KEEP_PIXELS": "保留未清除像素",
+        "L10N_FILLUNKNOWNCOLORS": "填充未清除像素",
+        "L10N_FILLCOLOR": "填充颜色",
+        "L10N_MAKEWHITETRANSPARENT": "白色转透明"
+      },
+      "Label": {
+        "L10N_LABEL_ON": "开"
+      },
+      "About": {
+        "L10N_PLUGIN_DESC": "赛璐珞线条擦除"
+      }
+    }
+  }
+}

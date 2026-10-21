@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "zh": {
+      "L10N_PAINT_COUNT": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:959dfa88deca5fbce1a31e0cf300c46c57922653ce5d5ab1dd2c54558925d573",
+          "translation": "sha256-v1:4c8f3f8fed9b525e50ee8bae07572bf2923d66640391ce250e2d8204d1f31b09"
+        }
+      },
+      "L10N_ENABLE_BAR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:9ec0ef7679f32d53404a07c6ac8713d930d4475653d72995afcb119850fd6626",
+          "translation": "sha256-v1:63abad3404a8e5b6a58b5b1f8495028e0ea8298b4908520617510f787277558b"
+        }
+      },
+      "L10N_ENABLE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:d7f34d3a414ee97e6c27f14b491215338ab59146d5cd9297823755f507ef2aab",
+          "translation": "sha256-v1:2661fe380bc8495da28559c89770d1faa602649c9c5bf8415b5d5462051bf090"
+        }
+      },
+      "L10N_GUIDE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:169b360ee950a0fd2adb5de062649cf36200e831d093d9fca229f24d0f839592",
+          "translation": "sha256-v1:e3fbd524eefcb4b5360b8c5fff4fb93f8e1fca78bd9d133430c7a85ae143ef59"
+        }
+      },
+      "L10N_POS": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:8c16e9bd128bf7cd2391a5c3f5333a6ecc918543873078a834ad809f5e57b10d",
+          "translation": "sha256-v1:d0b2007ba0f4b603cf5e4d12740629f1fe96fbd09b60829c2ebea6233920a6e4"
+        }
+      },
+      "L10N_COLOR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:bd2c4b28f6aae035f0df50d21b268356a6e667425eac6501a981a828d513e941",
+          "translation": "sha256-v1:efbb77e96bef33784c9a23ba5865387a3b26b5c5225be3b7c7b6d6d91fedcdab"
+        }
+      },
+      "L10N_GUIDE_COLOR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:50d31e389c4f376488e8900b7029b2efbe0e752f98a545597e78d315b5a3188b",
+          "translation": "sha256-v1:ae1d14de73b97606754d641b1d37ea9159bfe9cabfb5a56e2ceb34b0656f1364"
+        }
+      },
+      "L10N_GUIDE_ALL_CLEAR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:eab06c104098807fe5ddef399342e5b022e6c41b54cde00d5efc31c2aebc168d",
+          "translation": "sha256-v1:da82a2e7f16b2b7258fd5ef4e60fdd5bd6f0d4ea45c70f2e41afb5bd13ebbab7"
+        }
+      },
+      "L10N_LABEL_ON": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:81a5d6bdfadc8a14fc29b27edce2b9bee4e3c8e90b099079625e94bf0e80a53e",
+          "translation": "sha256-v1:77a7c7e34baeb909fde17c595adb618229b8cffef2a33c6245f89c048f09ba5d"
+        }
+      },
+      "L10N_LABEL_CLEAR": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:6b3a3c63bda64994ecc35930e96a85e22c69acf8653fe69765fcdd3b0abcf0ed",
+          "translation": "sha256-v1:f1b5a9a98c12559aa8b5af058be88b4e8e5e70b89e26dc8114d25ec28132efad"
+        }
+      },
+      "L10N_PAINT_ITEMS": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:cd1cebe3bdc67861aa819949df9e9ca2063301c5267df07315c4aff753a43a8b",
+          "translation": "sha256-v1:5915b2f1a22f1324ce60ca1166fb0a8a66b60cfe53fe59cd5f9b241b320df409"
+        }
+      },
+      "L10N_PAINT_TOPIC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:edde6645a68b50835fb9df0c81e8727ac8eeb1cdd95783e6ed173a5dbcadc152",
+          "translation": "sha256-v1:920073aae71becfa12cba05cfffbb9d27dbdeab1f84e2e4217c17b60bcc50c67"
+        }
+      },
+      "L10N_PLUGIN_DESC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:85efa496309f87bf03635bd155f6a3d3f7df5624ad013305fc27158cf6dc649f",
+          "translation": "sha256-v1:2a5f56ca193ebbb9930a4038ec40c2d140d01e68dbc549e4c7a2d05d2cb48c74"
+        }
+      }
+    }
+  }
+}

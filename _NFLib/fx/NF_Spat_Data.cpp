@@ -1,7 +1,7 @@
-#include "NF_Spat_Data.h"
+ï»¿#include "NF_Spat_Data.h"
 
 /**
- * Œˆ’è˜_“I‚ÈƒnƒbƒVƒ…ŠÖ” (0.0 - 1.0)
+ * æ±ºå®šè«–çš„ãªãƒãƒƒã‚·ãƒ¥é–¢æ•° (0.0 - 1.0)
  */
 inline float hash_01(int x, int y, int seed) {
     uint32_t n = (x + 12345) * 374761393 + (y + 67890) * 668265263 + (seed + 13579) * 1103515245;
@@ -10,7 +10,7 @@ inline float hash_01(int x, int y, int seed) {
 }
 
 /**
- * “à•”ˆ——pƒeƒ“ƒvƒŒ[ƒg
+ * å†…éƒ¨å‡¦ç†ç”¨ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
  */
 template <typename T>
 void DrawSpatAccentT(
@@ -25,7 +25,7 @@ void DrawSpatAccentT(
     int width = world->width;
     int height = world->height;
 
-    // --- 1. •`‰æ”‚ÌŒˆ’è ---
+    // --- 1. æç”»æ•°ã®æ±ºå®š ---
     int min_count = static_cast<int>((float)count * countLoLimit);
     int range = count - min_count;
     float count_rand = hash_01(seed, 0, 777);
@@ -40,7 +40,7 @@ void DrawSpatAccentT(
 
     for (int i = 0; i < actual_count; ++i) {
 
-        // --- 2. ŠeŒÂ‘Ì‚Ìƒpƒ‰ƒ[ƒ^Œˆ’è ---
+        // --- 2. å„å€‹ä½“ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æ±ºå®š ---
         int idx = (int)(hash_01(i, 100, seed) * SPT_COUNT);
         idx = (idx < 0) ? 0 : (idx >= SPT_COUNT ? SPT_COUNT - 1 : idx);
         int spat_size = SPT_SIZE(idx);
@@ -60,14 +60,14 @@ void DrawSpatAccentT(
             r_f = g_f = b_f = hash_01(i, 700, seed);
         }
 
-        // --- š¡‰ñ‚Ìƒ|ƒCƒ“ƒgF‹É«iPolarityj‚ÌŒˆ’è ---
-        // 50%‚ÌŠm—¦‚Å 1.0f (‰ÁZ)A50%‚ÌŠm—¦‚Å -1.0f (Œ¸Z) ‚É‚·‚é
+        // --- â˜…ä»Šå›ã®ãƒã‚¤ãƒ³ãƒˆï¼šæ¥µæ€§ï¼ˆPolarityï¼‰ã®æ±ºå®š ---
+        // 50%ã®ç¢ºç‡ã§ 1.0f (åŠ ç®—)ã€50%ã®ç¢ºç‡ã§ -1.0f (æ¸›ç®—) ã«ã™ã‚‹
         float polarity = (hash_01(i, 900, seed) > 0.5f) ? 1.0f : -1.0f;
 
-        // ‹­“x‚É‹É«‚ğŠ|‚¯‚é
+        // å¼·åº¦ã«æ¥µæ€§ã‚’æ›ã‘ã‚‹
         float intensity = hash_01(i, 800, seed) * intensity_mult * max_chan * polarity;
 
-        // --- 3. •`‰æƒ‹[ƒv ---
+        // --- 3. æç”»ãƒ«ãƒ¼ãƒ— ---
         for (int py = 0; py < spat_size; ++py) {
             int wy = y_start + py;
             if (wy < 0 || wy >= height) continue;
@@ -87,7 +87,7 @@ void DrawSpatAccentT(
 
                 T* pixel = &row_ptr[wx];
 
-                // ƒNƒ‰ƒ“ƒv‚µ‚È‚ª‚ç‰ÁŒ¸Z (add_r ‚ªƒ}ƒCƒiƒX‚Ìê‡‚ÍŒ¸Z‚É‚È‚é)
+                // ã‚¯ãƒ©ãƒ³ãƒ—ã—ãªãŒã‚‰åŠ æ¸›ç®— (add_r ãŒãƒã‚¤ãƒŠã‚¹ã®å ´åˆã¯æ¸›ç®—ã«ãªã‚‹)
                 if constexpr (std::is_same_v<T, PF_Pixel8>) {
                     pixel->red = (A_u_char)AE_CLAMP((float)pixel->red + add_r, 0.0f, max_chan);
                     pixel->green = (A_u_char)AE_CLAMP((float)pixel->green + add_g, 0.0f, max_chan);
@@ -108,10 +108,10 @@ void DrawSpatAccentT(
     }
 }
 
-// DrawSpatAccentiŠO•”ŒöŠJ—pj‚Í•ÏX‚È‚µ...
+// DrawSpatAccentï¼ˆå¤–éƒ¨å…¬é–‹ç”¨ï¼‰ã¯å¤‰æ›´ãªã—...
 
 /**
- * ŠO•”ŒöŠJ—pŠÖ”
+ * å¤–éƒ¨å…¬é–‹ç”¨é–¢æ•°
  */
 PF_Err DrawSpatAccent(
     PF_EffectWorld* world,
@@ -134,14 +134,14 @@ PF_Err DrawSpatAccent(
     return PF_Err_NONE;
 }
 /**
- * Spatƒf[ƒ^‚ğg—p‚µ‚ÄWorld‚ÉƒuƒŒƒ“ƒh‡¬‚·‚éi8bitê—pj
+ * Spatãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ç”¨ã—ã¦Worldã«ãƒ–ãƒ¬ãƒ³ãƒ‰åˆæˆã™ã‚‹ï¼ˆ8bitå°‚ç”¨ï¼‰
  *
- * @param world ‡¬æ‚Ìƒ[ƒ‹ƒh
- * @param widthTrue ƒ[ƒ‹ƒh‚ÌÀÛ‚Ì•irowbytes / sizeof(PF_Pixel)j
- * @param x ‡¬ŠJnXÀ•W
- * @param y ‡¬ŠJnYÀ•W
- * @param spat 32x32ƒTƒCƒY‚ÌSpatƒf[ƒ^iŠe—v‘f0-255‚ªƒAƒ‹ƒtƒ@’l‚Æ‚µ‚Ä‹@”\j
- * @param col ‡¬‚·‚éF
+ * @param world åˆæˆå…ˆã®ãƒ¯ãƒ¼ãƒ«ãƒ‰
+ * @param widthTrue ãƒ¯ãƒ¼ãƒ«ãƒ‰ã®å®Ÿéš›ã®å¹…ï¼ˆrowbytes / sizeof(PF_Pixel)ï¼‰
+ * @param x åˆæˆé–‹å§‹Xåº§æ¨™
+ * @param y åˆæˆé–‹å§‹Yåº§æ¨™
+ * @param spat 32x32ã‚µã‚¤ã‚ºã®Spatãƒ‡ãƒ¼ã‚¿ï¼ˆå„è¦ç´ 0-255ãŒã‚¢ãƒ«ãƒ•ã‚¡å€¤ã¨ã—ã¦æ©Ÿèƒ½ï¼‰
+ * @param col åˆæˆã™ã‚‹è‰²
  */
 static void BlendSpatToWorld8(
     PF_EffectWorld* world,
@@ -161,31 +161,31 @@ static void BlendSpatToWorld8(
 
     for (A_long j = 0; j < spatHeight; ++j) {
         A_long yPos = y + j;
-        // ”ÍˆÍƒ`ƒFƒbƒN
+        // ç¯„å›²ãƒã‚§ãƒƒã‚¯
         if (yPos < 0 || yPos >= world->height) continue;
 
         for (A_long i = 0; i < spatWidth; ++i) {
             A_long xPos = x + i;
-            // ”ÍˆÍƒ`ƒFƒbƒN
+            // ç¯„å›²ãƒã‚§ãƒƒã‚¯
             if (xPos < 0 || xPos >= world->width) continue;
 
-            // Spatƒf[ƒ^‚©‚çƒAƒ‹ƒtƒ@’l‚ğæ“¾i0-255j
+            // Spatãƒ‡ãƒ¼ã‚¿ã‹ã‚‰ã‚¢ãƒ«ãƒ•ã‚¡å€¤ã‚’å–å¾—ï¼ˆ0-255ï¼‰
             A_u_char spatAlpha = spat[j][i];
-            if (spatAlpha == 0) continue; // Š®‘S“§–¾‚È‚çƒXƒLƒbƒv
+            if (spatAlpha == 0) continue; // å®Œå…¨é€æ˜ãªã‚‰ã‚¹ã‚­ãƒƒãƒ—
 
-            // ƒ[ƒ‹ƒhã‚ÌƒsƒNƒZƒ‹‚ğæ“¾
+            // ãƒ¯ãƒ¼ãƒ«ãƒ‰ä¸Šã®ãƒ”ã‚¯ã‚»ãƒ«ã‚’å–å¾—
             PF_Pixel& dstPixel = data[yPos * widthTrue + xPos];
 
-            // ƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒhŒW”i0.0-1.0j
+            // ã‚¢ãƒ«ãƒ•ã‚¡ãƒ–ãƒ¬ãƒ³ãƒ‰ä¿‚æ•°ï¼ˆ0.0-1.0ï¼‰
             float alpha = spatAlpha / 255.0f;
             float invAlpha = 1.0f - alpha;
 
-            // ƒuƒŒƒ“ƒh‡¬: result = src * alpha + dst * (1 - alpha)
+            // ãƒ–ãƒ¬ãƒ³ãƒ‰åˆæˆ: result = src * alpha + dst * (1 - alpha)
             dstPixel.red = (A_u_char)AE_CLAMP(col.red * alpha + dstPixel.red * invAlpha + 0.5f, 0, 255);
             dstPixel.green = (A_u_char)AE_CLAMP(col.green * alpha + dstPixel.green * invAlpha + 0.5f, 0, 255);
             dstPixel.blue = (A_u_char)AE_CLAMP(col.blue * alpha + dstPixel.blue * invAlpha + 0.5f, 0, 255);
 
-            // ƒAƒ‹ƒtƒ@ƒ`ƒƒƒ“ƒlƒ‹‚àƒuƒŒƒ“ƒh
+            // ã‚¢ãƒ«ãƒ•ã‚¡ãƒãƒ£ãƒ³ãƒãƒ«ã‚‚ãƒ–ãƒ¬ãƒ³ãƒ‰
             dstPixel.alpha = (A_u_char)AE_CLAMP(col.alpha * alpha + dstPixel.alpha * invAlpha + 0.5f, 0, 255);
         }
     }

@@ -42,11 +42,11 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_OUTER_WIDTH		"Outer Width"
-#define	STR_INNER_WIDTH		"Inner Width"
-#define	STR_COLOR			"Color"
-#define	STR_WHITE			"Treat White as Transparent"
-#define	STR_BLEND			"Blend with original"
+#define	L10N_OUTER_WIDTH		"Outer Width"
+#define	L10N_INNER_WIDTH		"Inner Width"
+#define	L10N_COLOR			"Color"
+#define	L10N_WHITE			"Treat White as Transparent"
+#define	L10N_BLEND			"Blend with original"
 
 //UIのパラメータ
 typedef struct ParamInfo {

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "zh": {
+      "L10N_DIRECTION": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:db849faeb8ece485820cb18035c704227ef364d2600d513a314485953fad0b00",
+          "translation": "sha256-v1:e898cd923a36d8c89c0ed6caf481e2a12426557513a2d2893366b79951f446c6"
+        }
+      },
+      "L10N_DISTANCE": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:60b5a2facb8655cfcd8bad4ac64274997176173e2e5169e1039fbb85a03eb3ae",
+          "translation": "sha256-v1:a40f39d0f3e81aac752dac4b4e9ea526a8c794364bbdc7be12e02c7f1c3572dd"
+        }
+      },
+      "L10N_PLUGIN_DESC": {
+        "stage": "reviewed",
+        "reviewedAgainst": {
+          "source": "sha256-v1:59f078878cda0245694880b89365b8058d5d58b47d6f98869f58fd09f1948651",
+          "translation": "sha256-v1:511d7ac41315391f9830b9848eebdb1df2d524267a795a107b89b1cf7c1938a0"
+        }
+      }
+    }
+  }
+}

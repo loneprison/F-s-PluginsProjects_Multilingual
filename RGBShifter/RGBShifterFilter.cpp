@@ -1,4 +1,4 @@
-#include "RGBShifter.h"
+ï»¿#include "RGBShifter.h"
 
 typedef struct {
 	PF_FpLong	Y;
@@ -26,7 +26,7 @@ inline void YuvToRgb(YUV yuv,PF_FpLong *r, PF_FpLong* g, PF_FpLong* b )
 	*b = (PF_FpLong)AE_CLAMP(yuv.Y + 1.772 * u2, 0, 1);
 }
 
-// ‹¤’Êˆ—‚ğƒeƒ“ƒvƒŒ[ƒg‰»
+// å…±é€šå‡¦ç†ã‚’ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆåŒ–
 template<typename PixelType>
 static PF_Err RGBShiftCommon(
 	refconType	refcon,
@@ -51,7 +51,7 @@ static PF_Err RGBShiftCommon(
 	g2 = g = (PF_FpLong)inP->green / maxChan;
 	b2 = b = (PF_FpLong)inP->blue / maxChan;
 
-	if (infoP->mode == 1) { // RGBƒVƒtƒg
+	if (infoP->mode == 1) { // RGBã‚·ãƒ•ãƒˆ
 		if (infoP->r_shift > 0.0f) r2 = r + (1.0f - r) * infoP->r_shift;
 		else if (infoP->r_shift < 0.0f) r2 = r + r * infoP->r_shift;
 		
@@ -61,7 +61,7 @@ static PF_Err RGBShiftCommon(
 		if (infoP->b_shift > 0.0f) b2 = b + (1.0f - b) * infoP->b_shift;
 		else if (infoP->b_shift < 0.0f) b2 = b + b * infoP->b_shift;
 	}
-	else if (infoP->mode == 2) { // YUVƒVƒtƒg
+	else if (infoP->mode == 2) { // YUVã‚·ãƒ•ãƒˆ
 		yuv = RgbToYuv(r, g, b);
 		yuv2 = yuv;
 		
@@ -115,7 +115,7 @@ static PF_Err RGBShiftCommon(
 		YuvToRgb(yuv2, &r2, &g2, &b2);
 	}
 
-	// Œ^‚É‰‚¶‚½o—Í•ÏŠ·
+	// å‹ã«å¿œã˜ãŸå‡ºåŠ›å¤‰æ›
 	if constexpr (std::is_same<PixelType, PF_Pixel8>::value) {
 		outP->red = (A_u_char)(AE_CLAMP(r2,0,1.0) * PF_MAX_CHAN8 + 0.5);
 		outP->green = (A_u_char)(AE_CLAMP(g2,0,1.0) * PF_MAX_CHAN8 + 0.5);

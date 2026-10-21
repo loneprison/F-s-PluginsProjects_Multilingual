@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #ifndef NF_LOGICGRAY_H
 #define NF_LOGICGRAY_H
@@ -8,25 +8,25 @@
 #include <math.h>
 
 /**
- * LogicalGrayMain - ƒOƒŒ[ƒXƒP[ƒ‹•ÏŠ·ˆ—
+ * LogicalGrayMain - ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«å¤‰æ›å‡¦ç†
  * 
- * @param in_dataP After Effects“ü—Íƒf[ƒ^
- * @param worldP ˆ—‘ÎÛ‚Ìƒ[ƒ‹ƒhi“üo—ÍŒ“—pj
- * @param pixelFormat ƒsƒNƒZƒ‹ƒtƒH[ƒ}ƒbƒg
- * @param suitesP AEGPƒXƒC[ƒgƒnƒ“ƒhƒ‰
- * @param gray_mode ƒOƒŒ[ƒXƒP[ƒ‹•ÏŠ·ƒ‚[ƒh
+ * @param in_dataP After Effectså…¥åŠ›ãƒ‡ãƒ¼ã‚¿
+ * @param worldP å‡¦ç†å¯¾è±¡ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰ï¼ˆå…¥å‡ºåŠ›å…¼ç”¨ï¼‰
+ * @param pixelFormat ãƒ”ã‚¯ã‚»ãƒ«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
+ * @param suitesP AEGPã‚¹ã‚¤ãƒ¼ãƒˆãƒãƒ³ãƒ‰ãƒ©
+ * @param gray_mode ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«å¤‰æ›ãƒ¢ãƒ¼ãƒ‰
  *        1: YUV
  *        2: HLS
- *        3: RGB•½‹Ï
- *        4: Rƒ`ƒƒƒ“ƒlƒ‹
- *        5: Gƒ`ƒƒƒ“ƒlƒ‹
- *        6: Bƒ`ƒƒƒ“ƒlƒ‹
- *        7: RGBÅ‘å’l
+ *        3: RGBå¹³å‡
+ *        4: Rãƒãƒ£ãƒ³ãƒãƒ«
+ *        5: Gãƒãƒ£ãƒ³ãƒãƒ«
+ *        6: Bãƒãƒ£ãƒ³ãƒãƒ«
+ *        7: RGBæœ€å¤§å€¤
  *        8: LAB
- * @param org_blend Œ³‰æ‘œ‚Æ‚ÌƒuƒŒƒ“ƒh—¦ (0.0`1.0)
- *        0.0: Š®‘S‚ÉƒOƒŒ[ƒXƒP[ƒ‹
- *        1.0: Œ³‰æ‘œ‚Ì‚Ü‚Ü
- * @return PF_Err ƒGƒ‰[ƒR[ƒh
+ * @param org_blend å…ƒç”»åƒã¨ã®ãƒ–ãƒ¬ãƒ³ãƒ‰ç‡ (0.0ï½1.0)
+ *        0.0: å®Œå…¨ã«ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«
+ *        1.0: å…ƒç”»åƒã®ã¾ã¾
+ * @return PF_Err ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
  */
 PF_Err LogicalGrayMain(
 	PF_InData* in_dataP,

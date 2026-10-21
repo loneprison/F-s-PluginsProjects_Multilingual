@@ -78,9 +78,9 @@ enum {
 #define	ID_COLOR(IDX)(ID_COLOR01 + (IDX))
 
 //UIの表示文字列
-#define	STR_COLOR			"color"
-#define	STR_NAME_EDIT_BTN	"Edit Color Names"
-#define	STR_GET_BTN			"Get Colors from Masks"
+#define	L10N_COLOR			"color"
+#define	L10N_NAME_EDIT_BTN	"Edit Color Names"
+#define	L10N_GET_BTN			"Get Colors from Masks"
 #define	STR_REF_BTN			"Refresh Caption!"
 
 

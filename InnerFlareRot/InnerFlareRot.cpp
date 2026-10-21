@@ -6,6 +6,8 @@
 
 
 #include "InnerFlareRot.h"
+#define L10N_LABEL_ON "on"
+#include "InnerFlareRotText.generated.h"
 
 //-------------------------------------------------------------------------------------------------
 //AfterEffextsにパラメータを通達する
@@ -16,13 +18,14 @@ static PF_Err ParamsSetup (
 	PF_ParamDef		*params[],
 	PF_LayerDef		*output)
 {
+	const InnerFlareRotText::Strings strings(in_data);
 	PF_Err			err = PF_Err_NONE;
 
 	PF_ParamDef		def;
 	//----------------------------------------------------------------
 	//色の指定
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_COLOR(STR_COLOR,
+	PF_ADD_COLOR(AETEXT_PARAM(strings, L10N_COLOR),
 		0xff,
 		0xFF,
 		PF_MAX_CHAN8,
@@ -31,10 +34,10 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//角度
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_ANGLE(STR_ROT, 0, ID_ROT);
+	PF_ADD_ANGLE(AETEXT_PARAM(strings, L10N_ROT), 0, ID_ROT);
 	//----------------------------------------------------------------
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_FLOAT_SLIDER(STR_LENGTH,	//Name
+	PF_ADD_FLOAT_SLIDER(AETEXT_PARAM(strings, L10N_LENGTH),	//Name
 		-0,							//VALID_MIN
 		1000,						//VALID_MAX
 		0,							//SLIDER_MIN
@@ -48,14 +51,14 @@ static PF_Err ParamsSetup (
 	);
 	AEFX_CLR_STRUCT(def);
 	PF_ADD_CHECKBOX(
-		STR_REVERSE,
-		STR_REVERSE2,
+		AETEXT_PARAM(strings, L10N_REVERSE),
+		AETEXT_LABEL(strings, L10N_REVERSE2),
 		FALSE,
 		0,
 		ID_REVERSE
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_SLIDER(STR_MINMAX,	//パラメータの名前
+	PF_ADD_SLIDER(AETEXT_PARAM(strings, L10N_MINMAX),	//パラメータの名前
 		-200, 		//数値入力する場合の最小値
 		200,		//数値入力する場合の最大値
 		-50,		//スライダーの最小値 
@@ -64,7 +67,7 @@ static PF_Err ParamsSetup (
 		ID_MINMAX
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_SLIDER(STR_BLUR,	//パラメータの名前
+	PF_ADD_SLIDER(AETEXT_PARAM(strings, L10N_BLUR),	//パラメータの名前
 		0, 		//数値入力する場合の最小値
 		1000,		//数値入力する場合の最大値
 		0,		//スライダーの最小値 
@@ -73,7 +76,7 @@ static PF_Err ParamsSetup (
 		ID_BLUR
 	);
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_FLOAT_SLIDER(STR_HYPERBOLIC,	//Name
+	PF_ADD_FLOAT_SLIDER(AETEXT_PARAM(strings, L10N_HYPERBOLIC),	//Name
 		-10,				//VALID_MIN
 		50,					//VALID_MAX
 		-2,					//SLIDER_MIN
@@ -88,16 +91,16 @@ static PF_Err ParamsSetup (
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
 	PF_ADD_CHECKBOX(
-		STR_WHITE,
-		"on",
+		AETEXT_PARAM(strings, L10N_WHITE),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		0,
 		ID_WHITE
 	);
 	AEFX_CLR_STRUCT(def);
 	PF_ADD_CHECKBOX(
-		STR_BLEND,
-		"on",
+		AETEXT_PARAM(strings, L10N_BLEND),
+		AETEXT_LABEL(strings, L10N_LABEL_ON),
 		FALSE,
 		0,
 		ID_BLEND
@@ -221,8 +224,11 @@ EffectMain(
 		NF_AE ae;
 		switch (cmd) {
 		case PF_Cmd_ABOUT:
-			err = ae.About(in_data, out_data, params, output);
+			{
+			const InnerFlareRotText::Strings strings(in_data);
+			err = ae.About(in_data, out_data, params, output, AETEXT_ABOUT(strings, L10N_PLUGIN_DESC));
 			break;
+		}
 		case PF_Cmd_GLOBAL_SETUP:
 			err = ae.GlobalSetup(in_data, out_data, params, output);
 			break;
@@ -286,7 +292,7 @@ EffectMain(
 		}
 		case PF_Cmd_DO_DIALOG:
 		{
-			//err = PopDialog(in_data,out_data,params,output);
+			InnerFlareRotText::OpenSettings(in_data, L"NF-InnerFlareRot");
 			break;
 		}
 		case PF_Cmd_USER_CHANGED_PARAM:

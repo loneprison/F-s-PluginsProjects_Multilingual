@@ -52,15 +52,15 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_R_SCALE		"red_scale"
-#define	STR_G_SCALE		"green_scale"
-#define	STR_B_SCALE		"blue_scale"
-#define	STR_R_BLUR		"red_blur"
-#define	STR_G_BLUR		"green_blur"
-#define	STR_B_BLUR		"blue_blur"
-#define	STR_CENTER		"center"
-#define	STR_ALPHA_MODE	"alpha"
-#define	STR_ALPHA_ITEMS	"original|dynamic"
+#define	L10N_R_SCALE		"red_scale"
+#define	L10N_G_SCALE		"green_scale"
+#define	L10N_B_SCALE		"blue_scale"
+#define	L10N_R_BLUR		"red_blur"
+#define	L10N_G_BLUR		"green_blur"
+#define	L10N_B_BLUR		"blue_blur"
+#define	L10N_CENTER		"center"
+#define	L10N_ALPHA_MODE	"alpha"
+#define	L10N_ALPHA_ITEMS	"original|dynamic"
 #define	STR_ALPHA_COUNT	2
 #define	STR_ALPHA_DFLT	1
 

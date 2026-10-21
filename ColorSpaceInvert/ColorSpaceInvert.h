@@ -36,10 +36,10 @@ enum {
 };
 
 //UIの表示文字列
-#define	STR_MODE			"mode"
-#define	STR_VALUE			"value"
+#define	L10N_MODE			"mode"
+#define	L10N_VALUE			"value"
 
-#define	STR_MODE_ITEMS		"RGBChannels|InvertLuma(Y)|InvertHue(H)"
+#define	L10N_MODE_ITEMS		"RGBChannels|InvertLuma(Y)|InvertHue(H)"
 #define	STR_MODE_COUNT		3
 #define	STR_MODE_DFLT		1
 //#define	STR_HUE_ROT			"Hue Rotation"
