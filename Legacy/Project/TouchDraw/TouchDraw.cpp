@@ -6,6 +6,7 @@
 
 
 #include "TouchDraw.h"
+#include "../FsLibrary/FsVersionMigration.h"
 
 
 
@@ -263,6 +264,9 @@ static PF_Err ParamsSetup (
 					ID_ORG
 					);
 	//----------------------------------------------------------------
+	AEFX_CLR_STRUCT(def);
+	FS_ADD_LEGACY_CHECKBOX(STR_LEGACY, ID_LEGACY);
+
 	out_data->num_params = 	ID_NUM_PARAMS; 
 
 	return err;
@@ -305,7 +309,12 @@ static PF_Err GetParams(CFsAE *ae, ParamInfo *infoP)
 	A_long pH = ae->in_data->height;
 	if ((pW % infoP->block_size)!=0) { pW = pW/infoP->block_size +1;}else{pW = pW/infoP->block_size;}
 	if ((pH % infoP->block_size)!=0) { pH = pH/infoP->block_size +1;}else{pH = pH/infoP->block_size;}
-	infoP->block_count = pW * pH * infoP->block_value >> 16;
+
+	// 64 ビットで数量を計算する。
+	infoP->block_count = (static_cast<A_u_longlong>(pW) * pH * infoP->block_value) >> 16;
+	PF_Boolean legacy;
+	ERR(ae->GetCHECKBOX(ID_LEGACY, &legacy));
+	if (!err && legacy) infoP->block_count = 0;
 
 	ERR(ae->GetCHECKBOX(ID_ORG,&infoP->org));
 
@@ -332,7 +341,7 @@ static PF_Err
 	}
 
 	F_SRAND(infoP->seed);	
-	blockDraw(ae,infoP->block_size,infoP->block_count);
+	blockDraw(ae,infoP->block_size,infoP->block_count,infoP->seed);
 	
 	F_SRAND(infoP->seed);	
 	switch(ae->pixelFormat()){

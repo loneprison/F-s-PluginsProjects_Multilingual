@@ -78,6 +78,7 @@ enum {
 	ID_BLEND_OPACITY,
 	ID_NOISE_VALUE,
 
+	ID_LEGACY,
 	ID_NUM_PARAMS
 };
 
@@ -113,6 +114,7 @@ enum {
 #define	STR_BLEND_OPACITY			"Blend Opacity"
 
 #define	STR_NOISE_VALUE				"Noise"
+#define STR_LEGACY "Legacy"
 
 namespace BLEND_MODE
 {
@@ -148,6 +150,7 @@ typedef struct ParamInfo {
 	PF_FpShort	blendOpacity;
 	
 	PF_FpShort	noiseValue;
+	PF_Boolean	legacy;
 
 } ParamInfo, *ParamInfoP, **ParamInfoH;
 

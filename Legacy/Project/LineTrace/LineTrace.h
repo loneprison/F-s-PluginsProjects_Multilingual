@@ -67,6 +67,7 @@ enum {
 	enabled_violet,
 	border_violet,
 	color_violet,
+	legacy,
 	
 
 	ID_NUM_PARAMS
@@ -92,6 +93,7 @@ enum{
 #define UI_DRAW_GREEN		"DrawGreen"
 #define UI_DRAW_BLUE		"DrawBlue"
 #define UI_DRAW_YELLOW		"DrawYellow"
+#define UI_LEGACY "Legacy"
 #define UI_DRAW_VIOLET		"DrawViolet"
 
 
@@ -170,10 +172,12 @@ typedef struct
 } TracePrm32;
 typedef struct
 {
+	PF_Boolean	legacy;
 	TracePrm8	ParamTable[LT_COUNT];
 } ParamInfo;
 typedef struct
 {
+	PF_Boolean	legacy;
 	TracePrm8	ParamTable[LT_COUNT];
 	PF_ColorCallbacksSuite1		*cs;
 	PF_ProgPtr			effect_ref;
@@ -181,12 +185,14 @@ typedef struct
 } ParamInfo8;
 typedef struct
 {
+	PF_Boolean	legacy;
 	TracePrm16	ParamTable[LT_COUNT];
 	PF_ColorCallbacks16Suite1		*cs;
 	PF_ProgPtr			effect_ref;
 } ParamInfo16;
 typedef struct
 {
+	PF_Boolean	legacy;
 	TracePrm32	ParamTable[LT_COUNT];
 	PF_ColorCallbacksFloatSuite1	*cs;
 	PF_ProgPtr			effect_ref;

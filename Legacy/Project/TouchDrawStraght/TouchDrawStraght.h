@@ -70,6 +70,7 @@
 
 #define	STR_ORG_CB1			"Original_Blend"
 #define	STR_ORG_CB2			"ON"
+#define STR_LEGACY "Legacy"
 
 
 //ユーザーインターフェースのID
@@ -103,6 +104,7 @@ enum {
 	ID_BLOCK_SIZE,
 
 	ID_ORG,
+	ID_LEGACY,
 	ID_NUM_PARAMS
 	};
 

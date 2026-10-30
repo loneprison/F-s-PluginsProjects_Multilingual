@@ -352,10 +352,10 @@ PF_Err DF32(CFsAE *ae , ParamInfo *infoP)
 	//最大･最小
 	//最大･最小
 	if (infoP->minimax1!=0){
-		ae->out->Minimax32(infoP->minimax1);
+		ae->out->Minimax32(infoP->minimax1,SCANLINE::HorAndVer,TARGET_CHANNEL::rgbAndAlpha,infoP->legacy);
 	}
 	if (infoP->minimax2!=0){
-		ae->out->Minimax32(infoP->minimax2);
+		ae->out->Minimax32(infoP->minimax2,SCANLINE::HorAndVer,TARGET_CHANNEL::rgbAndAlpha,infoP->legacy);
 	}
 	//ぼかし
 	if (infoP->blur>0){

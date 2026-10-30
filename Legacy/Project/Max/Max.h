@@ -47,6 +47,7 @@ enum {
 	ID_DIR,
 	ID_CHANNEL,
 	ID_OUT,
+	ID_LEGACY,
 	ID_NUM_PARAMS
 };
 
@@ -57,11 +58,14 @@ enum {
 #define STR_CH2		"RGB+Alpha|RGB|alpha"
 #define STR_OUT		"OutOnly"
 
+#define STR_LEGACY "Legacy"
+
 typedef struct ParamInfo{
 	A_long		max;
 	A_long		dir;
 	A_long		ch;
 	PF_Boolean	isOutOnly;
+	PF_Boolean	legacy;
 } ParamInfo;
 
 

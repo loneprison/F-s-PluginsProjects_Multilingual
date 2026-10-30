@@ -5,15 +5,14 @@
 //-----------------------------------------------------------------------------------
 
 #include "LineTrace.h"
+#include "../FsLibrary/FsVersionMigration.h"
 #include <stdio.h>
 
 
 static PF_Pixel			WHT8	= {PF_MAX_CHAN8,PF_MAX_CHAN8,PF_MAX_CHAN8,PF_MAX_CHAN8}; 
 static PF_Pixel			BLK8	= {PF_MAX_CHAN8,0,0,0}; 
 static PF_Pixel16		WHT16	= {PF_MAX_CHAN16,PF_MAX_CHAN16,PF_MAX_CHAN16,PF_MAX_CHAN16}; 
-static PF_Pixel16		BLK16	= {PF_MAX_CHAN16,0,0,0}; 
 static PF_PixelFloat	WHT32	= {1,1,1,1}; 
-static PF_PixelFloat	BLK32	= {1,0,0,0}; 
 //-----------------------------------------------------------------------------
 static PF_Err 
 ParamsSetup (
@@ -196,6 +195,8 @@ ParamsSetup (
 					);
 
 
+	AEFX_CLR_STRUCT(def);
+	FS_ADD_LEGACY_CHECKBOX(UI_LEGACY, legacy);
 	out_data->num_params = ID_NUM_PARAMS;
 
 	return err;
@@ -221,7 +222,12 @@ FilterImage8 (
 		}else{
 			if ( op<1) {
 				PF_FpShort op1 = 1- op;
-				p.blue	= RoundByteFpShort(p.blue * op + PF_MAX_CHAN8*op1);
+				// 旧版は青・緑・青の順に補正する。
+				if (infoP->legacy) {
+					p.blue = RoundByteFpShort(p.blue * op + PF_MAX_CHAN8*op1);
+				} else {
+					p.red = RoundByteFpShort(p.red * op + PF_MAX_CHAN8*op1);
+				}
 				p.green	= RoundByteFpShort(p.green* op + PF_MAX_CHAN8*op1);
 				p.blue	= RoundByteFpShort(p.blue * op + PF_MAX_CHAN8*op1);
 			}
@@ -232,13 +238,13 @@ FilterImage8 (
 					p = WHT8;	
 			}else if ( hls[HLS_L] < TARGET_BLACK){
 				if ( infoP->ParamTable[LT_BLACK].enabled == TRUE){
-					p = BLK8;	
+					p = infoP->ParamTable[LT_BLACK].color;
 				}else{
 					p = WHT8;	
 				}
 			}else if ( hls[HLS_S] < TARGET_GRAY){
 				if ( (infoP->ParamTable[LT_BLACK].border > hls[HLS_L])&&( infoP->ParamTable[LT_BLACK].enabled == TRUE)){
-					p = BLK8;
+					p = infoP->ParamTable[LT_BLACK].color;
 				}else{
 					p = WHT8;
 				}
@@ -308,7 +314,12 @@ FilterImage16 (
 		}else{
 			if ( op<1) {
 				PF_FpShort op1 = 1- op;
-				p.blue	= RoundShortFpLong(p.blue * op + PF_MAX_CHAN16*op1);
+				// 旧版は青・緑・青の順に補正する。
+				if (infoP->legacy) {
+					p.blue = RoundShortFpLong(p.blue * op + PF_MAX_CHAN16*op1);
+				} else {
+					p.red = RoundShortFpLong(p.red * op + PF_MAX_CHAN16*op1);
+				}
 				p.green	= RoundShortFpLong(p.green* op + PF_MAX_CHAN16*op1);
 				p.blue	= RoundShortFpLong(p.blue * op + PF_MAX_CHAN16*op1);
 			}
@@ -319,13 +330,13 @@ FilterImage16 (
 					p = WHT16;	
 			}else if ( hls[HLS_L] < TARGET_BLACK){
 				if ( infoP->ParamTable[LT_BLACK].enabled == TRUE){
-					p = BLK16;	
+					p = infoP->ParamTable[LT_BLACK].color;
 				}else{
 					p = WHT16;	
 				}
 			}else if ( hls[HLS_S] < TARGET_GRAY){
 				if ( (infoP->ParamTable[LT_BLACK].border > hls[HLS_L])&&( infoP->ParamTable[LT_BLACK].enabled == TRUE)){
-					p = BLK16;
+					p = infoP->ParamTable[LT_BLACK].color;
 				}else{
 					p = WHT16;
 				}
@@ -395,7 +406,12 @@ FilterImage32 (
 		}else{
 			if ( op<1) {
 				PF_FpShort op1 = 1- op;
-				p.blue	= RoundFpShortDouble(p.blue * op + op1);
+				// 旧版は青・緑・青の順に補正する。
+				if (infoP->legacy) {
+					p.blue = RoundFpShortDouble(p.blue * op + op1);
+				} else {
+					p.red = RoundFpShortDouble(p.red * op + op1);
+				}
 				p.green	= RoundFpShortDouble(p.green* op + op1);
 				p.blue	= RoundFpShortDouble(p.blue * op + op1);
 			}
@@ -406,13 +422,13 @@ FilterImage32 (
 					p = WHT32;	
 			}else if ( hls[HLS_L] < TARGET_BLACK){
 				if ( infoP->ParamTable[LT_BLACK].enabled == TRUE){
-					p = BLK32;	
+					p = infoP->ParamTable[LT_BLACK].color;
 				}else{
 					p = WHT32;	
 				}
 			}else if ( hls[HLS_S] < TARGET_GRAY){
 				if ( (infoP->ParamTable[LT_BLACK].border > hls[HLS_L])&&( infoP->ParamTable[LT_BLACK].enabled == TRUE)){
-					p = BLK32;
+					p = infoP->ParamTable[LT_BLACK].color;
 				}else{
 					p = WHT32;
 				}
@@ -466,7 +482,8 @@ FilterImage32 (
 //-------------------------------------------------------------------------------------------------
 static PF_Err GetParams(CFsAE *ae, ParamInfo *infoP)
 {
-	PF_Err		err 		= PF_Err_NONE;
+	PF_Err err = ae->GetCHECKBOX(legacy, &infoP->legacy);
+	if (err) return err;
 	for ( A_long i=0; i<6; i++){
 		A_long idx = enabled_black + i*3;
 		
@@ -481,6 +498,10 @@ static PF_Err GetParams(CFsAE *ae, ParamInfo *infoP)
 			infoP->ParamTable[i].border		= f;
 			infoP->ParamTable[i].color		= p;
 		}
+	}
+	// 旧版では LT_BLACK の描画色を固定の黒にする。
+	if (!err && infoP->legacy) {
+		infoP->ParamTable[LT_BLACK].color = BLK8;
 	}
 	return err;
 }
@@ -498,6 +519,7 @@ static PF_Err
 	{
 	case PF_PixelFormat_ARGB128:
 		ParamInfo32 info32;
+		info32.legacy = infoP->legacy;
 		for (A_long i=0; i<LT_COUNT; i++){
 			info32.ParamTable[i].enabled = infoP->ParamTable[i].enabled;
 			info32.ParamTable[i].border = infoP->ParamTable[i].border;
@@ -528,6 +550,7 @@ static PF_Err
 		break;
 	case PF_PixelFormat_ARGB64:
 		ParamInfo16 info16;
+		info16.legacy = infoP->legacy;
 		for (A_long i=0; i<LT_COUNT; i++){
 			info16.ParamTable[i].enabled = infoP->ParamTable[i].enabled;
 			info16.ParamTable[i].border = infoP->ParamTable[i].border;
@@ -558,6 +581,7 @@ static PF_Err
 		break;
 	case PF_PixelFormat_ARGB32:
 		ParamInfo8 info8;
+		info8.legacy = infoP->legacy;
 		for (A_long i=0; i<LT_COUNT; i++){
 			info8.ParamTable[i].enabled = infoP->ParamTable[i].enabled;
 			info8.ParamTable[i].border = infoP->ParamTable[i].border;
