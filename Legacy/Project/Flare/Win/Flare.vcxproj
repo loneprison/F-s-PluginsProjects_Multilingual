@@ -435,6 +435,7 @@ cl /D "MSWindows" /EP $(IntDir)%(Filename).rrc &gt;               "$(ProjectDir)
       <FileType>Document</FileType>
     </ClCompile>
   </ItemGroup>
+  <Import Project="..\..\FsLibrary\FsParamText.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

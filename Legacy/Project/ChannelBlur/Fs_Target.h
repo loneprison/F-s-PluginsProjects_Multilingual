@@ -32,7 +32,7 @@
 
 //-----------------------------------------------------------------------------------
 //プラグインのバージョン
-#define	MAJOR_VERSION	1
+#define	MAJOR_VERSION	3
 #define	MINOR_VERSION	1
 #define	BUG_VERSION		0
 //#define	STAGE_VERSION		0	//PF_Stage_DEVELOP
@@ -42,7 +42,7 @@
 #define	BUILD_VERSION	0
 
 //上の値を計算した結果
-#define FS_VERSION		558592
+#define FS_VERSION		1607168
 
 //-----------------------------------------------------------------------------------
 //out_flags

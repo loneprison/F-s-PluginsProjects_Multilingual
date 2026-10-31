@@ -241,6 +241,7 @@ cl /D "MSWindows" /EP $(IntDir)%(Filename).rrc &gt;               "$(ProjectDir)
     <ClCompile Include="..\EdgeBlurSub32.cpp" />
     <ClCompile Include="..\EdgeBlurSub8.cpp" />
   </ItemGroup>
+  <Import Project="..\..\FsLibrary\FsParamText.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

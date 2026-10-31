@@ -54,10 +54,10 @@ enum {
 
 //UIの表示文字列
 #define	STR_HEIGHT		"ラインの太さ(pixel)"
-#define	STR_LEVEL0		"奇数列ラインの明るさ(%)"
-#define	STR_OPACITY0	"奇数列ラインの不透明度(%)"
-#define	STR_LEVEL1		"偶数列ラインの明るさ(%)"
-#define	STR_OPACITY1	"偶数列ラインの不透明度(%)"
+#define	STR_LEVEL0		"奇数ラインの明るさ(%)"
+#define	STR_OPACITY0	"奇数ライン不透明度(%)"
+#define	STR_LEVEL1		"偶数ラインの明るさ(%)"
+#define	STR_OPACITY1	"偶数ライン不透明度(%)"
 #define STR_DIR		"方向"
 #define STR_DIRSTR	"水平|垂直"
 

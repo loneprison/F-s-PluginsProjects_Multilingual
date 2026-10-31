@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- 既存ヘッダーの読み込みと char 文字列の出力を CP932 に固定する。 -->
+  <ItemDefinitionGroup Condition="'$(MSBuildProjectName)|$(Configuration)|$(Platform)' != 'ColorChangeEng|Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>/source-charset:.932 /execution-charset:.932 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)FsParamText.cpp" />
+  </ItemGroup>
+</Project>

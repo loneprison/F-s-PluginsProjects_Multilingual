@@ -51,11 +51,11 @@
 #ifdef AE_OS_WIN
 #define	STR_GUIDE_CB1		"ガイド表示_%d"
 #define	STR_GUIDE_ALL_CB2	"非表示"
-#define STR_GUIDE_ALL_CB1 "ガイドをすべて非表示にする"
+#define STR_GUIDE_ALL_CB1 "ガイドをすべて非表示"
 #else
 #define	STR_GUIDE_CB1		"ガイド表\示_%d"
 #define	STR_GUIDE_ALL_CB2	"非表\示"
-#define STR_GUIDE_ALL_CB1 "ガイドをすべて非表\示にする"
+#define STR_GUIDE_ALL_CB1 "ガイドをすべて非表\示"
 #endif
 
 

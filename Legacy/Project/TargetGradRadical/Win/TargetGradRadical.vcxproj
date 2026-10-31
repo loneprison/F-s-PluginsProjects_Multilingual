@@ -443,6 +443,7 @@ cl /D "MSWindows" /EP $(IntDir)%(Filename).rrc &gt;               "$(ProjectDir)
   <ItemGroup>
     <Image Include="..\..\NFsLibrary\_about_thum.png" />
   </ItemGroup>
+  <Import Project="..\..\FsLibrary\FsParamText.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

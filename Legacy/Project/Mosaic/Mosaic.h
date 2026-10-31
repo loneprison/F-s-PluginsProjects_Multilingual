@@ -53,7 +53,7 @@ enum {
 #define STR_POS			"位置"
 #define STR_RAND		"ちらつき"
 #define STR_RAND_GRAY	"ちらつきをグレーに"
-#define STR_FRAME_RAND_ON	"フレーム毎にちらつかせる"
+#define STR_FRAME_RAND_ON	"フレーム毎にちらつく"
 #define STR_ON			"ON"
 
 //UIのパラメータ

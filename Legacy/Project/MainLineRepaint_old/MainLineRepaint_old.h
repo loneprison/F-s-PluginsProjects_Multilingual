@@ -15,6 +15,7 @@
 #include "AE_EffectCB.h"
 #include "AE_Macros.h"
 #include "Param_Utils.h"
+#include "../FsLibrary/FsParamText.h"
 #include "String_Utils.h"
 
 #include "MainLineRepaint_old_Strings.h"
@@ -27,8 +28,8 @@
 #endif
 
 //バージョンを買えたMainLineRepaintPiPL.rのAE_Effect_Versionも変えること
-#define	MAJOR_VERSION		1
-#define	MINOR_VERSION		0
+#define	MAJOR_VERSION		3
+#define	MINOR_VERSION		1
 #define	BUG_VERSION			0
 //#define	STAGE_VERSION		PF_Stage_DEVELOP
 //#define	STAGE_VERSION		PF_Stage_ALPHA

@@ -424,6 +424,7 @@ cl /D "MSWindows" /EP $(IntDir)%(Filename).rrc &gt;               "$(ProjectDir)
     <ClCompile Include="..\grayToWaveLine16.cpp" />
     <ClCompile Include="..\grayToWaveLine8.cpp" />
   </ItemGroup>
+  <Import Project="..\..\FsLibrary\FsParamText.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

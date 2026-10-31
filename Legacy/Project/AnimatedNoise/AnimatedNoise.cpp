@@ -93,7 +93,7 @@ static PF_Err ParamsSetup (PF_InData		*in_data,
 						PF_ParamFlag_CANNOT_INTERP;
 						
 	//def.ui_flags	=	PF_PUI_STD_CONTROL_ONLY; 
-	PF_ADD_CHECKBOX("毎フレームでノイズ変化",
+	PF_ADD_CHECKBOX("毎フレームノイズ変化",
 					"ON",
 					TRUE,
 					0,

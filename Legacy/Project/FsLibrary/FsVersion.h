@@ -6,7 +6,7 @@
 //-----------------------------------------------------------------------------------
 //バージョンを買えたAlphaFixPiPL.rのAE_Effect_Versionも変えること
 #define	MAJOR_VERSION		3
-#define	MINOR_VERSION		0
+#define	MINOR_VERSION		1
 #define	BUG_VERSION			0
 //#define	STAGE_VERSION		PF_Stage_DEVELOP
 //#define	STAGE_VERSION		PF_Stage_ALPHA
@@ -15,7 +15,7 @@
 #define	BUILD_VERSION		0
 
 //上の値を計算した結果
-#define FS_VERSION	1572864
+#define FS_VERSION	1607168
 
 
 #endif // FS_VAERSION_H

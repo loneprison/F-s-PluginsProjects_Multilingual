@@ -16,6 +16,7 @@
 #include "AEGP_SuiteHandler.h"
 #include "String_Utils.h"
 #include "Param_Utils.h"
+#include "FsParamText.h"
 #include "Smart_Utils.h"
 #include "AE_GeneralPlug.h"
 

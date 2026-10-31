@@ -16,6 +16,7 @@ static PF_Err ParamsSetup (
 {
 	PF_Err			err = PF_Err_NONE;
 	PF_ParamDef		def;
+	char enable_name[256];
 
 	//----------------------------------------------------------------
 	//整数のスライダーバー
@@ -44,7 +45,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_TARGET_ENABLE0,
+	PF_SPRINTF(enable_name, "%s%d", STR_TARGET_ENABLE0, 0);
+	PF_ADD_CHECKBOX(enable_name,
 					STR_TARGET_ENABLE1,
 					TRUE,
 					0,
@@ -61,7 +63,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_TARGET_ENABLE0,
+	PF_SPRINTF(enable_name, "%s%d", STR_TARGET_ENABLE0, 1);
+	PF_ADD_CHECKBOX(enable_name,
 					STR_TARGET_ENABLE1,
 					TRUE,
 					0,
@@ -78,7 +81,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_TARGET_ENABLE0,
+	PF_SPRINTF(enable_name, "%s%d", STR_TARGET_ENABLE0, 2);
+	PF_ADD_CHECKBOX(enable_name,
 					STR_TARGET_ENABLE1,
 					FALSE,
 					0,
@@ -95,7 +99,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_TARGET_ENABLE0,
+	PF_SPRINTF(enable_name, "%s%d", STR_TARGET_ENABLE0, 3);
+	PF_ADD_CHECKBOX(enable_name,
 					STR_TARGET_ENABLE1,
 					FALSE,
 					0,
@@ -112,7 +117,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_TARGET_ENABLE0,
+	PF_SPRINTF(enable_name, "%s%d", STR_TARGET_ENABLE0, 4);
+	PF_ADD_CHECKBOX(enable_name,
 					STR_TARGET_ENABLE1,
 					FALSE,
 					0,
@@ -129,7 +135,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_TARGET_ENABLE0,
+	PF_SPRINTF(enable_name, "%s%d", STR_TARGET_ENABLE0, 5);
+	PF_ADD_CHECKBOX(enable_name,
 					STR_TARGET_ENABLE1,
 					FALSE,
 					0,
@@ -146,7 +153,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_TARGET_ENABLE0,
+	PF_SPRINTF(enable_name, "%s%d", STR_TARGET_ENABLE0, 6);
+	PF_ADD_CHECKBOX(enable_name,
 					STR_TARGET_ENABLE1,
 					FALSE,
 					0,
@@ -163,7 +171,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(STR_TARGET_ENABLE0,
+	PF_SPRINTF(enable_name, "%s%d", STR_TARGET_ENABLE0, 7);
+	PF_ADD_CHECKBOX(enable_name,
 					STR_TARGET_ENABLE1,
 					FALSE,
 					0,

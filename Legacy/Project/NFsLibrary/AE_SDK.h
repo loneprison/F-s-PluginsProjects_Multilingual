@@ -13,6 +13,7 @@
 #include "AEGP_SuiteHandler.h"
 #include "String_Utils.h"
 #include "Param_Utils.h"
+#include "../FsLibrary/FsParamText.h"
 #include "Smart_Utils.h"
 
 #ifdef AE_OS_WIN
