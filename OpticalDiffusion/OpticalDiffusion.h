@@ -41,6 +41,7 @@
 
 #include "../FsLibrary/FsAE.h"
 #include "../FsLibrary/FsHLS.h"
+#include "../FsLibrary/FsVersionMigration.h"
 //#include "FsAE.h"
 
 //ユーザーインターフェースのID
@@ -77,6 +78,7 @@ enum {
 	ID_BLEND_MODE,
 	ID_BLEND_OPACITY,
 	ID_NOISE_VALUE,
+	ID_LEGACY,
 
 	ID_NUM_PARAMS
 };
@@ -113,6 +115,7 @@ enum {
 #define	L10N_PARAM_BLEND_OPACITY			"Blend Opacity"
 
 #define	L10N_PARAM_NOISE				"Noise"
+#define L10N_PARAM_LEGACY "Legacy"
 
 namespace BLEND_MODE
 {
@@ -148,6 +151,7 @@ typedef struct ParamInfo {
 	PF_FpShort	blendOpacity;
 	
 	PF_FpShort	noiseValue;
+	PF_Boolean	legacy;
 
 } ParamInfo, *ParamInfoP, **ParamInfoH;
 

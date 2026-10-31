@@ -257,7 +257,7 @@ public:
 	}
 	void Minimax_rgb8(MiniMaxPrm *prm);
 	void Minimax_alpha8(MiniMaxPrm *prm);
-	PF_Err Minimax8(A_long value,ScanLineMode mode = SCANLINE::HorAndVer,TargetChannelMode target = TARGET_CHANNEL::rgbAndAlpha);
+	PF_Err Minimax8(A_long value,ScanLineMode mode = SCANLINE::HorAndVer,TargetChannelMode target = TARGET_CHANNEL::rgbAndAlpha,bool legacy = false);
 	
 	PF_Err MinimaxA8(A_long value);
 	PF_Err MinimaxA16(A_long value);
@@ -268,13 +268,13 @@ public:
 	PF_Err MaxALPHA_H16(void* refconPV, A_long thread_idxL, A_long yL, A_long itrtL);
 	void Minimax_rgb16(MiniMaxPrm *prm);
 	void Minimax_alpha16(MiniMaxPrm *prm);
-	PF_Err Minimax16(A_long value,ScanLineMode mode = SCANLINE::HorAndVer,TargetChannelMode target = TARGET_CHANNEL::rgbAndAlpha);
+	PF_Err Minimax16(A_long value,ScanLineMode mode = SCANLINE::HorAndVer,TargetChannelMode target = TARGET_CHANNEL::rgbAndAlpha,bool legacy = false);
 
 	void Minimax_rgb32(MiniMaxPrm *prm);
 	void Minimax_alpha32(MiniMaxPrm *prm);
-	PF_Err Minimax32(A_long value,ScanLineMode mode = SCANLINE::HorAndVer,TargetChannelMode target = TARGET_CHANNEL::rgbAndAlpha);
+	PF_Err Minimax32(A_long value,ScanLineMode mode = SCANLINE::HorAndVer,TargetChannelMode target = TARGET_CHANNEL::rgbAndAlpha,bool legacy = false);
 	
-	PF_Err Minimax(A_long value,ScanLineMode mode = SCANLINE::HorAndVer,TargetChannelMode target = TARGET_CHANNEL::rgbAndAlpha);
+	PF_Err Minimax(A_long value,ScanLineMode mode = SCANLINE::HorAndVer,TargetChannelMode target = TARGET_CHANNEL::rgbAndAlpha,bool legacy = false);
 	
 	//-----------------------
 	PF_Err blur8(A_long value,ScanLineMode mode);
@@ -294,9 +294,9 @@ public:
 	void toStraightMat16();
 	void toStraightMat32();
 
-	void toWhiteMat8();
-	void toWhiteMat16();
-	void toWhiteMat32();
+	void toWhiteMat8(bool legacy = false);
+	void toWhiteMat16(bool legacy = false);
+	void toWhiteMat32(bool legacy = false);
 
 	void fromWhiteMat8();
 	void fromWhiteMat16();

@@ -83,7 +83,7 @@ enum{
 #define L10N_PARAM_DISP	"Disp"
 #define L10N_PARAM_DISP_ITEMS	"1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24"
 
-// These error strings have never been used.
+// 未使用のエラーテキスト。
 #define ERR_GET_AEPRM	"すみませんエラーです。\nAfterEffects_Params error!"
 #define ERR_GET_PRM		"すみませんエラーです。\nPixelSelector_Params error!"
 //-----------------------------------------------------------------------------

@@ -19,7 +19,7 @@
         "L10N_PARAM_START_COL": {"useSource": true},
         "L10N_PARAM_LAST_COL": {"useSource": true},
         "L10N_PARAM_GUIDE_SHOW": {"useSource": true},
-        "L10N_PARAM_GUIDE_COLOR": {"useSource": true}
+        "L10N_PARAM_GUIDE_COLOR": "Guide Color"
       },
       "Label": {
         "L10N_PARAM_ON": {"useSource": true}

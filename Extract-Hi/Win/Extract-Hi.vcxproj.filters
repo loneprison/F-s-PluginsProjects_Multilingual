@@ -53,6 +53,9 @@
     <ClInclude Include="..\..\FsLibrary\FsUtils.h">
       <Filter>Header Files\Fs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FsLibrary\FsVersionMigration.h">
+      <Filter>Header Files\Fs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Util\Smart_Utils.h">
       <Filter>Header Files\AE</Filter>
     </ClInclude>

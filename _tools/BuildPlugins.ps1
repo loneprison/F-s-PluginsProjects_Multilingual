@@ -5,12 +5,11 @@ function Write-Usage {
     [Console]::WriteLine(@'
 Usage:
   BuildPlugins.bat publication
-  BuildPlugins.bat custom --default-language <en|source|zh|ja-for-zh> [--single-language]
+  BuildPlugins.bat custom [--default-language <en|source|zh|ja-for-zh>] [--single-language]
 
 Modes:
-  publication  Rebuild the Release x64 multilingual projects outside parenthesized solution folders
-               with publication validation.
-  custom       Build a personal Release x64 variant that is never an official release asset.
+  publication  Official multilingual Release x64 build
+  custom       Custom build
 '@)
 }
 
@@ -21,7 +20,10 @@ try {
         exit 0
     }
     if ($tokens.Count -eq 0) {
-        throw 'A build mode is required.'
+        Write-Usage
+        [Console]::WriteLine('Press any key to continue . . .')
+        [Console]::ReadKey($true) | Out-Null
+        exit 0
     }
 
     $mode = [string]$tokens[0]
@@ -62,7 +64,7 @@ try {
                 $index++
             }
             if ($null -eq $defaultLanguage) {
-                throw 'The custom mode requires --default-language.'
+                $defaultLanguage = 'source'
             }
         }
         default {
@@ -124,14 +126,6 @@ try {
     }
 
     $outputRoot = [System.IO.Path]::GetFullPath($outputRoot)
-    $repositoryPrefix = $repositoryRoot.TrimEnd(
-        [System.IO.Path]::DirectorySeparatorChar,
-        [System.IO.Path]::AltDirectorySeparatorChar) + [System.IO.Path]::DirectorySeparatorChar
-    if (-not $outputRoot.StartsWith(
-        $repositoryPrefix,
-        [System.StringComparison]::OrdinalIgnoreCase)) {
-        throw "Refusing to use an output outside the repository: $outputRoot"
-    }
     [System.IO.Directory]::CreateDirectory($outputRoot) | Out-Null
 
     $pluginOutput = Join-Path $outputRoot 'Fs_Plugins'

@@ -12,7 +12,7 @@
     <!-- 標準準拠モード -->
     <ConformanceMode>true</ConformanceMode>
 
-    <!-- Publication validation is explicit; Release remains a development build. -->
+    <!-- 公開用の検証オプションを設定する。 -->
     <AeTextPublicationValidation Condition="'$(AeTextPublicationValidation)'=='' and '$(FsTextPublicationValidation)'!=''">$(FsTextPublicationValidation)</AeTextPublicationValidation>
     <AeTextPublicationValidationArgument Condition="'$(AeTextPublicationValidation)'=='true'">-PublicationValidation</AeTextPublicationValidationArgument>
   </PropertyGroup>

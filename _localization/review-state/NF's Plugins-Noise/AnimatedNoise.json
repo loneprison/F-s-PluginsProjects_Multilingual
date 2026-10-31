@@ -5,7 +5,7 @@
       "L10N_PARAM_ANIM_EVERY_FRAME": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:30dbfcf3b4e8d578330a32025c63927fdb4fc8cf28dd820dba8bd4e132a02de5",
+          "source": "sha256-v1:a43bc3af08a65af949fd33df92bde00f190a2814eb8a1e4dae933b612aab8705",
           "translation": "sha256-v1:b683c1fe3c4596ddd021a4803f6405924a51bd9f0b91d88b2a27aa9117df4453"
         }
       },
@@ -91,7 +91,7 @@
       "L10N_PARAM_ANIM_EVERY_FRAME": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:30dbfcf3b4e8d578330a32025c63927fdb4fc8cf28dd820dba8bd4e132a02de5",
+          "source": "sha256-v1:a43bc3af08a65af949fd33df92bde00f190a2814eb8a1e4dae933b612aab8705",
           "translation": "sha256-v1:5442bca025b0d33475af8dda4bef956e2f01341186ad51f351d311db0ad4a8bf"
         }
       },

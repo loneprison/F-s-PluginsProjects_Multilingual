@@ -54,10 +54,10 @@ enum {
 
 //UIの表示文字列
 #define	L10N_PARAM_HEIGHT		"ラインの太さ(pixel)"
-#define	L10N_PARAM_LEVEL0		"奇数列ラインの明るさ(%)"
-#define	L10N_PARAM_OPACITY0	"奇数列ラインの不透明度(%)"
-#define	L10N_PARAM_LEVEL1		"偶数列ラインの明るさ(%)"
-#define	L10N_PARAM_OPACITY1	"偶数列ラインの不透明度(%)"
+#define	L10N_PARAM_LEVEL0		"奇数ラインの明るさ(%)"
+#define	L10N_PARAM_OPACITY0	"奇数ライン不透明度(%)"
+#define	L10N_PARAM_LEVEL1		"偶数ラインの明るさ(%)"
+#define	L10N_PARAM_OPACITY1	"偶数ライン不透明度(%)"
 #define L10N_PARAM_DIR		"方向"
 #define L10N_PARAM_DIR_ITEMS	"水平|垂直"
 

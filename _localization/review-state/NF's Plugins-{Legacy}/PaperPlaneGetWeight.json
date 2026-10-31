@@ -20,7 +20,7 @@
         "stage": "reviewed",
         "reviewedAgainst": {
           "source": "sha256-v1:6bb75b0ce4a701161b0a1a3e652091f6a29d52c5db4b6b1c396cd47dc16c94d9",
-          "translation": "sha256-v1:a8e4eaa3f6246157095beb99bece5c6c9deeafa51f8926ad9f0cf1ae8889956f"
+          "translation": "sha256-v1:a93f340a5290a1b7c9a82a14ac689adbcd585fa7e2ad7a48ff7081e2f9255c64"
         }
       },
       "L10N_PARAM_ON": {

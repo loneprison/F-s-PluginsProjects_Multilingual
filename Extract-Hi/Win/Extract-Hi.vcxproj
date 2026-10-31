@@ -158,6 +158,7 @@
     <ClInclude Include="..\..\FsLibrary\FsRandom.h" />
     <ClInclude Include="..\..\FsLibrary\FsScreenShake.h" />
     <ClInclude Include="..\..\FsLibrary\FsUtils.h" />
+    <ClInclude Include="..\..\FsLibrary\FsVersionMigration.h" />
     <ClInclude Include="..\..\..\Headers\A.h" />
     <ClInclude Include="..\..\..\Headers\AE_Effect.h" />
     <ClInclude Include="..\..\..\Headers\AE_EffectCB.h" />

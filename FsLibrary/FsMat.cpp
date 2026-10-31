@@ -173,7 +173,7 @@ void CFsGraph::fromBlackMat32()
 	}
 }
 //-------------------------------------------------------
-void CFsGraph::toWhiteMat8()
+void CFsGraph::toWhiteMat8(bool legacy)
 {
 	if (m_mat == MAT::whiteMat) {
 		return;
@@ -192,7 +192,8 @@ void CFsGraph::toWhiteMat8()
 				}else{
 					p.red	= RoundByteLong( ((A_long)p.red   * (A_long)p.alpha) / PF_MAX_CHAN8 +PF_MAX_CHAN8 - (A_long)p.alpha );
 					p.green	= RoundByteLong( ((A_long)p.green * (A_long)p.alpha) / PF_MAX_CHAN8 +PF_MAX_CHAN8 - (A_long)p.alpha );
-					p.blue	= RoundByteLong( ((A_long)p.blue  * (A_long)p.alpha) / PF_MAX_CHAN8 +PF_MAX_CHAN8 - (A_long)p.alpha );
+					// 旧版は変換済みの緑を青の計算に使う。
+					p.blue	= RoundByteLong( ((A_long)(legacy ? p.green : p.blue) * (A_long)p.alpha) / PF_MAX_CHAN8 +PF_MAX_CHAN8 - (A_long)p.alpha );
 				}
 				data[target] = p;
 			}
@@ -203,7 +204,7 @@ void CFsGraph::toWhiteMat8()
 	m_mat = MAT::whiteMat;
 }
 //-------------------------------------------------------
-void CFsGraph::toWhiteMat16()
+void CFsGraph::toWhiteMat16(bool legacy)
 {
 	if (m_mat == MAT::whiteMat) {
 		return;
@@ -222,7 +223,8 @@ void CFsGraph::toWhiteMat16()
 				}else{
 					p.red	= RoundShort( ((A_long)p.red   * (A_long)p.alpha) / PF_MAX_CHAN16 +PF_MAX_CHAN16 - (A_long)p.alpha );
 					p.green	= RoundShort( ((A_long)p.green * (A_long)p.alpha) / PF_MAX_CHAN16 +PF_MAX_CHAN16 - (A_long)p.alpha );
-					p.blue	= RoundShort( ((A_long)p.blue  * (A_long)p.alpha) / PF_MAX_CHAN16 +PF_MAX_CHAN16 - (A_long)p.alpha );
+					// 旧版は変換済みの緑を青の計算に使う。
+					p.blue	= RoundShort( ((A_long)(legacy ? p.green : p.blue) * (A_long)p.alpha) / PF_MAX_CHAN16 +PF_MAX_CHAN16 - (A_long)p.alpha );
 				}
 				data[target] = p;
 			}
@@ -233,7 +235,7 @@ void CFsGraph::toWhiteMat16()
 	m_mat = MAT::whiteMat;
 }
 //-------------------------------------------------------
-void CFsGraph::toWhiteMat32()
+void CFsGraph::toWhiteMat32(bool legacy)
 {
 	if (m_mat == MAT::whiteMat) {
 		return;
@@ -252,7 +254,8 @@ void CFsGraph::toWhiteMat32()
 				}else if (p.alpha < 1.0){
 					p.red	= RoundFpShortDouble( (p.red   * p.alpha) + 1.0 - p.alpha );
 					p.green	= RoundFpShortDouble( (p.green * p.alpha) + 1.0 - p.alpha );
-					p.blue	= RoundFpShortDouble( (p.blue  * p.alpha) + 1.0 - p.alpha );
+					// 旧版は変換済みの緑を青の計算に使う。
+					p.blue	= RoundFpShortDouble( ((legacy ? p.green : p.blue) * p.alpha) + 1.0 - p.alpha );
 				 }
 				data[target] = p;
 			}

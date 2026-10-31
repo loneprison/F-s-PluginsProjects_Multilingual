@@ -95,24 +95,18 @@ _build\publication\Fs_Plugins
 If you do not need multilingual settings, build a fixed-language version without Language Settings:
 
 ```powershell
-.\BuildPlugins.bat custom --default-language <language> --single-language
+.\BuildPlugins.bat custom [--default-language <language>] --single-language
 ```
 
-Replace `<language>` with:
+The default is the original Japanese text (ja). To select another language, replace `<language>` with:
 
 - `en`: English
-- `source`: original Japanese
 - `zh`: Simplified Chinese
 - `ja-for-zh`: original Japanese for a Simplified Chinese encoding environment
 
-`--single-language` builds only the selected text variant, does not build
-`F's Language Settings.aex`, and prevents the effects from acquiring the Runtime. They therefore do
-not use multilingual settings even when Language Settings is installed in After Effects.
-
-Without Language Settings/Runtime, builds with and without this option display the same `<language>`.
-When the Runtime is available, a build without the option follows the multilingual setting, while a
-build with the option always uses `<language>`. Output is under
-`_build\custom\single-<language>\Fs_Plugins`.
+`--single-language` builds only the selected language without `F's Language Settings.aex`.
+Without this option, the build supports multilingual settings. Output with `--single-language` is under
+`_build\custom\single-*\Fs_Plugins`.
 
 Formal releases do not include fixed-language builds. Build one from source if needed.
 

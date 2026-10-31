@@ -177,7 +177,7 @@ void CFsGraph::Minimax_alpha8(MiniMaxPrm *prm)
 
 }
 //*********************************************************************************************
-PF_Err CFsGraph::Minimax8(A_long value,ScanLineMode mode,TargetChannelMode target)
+PF_Err CFsGraph::Minimax8(A_long value,ScanLineMode mode,TargetChannelMode target,bool legacy)
 {
 	PF_Err err = PF_Err_NONE;
 	if (value == 0) return err;
@@ -193,7 +193,7 @@ PF_Err CFsGraph::Minimax8(A_long value,ScanLineMode mode,TargetChannelMode targe
 	mp.level = NULL;     // 追加
 
 	if (mp.minusFlag){
-		toWhiteMat8();
+		toWhiteMat8(legacy);
 	}else{
 		toBlackMat8();
 	}
@@ -290,20 +290,20 @@ PF_Err CFsGraph::MinimaxA8(A_long value)
 }
 //*********************************************************************************************
 //----------------------------------------------------------------------------
-PF_Err CFsGraph::Minimax(A_long value,ScanLineMode mode,TargetChannelMode target)
+PF_Err CFsGraph::Minimax(A_long value,ScanLineMode mode,TargetChannelMode target,bool legacy)
 {
 	PF_Err err = PF_Err_NONE; 
 	if ( value !=0){
 		switch(m_format)
 		{
 		case PF_PixelFormat_ARGB128:
-			err = Minimax32(value,mode,target);
+			err = Minimax32(value,mode,target,legacy);
 			break;
 		case PF_PixelFormat_ARGB64:
-			err = Minimax16(value,mode,target);
+			err = Minimax16(value,mode,target,legacy);
 			break;
 		case PF_PixelFormat_ARGB32:
-			err = Minimax8(value,mode,target);
+			err = Minimax8(value,mode,target,legacy);
 			break;
 		}
 	}

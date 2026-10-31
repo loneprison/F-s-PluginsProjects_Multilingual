@@ -93,22 +93,17 @@ _build\publication\Fs_Plugins
 如果对多语言没有兴趣，可以直接构建不含 Language Settings 的固定语言版本：
 
 ```powershell
-.\BuildPlugins.bat custom --default-language <language> --single-language
+.\BuildPlugins.bat custom [--default-language <language>] --single-language
 ```
 
-将 `<language>` 替换为：
+默认构建日文原文（ja）。如需指定其他语言，将 `<language>` 替换为：
 
 - `en`：英文
-- `source`：日文原文
 - `zh`：简体中文
 - `ja-for-zh`：适用于简体中文编码环境的日文原文
 
-`--single-language` 只构建所选文字 Variant，不构建 `F's Language Settings.aex`，并禁止效果插件
-获取 Runtime；即使 After Effects 中存在 Language Settings，也不会进入多语言设置。
-
-没有 Language Settings／Runtime 时，是否添加该参数的显示结果相同，插件都使用 `<language>`；存在
-Runtime 时，不带该参数的版本服从多语言设置，带该参数的版本始终使用 `<language>`。输出位于
-`_build\custom\single-<language>\Fs_Plugins`。
+`--single-language` 只构建所选语言，不包含 `F's Language Settings.aex`。
+不带此选项时支持多语言设置。固定语言版输出位于 `_build\custom\single-*\Fs_Plugins`。
 
 正式发布不包含固定语言版本，如有需要请自行构建。
 

@@ -116,7 +116,7 @@ static PF_Err
 	{
 		return err;
 	}
-	// Temporarily disabled for non-full-resolution preview testing.
+	// ダウンサンプリング時もフィルターを適用する。
 	//if (ae->downSaleValue() != 1) {
 	//	return err;
 	//}

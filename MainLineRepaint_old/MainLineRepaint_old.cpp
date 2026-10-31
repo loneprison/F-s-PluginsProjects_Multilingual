@@ -18,7 +18,7 @@ static PF_Err About (
 	const MainLineRepaint_oldText::Strings strings(in_data);
 	const auto description = AETEXT_ABOUT(strings, L10N_PLUGIN_DESC);
 	PF_SPRINTF(	out_data->return_msg, 
-				"%s, v%d.%d%d\r%s",
+				"%s, v%d.%d.%d\r%s",
 				STR(StrID_Name), 
 				MAJOR_VERSION, 
 				MINOR_VERSION,

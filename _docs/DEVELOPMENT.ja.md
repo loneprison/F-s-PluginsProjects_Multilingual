@@ -95,23 +95,18 @@ _build\publication\Fs_Plugins
 多言語設定が不要な場合は、Language Settings を含まない固定言語版をビルドできます。
 
 ```powershell
-.\BuildPlugins.bat custom --default-language <language> --single-language
+.\BuildPlugins.bat custom [--default-language <language>] --single-language
 ```
 
-`<language>` は次のいずれかに置き換えます。
+既定は日本語原文（ja）です。他の言語を指定する場合は、`<language>` を次のいずれかに置き換えます。
 
 - `en`：英語
-- `source`：日本語原文
 - `zh`：簡体中国語
 - `ja-for-zh`：簡体中国語の文字コード環境向け日本語原文
 
-`--single-language` は選択した文字 Variant だけをビルドし、`F's Language Settings.aex` を
-ビルドせず、各 effect による Runtime の取得も無効にします。このため、After Effects に別の
-Language Settings が存在しても多言語設定は使用されません。
-
-Language Settings／Runtime がない環境では、この引数の有無にかかわらず表示は同じ
-`<language>` になります。Runtime がある環境では、引数なしの版は多言語設定に従い、引数ありの版は
-常に `<language>` を使用します。出力先は `_build\custom\single-<language>\Fs_Plugins` です。
+`--single-language` は選択した言語だけをビルドし、`F's Language Settings.aex` を含めません。
+このオプションを省略すると多言語設定に対応します。単一言語版の出力先は
+`_build\custom\single-*\Fs_Plugins` です。
 
 正式リリースには固定言語版を含めません。必要な場合はソースからビルドしてください。
 

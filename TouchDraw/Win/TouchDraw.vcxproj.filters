@@ -107,6 +107,9 @@
     <ClInclude Include="..\..\FsLibrary\FsUtils.h">
       <Filter>Header Files\Fs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FsLibrary\FsVersionMigration.h">
+      <Filter>Header Files\Fs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\FsLibrary\FsGraphics.h">
       <Filter>Header Files\Fs</Filter>
     </ClInclude>

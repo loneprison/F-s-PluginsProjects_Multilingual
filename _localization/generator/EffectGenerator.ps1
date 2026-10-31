@@ -73,7 +73,10 @@ function Write-EffectHeader {
         throw "Default Variant does not exist in the family definition: $resolvedDefaultVariantId"
     }
     $generatedVariants = @(if ($SingleLanguage) {
-        $defaultVariants[0]
+        $Family.variants | Where-Object {
+            [string]$_.id -ceq $resolvedDefaultVariantId -or
+            [string]$_.id -ceq "$resolvedDefaultVariantId-utf8"
+        }
     } else {
         $Family.variants
     })
@@ -191,7 +194,9 @@ function Write-EffectHeader {
                     -Profile ([string]$variant.encodingProfile) `
                     -Id $record.id
                 $limit = if ($role -in @('Param', 'Topic')) { 31 } else { 255 }
-                Assert-ByteLimit -Bytes $bytes -Limit $limit -Target $variantId -Id $record.id
+                if ([string]$variant.encodingProfile -cne 'utf-8') {
+                    Assert-ByteLimit -Bytes $bytes -Limit $limit -Target $variantId -Id $record.id
+                }
                 $encoded[$variantId][$role].Add((Convert-ToByteLiteral -Bytes $bytes))
                 $record.legacyHex[$variantId] = (($bytes | ForEach-Object { '{0:X2}' -f $_ }) -join '')
             }

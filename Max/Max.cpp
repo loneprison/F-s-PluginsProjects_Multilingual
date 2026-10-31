@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------------------
 
 #include "Max.h"
+#include "../FsLibrary/FsVersionMigration.h"
 #include "MaxText.generated.h"
 
 
@@ -61,6 +62,10 @@ static PF_Err ParamsSetup (
 					);
 
 
+	//----------------------------------------------------------------
+	// 旧版の描画を切り替える。
+	AEFX_CLR_STRUCT(def);
+	FS_ADD_LEGACY_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_LEGACY), ID_LEGACY);
 	//----------------------------------------------------------------
 	out_data->num_params = 	ID_NUM_PARAMS; 
 
@@ -132,6 +137,7 @@ static PF_Err GetParams(CFsAE *ae, ParamInfo *infoP)
 	ERR(ae->GetPOPUP(ID_DIR,&infoP->dir));
 	ERR(ae->GetPOPUP(ID_CHANNEL,&infoP->ch));
 	ERR(ae->GetCHECKBOX(ID_OUT,&infoP->isOutOnly));
+	ERR(ae->GetCHECKBOX(ID_LEGACY,&infoP->legacy));
 
 	return err;
 }
@@ -145,7 +151,7 @@ static PF_Err
 
 	ERR(ae->CopyInToOut());
 	if (infoP->max !=0){
-		ERR(ae->out->Minimax(infoP->max,infoP->dir,infoP->ch));
+		ERR(ae->out->Minimax(infoP->max,infoP->dir,infoP->ch,infoP->legacy));
 		if (infoP->isOutOnly){
 			switch(ae->pixelFormat())
 			{

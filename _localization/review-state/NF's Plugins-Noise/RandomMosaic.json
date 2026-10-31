@@ -57,14 +57,14 @@
         "stage": "reviewed",
         "reviewedAgainst": {
           "source": "sha256-v1:b0e69f234d1fd95832ee7e6dd0b4bef7c19301f29f55efd967ca12de761a7253",
-          "translation": "sha256-v1:a288dd059653cd25d4430828648628cd588f6b1e60dc4ed31c17fede2379c670"
+          "translation": "sha256-v1:4c1e63c86fe442152fa8b0935bdc445df2944d0615575996b59c2c00445b27d4"
         }
       },
       "L10N_PARAM_SIZE_MIN": {
         "stage": "reviewed",
         "reviewedAgainst": {
           "source": "sha256-v1:9ecf6700835c105547465674c419cf5d8463f60e75ac18e2f6bd36b9ff79ab0a",
-          "translation": "sha256-v1:3732e6386ce1534760aebcec0fe07b68067f24565d9796c6a7725d8f1c62b539"
+          "translation": "sha256-v1:62388d335f655e1a0890fe51ed276de8a141299c750c68b7d62e8bbcefcadded"
         }
       },
       "L10N_PARAM_ASPECT_RANDOM": {

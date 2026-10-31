@@ -13,7 +13,7 @@
         "stage": "reviewed",
         "reviewedAgainst": {
           "source": "sha256-v1:173e2e8eaed786129d1538dfe8c39b23688ca5cace4a89066265279cb950ba22",
-          "translation": "sha256-v1:c3b597443f950962ff4a321ea86480a0a4df87ffeabaaea0d5f022c5f0ef29f5"
+          "translation": "sha256-v1:03c0fa962fc0827be10ef7fd1bd09d032075bc1ad2a178ddc39f22bb51532d40"
         }
       },
       "L10N_PARAM_OPACITY_RAND": {

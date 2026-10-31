@@ -20,7 +20,8 @@
         "L10N_PARAM_DRAW_YELLOW": {"useSource": true},
         "L10N_PARAM_ENABLED_VIOLET": {"useSource": true},
         "L10N_PARAM_BORDER_VIOLET": {"useSource": true},
-        "L10N_PARAM_DRAW_VIOLET": {"useSource": true}
+        "L10N_PARAM_DRAW_VIOLET": {"useSource": true},
+        "L10N_PARAM_LEGACY": {"useSource": true}
       },
       "Label": {
         "L10N_PARAM_ENABLED_ON": {"useSource": true}
@@ -48,7 +49,8 @@
         "L10N_PARAM_DRAW_YELLOW": "填充黄",
         "L10N_PARAM_ENABLED_VIOLET": "紫",
         "L10N_PARAM_BORDER_VIOLET": "紫阈值",
-        "L10N_PARAM_DRAW_VIOLET": "填充紫"
+        "L10N_PARAM_DRAW_VIOLET": "填充紫",
+        "L10N_PARAM_LEGACY": "旧版"
       },
       "Label": {
         "L10N_PARAM_ENABLED_ON": "开"

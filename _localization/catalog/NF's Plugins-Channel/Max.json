@@ -6,7 +6,8 @@
         "L10N_PARAM_VALUE": {"useSource": true},
         "L10N_PARAM_SCANLINE": {"useSource": true},
         "L10N_PARAM_CHANNEL": {"useSource": true},
-        "L10N_PARAM_OUT_ONLY": {"useSource": true}
+        "L10N_PARAM_OUT_ONLY": {"useSource": true},
+        "L10N_PARAM_LEGACY": {"useSource": true}
       },
       "Label": {
         "L10N_PARAM_ON": {"useSource": true}
@@ -24,7 +25,8 @@
         "L10N_PARAM_VALUE": "半径",
         "L10N_PARAM_SCANLINE": "方向",
         "L10N_PARAM_CHANNEL": "通道",
-        "L10N_PARAM_OUT_ONLY": "仅输出"
+        "L10N_PARAM_OUT_ONLY": "仅输出",
+        "L10N_PARAM_LEGACY": "旧版"
       },
       "Label": {
         "L10N_PARAM_ON": "开"

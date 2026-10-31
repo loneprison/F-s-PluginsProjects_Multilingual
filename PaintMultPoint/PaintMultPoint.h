@@ -50,7 +50,7 @@
 
 #define	L10N_PARAM_GUIDE_FMT		"ガイド表示_%d"
 #define	L10N_PARAM_GUIDE_ALL_OFF	"非表示"
-#define L10N_PARAM_GUIDE_ALL "ガイドをすべて非表示にする"
+#define L10N_PARAM_GUIDE_ALL "ガイドをすべて非表示"
 
 
 typedef struct{

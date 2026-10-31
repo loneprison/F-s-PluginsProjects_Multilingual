@@ -7,6 +7,7 @@
 
 #include "TouchDraw.h"
 #include "TouchDrawText.generated.h"
+#include "../FsLibrary/FsVersionMigration.h"
 
 
 
@@ -265,6 +266,10 @@ static PF_Err ParamsSetup (
 					ID_ORG
 					);
 	//----------------------------------------------------------------
+	// 旧版の描画を切り替える。
+	AEFX_CLR_STRUCT(def);
+	FS_ADD_LEGACY_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_LEGACY), ID_LEGACY);
+	//----------------------------------------------------------------
 	out_data->num_params = 	ID_NUM_PARAMS; 
 
 	return err;
@@ -308,8 +313,11 @@ static PF_Err GetParams(CFsAE *ae, ParamInfo *infoP)
 	if ((pW % infoP->block_size)!=0) { pW = pW/infoP->block_size +1;}else{pW = pW/infoP->block_size;}
 	if ((pH % infoP->block_size)!=0) { pH = pH/infoP->block_size +1;}else{pH = pH/infoP->block_size;}
 
-	// This calculation can overflow, so use 64-bit arithmetic to keep the fix minimal.
+	// 64 ビットで数量を計算する。
 	infoP->block_count = (static_cast<A_u_longlong>(pW) * pH * infoP->block_value) >> 16;
+	PF_Boolean legacy;
+	ERR(ae->GetCHECKBOX(ID_LEGACY, &legacy));
+	if (!err && legacy) infoP->block_count = 0;
 
 	ERR(ae->GetCHECKBOX(ID_ORG,&infoP->org));
 

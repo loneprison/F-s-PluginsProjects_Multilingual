@@ -21,7 +21,7 @@
       "Param": {
         "L10N_PARAM_HALF_SIZE": "半尺寸",
         "L10N_PARAM_COUNT": "层数",
-        "L10N_PARAM_WEIGHT": "纸张克重(g/m2)"
+        "L10N_PARAM_WEIGHT": "纸张重量"
       },
       "Label": {
         "L10N_PARAM_ON": "开"

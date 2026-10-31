@@ -80,9 +80,9 @@
     {
       "id": "L10N_SETTINGS_STATUS_INVALID_CONFIG",
       "token": "StatusInvalidConfig",
-      "zh": "无法读取设置，当前窗口为只读。请稍后重试。",
-      "en": "The settings could not be read. This window is read-only. Try again later.",
-      "ja": "設定を読み込めません。現在のウィンドウは読み取り専用です。しばらくしてから、もう一度お試しください。"
+      "zh": "无法读取设置，当前窗口只读。",
+      "en": "The settings could not be read. This window is read-only.",
+      "ja": "設定を読み込めません。現在のウィンドウは読み取り専用です。"
     },
     {
       "id": "L10N_SETTINGS_STATUS_CONFIG_REPAIRED",
@@ -241,16 +241,16 @@
     {
       "id": "L10N_SETTINGS_SAVE_ERROR_SAFE_REPLACE_FAILED",
       "token": "SaveErrorSafeReplaceFailed",
-      "zh": "无法安全保存语言设置。",
-      "en": "The language settings could not be saved safely.",
-      "ja": "言語設定を安全に保存できません。"
+      "zh": "无法保存语言设置。",
+      "en": "The language settings could not be saved.",
+      "ja": "言語設定を保存できません。"
     },
     {
       "id": "L10N_SETTINGS_MESSAGE_INCOMPATIBLE",
       "token": "MessageIncompatible",
-      "zh": "当前环境可能无法正确显示所选语言，文字可能出现乱码。",
-      "en": "The selected language may not display correctly in the current environment and may appear as garbled text.",
-      "ja": "現在の環境では、選択した言語が正しく表示されず、文字化けする可能性があります。"
+      "zh": "所选语言在当前环境下可能显示乱码。",
+      "en": "Text in the selected language may appear garbled in this environment.",
+      "ja": "現在の環境では、選択した言語で文字化けする可能性があります。"
     }
   ],
   "references": [

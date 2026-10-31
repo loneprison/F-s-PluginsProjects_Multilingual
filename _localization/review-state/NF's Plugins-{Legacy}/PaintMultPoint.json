@@ -33,7 +33,7 @@
       "L10N_PARAM_GUIDE_ALL": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:36063e7279dd5256ad01dfcb64bd0ea41961bb14f1a27a163fb3f8cf0a0e54e5",
+          "source": "sha256-v1:d208f15046fd63b49cabf96456b33a8782cd9694b4151190f17f0d1e9f823302",
           "translation": "sha256-v1:649afcde88c0dfbf035aa2ca964d535a9201f44cbbf759699570142cb6187f7b"
         }
       },
@@ -98,7 +98,7 @@
       "L10N_PARAM_GUIDE_ALL": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:36063e7279dd5256ad01dfcb64bd0ea41961bb14f1a27a163fb3f8cf0a0e54e5",
+          "source": "sha256-v1:d208f15046fd63b49cabf96456b33a8782cd9694b4151190f17f0d1e9f823302",
           "translation": "sha256-v1:c7b7e43ac7d512481d6154b69947e01779268248376fbafc851e30b87de85594"
         }
       },

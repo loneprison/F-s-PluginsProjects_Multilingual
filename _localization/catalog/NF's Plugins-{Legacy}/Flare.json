@@ -41,7 +41,7 @@
         "L10N_PARAM_BASE_COLOR": "着色",
         "L10N_PARAM_BASE_OPACITY": "图像不透明度",
         "L10N_PARAM_ENABLED": "启用_",
-        "L10N_PARAM_REV": "反向 (图像模式除外)_1",
+        "L10N_PARAM_REV": "反向 (图像模式除外)_",
         "L10N_PARAM_BORDER": "启用边框_",
         "L10N_PARAM_INSIDE": "内边框_",
         "L10N_PARAM_OUTSIDE": "外边框_",

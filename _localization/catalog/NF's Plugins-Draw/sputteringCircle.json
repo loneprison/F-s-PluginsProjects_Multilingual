@@ -39,7 +39,7 @@
     "zh": {
       "Param": {
         "L10N_PARAM_SEED": "随机种子",
-        "L10N_PARAM_VALUE": "数量(%)",
+        "L10N_PARAM_VALUE": "数量",
         "L10N_PARAM_OPACITY_RAND": "不透明度",
         "L10N_PARAM_POSITION": "位置",
         "L10N_PARAM_RADIUS": "半径",

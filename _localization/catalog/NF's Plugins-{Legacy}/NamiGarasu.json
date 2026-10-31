@@ -45,7 +45,7 @@
         "L10N_PARAM_ROT": "风向",
         "L10N_PARAM_SPEED": "风速",
         "L10N_PARAM_ADD_MAP": "叠加贴图",
-        "L10N_PARAM_NOISE": "复杂度",
+        "L10N_PARAM_NOISE": "噪声强度",
         "L10N_PARAM_A_SIZE": "A_尺寸",
         "L10N_PARAM_A_VALUE": "A_数值",
         "L10N_PARAM_A_STRONG": "A_强度",

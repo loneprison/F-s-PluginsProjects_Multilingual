@@ -320,7 +320,7 @@ void CFsGraph::Minimax_alpha16(MiniMaxPrm *prm)
 
 }
 //*********************************************************************************************
-PF_Err CFsGraph::Minimax16(A_long value,ScanLineMode mode,TargetChannelMode target)
+PF_Err CFsGraph::Minimax16(A_long value,ScanLineMode mode,TargetChannelMode target,bool legacy)
 {
 	PF_Err err = PF_Err_NONE;
 	if (value == 0) return err;
@@ -338,7 +338,7 @@ PF_Err CFsGraph::Minimax16(A_long value,ScanLineMode mode,TargetChannelMode targ
 	mp.level = NULL;     // この行を追加
 
 	if (mp.minusFlag){
-		toWhiteMat16();
+		toWhiteMat16(legacy);
 	}else{
 		toBlackMat16();
 	}

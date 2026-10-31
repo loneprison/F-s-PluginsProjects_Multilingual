@@ -32,6 +32,36 @@
         "kind": "source"
       },
       "encodingProfile": "windows-936-ae-display"
+    },
+    {
+      "id": "en-utf8",
+      "textSource": {
+        "kind": "translation",
+        "locale": "en"
+      },
+      "encodingProfile": "utf-8"
+    },
+    {
+      "id": "source-utf8",
+      "textSource": {
+        "kind": "source"
+      },
+      "encodingProfile": "utf-8"
+    },
+    {
+      "id": "zh-utf8",
+      "textSource": {
+        "kind": "translation",
+        "locale": "zh"
+      },
+      "encodingProfile": "utf-8"
+    },
+    {
+      "id": "source-cp936-compatible-utf8",
+      "textSource": {
+        "kind": "source"
+      },
+      "encodingProfile": "utf-8"
     }
   ]
 }

@@ -67,6 +67,7 @@ enum {
 	enabled_violet,
 	border_violet,
 	color_violet,
+	legacy,
 	
 
 	ID_NUM_PARAMS
@@ -101,6 +102,7 @@ enum{
 #define L10N_PARAM_BORDER_BLUE		"BlueBorder"
 #define L10N_PARAM_BORDER_YELLOW	"YellowBorder"
 #define L10N_PARAM_BORDER_VIOLET	"VioletBorder"
+#define L10N_PARAM_LEGACY "Legacy"
 
 
 
@@ -171,23 +173,27 @@ typedef struct
 typedef struct
 {
 	TracePrm8	ParamTable[LT_COUNT];
+	PF_Boolean	legacy;
 } ParamInfo;
 typedef struct
 {
 	TracePrm8	ParamTable[LT_COUNT];
 	PF_ColorCallbacksSuite1		*cs;
+	PF_Boolean	legacy;
 	PF_ProgPtr			effect_ref;
 	PF_InData			*in_data;
 } ParamInfo8;
 typedef struct
 {
 	TracePrm16	ParamTable[LT_COUNT];
+	PF_Boolean	legacy;
 	PF_ColorCallbacks16Suite1		*cs;
 	PF_ProgPtr			effect_ref;
 } ParamInfo16;
 typedef struct
 {
 	TracePrm32	ParamTable[LT_COUNT];
+	PF_Boolean	legacy;
 	PF_ColorCallbacksFloatSuite1	*cs;
 	PF_ProgPtr			effect_ref;
 } ParamInfo32;

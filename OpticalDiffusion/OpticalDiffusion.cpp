@@ -265,6 +265,10 @@ static PF_Err ParamsSetup (
 					);
 	//**********************************
 	//----------------------------------------------------------------
+	// 旧版の描画を切り替える。
+	AEFX_CLR_STRUCT(def);
+	FS_ADD_LEGACY_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_LEGACY), ID_LEGACY);
+	//----------------------------------------------------------------
 	out_data->num_params = 	ID_NUM_PARAMS; 
 
 	return err;
@@ -345,6 +349,7 @@ static PF_Err GetParams(CFsAE *ae, ParamInfo *infoP)
 	}else if (infoP->blendOpacity<0.25){
 		infoP->noiseValue = (PF_FpShort)(infoP->noiseValue * infoP->blendOpacity /0.25); 
 	}
+	ERR(ae->GetCHECKBOX(ID_LEGACY,&infoP->legacy));
 
 	return err;
 

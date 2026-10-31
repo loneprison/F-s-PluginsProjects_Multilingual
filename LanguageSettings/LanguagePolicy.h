@@ -47,6 +47,7 @@ struct LanguageEnvironment {
 	AeLanguage ae_language;
 	HostVersion host_version;
 	WindowsCodePage windows_code_page;
+	bool utf8_parameters = false;
 };
 
 constexpr SessionLanguage ResolveAutomatic(const LanguageEnvironment &environment)
@@ -99,7 +100,7 @@ constexpr CompatibilityMessage ResolveMessage(
 	ConfiguredLanguage selected,
 	const LanguageEnvironment &environment)
 {
-	if (selected == ConfiguredLanguage::Automatic) {
+	if (selected == ConfiguredLanguage::Automatic || environment.utf8_parameters) {
 		return CompatibilityMessage::None;
 	}
 

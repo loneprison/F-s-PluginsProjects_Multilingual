@@ -1,6 +1,7 @@
 #include "../AeText.h"
 
 #include "AeTextCatalog.h"
+#include "AeTextHost.h"
 
 #include <cstdint>
 
@@ -114,9 +115,7 @@ bool Client::Resolve(const TextRequest &request, TextResult &result) const noexc
 		suite_->Resolve(catalog_, &request, &result) != kTextResolved) {
 		return false;
 	}
-	const bool requires_utf8 = request.token.role == TextRole::About ||
-		request.token.role == TextRole::Error;
-	return result.legacy && (requires_utf8 ? result.utf8 != nullptr : result.utf8 == nullptr);
+	return result.legacy && result.utf8;
 #endif
 }
 
@@ -125,9 +124,12 @@ const char *Client::Static(TextToken token) const noexcept
 	const TextRequest request{token};
 	TextResult result{};
 	if (Resolve(request, result)) {
-		return result.legacy;
+		return detail::HostUsesUtf8Parameters() ? result.utf8 : result.legacy;
 	}
-	return detail::LegacyValue(*detail::FallbackVariant(*catalog_), token);
+	const VariantView &fallback = *detail::FallbackVariant(*catalog_);
+	return detail::HostUsesUtf8Parameters()
+		? detail::ParameterUtf8Value(*catalog_, fallback, token)
+		: detail::LegacyValue(fallback, token);
 }
 
 const char *Client::Error(TextToken token) const noexcept

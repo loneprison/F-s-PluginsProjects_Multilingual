@@ -22,7 +22,7 @@ inline PF_Boolean CompPxs(thinInfo16 *ti, PF_Pixel16 p1,PF_Pixel16 p2,PF_Pixel16
 	PF_Boolean ret = FALSE;
 	PF_Pixel pp1 = CONV16TO8(p1);
 	PF_Pixel pp2 = CONV16TO8(p2);
-	PF_Pixel pp3 = CONV16TO8(p2);
+	PF_Pixel pp3 = CONV16TO8(p3);
 	if (  ( F_ABS((A_long)pp1.red   - (A_long)pp2.red  ) <= ti->level)
 		&&( F_ABS((A_long)pp1.green - (A_long)pp2.green) <= ti->level)
 		&&( F_ABS((A_long)pp1.blue  - (A_long)pp2.blue ) <= ti->level)){

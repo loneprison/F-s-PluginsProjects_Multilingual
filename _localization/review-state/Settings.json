@@ -82,8 +82,8 @@
       "L10N_SETTINGS_STATUS_INVALID_CONFIG": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:125d0c19bc1346f2d7bb0d39fa514fd1aef02956bdd913ada55da08718144822",
-          "translation": "sha256-v1:d37d7f75f4c998322bcd9244501858a3babb1523eea557fc995699976799d944"
+          "source": "sha256-v1:804ca8ff2974b13b44974b1f1dc069ad6e25a8e92c750c2e2df133be10a2f29f",
+          "translation": "sha256-v1:3d355c45ca7eeab729da21ffd26e28a104c3ef6f475d0eb3c80d6fb5f6c22c9f"
         }
       },
       "L10N_SETTINGS_STATUS_CONFIG_REPAIRED": {
@@ -243,15 +243,15 @@
       "L10N_SETTINGS_SAVE_ERROR_SAFE_REPLACE_FAILED": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:2ef9ee1476a41a68af8ce2c97d58a39781143959469a8918f82e40da8b64ef2d",
-          "translation": "sha256-v1:e7c81dc658a79e58576ab838eb75d11b580cf6e49717822bc14e7adf45cb3fce"
+          "source": "sha256-v1:dc084e60b274945119f0c0d0b680aaa016c99b6d580144367bb731342ba5fe69",
+          "translation": "sha256-v1:ac71d81059e57ee373b3953c0270ce2ad6cec22570e286e338ef2aed05485a8c"
         }
       },
       "L10N_SETTINGS_MESSAGE_INCOMPATIBLE": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:1edfb3e465b8184a6160bd1556392b2bd2875229b89f145de4062382abfaa80d",
-          "translation": "sha256-v1:e9fc9061cfb84d826fffe8c73d6a04c95770e87e5c6c3e6fa4e881840fbe1edb"
+          "source": "sha256-v1:9ba09b52e4ce5dd28efee691ac8a1170c13fff668c934f855c9db918ab20010e",
+          "translation": "sha256-v1:fd7f23ac2148e527f247fcb45a626b97647798b6d43853e8207de24989ffb747"
         }
       }
     },
@@ -336,8 +336,8 @@
       "L10N_SETTINGS_STATUS_INVALID_CONFIG": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:125d0c19bc1346f2d7bb0d39fa514fd1aef02956bdd913ada55da08718144822",
-          "translation": "sha256-v1:0e090aea5ddc3280343062d048c372c091975a08308b37a8073863f33a13b02d"
+          "source": "sha256-v1:804ca8ff2974b13b44974b1f1dc069ad6e25a8e92c750c2e2df133be10a2f29f",
+          "translation": "sha256-v1:7ffcf8c3ee8794d9d5b79b2f5785e6e41bec63c8005cae5e5d3f1e915231d6a9"
         }
       },
       "L10N_SETTINGS_STATUS_CONFIG_REPAIRED": {
@@ -497,15 +497,15 @@
       "L10N_SETTINGS_SAVE_ERROR_SAFE_REPLACE_FAILED": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:2ef9ee1476a41a68af8ce2c97d58a39781143959469a8918f82e40da8b64ef2d",
-          "translation": "sha256-v1:92cbe33772293d2045a5cf32e000ab5c9fe75115f47b4034940677fdde975686"
+          "source": "sha256-v1:dc084e60b274945119f0c0d0b680aaa016c99b6d580144367bb731342ba5fe69",
+          "translation": "sha256-v1:428e6172b83f90c7d5b1c70e1976a6bc35efc71a85bc26ec03c02d52431af2d4"
         }
       },
       "L10N_SETTINGS_MESSAGE_INCOMPATIBLE": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:1edfb3e465b8184a6160bd1556392b2bd2875229b89f145de4062382abfaa80d",
-          "translation": "sha256-v1:c01ed509c52d8fe9f191feeb73b110d842cb3f11827e61114beca86f1394c865"
+          "source": "sha256-v1:9ba09b52e4ce5dd28efee691ac8a1170c13fff668c934f855c9db918ab20010e",
+          "translation": "sha256-v1:fa00caf56b73b9680d4432755cd000416f071cc653743ee23264bd480416f8d4"
         }
       }
     }

@@ -32,7 +32,6 @@
 //-----------------------------------------------------------------------------------
 //プラグインのバージョン
 
-#define FS_VERSION_PROFILE 310
 #include "../FsLibrary/FsVersion.h"
 
 //-----------------------------------------------------------------------------------
@@ -47,7 +46,7 @@ out_data->out_flags
 	PF_OutFlag_I_DO_DIALOG				32
 */
 
-#define FS_OUT_FLAGS	33556064	//元の flags + PF_OutFlag_I_DO_DIALOG
+#define FS_OUT_FLAGS	100664928	// PF_OutFlag_SEND_UPDATE_PARAMS_UI
 //#define FS_OUT_FLAGS	33556036	//こっちを有効にすると毎フレームごとに描画する。NON_PARAM_VARYを動作中に切り替えるときもこちらに
 //#define FS_OUT_FLAGS	1600		//8bitのみ
 

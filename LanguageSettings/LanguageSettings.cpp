@@ -164,7 +164,7 @@ std::int32_t ResolveTextImpl(
 	result->legacy = AeText::detail::LegacyValue(*variant, request->token);
 	result->utf8 = requires_utf8
 		? AeText::detail::Utf8Value(*variant, request->token)
-		: nullptr;
+		: AeText::detail::ParameterUtf8Value(*catalog, *variant, request->token);
 	return AeText::kTextResolved;
 }
 

@@ -34,7 +34,6 @@
 //#define NO_USE_FSGRAPHICS	//これを有効にするとFsGraphics関係がインクルードされない
 
 //-----------------------------------------------------------------------------------
-#define FS_VERSION_PROFILE 310
 #include "../FsLibrary/FsVersion.h"
 
 

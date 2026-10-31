@@ -251,7 +251,7 @@ exec32 (
 		PF_PixelFloat m = niP->mat_color;
 		c.red	= RoundFpShortDouble(c.alpha*(c.red   -  m.red) + m.red);
 		c.green = RoundFpShortDouble(c.alpha*(c.green -  m.green) + m.green);
-		c.blue	= RoundFpShortDouble(c.alpha*(c.blue -   m.blue) + m.blue);
+		c.blue = RoundFpShortDouble(c.alpha*(c.blue - m.blue) + m.blue);
 	}
 	//******************
 	//アルファー

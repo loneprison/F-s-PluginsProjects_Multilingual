@@ -122,7 +122,7 @@
         "L10N_PARAM_OUT_OF_SCREEN": "重复边缘",
         "L10N_PARAM_BLEND": "混合模式",
         "L10N_PARAM_MASK_COLOR": "遮罩颜色",
-        "L10N_PARAM_WHITE_KEY": "去除白色"
+        "L10N_PARAM_WHITE_KEY": "白色转透明"
       },
       "Label": {
         "L10N_PARAM_ON": "开",

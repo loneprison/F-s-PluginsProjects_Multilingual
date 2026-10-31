@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------------------
 
 #include "TouchDrawStraght.h"
+#include "../FsLibrary/FsVersionMigration.h"
 #include "TouchDrawStraghtText.generated.h"
 
 
@@ -250,6 +251,10 @@ static PF_Err ParamsSetup (
 					ID_ORG
 					);
 	//----------------------------------------------------------------
+	// 旧版の描画を切り替える。
+	AEFX_CLR_STRUCT(def);
+	FS_ADD_LEGACY_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_LEGACY), ID_LEGACY);
+	//----------------------------------------------------------------
 	out_data->num_params = 	ID_NUM_PARAMS; 
 
 	return err;
@@ -292,18 +297,26 @@ static PF_Err GetParams(CFsAE *ae, ParamInfo *infoP)
 		
 	ERR(ae->GetFIXED_PER2ONE(ID_BLOCK_VALUE,&infoP->block_value));
 	ERR(ae->GetADD(ID_BLOCK_SIZE,&infoP->block_size));
+	PF_Boolean	legacy;
+	ERR(ae->GetCHECKBOX(ID_LEGACY,&legacy));
 	if (!err) {
 		infoP->block_size = ae->downScaleNoClip(infoP->block_size);
 		if ( infoP->block_size<2) infoP->block_size = 2;
+
+		A_long pW = ae->in_data->width;
+		A_long pH = ae->in_data->height;
+		if ((pW % infoP->block_size)!=0) { pW = pW/infoP->block_size +1;}else{pW = pW/infoP->block_size;}
+		if ((pH % infoP->block_size)!=0) { pH = pH/infoP->block_size +1;}else{pH = pH/infoP->block_size;}
+
+		if (legacy) {
+			// 旧版の 32 ビット演算で数量を計算する。
+			const A_u_long count = static_cast<A_u_long>(pW) * pH * infoP->block_value;
+			infoP->block_count = static_cast<A_long>(count >> 16) - ((count & 0x80000000u) ? 65536 : 0);
+		} else {
+			// 現行版は 64 ビットで数量を計算する。
+			infoP->block_count = (static_cast<A_u_longlong>(pW) * pH * infoP->block_value) >> 16;
+		}
 	}
-
-	A_long pW = ae->in_data->width;
-	A_long pH = ae->in_data->height;
-	if ((pW % infoP->block_size)!=0) { pW = pW/infoP->block_size +1;}else{pW = pW/infoP->block_size;}
-	if ((pH % infoP->block_size)!=0) { pH = pH/infoP->block_size +1;}else{pH = pH/infoP->block_size;}
-
-	// This calculation can overflow, so use 64-bit arithmetic to keep the fix minimal.
-	infoP->block_count = (static_cast<A_u_longlong>(pW) * pH * infoP->block_value) >> 16;
 
 	ERR(ae->GetCHECKBOX(ID_ORG,&infoP->org));
 

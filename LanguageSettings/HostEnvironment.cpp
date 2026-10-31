@@ -3,19 +3,16 @@
 #endif
 
 #include "HostEnvironment.h"
+#include "../_localization/core/AeTextHost.h"
 
 #include "AEConfig.h"
 #include "AEGP_SuiteHandler.h"
 
 #include <Windows.h>
 
-#include <array>
 #include <cwctype>
 #include <sstream>
 #include <string>
-#include <vector>
-
-#pragma comment(lib, "Version.lib")
 
 namespace FsLanguage {
 namespace {
@@ -68,54 +65,6 @@ bool TryGetAeLanguageTag(SPBasicSuite *pica_basic, std::wstring &language_tag)
 	}
 }
 
-bool TryGetHostVersion(std::wstring &version_text, int &major_version)
-{
-	std::array<wchar_t, 32768> executable_path = {};
-	const DWORD path_length = GetModuleFileNameW(
-		nullptr,
-		executable_path.data(),
-		static_cast<DWORD>(executable_path.size()));
-	if (path_length == 0 || path_length >= executable_path.size()) {
-		return false;
-	}
-
-	DWORD ignored = 0;
-	const DWORD version_size = GetFileVersionInfoSizeW(executable_path.data(), &ignored);
-	if (version_size == 0) {
-		return false;
-	}
-
-	std::vector<unsigned char> version_data(version_size);
-	if (!GetFileVersionInfoW(
-			executable_path.data(),
-			0,
-			version_size,
-			version_data.data())) {
-		return false;
-	}
-
-	VS_FIXEDFILEINFO *fixed_info = nullptr;
-	UINT fixed_info_size = 0;
-	if (!VerQueryValueW(
-			version_data.data(),
-			L"\\",
-			reinterpret_cast<void **>(&fixed_info),
-			&fixed_info_size) ||
-		!fixed_info || fixed_info_size < sizeof(VS_FIXEDFILEINFO)) {
-		return false;
-	}
-
-	major_version = HIWORD(fixed_info->dwProductVersionMS);
-	const unsigned int minor_version = LOWORD(fixed_info->dwProductVersionMS);
-	const unsigned int build_version = HIWORD(fixed_info->dwProductVersionLS);
-	const unsigned int revision_version = LOWORD(fixed_info->dwProductVersionLS);
-	std::wostringstream version;
-	version << major_version << L'.' << minor_version << L'.'
-			<< build_version << L'.' << revision_version;
-	version_text = version.str();
-	return true;
-}
-
 WindowsCodePage ClassifyWindowsCodePage(UINT code_page)
 {
 	if (code_page == 932) {
@@ -159,12 +108,18 @@ HostEnvironment DetectHostEnvironment(SPBasicSuite *pica_basic)
 		result.language.ae_language = ClassifyAeLanguage(result.ae_language_tag);
 	}
 
-	int major_version = 0;
-	if (TryGetHostVersion(result.version_text, major_version)) {
+	const auto &version = AeText::detail::HostFileVersion();
+	const unsigned int major_version = HIWORD(version.dwProductVersionMS);
+	if (major_version != 0) {
 		result.language.host_version = major_version <= 22
 			? HostVersion::AtMost22
 			: HostVersion::AtLeast23OrUnknown;
+		std::wostringstream text;
+		text << major_version << L'.' << LOWORD(version.dwProductVersionMS) << L'.'
+			 << HIWORD(version.dwProductVersionLS) << L'.' << LOWORD(version.dwProductVersionLS);
+		result.version_text = text.str();
 	}
+	result.language.utf8_parameters = AeText::detail::HostUsesUtf8Parameters();
 
 	const UINT code_page = GetACP();
 	result.language.windows_code_page = ClassifyWindowsCodePage(code_page);

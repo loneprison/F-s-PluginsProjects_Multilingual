@@ -18,6 +18,7 @@ static PF_Err ParamsSetup (
 	PF_Err			err = PF_Err_NONE;
 	PF_ParamDef		def;
 	const SelectedBlurText::Strings strings(in_data);
+	char enable_name[256];
 
 	//----------------------------------------------------------------
 	//整数のスライダーバー
@@ -46,7 +47,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_ENABLE),
+	PF_SPRINTF(enable_name, "%s%d", AETEXT_PARAM(strings, L10N_PARAM_ENABLE), 0);
+	PF_ADD_CHECKBOX(enable_name,
 					AETEXT_LABEL(strings, L10N_PARAM_ON),
 					TRUE,
 					0,
@@ -63,7 +65,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_ENABLE),
+	PF_SPRINTF(enable_name, "%s%d", AETEXT_PARAM(strings, L10N_PARAM_ENABLE), 1);
+	PF_ADD_CHECKBOX(enable_name,
 					AETEXT_LABEL(strings, L10N_PARAM_ON),
 					TRUE,
 					0,
@@ -80,7 +83,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_ENABLE),
+	PF_SPRINTF(enable_name, "%s%d", AETEXT_PARAM(strings, L10N_PARAM_ENABLE), 2);
+	PF_ADD_CHECKBOX(enable_name,
 					AETEXT_LABEL(strings, L10N_PARAM_ON),
 					FALSE,
 					0,
@@ -97,7 +101,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_ENABLE),
+	PF_SPRINTF(enable_name, "%s%d", AETEXT_PARAM(strings, L10N_PARAM_ENABLE), 3);
+	PF_ADD_CHECKBOX(enable_name,
 					AETEXT_LABEL(strings, L10N_PARAM_ON),
 					FALSE,
 					0,
@@ -114,7 +119,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_ENABLE),
+	PF_SPRINTF(enable_name, "%s%d", AETEXT_PARAM(strings, L10N_PARAM_ENABLE), 4);
+	PF_ADD_CHECKBOX(enable_name,
 					AETEXT_LABEL(strings, L10N_PARAM_ON),
 					FALSE,
 					0,
@@ -131,7 +137,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_ENABLE),
+	PF_SPRINTF(enable_name, "%s%d", AETEXT_PARAM(strings, L10N_PARAM_ENABLE), 5);
+	PF_ADD_CHECKBOX(enable_name,
 					AETEXT_LABEL(strings, L10N_PARAM_ON),
 					FALSE,
 					0,
@@ -148,7 +155,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_ENABLE),
+	PF_SPRINTF(enable_name, "%s%d", AETEXT_PARAM(strings, L10N_PARAM_ENABLE), 6);
+	PF_ADD_CHECKBOX(enable_name,
 					AETEXT_LABEL(strings, L10N_PARAM_ON),
 					FALSE,
 					0,
@@ -165,7 +173,8 @@ static PF_Err ParamsSetup (
 	//----------------------------------------------------------------
 	//チェックボックス
 	AEFX_CLR_STRUCT(def);
-	PF_ADD_CHECKBOX(AETEXT_PARAM(strings, L10N_PARAM_ENABLE),
+	PF_SPRINTF(enable_name, "%s%d", AETEXT_PARAM(strings, L10N_PARAM_ENABLE), 7);
+	PF_ADD_CHECKBOX(enable_name,
 					AETEXT_LABEL(strings, L10N_PARAM_ON),
 					FALSE,
 					0,

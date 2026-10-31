@@ -23,7 +23,7 @@
         "L10N_PARAM_WIDTH": "宽度",
         "L10N_PARAM_FILL_METHOD": "填充方式",
         "L10N_PARAM_CUSTOM_COLOR": "指定颜色",
-        "L10N_PARAM_WHITE_TRANS": "在白色像素上填充"
+        "L10N_PARAM_WHITE_TRANS": "忽略白色"
       },
       "Label": {
         "L10N_PARAM_ON": "开"

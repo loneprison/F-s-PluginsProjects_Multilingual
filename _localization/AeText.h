@@ -26,9 +26,9 @@ enum class TextRole : std::uint32_t {
 
 #pragma pack(push, 8)
 
-// V1 is a Windows x64 MSVC ABI. Catalogs, variants, tables, and their strings
-// are static read-only data owned by the effect AEX. Runtime Resolve() may read
-// them only for the duration of that call and must not retain their pointers.
+// V1 は Windows x64 MSVC 用の ABI。カタログ、バリアント、テーブルおよび各文字列は
+// エフェクト AEX が所有する静的な読み取り専用データ。Runtime の Resolve() は呼び出し中のみ
+// これらを参照でき、呼び出し後にポインターを保持してはならない。
 struct TextToken {
 	TextRole role;
 	std::uint32_t index;
@@ -41,7 +41,7 @@ struct StringTable {
 
 struct VariantView {
 	std::uint32_t struct_size;
-	std::uint32_t stable_id_size; // ASCII bytes; excludes an optional trailing NUL.
+	std::uint32_t stable_id_size; // ASCII のバイト数。末尾に NUL があっても含めない。
 	const char *stable_id;
 	const StringTable *role_tables;
 	std::uint32_t role_table_count;
@@ -62,8 +62,8 @@ struct TextRequest {
 };
 
 struct TextResult {
-	// Successful pointers refer to the effect AEX's static generated tables and
-	// remain usable only while that AEX is loaded.
+	// 成功時のポインターはエフェクト AEX 内の静的な生成テーブルを参照し、
+	// その AEX が読み込まれている間のみ有効。
 	const char *legacy;
 	const char *utf8;
 };
@@ -76,7 +76,7 @@ struct TextSuite1 {
 
 	SPAPI void (*ShowOptions)(
 		std::uint64_t owner_window,
-		const wchar_t *plugin_title); // plugin_title is valid only for this call.
+		const wchar_t *plugin_title); // plugin_title はこの呼び出し中のみ有効。
 };
 
 #pragma pack(pop)
@@ -112,7 +112,7 @@ struct AboutTextAccess final {
 };
 }
 
-// Short-lived effect-side client. The supplied suite identity is family-owned.
+// エフェクト側で短期間だけ使用するクライアント。渡される Suite の識別情報は製品ファミリーが所有する。
 class Client final {
 public:
 	Client(

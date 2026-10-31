@@ -29,7 +29,7 @@
         "L10N_PARAM_REPLACE_COLOR": "替换色",
         "L10N_PARAM_REPLACE_OPACITY": "替换色不透明度",
         "L10N_PARAM_LEVEL": "阈值",
-        "L10N_PARAM_DISP": "显示数量"
+        "L10N_PARAM_DISP": "方案数量"
       },
       "Label": {
         "L10N_PARAM_ON": "开"

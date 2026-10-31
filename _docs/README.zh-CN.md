@@ -2,13 +2,20 @@
 
 # F's Plugins Multilingual Edition
 
+本项目基于 [bryful/F-s-PluginsProjects](https://github.com/bryful/F-s-PluginsProjects) 的
+[`47a9d2c`](https://github.com/bryful/F-s-PluginsProjects/commit/47a9d2c7a322e5ed0ea09c77bbd90cf5a54cb7bf)
+继续维护。整套发行版本从 `v1.0.0` 开始。
+
+- **翻译与程序维护**：loneprison
+- **校对**：光学核心
+
 本仓库的默认分支 `master` 维护 F's Plugins，[`nf` 分支](https://github.com/loneprison/F-s-PluginsProjects_Multilingual/tree/nf)
 维护 NF Plugins。本页介绍 F's Plugins。
 
 [开发文档](DEVELOPMENT.zh-CN.md) · [翻译审校](../_localization/README.zh-CN.md) · [原作者 README](README.original.md)
 
 F's Plugins 的 Windows x64 多语言维护版，面向 Adobe After Effects，提供日文原文、简体中文和英文
-界面，并保留原插件名称与 Match Name，兼容既有工程。
+界面，并保留原插件名称与 Match Name。
 
 > [!IMPORTANT]
 > `v1.0.0` 仍在准备中。正式发布后请使用 GitHub Releases 中的发行包。
@@ -18,7 +25,7 @@ F's Plugins 的 Windows x64 多语言维护版，面向 Adobe After Effects，�
 从 GitHub Releases 下载 `Fs-Plugins-Multilingual-v1.0.0-win.zip`。关闭 After Effects，将解压后的
 `Fs_Plugins` 完整复制到 After Effects 插件目录，保留原目录结构，然后重新启动 After Effects。
 
-发行物是手动安装的 AEX 压缩包，不是安装程序。包内包含中、英、日三语说明及 `LICENSE`。不支持 macOS。
+包内包含中、英、日三语说明及 `LICENSE`。不支持 macOS。
 
 ## 语言
 
@@ -38,8 +45,7 @@ AE 22 及以下按 Windows ANSI 代码页选择：CP936 使用中文，CP932 使
 
 ## 发行内容
 
-解决方案共构建 116 个项目。计划发行 105 个 Production 效果和 1 个 Language Settings 组件。测试、
-模板以及以下效果由于重复或损坏不发布：
+计划发行 105 个效果和 1 个语言设置组件，不包含测试、模板及以下效果：
 
 - `ChannelBlur`
 - `Extract_Edge`
@@ -47,15 +53,44 @@ AE 22 及以下按 Windows ANSI 代码页选择：CP936 使用中文，CP932 使
 - `ShineParallel`
 - `VideoLine2nd`
 
-## 主要修复
+## 更新日志
 
-- 修复 `YuvControl`、`PixelSelector`、`Max`、`OpticalDiffusion`、`smokeThreshold`、
-  `grayToColorize` 和 `Extract-Hi` 的 16／32 bpc 处理问题。
-- 修复 `LineTrace`、`Max_Kasumi`、`TouchDraw` 和 `TouchDrawStraght` 的参数或渲染问题。
-- 修复 `LineTrace` 在 8／16／32 bpc 下处理半透明像素时的颜色通道计算错误。
-- 修正 `RandomShift` 和 `smokeThreshold` 的错误标签。
-- 保留 `GuideFrame` 的历史 `Smooth` 参数槽位，但禁用无效控件。
-- 统一 Filter 的 About 窗口，并替换必要的不完整模板说明。
+### v1.0.0
+
+- **位深**：修复以下插件在 8／16／32 bpc 下的渲染计算不一致问题：
+  `ChannelNoise`、`colorThreshold`、`Extract-Hi`、`grayToColorize`、`IroToreAdjacent`、
+  `Max`、`MaxBlur`、`MaxFast`、`Max_Kasumi`、`Mosaic`、
+  `OpticalDiffusion`、`OutLine`、`PixelSelector`、`RandomMosaic`、`RandomMosaic2nd`、
+  `Spark`、`SparkGrand`、`SparkMult`、`SparkRing`、`SparkStorm`、
+  `Thin`、`TouchDraw`、`TouchDrawStraght`、`YuvControl`。
+- **其他渲染**：修复以下插件的颜色处理、随机块分布、块数量计算和下采样处理异常：
+  `LineTrace`、`Max`、`Max_Kasumi`、`OpticalDiffusion`、`TouchDraw`、
+  `TouchDrawStraght`。
+- **稳定性**：修复以下插件可能导致 AE 意外崩溃的问题：
+  `Max`、`OpticalDiffusion`、`OutLine`、`smokeThreshold`。
+- **界面**：隐藏 `GuideFrame` 无效的 `Smooth` 控件，修复 `PixelSelector` 控件状态异常。
+- **语言**：为效果插件新增简体中文、英文界面和语言设置，适配 AE 26.2 及以上版本的参数文字编码。
+- **文本**：修正 `RandomShift` 和 `smokeThreshold` 原版中的参数标签错误，为 `SelectedBlur` 的启用参数补充 0～7 编号。
+- **About**：补充部分缺失的说明文本。
+
+## 关于旧版兼容
+
+AE 26.2 及以上版本的参数文字改用 UTF-8 编码后，以下插件的部分属性名超出 SDK 长度限制，因此进行了不兼容调整：
+
+- `AnimatedNoise`
+- `Mosaic`
+- `PaintMultPoint`
+- `Scanline`
+
+`SelectedBlur` 的启用参数另补充了 0～7 编号，按旧名称引用这些参数的表达式或脚本需相应调整。
+
+为兼容旧版工程，以下插件提供“旧版”复选框，可保留原有的渲染方式：
+
+- `LineTrace`
+- `Max`
+- `OpticalDiffusion`
+- `TouchDraw`
+- `TouchDrawStraght`
 
 ## 源码与开发
 
@@ -64,11 +99,6 @@ AE 22 及以下按 Windows ANSI 代码页选择：CP936 使用中文，CP932 使
 
 源码构建与开发见[开发文档](DEVELOPMENT.zh-CN.md)。
 
-## 版本、上游与许可
-
-本项目基于 [bryful/F-s-PluginsProjects](https://github.com/bryful/F-s-PluginsProjects) 的
-[`47a9d2c`](https://github.com/bryful/F-s-PluginsProjects/commit/47a9d2c7a322e5ed0ea09c77bbd90cf5a54cb7bf)
-继续维护。整套发行版本从 `v1.0.0` 开始，不替代各 AEX 的内部版本；[原作者 README](README.original.md)
-单独保留。
+## 许可
 
 项目沿用仓库根目录的 [MIT License](../LICENSE)，并保留原作者版权声明。

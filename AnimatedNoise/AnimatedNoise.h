@@ -58,7 +58,7 @@ enum {
 	};
 
 #define L10N_ON_LABEL					"ON"
-#define L10N_PARAM_ANIM_EVERY_FRAME	"毎フレームでノイズ変化"
+#define L10N_PARAM_ANIM_EVERY_FRAME	"毎フレームノイズ変化"
 #define L10N_PARAM_ANIM_MOTION			"ノイズの動き"
 #define L10N_PARAM_NOISE_AMOUNT		"ノイズの量"
 #define L10N_PARAM_NOISE_STRENGTH		"ノイズの強さ"

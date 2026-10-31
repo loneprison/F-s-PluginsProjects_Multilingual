@@ -4,7 +4,7 @@
 
 #define L10N_PLUGIN_DESC "セル画の主線を無くします"
 #define L10N_PARAM_MAIN_COLOR "主線の色"
-// Historical only: no active code path passes this text to PF_OutData::return_msg.
+// 未使用のエラーテキスト。
 #define L10N_ERR_GETFSAEPARAMS "画像バッファーサイズエラーです。御免なさい。"
 #define L10N_ERR_GETPARAMS "パラメータエラーです。御免なさい。"
 

@@ -35,7 +35,7 @@ function Read-FamilyDefinition {
             throw "Invalid or duplicate family Variant ID: $id"
         }
         $profile = Get-RequiredString -Value $variant -Property 'encodingProfile' -Name "family variant $id"
-        if (-not (@('windows-1252', 'windows-932', 'windows-936', 'windows-936-ae-display') -ccontains $profile)) {
+        if (-not (@('windows-1252', 'windows-932', 'windows-936', 'windows-936-ae-display', 'utf-8') -ccontains $profile)) {
             throw "Unsupported encoding profile: variant=$id profile=$profile"
         }
         Assert-Object -Value $variant.textSource -Name "family variant $id.textSource"
@@ -124,6 +124,9 @@ function Convert-VariantBytes {
     )
 
     switch ($Profile) {
+        'utf-8' {
+            return [System.Text.UTF8Encoding]::new($false, $true).GetBytes($Value)
+        }
         'windows-1252' {
             return Convert-ToTargetBytes -Value $Value -Encoding (Get-StrictEncoding -CodePage 1252) -Target 'CP1252' -Id $Id
         }

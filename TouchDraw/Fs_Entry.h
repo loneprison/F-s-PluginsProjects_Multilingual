@@ -63,6 +63,7 @@ GlobalSetup (
 	PF_Err	err				= PF_Err_NONE;
 	CFsAE ae;
 	err = ae.GlobalSetup(in_data,out_data,params,output);
+
 	return err;
 }
 //-------------------------------------------------------------------------------------------------
@@ -96,15 +97,6 @@ static PF_Err SequenceSetdown (
 }
 
 
-//-------------------------------------------------------------------------------------------------
-static PF_Err SequenceResetup (
-	PF_InData		*in_data,
-	PF_OutData		*out_data,
-	PF_ParamDef		*params[],
-	PF_LayerDef		*output )
-{
-	return PF_Err_NONE;
-}
 //-------------------------------------------------------------------------------------------------
 static PF_Err
 HandleChangedParam(
@@ -185,9 +177,6 @@ EntryPointFunc (
 			case PF_Cmd_SEQUENCE_SETDOWN:
 				err = SequenceSetdown(in_data,out_data,params,output);
 				break;
-			case PF_Cmd_SEQUENCE_RESETUP:
-				err = SequenceResetup(in_data,out_data,params,output);
-				break;
 			case PF_Cmd_RENDER:
 					err = Render(in_data,out_data,params,output);
 					break;
@@ -224,6 +213,9 @@ EntryPointFunc (
 	}
 	catch(PF_Err &thrown_err){
 		err = thrown_err;
+	}
+	catch (...) {
+		err = PF_Err_INTERNAL_STRUCT_DAMAGED;
 	}
 	return err;
 }

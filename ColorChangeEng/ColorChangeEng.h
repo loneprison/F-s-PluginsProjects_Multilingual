@@ -101,9 +101,9 @@ enum {
 #define L10N_PARAM_MODE	"Mode"
 #define L10N_PARAM_EXEC	"Execute"
 
-#define L10N_PARAM_TARGET0	"Target"
-#define L10N_PARAM_SRCCOL0	"SourceColor"
-#define L10N_PARAM_DSTCOL0	"DestColor"
+#define L10N_PARAM_TARGET0	"Target0"
+#define L10N_PARAM_SRCCOL0	"SourceColor0"
+#define L10N_PARAM_DSTCOL0	"DestColor0"
 /*
 #define STR_TARGET1	"Target1"
 #define STR_SRCCOL1	"元の色1"

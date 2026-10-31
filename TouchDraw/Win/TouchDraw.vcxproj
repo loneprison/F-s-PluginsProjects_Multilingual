@@ -155,6 +155,7 @@
     <ClInclude Include="..\..\FsLibrary\FsAE.h" />
     <ClInclude Include="..\..\FsLibrary\FsGraphics.h" />
     <ClInclude Include="..\..\FsLibrary\FsUtils.h" />
+    <ClInclude Include="..\..\FsLibrary\FsVersionMigration.h" />
     <ClInclude Include="..\..\..\Headers\A.h" />
     <ClInclude Include="..\..\..\Headers\AE_Effect.h" />
     <ClInclude Include="..\..\..\Headers\AE_EffectCB.h" />

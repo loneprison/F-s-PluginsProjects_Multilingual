@@ -4,8 +4,8 @@
     "en": {
       "Param": {
         "L10N_PARAM_AMOUNT": "Amount",
-        "L10N_PARAM_SIZE_MAX": "Size (Min)",
-        "L10N_PARAM_SIZE_MIN": "Size (Max)",
+        "L10N_PARAM_SIZE_MAX": "Size (Max)",
+        "L10N_PARAM_SIZE_MIN": "Size (Min)",
         "L10N_PARAM_ASPECT_RANDOM": "Aspect Ratio Variation",
         "L10N_PARAM_BRIGHT_RANDOM": "Brightness Variation"
       },

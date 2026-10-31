@@ -21,7 +21,8 @@
         "L10N_PARAM_POINT_LENGTH": {"useSource": true},
         "L10N_PARAM_BLOCK_VALUE": {"useSource": true},
         "L10N_PARAM_BLOCK_SIZE": {"useSource": true},
-        "L10N_PARAM_ORIGINAL_BLEND": {"useSource": true}
+        "L10N_PARAM_ORIGINAL_BLEND": {"useSource": true},
+        "L10N_PARAM_LEGACY": {"useSource": true}
       },
       "Label": {
         "L10N_PARAM_ON": {"useSource": true}
@@ -43,7 +44,7 @@
         "L10N_PARAM_MODE": "生成模式",
         "L10N_PARAM_TARGET_COLOR": "目标颜色",
         "L10N_PARAM_COLOR_RANGE": "目标颜色阈值",
-        "L10N_PARAM_DELTA_RANGE": "亮度阈值",
+        "L10N_PARAM_DELTA_RANGE": "差值阈值",
         "L10N_PARAM_ROT": "旋转",
         "L10N_PARAM_INSIDE_LENGTH": "内侧长度",
         "L10N_PARAM_INSIDE_LENGTH_RANDOM": "内侧长度随机",
@@ -56,13 +57,14 @@
         "L10N_PARAM_POINT_LENGTH": "点间距",
         "L10N_PARAM_BLOCK_VALUE": "块数量",
         "L10N_PARAM_BLOCK_SIZE": "块尺寸",
-        "L10N_PARAM_ORIGINAL_BLEND": "与原始图像混合"
+        "L10N_PARAM_ORIGINAL_BLEND": "与原始图像混合",
+        "L10N_PARAM_LEGACY": "旧版"
       },
       "Label": {
         "L10N_PARAM_ON": "开"
       },
       "Popup": {
-        "L10N_PARAM_MODE_ITEMS": "目标颜色|亮度|Alpha"
+        "L10N_PARAM_MODE_ITEMS": "目标颜色|亮度差值|Alpha差值"
       },
       "Topic": {
         "L10N_PARAM_TARGET": "设置"

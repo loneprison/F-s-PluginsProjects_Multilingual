@@ -76,14 +76,14 @@
         "stage": "reviewed",
         "reviewedAgainst": {
           "source": "sha256-v1:c5eaafdef6e9501b22d937020a91ed4fcd0b052565b2b51119639870a88c7382",
-          "translation": "sha256-v1:5253b4b389f473352db713039424ad9da2c64ffaed33ea6ff85c18e5f46f3b40"
+          "translation": "sha256-v1:a930b665a1a1c0737e1b4d543ba3a28c74148e80934b24ab528c9254cf1b4d58"
         }
       },
       "L10N_PARAM_NO_ALPHA_ZERO": {
         "stage": "reviewed",
         "reviewedAgainst": {
           "source": "sha256-v1:31efa763eba9c4808871328c10ed8d5d8192ab16568eab88763653dd8261a026",
-          "translation": "sha256-v1:426386b71bf720023b9012307b8a5df3e72ef5a14ab8f550f957cde4d2f799f6"
+          "translation": "sha256-v1:c1d7934d728fc037ade706ed3ff4908885d1945aaba2d4ea564f7b329769ea38"
         }
       },
       "L10N_PARAM_EDGE_FILTER": {

@@ -32,17 +32,7 @@
 
 //-----------------------------------------------------------------------------------
 //プラグインのバージョン
-#define	MAJOR_VERSION	1
-#define	MINOR_VERSION	1
-#define	BUG_VERSION		0
-//#define	STAGE_VERSION		0	//PF_Stage_DEVELOP
-//#define	STAGE_VERSION		1	//PF_Stage_ALPHA
-//#define	STAGE_VERSION		2	//PF_Stage_BETA
-#define	STAGE_VERSION		3	//PF_Stage_RELEASE
-#define	BUILD_VERSION	0
-
-//上の値を計算した結果
-#define FS_VERSION		558592
+#include "../FsLibrary/FsVersion.h"
 
 //-----------------------------------------------------------------------------------
 //out_flags

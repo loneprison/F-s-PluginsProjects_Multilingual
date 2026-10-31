@@ -2,6 +2,14 @@
 
 # F's Plugins Multilingual Edition
 
+This edition continues from
+[`47a9d2c`](https://github.com/bryful/F-s-PluginsProjects/commit/47a9d2c7a322e5ed0ea09c77bbd90cf5a54cb7bf)
+of [bryful/F-s-PluginsProjects](https://github.com/bryful/F-s-PluginsProjects). Its suite version starts
+at `v1.0.0`.
+
+- **Translation and code maintenance:** loneprison
+- **Proofreading:** 光学核心
+
 This repository maintains F's Plugins on the default `master` branch and NF Plugins on the
 [`nf` branch](https://github.com/loneprison/F-s-PluginsProjects_Multilingual/tree/nf).
 This README covers F's Plugins.
@@ -9,8 +17,7 @@ This README covers F's Plugins.
 [Development](_docs/DEVELOPMENT.en.md) · [Translation review](_localization/README.md) · [Original README](_docs/README.original.md)
 
 A maintained Windows x64 edition of F's Plugins for Adobe After Effects, with original Japanese,
-Simplified Chinese, and English interfaces. Plugin names and Match Names remain compatible with
-existing projects.
+Simplified Chinese, and English interfaces. Plugin names and Match Names remain unchanged.
 
 > [!IMPORTANT]
 > `v1.0.0` is still in preparation. Use the final GitHub Release package when it becomes available.
@@ -21,8 +28,8 @@ Download `Fs-Plugins-Multilingual-v1.0.0-win.zip` from GitHub Releases, close Af
 the extracted `Fs_Plugins` directory to an After Effects plugin directory. Keep its directory
 structure, then restart After Effects.
 
-The archive is not an installer. It includes user guides in Simplified Chinese, English, and Japanese,
-plus `LICENSE`. macOS is not supported.
+The archive includes user guides in Simplified Chinese, English, and Japanese, plus `LICENSE`.
+macOS is not supported.
 
 ## Language
 
@@ -44,9 +51,8 @@ effects default to the original Japanese text.
 
 ## Release contents
 
-The solution builds 116 projects. The planned release contains 105 Production effects and one Language
-Settings component. Tests, templates, and the following effects are not released because they are
-duplicates or broken:
+The planned release includes 105 effects and one Language Settings component. Tests, templates,
+and the following effects are excluded:
 
 - `ChannelBlur`
 - `Extract_Edge`
@@ -54,16 +60,50 @@ duplicates or broken:
 - `ShineParallel`
 - `VideoLine2nd`
 
-## Main fixes
+## Changelog
 
-- Restored or corrected 16/32-bpc processing in `YuvControl`, `PixelSelector`, `Max`,
-  `OpticalDiffusion`, `smokeThreshold`, `grayToColorize`, and `Extract-Hi`.
-- Fixed parameter or rendering behavior in `LineTrace`, `Max_Kasumi`, `TouchDraw`, and
+### v1.0.0
+
+- **Bit depth:** Corrected inconsistent rendering calculations across 8/16/32 bpc in the following plugins:
+  `ChannelNoise`, `colorThreshold`, `Extract-Hi`, `grayToColorize`, `IroToreAdjacent`,
+  `Max`, `MaxBlur`, `MaxFast`, `Max_Kasumi`, `Mosaic`,
+  `OpticalDiffusion`, `OutLine`, `PixelSelector`, `RandomMosaic`, `RandomMosaic2nd`,
+  `Spark`, `SparkGrand`, `SparkMult`, `SparkRing`, `SparkStorm`,
+  `Thin`, `TouchDraw`, `TouchDrawStraght`, `YuvControl`.
+- **Other rendering:** Fixed color processing, random block distribution, block-count calculation,
+  and downsampling issues in the following plugins:
+  `LineTrace`, `Max`, `Max_Kasumi`, `OpticalDiffusion`, `TouchDraw`,
   `TouchDrawStraght`.
-- Corrected `LineTrace`'s color-channel calculations for semitransparent pixels in 8/16/32 bpc.
-- Corrected labels in `RandomShift` and `smokeThreshold`.
-- Disabled `GuideFrame`'s unused `Smooth` control while preserving its historical parameter slot.
-- Aligned Filter About windows and replaced incomplete template descriptions where needed.
+- **Stability:** Fixed issues that could cause AE to crash unexpectedly in the following plugins:
+  `Max`, `OpticalDiffusion`, `OutLine`, `smokeThreshold`.
+- **Interface:** Hid `GuideFrame`'s unused `Smooth` control and fixed `PixelSelector`'s control states.
+- **Language support:** Added Simplified Chinese and English interfaces and language settings across effects,
+  and adapted parameter text encoding for AE 26.2 and later.
+- **Text:** Corrected parameter label errors from the original versions of `RandomShift` and `smokeThreshold`,
+  and added numbers 0–7 to `SelectedBlur`'s enable parameters.
+- **About:** Added some missing description text.
+
+## Compatibility with older versions
+
+After parameter text changed to UTF-8 in AE 26.2 and later, some property names in the following
+plugins exceeded the SDK's length limit and have been changed in a way that breaks compatibility:
+
+- `AnimatedNoise`
+- `Mosaic`
+- `PaintMultPoint`
+- `Scanline`
+
+`SelectedBlur`'s enable parameters have also been numbered 0–7. Expressions or scripts that reference
+these parameters by their old names need to be updated.
+
+For compatibility with older projects, the following plugins provide a **Legacy** checkbox to retain
+the original rendering behavior:
+
+- `LineTrace`
+- `Max`
+- `OpticalDiffusion`
+- `TouchDraw`
+- `TouchDrawStraght`
 
 ## Source and development
 
@@ -73,12 +113,6 @@ in archives. Removed content remains available in Git history.
 
 For source builds and development, see the [developer guide](_docs/DEVELOPMENT.en.md).
 
-## Version, upstream, and license
-
-This edition continues from
-[`47a9d2c`](https://github.com/bryful/F-s-PluginsProjects/commit/47a9d2c7a322e5ed0ea09c77bbd90cf5a54cb7bf)
-of [bryful/F-s-PluginsProjects](https://github.com/bryful/F-s-PluginsProjects). Its suite version starts
-at `v1.0.0` and does not replace the internal versions of individual AEX files. The
-[original README](_docs/README.original.md) is preserved separately.
+## License
 
 Licensed under the repository's [MIT License](LICENSE), with the original copyright notice retained.

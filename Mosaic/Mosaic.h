@@ -53,7 +53,7 @@ enum {
 #define L10N_PARAM_POSITION			"位置"
 #define L10N_PARAM_FLICKER		"ちらつき"
 #define L10N_PARAM_FLICKER_GRAY	"ちらつきをグレーに"
-#define L10N_PARAM_FRAME_FLICKER	"フレーム毎にちらつかせる"
+#define L10N_PARAM_FRAME_FLICKER	"フレーム毎にちらつく"
 #define L10N_PARAM_ON			"ON"
 
 //UIのパラメータ

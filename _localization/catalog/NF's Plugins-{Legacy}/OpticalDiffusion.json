@@ -24,7 +24,8 @@
         "L10N_PARAM_BLUR": {"useSource": true},
         "L10N_PARAM_BLEND_MODE": {"useSource": true},
         "L10N_PARAM_BLEND_OPACITY": {"useSource": true},
-        "L10N_PARAM_NOISE": {"useSource": true}
+        "L10N_PARAM_NOISE": {"useSource": true},
+        "L10N_PARAM_LEGACY": {"useSource": true}
       },
       "Popup": {
         "L10N_PARAM_BLEND_ITEMS": {"useSource": true}
@@ -60,7 +61,8 @@
         "L10N_PARAM_BLUR": "模糊度",
         "L10N_PARAM_BLEND_MODE": "混合模式",
         "L10N_PARAM_BLEND_OPACITY": "混合不透明度",
-        "L10N_PARAM_NOISE": "杂色"
+        "L10N_PARAM_NOISE": "杂色",
+        "L10N_PARAM_LEGACY": "旧版"
       },
       "Popup": {
         "L10N_PARAM_BLEND_ITEMS": "无|正常|变亮|变暗|屏幕|相乘"

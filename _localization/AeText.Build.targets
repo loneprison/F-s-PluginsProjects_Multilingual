@@ -107,7 +107,7 @@
     <Exec Command="uv.exe run --locked --no-dev --project &quot;$(AeTextToolsProject)&quot; aetext validate-publication-review --kind $(AeTextCatalogKind) --catalog &quot;$(AeTextCatalogPath)&quot; --family &quot;$(AeTextFamilyDefinitionPath)&quot; --source-list &quot;$(AeTextSourceList)&quot; --project-root &quot;$(AeTextRepositoryRoot)&quot;" />
   </Target>
 
-  <!-- Explicit inventory hook used by current repository validation and manifest tooling. -->
+  <!-- プロジェクトの入力一覧を出力する。 -->
   <Target Name="WriteAeTextInventoryManifest"
           Condition="'$(MSBuildProjectExtension)'=='.vcxproj' and '$(AeTextInventoryOutput)'!=''">
     <ItemGroup>

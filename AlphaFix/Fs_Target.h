@@ -43,7 +43,7 @@
 		//33556032	
 		//33556036 +PF_OutFlag_NON_PARAM_VARY
 */
-#define FS_OUT_FLAGS 33556064 // Original flags plus PF_OutFlag_I_DO_DIALOG.
+#define FS_OUT_FLAGS 33556064 // 元のフラグに PF_OutFlag_I_DO_DIALOG を追加。
 //#define Fs_OUTFLAGS 33556036
 
 //-----------------------------------------------------------------------------------

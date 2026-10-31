@@ -241,7 +241,9 @@ def validate_catalog_domain(
                         )
                     )
                     continue
-                if len(encoded) > limit:
+                if len(encoded) > limit and (
+                    profile != "utf-8" or binding.role in {"About", "Error"}
+                ):
                     diagnostics.append(
                         _issue(
                             "AET4003",

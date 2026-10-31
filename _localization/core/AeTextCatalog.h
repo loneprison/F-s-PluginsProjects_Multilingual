@@ -3,6 +3,7 @@
 #include "../AeText.h"
 
 #include <cstdint>
+#include <cstring>
 
 namespace AeText::detail {
 
@@ -49,6 +50,22 @@ inline const char *Utf8Value(
 	const StringTable &table = token.role == TextRole::About
 		? variant.about_utf8 : variant.error_utf8;
 	return table.values[token.index];
+}
+
+inline const char *ParameterUtf8Value(
+    const CatalogView &catalog,
+    const VariantView &variant,
+    TextToken token) noexcept
+{
+    for (std::uint32_t index = 0; index < catalog.variant_count; ++index) {
+        const VariantView &candidate = catalog.variants[index];
+        if (candidate.stable_id_size == variant.stable_id_size + 5 &&
+            std::memcmp(candidate.stable_id, variant.stable_id, variant.stable_id_size) == 0 &&
+            std::memcmp(candidate.stable_id + variant.stable_id_size, "-utf8", 5) == 0) {
+            return LegacyValue(candidate, token);
+        }
+    }
+    return nullptr;
 }
 
 } // namespace AeText::detail

@@ -154,6 +154,7 @@
     <ClInclude Include="..\Fs_Entry.h" />
     <ClInclude Include="..\..\FsLibrary\FsAE.h" />
     <ClInclude Include="..\..\FsLibrary\FsGraphics.h" />
+    <ClInclude Include="..\..\FsLibrary\FsVersionMigration.h" />
     <ClInclude Include="..\..\FsLibrary\FsHLS.h" />
     <ClInclude Include="..\..\FsLibrary\FsRandom.h" />
     <ClInclude Include="..\..\FsLibrary\FsScreenShake.h" />

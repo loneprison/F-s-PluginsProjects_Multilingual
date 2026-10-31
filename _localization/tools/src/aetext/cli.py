@@ -317,7 +317,7 @@ def _parser() -> argparse.ArgumentParser:
     sync.add_argument("--prune", action="store_true")
     sync.set_defaults(handler=_sync)
     review = commands.add_parser(
-        "review", help="open the single localhost browser review interface"
+        "review", help="open the translation review workspace"
     )
     review.add_argument("plugin", nargs="?")
     review.add_argument("--locale")

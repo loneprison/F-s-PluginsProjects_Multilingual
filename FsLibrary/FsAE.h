@@ -16,10 +16,7 @@
 #include "FsUtils.h"
 #include "FsBuffer.h"
 #include "../_localization/AeText.h"
-#if !defined(MAJOR_VERSION) || !defined(MINOR_VERSION) || !defined(BUG_VERSION) || \
-	!defined(STAGE_VERSION) || !defined(BUILD_VERSION) || !defined(FS_VERSION)
 #include "FsVersion.h"
-#endif
 
 #ifndef NO_USE_FSGRAPHICS
 	#include "FsGraphics.h"

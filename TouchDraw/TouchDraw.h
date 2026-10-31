@@ -73,6 +73,7 @@
 
 #define	L10N_PARAM_ORIGINAL_BLEND			"Original_Blend"
 #define	L10N_PARAM_ON			"ON"
+#define L10N_PARAM_LEGACY "Legacy"
 //ユーザーインターフェースのID
 //ParamsSetup関数とRender関数のparamsパラメータのIDになる
 enum {
@@ -104,6 +105,7 @@ enum {
 	ID_BLOCK_SIZE,
 
 	ID_ORG,
+	ID_LEGACY,
 	ID_NUM_PARAMS
 	};
 

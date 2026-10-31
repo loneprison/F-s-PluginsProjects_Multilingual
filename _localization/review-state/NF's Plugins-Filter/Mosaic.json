@@ -33,7 +33,7 @@
       "L10N_PARAM_FRAME_FLICKER": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:1d6d48b91154f975fd9bfada8f7e1d484d0e5262569c21b607adbafc8b6412ee",
+          "source": "sha256-v1:b8791300aa1ca4cb1018cacbb56dcaf24c1b637cc55ed10089d98cd2e454227e",
           "translation": "sha256-v1:5a264eaf8baf6c11266a15285dd4c230c4d5694a047a1b7a532bd539ee62c8e0"
         }
       },
@@ -84,7 +84,7 @@
       "L10N_PARAM_FRAME_FLICKER": {
         "stage": "reviewed",
         "reviewedAgainst": {
-          "source": "sha256-v1:1d6d48b91154f975fd9bfada8f7e1d484d0e5262569c21b607adbafc8b6412ee",
+          "source": "sha256-v1:b8791300aa1ca4cb1018cacbb56dcaf24c1b637cc55ed10089d98cd2e454227e",
           "translation": "sha256-v1:1ebe5d020f4fba05bb2c0d336eeb17ab4261f2e48d67aede95677ab77aa3ef3f"
         }
       },
